@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'meditation_configure_c.dart';
+part of 'provider.dart';
 
 // **************************************************************************
 // RiverpodGenerator
@@ -29,23 +29,23 @@ class _SystemHash {
   }
 }
 
-String _$MeditationConfigureCHash() =>
-    r'c6618ab0381bae9bc1cd69eecff9ce34a8f41645';
+String _$isarCHash() => r'cecb37fa35b5d077eef9972286131c311508f202';
 
-/// See also [MeditationConfigureC].
-final meditationConfigureCProvider =
-    AutoDisposeNotifierProvider<MeditationConfigureC, MeditationConfigure>(
-  MeditationConfigureC.new,
-  name: r'meditationConfigureCProvider',
-  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-      ? null
-      : _$MeditationConfigureCHash,
+/// See also [isarC].
+final isarCProvider = FutureProvider<Isar>(
+  isarC,
+  name: r'isarCProvider',
+  debugGetCreateSourceHash:
+      const bool.fromEnvironment('dart.vm.product') ? null : _$isarCHash,
 );
-typedef MeditationConfigureCRef
-    = AutoDisposeNotifierProviderRef<MeditationConfigure>;
+typedef IsarCRef = FutureProviderRef<Isar>;
+String _$databaseCHash() => r'74f71e50f17cfe2309fe92689acb97a989b71abb';
 
-abstract class _$MeditationConfigureC
-    extends AutoDisposeNotifier<MeditationConfigure> {
-  @override
-  MeditationConfigure build();
-}
+/// See also [databaseC].
+final databaseCProvider = AutoDisposeFutureProvider<Database>(
+  databaseC,
+  name: r'databaseCProvider',
+  debugGetCreateSourceHash:
+      const bool.fromEnvironment('dart.vm.product') ? null : _$databaseCHash,
+);
+typedef DatabaseCRef = AutoDisposeFutureProviderRef<Database>;

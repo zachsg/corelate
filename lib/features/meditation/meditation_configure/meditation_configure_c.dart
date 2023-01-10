@@ -1,6 +1,7 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-import '../meditation_type.dart';
+import '../../../models/meditation.dart';
+import '../../../models/meditation_type.dart';
 import 'meditation_configure.dart';
 
 part 'meditation_configure_c.g.dart';
@@ -8,15 +9,21 @@ part 'meditation_configure_c.g.dart';
 @riverpod
 class MeditationConfigureC extends _$MeditationConfigureC {
   @override
-  MeditationConfigure build() => const MeditationConfigure();
+  MeditationConfigure build() =>
+      MeditationConfigure(Meditation(date: DateTime.now()));
 
   void setType(MeditationType type) {
     if (type == MeditationType.openEnded) {
-      state = state.copyWith(type: type, duration: null);
+      final meditation = state.meditation.copyWith(type: type, goal: null);
+      state = state.copyWith(meditation: meditation);
     } else {
-      state = state.copyWith(type: type, duration: 600);
+      final meditation = state.meditation.copyWith(type: type, goal: 600);
+      state = state.copyWith(meditation: meditation);
     }
   }
 
-  void setDuration(int duration) => state = state.copyWith(duration: duration);
+  void setGoal(int goal) {
+    final meditation = state.meditation.copyWith(goal: goal);
+    state = state.copyWith(meditation: meditation);
+  }
 }

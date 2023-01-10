@@ -12,7 +12,7 @@ const profileLabel = 'Profile';
 
 /// Meditation
 const typeLabel = 'Type';
-const durationLabel = 'Time';
+const goalLabel = 'Length';
 const openEndedLabel = 'Open-ended';
 const hoursLabel = 'hour';
 const minutesLabel = 'minutes';

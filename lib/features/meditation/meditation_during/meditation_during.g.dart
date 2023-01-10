@@ -3,25 +3,56 @@
 part of 'meditation_during.dart';
 
 // **************************************************************************
-// JsonSerializableGenerator
+// CopyWithGenerator
 // **************************************************************************
 
-_$_MeditationDuring _$$_MeditationDuringFromJson(Map<String, dynamic> json) =>
-    _$_MeditationDuring(
-      type: $enumDecodeNullable(_$MeditationTypeEnumMap, json['type']) ??
-          MeditationType.openEnded,
-      duration: json['duration'] as int?,
-      elapsed: json['elapsed'] as int? ?? 0,
+abstract class _$MeditationDuringCWProxy {
+  MeditationDuring meditation(Meditation meditation);
+
+  /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `MeditationDuring(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
+  ///
+  /// Usage
+  /// ```dart
+  /// MeditationDuring(...).copyWith(id: 12, name: "My name")
+  /// ````
+  MeditationDuring call({
+    Meditation? meditation,
+  });
+}
+
+/// Proxy class for `copyWith` functionality. This is a callable class and can be used as follows: `instanceOfMeditationDuring.copyWith(...)`. Additionally contains functions for specific fields e.g. `instanceOfMeditationDuring.copyWith.fieldName(...)`
+class _$MeditationDuringCWProxyImpl implements _$MeditationDuringCWProxy {
+  const _$MeditationDuringCWProxyImpl(this._value);
+
+  final MeditationDuring _value;
+
+  @override
+  MeditationDuring meditation(Meditation meditation) =>
+      this(meditation: meditation);
+
+  @override
+
+  /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `MeditationDuring(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
+  ///
+  /// Usage
+  /// ```dart
+  /// MeditationDuring(...).copyWith(id: 12, name: "My name")
+  /// ````
+  MeditationDuring call({
+    Object? meditation = const $CopyWithPlaceholder(),
+  }) {
+    return MeditationDuring(
+      meditation == const $CopyWithPlaceholder() || meditation == null
+          // ignore: unnecessary_non_null_assertion
+          ? _value.meditation!
+          // ignore: cast_nullable_to_non_nullable
+          : meditation as Meditation,
     );
+  }
+}
 
-Map<String, dynamic> _$$_MeditationDuringToJson(_$_MeditationDuring instance) =>
-    <String, dynamic>{
-      'type': _$MeditationTypeEnumMap[instance.type]!,
-      'duration': instance.duration,
-      'elapsed': instance.elapsed,
-    };
-
-const _$MeditationTypeEnumMap = {
-  MeditationType.openEnded: 'openEnded',
-  MeditationType.timed: 'timed',
-};
+extension $MeditationDuringCopyWith on MeditationDuring {
+  /// Returns a callable class that can be used as follows: `instanceOfMeditationDuring.copyWith(...)` or like so:`instanceOfMeditationDuring.copyWith.fieldName(...)`.
+  // ignore: library_private_types_in_public_api
+  _$MeditationDuringCWProxy get copyWith => _$MeditationDuringCWProxyImpl(this);
+}

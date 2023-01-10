@@ -1,5 +1,6 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
+import '../../../models/meditation.dart';
 import '../meditation_configure/meditation_configure_c.dart';
 import 'meditation_during.dart';
 
@@ -9,12 +10,22 @@ part 'meditation_during_c.g.dart';
 class MeditationDuringC extends _$MeditationDuringC {
   @override
   MeditationDuring build() {
-    final meditationConfiguration = ref.read(meditationConfigureCProvider);
-    final type = meditationConfiguration.type;
-    final duration = meditationConfiguration.duration;
+    final meditation = ref.watch(meditationConfigureCProvider).meditation;
+    final type = meditation.type;
+    final goal = meditation.goal;
 
-    return MeditationDuring(type: type, duration: duration);
+    return MeditationDuring(
+      Meditation(date: DateTime.now(), type: type, goal: goal),
+    );
   }
 
-  void setElapsed(int seconds) => state = state.copyWith(elapsed: seconds);
+  void setElapsed(int seconds) {
+    final meditation = state.meditation.copyWith(elapsed: seconds);
+    state = state.copyWith(meditation: meditation);
+  }
+
+  void updateDate(DateTime date) {
+    final meditation = state.meditation.copyWith(date: date);
+    state = state.copyWith(meditation: meditation);
+  }
 }

@@ -4,7 +4,7 @@ import 'package:go_router/go_router.dart';
 
 import '../../../helpers/strings.dart';
 import '../meditation_during/meditation_during_view.dart';
-import '../meditation_type.dart';
+import '../../../models/meditation_type.dart';
 import 'meditation_configure_c.dart';
 import 'widgets/xwidgets.dart';
 
@@ -30,7 +30,7 @@ class MeditationConfigureView extends ConsumerWidget {
               MeditationTypeDropdownButtonWidget()
             ],
           ),
-          if (ref.watch(meditationConfigureCProvider).type ==
+          if (ref.watch(meditationConfigureCProvider).meditation.type ==
               MeditationType.timed)
             Column(
               children: [
@@ -38,16 +38,16 @@ class MeditationConfigureView extends ConsumerWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: const [
-                    Text(durationLabel),
+                    Text(goalLabel),
                     SizedBox(width: 8),
-                    MeditationDurationDropdownButtonWidget()
+                    MeditationGoalDropdownButtonWidget()
                   ],
                 ),
               ],
             ),
           const SizedBox(height: 32),
           ElevatedButton(
-            onPressed: () => context.goNamed(MeditationDuringView.routeName),
+            onPressed: () => context.pushNamed(MeditationDuringView.routeName),
             child: const Text(startLabel),
           ),
         ],

@@ -1,13 +1,10 @@
-import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:copy_with_extension/copy_with_extension.dart';
 
-part 'today.freezed.dart';
 part 'today.g.dart';
 
-@freezed
-class Today with _$Today {
-  const factory Today({
-    @Default(false) bool fabExpanded,
-  }) = _Today;
+@CopyWith()
+class Today {
+  bool fabExpanded;
 
-  factory Today.fromJson(Map<String, dynamic> json) => _$TodayFromJson(json);
+  Today({this.fabExpanded = false});
 }

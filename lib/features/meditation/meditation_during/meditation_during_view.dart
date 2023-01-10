@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../../data/provider.dart';
 import '../../../helpers/strings.dart';
-import '../meditation_type.dart';
+import '../../../models/meditation_type.dart';
 import 'meditation_during_c.dart';
 import 'widgets/xwidget.dart';
 
@@ -22,7 +23,8 @@ class MeditationDuringView extends ConsumerWidget {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          ref.watch(meditationDuringCProvider).type == MeditationType.openEnded
+          ref.watch(meditationDuringCProvider).meditation.type ==
+                  MeditationType.openEnded
               ? const CountUpWidget()
               : const CountDownWidget(),
           Column(
@@ -31,8 +33,18 @@ class MeditationDuringView extends ConsumerWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   ElevatedButton(
-                    onPressed: () {
-                      // TODO: End session & navigate to Today with new session at top
+                    onPressed: () async {
+                      // TODO: End session, save session, navigate to Today with new session at top
+                      final date = DateTime.now();
+                      ref
+                          .read(meditationDuringCProvider.notifier)
+                          .updateDate(date);
+
+                      final meditation =
+                          ref.read(meditationDuringCProvider).meditation;
+
+                      ref.read(databaseCProvider.future).then(
+                          (db) async => await db.saveMeditation(meditation));
                     },
                     child: const Padding(
                       padding: EdgeInsets.symmetric(

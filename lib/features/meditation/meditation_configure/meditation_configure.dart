@@ -1,17 +1,12 @@
-import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:copy_with_extension/copy_with_extension.dart';
 
-import '../meditation_type.dart';
+import '../../../models/meditation.dart';
 
-part 'meditation_configure.freezed.dart';
 part 'meditation_configure.g.dart';
 
-@freezed
-class MeditationConfigure with _$MeditationConfigure {
-  const factory MeditationConfigure({
-    @Default(MeditationType.openEnded) MeditationType type,
-    int? duration,
-  }) = _MeditationConfigure;
+@CopyWith()
+class MeditationConfigure {
+  Meditation meditation;
 
-  factory MeditationConfigure.fromJson(Map<String, dynamic> json) =>
-      _$MeditationConfigureFromJson(json);
+  MeditationConfigure(this.meditation);
 }

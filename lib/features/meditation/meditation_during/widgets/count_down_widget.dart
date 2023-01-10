@@ -40,9 +40,11 @@ class _CountDownWidgetState extends ConsumerState<CountDownWidget> {
 
   @override
   Widget build(BuildContext context) {
-    final duration = (ref.read(meditationDuringCProvider).duration ?? 0) * 1000;
-    final elapsed = ref.watch(meditationDuringCProvider).elapsed;
-    final goal = ref.watch(meditationDuringCProvider).duration ?? 0;
+    final meditation = ref.watch(meditationDuringCProvider).meditation;
+    final duration = (meditation.goal ?? 0) * 1000;
+    final elapsed = meditation.elapsed;
+    final goal = meditation.goal ?? 600;
+
     final goneBy = goal - elapsed;
 
     if (goal <= elapsed) {

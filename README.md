@@ -28,6 +28,9 @@ Following 5 steps are only necessary if using Firebase:
 From the project root directory:
 - `flutter run`
 
+### Build Realm models
+`flutter pub run realm generate`
+
 ### Code generation
 Move to project root directory and either do:
 - `flutter pub run build_runner watch --delete-conflicting-outputs` 
