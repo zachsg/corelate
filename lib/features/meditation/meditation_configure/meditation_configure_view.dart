@@ -16,6 +16,8 @@ class MeditationConfigureView extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final meditation = ref.watch(meditationConfigureCProvider).meditation;
+
     return Scaffold(
       appBar: AppBar(
         title: const Text(meditationTitle),
@@ -31,8 +33,7 @@ class MeditationConfigureView extends ConsumerWidget {
               MeditationTypeDropdownButtonWidget()
             ],
           ),
-          if (ref.watch(meditationConfigureCProvider).meditation.type ==
-              MeditationType.timed)
+          if (meditation.type == MeditationType.timed)
             Column(
               children: [
                 const SizedBox(height: 16),
@@ -54,6 +55,57 @@ class MeditationConfigureView extends ConsumerWidget {
               context.pushNamed(MeditationDuringView.routeName);
             },
             child: const Text(startLabel),
+          ),
+          const SizedBox(height: 8),
+          Padding(
+            padding: const EdgeInsets.all(32.0),
+            child: Row(
+              children: [
+                meditation.type == MeditationType.timed
+                    ? Expanded(
+                        child: Row(
+                          children: [
+                            Icon(
+                              Icons.info,
+                              size: 32,
+                              color: Theme.of(context).colorScheme.onBackground,
+                            ),
+                            const SizedBox(width: 16),
+                            Expanded(
+                              child: Text(
+                                'Meditate for ${meditation.goal! ~/ 60} minutes. Tap on "Begin" to start. Once the session is underway, tap on "End Early" if you\'d like to cut your session short; otherwise just meditate until the session ends of its own volition.',
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .bodyLarge
+                                    ?.copyWith(fontStyle: FontStyle.italic),
+                              ),
+                            )
+                          ],
+                        ),
+                      )
+                    : Expanded(
+                        child: Row(
+                          children: [
+                            Icon(
+                              Icons.info,
+                              size: 32,
+                              color: Theme.of(context).colorScheme.onBackground,
+                            ),
+                            const SizedBox(width: 16),
+                            Expanded(
+                              child: Text(
+                                'Meditate for as long as you\'d like. Tap on "Begin" to start. Once the session is underway, tap on "End Session" to mark your meditation as complete.',
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .bodyLarge
+                                    ?.copyWith(fontStyle: FontStyle.italic),
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
+              ],
+            ),
           ),
         ],
       ),

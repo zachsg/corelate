@@ -20,3 +20,4 @@ const timedLabel = 'Timed';
 const startLabel = 'Begin';
 const cancelLabel = 'Cancel';
 const endEarlyLabel = 'End Early';
+const endLabel = 'End Session';

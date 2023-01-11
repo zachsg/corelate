@@ -34,6 +34,12 @@ class _CountDownWidgetState extends ConsumerState<CountDownWidget> {
       if (goal <= elapsed.inSeconds) {
         widget.finished();
       }
+
+      if (ref.read(meditationDuringCProvider).sessionStopped) {
+        _stopwatch
+          ..stop()
+          ..reset();
+      }
     });
 
     super.initState();

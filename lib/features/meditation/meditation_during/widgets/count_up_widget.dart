@@ -24,6 +24,12 @@ class _CountUpWidgetState extends ConsumerState<CountUpWidget> {
       ref
           .read(meditationDuringCProvider.notifier)
           .setElapsed(duration.inSeconds);
+
+      if (ref.read(meditationDuringCProvider).sessionStopped) {
+        _stopwatch
+          ..stop()
+          ..reset();
+      }
     });
 
     super.initState();

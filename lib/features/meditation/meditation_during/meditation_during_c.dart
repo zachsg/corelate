@@ -15,7 +15,7 @@ class MeditationDuringC extends _$MeditationDuringC {
     final meditation = ref.watch(meditationConfigureCProvider).meditation;
 
     return MeditationDuring(
-      Meditation(
+      meditation: Meditation(
         date: DateTime.now(),
         type: meditation.type,
         goal: meditation.goal,
@@ -34,10 +34,14 @@ class MeditationDuringC extends _$MeditationDuringC {
   }
 
   void save() {
-    ref
-        .read(databaseCProvider.future)
-        .then((db) async => await db.saveMeditation(state.meditation));
+    ref.read(databaseCProvider.future).then((db) async {
+      await db.saveMeditation(state.meditation);
+      ref.read(todayCProvider.notifier).loadActivities();
+    });
 
-    ref.read(todayCProvider.notifier).loadActivities();
+    sessionStopped(true);
   }
+
+  void sessionStopped(bool stopped) =>
+      state = state.copyWith(sessionStopped: stopped);
 }

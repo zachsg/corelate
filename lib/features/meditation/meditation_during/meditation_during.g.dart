@@ -9,6 +9,8 @@ part of 'meditation_during.dart';
 abstract class _$MeditationDuringCWProxy {
   MeditationDuring meditation(Meditation meditation);
 
+  MeditationDuring sessionStopped(bool sessionStopped);
+
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `MeditationDuring(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
   /// Usage
@@ -17,6 +19,7 @@ abstract class _$MeditationDuringCWProxy {
   /// ````
   MeditationDuring call({
     Meditation? meditation,
+    bool? sessionStopped,
   });
 }
 
@@ -31,6 +34,10 @@ class _$MeditationDuringCWProxyImpl implements _$MeditationDuringCWProxy {
       this(meditation: meditation);
 
   @override
+  MeditationDuring sessionStopped(bool sessionStopped) =>
+      this(sessionStopped: sessionStopped);
+
+  @override
 
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `MeditationDuring(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
@@ -40,13 +47,21 @@ class _$MeditationDuringCWProxyImpl implements _$MeditationDuringCWProxy {
   /// ````
   MeditationDuring call({
     Object? meditation = const $CopyWithPlaceholder(),
+    Object? sessionStopped = const $CopyWithPlaceholder(),
   }) {
     return MeditationDuring(
-      meditation == const $CopyWithPlaceholder() || meditation == null
+      meditation:
+          meditation == const $CopyWithPlaceholder() || meditation == null
+              // ignore: unnecessary_non_null_assertion
+              ? _value.meditation!
+              // ignore: cast_nullable_to_non_nullable
+              : meditation as Meditation,
+      sessionStopped: sessionStopped == const $CopyWithPlaceholder() ||
+              sessionStopped == null
           // ignore: unnecessary_non_null_assertion
-          ? _value.meditation!
+          ? _value.sessionStopped!
           // ignore: cast_nullable_to_non_nullable
-          : meditation as Meditation,
+          : sessionStopped as bool,
     );
   }
 }

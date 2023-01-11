@@ -3,12 +3,11 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:wakelock/wakelock.dart';
 
-import '../../../data/provider.dart';
 import '../../../helpers/strings.dart';
 import '../../../models/meditation_type.dart';
 import '../../bottom_navigation/bottom_navigation_view.dart';
 import 'meditation_during_c.dart';
-import 'widgets/xwidget.dart';
+import 'widgets/xwidgets.dart';
 
 class MeditationDuringView extends ConsumerWidget {
   const MeditationDuringView({super.key});
@@ -17,6 +16,8 @@ class MeditationDuringView extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final meditation = ref.watch(meditationDuringCProvider).meditation;
+
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
@@ -25,8 +26,7 @@ class MeditationDuringView extends ConsumerWidget {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          ref.watch(meditationDuringCProvider).meditation.type ==
-                  MeditationType.openEnded
+          meditation.type == MeditationType.openEnded
               ? const CountUpWidget()
               : CountDownWidget(finished: () {
                   ref.read(meditationDuringCProvider.notifier).save();
@@ -42,12 +42,14 @@ class MeditationDuringView extends ConsumerWidget {
                       ref.read(meditationDuringCProvider.notifier).save();
                       _showSessionCompleteDialog(ref, context);
                     },
-                    child: const Padding(
-                      padding: EdgeInsets.symmetric(
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
                         horizontal: 32,
                         vertical: 16,
                       ),
-                      child: Text(endEarlyLabel),
+                      child: Text(meditation.type == MeditationType.openEnded
+                          ? endLabel
+                          : endEarlyLabel),
                     ),
                   ),
                 ],
@@ -76,21 +78,30 @@ class MeditationDuringView extends ConsumerWidget {
 
     final minutes = elapsed / 60 > 0 ? elapsed ~/ 60 : 0;
     final seconds = minutes == 0 ? elapsed : elapsed - minutes * 60;
-    final secondsText = seconds < 10 ? '0$seconds' : '$seconds';
 
     final meditation = ref.watch(meditationDuringCProvider).meditation;
     var message = '';
 
+    var durationString = '';
+    if (minutes == 0) {
+      durationString = '$seconds seconds';
+    } else if (seconds == 0) {
+      durationString = '$minutes minutes';
+    } else {
+      durationString = '$minutes minutes and $seconds seconds';
+    }
+
     if (meditation.type == MeditationType.timed) {
       if (meditation.goal! <= meditation.elapsed) {
-        message =
-            'Nice work! You completed your goal of ${meditation.goal! ~/ 60} minutes.';
+        message = 'Nice work! You completed your goal of $durationString.';
       } else {
+        final percentage =
+            ((elapsed / meditation.goal!).toDouble() * 100).toInt();
         message =
-            'Good effort. You completed $minutes:$secondsText of your ${meditation.goal! ~/ 60} minute goal.';
+            'Good effort. You completed $durationString of your ${meditation.goal! ~/ 60} minute goal ($percentage%).';
       }
     } else {
-      message = 'You just meditated for $minutes:$secondsText.';
+      message = 'You just meditated for $durationString.';
     }
 
     return showDialog(

@@ -7,6 +7,7 @@ part 'meditation_during.g.dart';
 @CopyWith()
 class MeditationDuring {
   Meditation meditation;
+  bool sessionStopped;
 
-  MeditationDuring(this.meditation);
+  MeditationDuring({required this.meditation, this.sessionStopped = false});
 }

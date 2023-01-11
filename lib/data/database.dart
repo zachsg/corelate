@@ -14,15 +14,24 @@ class Database {
     });
   }
 
-  Future<List<Activity>> loadTodaysActivities() async {
-    return await isar.writeTxn(() async {
-      final date = DateTime.now().copyWith(hour: 0, minute: 0);
-      final activities = isar.meditations
-          .filter()
-          .dateGreaterThan(date)
-          .sortByDateDesc()
-          .findAll();
-      return activities;
+  Future<void> deleteMeditation(Meditation meditation) async {
+    await isar.writeTxn(() async {
+      await isar.meditations.delete(meditation.id);
     });
+  }
+
+  Future<List<Activity>> loadTodaysActivities() async {
+    final List<Activity> activities = [];
+
+    final date = DateTime.now().copyWith(hour: 0, minute: 0);
+    final meditations = await isar.meditations
+        .filter()
+        .dateGreaterThan(date)
+        .sortByDateDesc()
+        .findAll();
+
+    activities.addAll(meditations);
+
+    return activities;
   }
 }
