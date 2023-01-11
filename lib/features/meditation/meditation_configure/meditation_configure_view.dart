@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:wakelock/wakelock.dart';
 
 import '../../../helpers/strings.dart';
 import '../meditation_during/meditation_during_view.dart';
@@ -48,6 +49,7 @@ class MeditationConfigureView extends ConsumerWidget {
           const SizedBox(height: 32),
           ElevatedButton(
             onPressed: () {
+              Wakelock.enable();
               ref.read(meditationConfigureCProvider.notifier).resetDate();
               context.pushNamed(MeditationDuringView.routeName);
             },

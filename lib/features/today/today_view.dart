@@ -1,3 +1,4 @@
+import 'package:corelate/helpers/extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -45,7 +46,7 @@ class _TodayViewState extends ConsumerState<TodayView> {
 
               if (activity is Meditation) {
                 title = 'Meditation';
-                type = activity.type;
+                type = activity.type.name.capitalize();
               }
 
               final month = activity.date.month;
