@@ -1,3 +1,6 @@
+import 'dart:io';
+
+import 'package:health/health.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../../data/provider.dart';
@@ -40,6 +43,28 @@ class MeditationDuringC extends _$MeditationDuringC {
     });
 
     sessionStopped(true);
+
+    final meditation = state.meditation;
+    if (Platform.isIOS) {
+      ref.read(appleMindfulCProvider.future).then((health) async {
+        await health.writeMindfulMinutes(
+          meditation.date,
+          meditation.date.add(Duration(seconds: meditation.elapsed)),
+        );
+      });
+
+      // TODO: Currently health plugin crashes trying to save mindfulness (using mindful_minutes plugin instead)
+      // ref.read(healthCProvider.future).then((health) async {
+      //   final success = await health.writeHealthData(
+      //     meditation.elapsed.toDouble(),
+      //     HealthDataType.MINDFULNESS,
+      //     // meditation.date,
+      //     // meditation.date.add(
+      //     //   Duration(seconds: meditation.elapsed),
+      //     // ),
+      //   );
+      // });
+    }
   }
 
   void sessionStopped(bool stopped) =>

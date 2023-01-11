@@ -201,22 +201,22 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.1.0"
-  device_info:
+  device_info_plus:
     dependency: transitive
     description:
-      name: device_info
-      sha256: f4a8156cb7b7480d969cb734907d18b333c8f0bc0b1ad0b342cdcecf30d62c48
+      name: device_info_plus
+      sha256: "7ff671ed0a6356fa8f2e1ae7d3558d3fb7b6a41e24455e4f8df75b811fb8e4ab"
       url: "https://pub.dev"
     source: hosted
-    version: "2.0.3"
-  device_info_platform_interface:
+    version: "8.0.0"
+  device_info_plus_platform_interface:
     dependency: transitive
     description:
-      name: device_info_platform_interface
-      sha256: b148e0bf9640145d09a4f8dea96614076f889e7f7f8b5ecab1c7e5c2dbc73c1b
+      name: device_info_plus_platform_interface
+      sha256: d3b01d5868b50ae571cd1dc6e502fc94d956b665756180f7b16ead09e836fd64
       url: "https://pub.dev"
     source: hosted
-    version: "2.0.1"
+    version: "7.0.0"
   fake_async:
     dependency: transitive
     description:
@@ -316,10 +316,10 @@ packages:
     dependency: "direct main"
     description:
       name: health
-      sha256: "85815448c97dcd1a869529db0b931feea7abc949c4739d8d457fe430f9ac2b5c"
+      sha256: "9ba4140bb6c233a42f3b93ce2ad9a749bbfa5267938fe97a765c282b93314d07"
       url: "https://pub.dev"
     source: hosted
-    version: "3.0.6"
+    version: "4.4.0"
   http_multi_server:
     dependency: transitive
     description:
@@ -340,10 +340,10 @@ packages:
     dependency: "direct main"
     description:
       name: intl
-      sha256: a3715e3bc90294e971cb7dc063fbf3cd9ee0ebf8604ffeafabd9e6f16abbdbe6
+      sha256: "910f85bce16fb5c6f614e117efa303e85a1731bb0081edf3604a2ae6e9a3cc91"
       url: "https://pub.dev"
     source: hosted
-    version: "0.18.0"
+    version: "0.17.0"
   io:
     dependency: transitive
     description:
@@ -440,6 +440,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.3"
+  mindful_minutes:
+    dependency: "direct main"
+    description:
+      name: mindful_minutes
+      sha256: f498f982cfb80c3f399577307909e16606853d28b8ca60cac837f8101394f79f
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.1.0"
   package_config:
     dependency: transitive
     description:

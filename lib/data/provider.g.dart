@@ -49,3 +49,24 @@ final databaseCProvider = AutoDisposeFutureProvider<Database>(
       const bool.fromEnvironment('dart.vm.product') ? null : _$databaseCHash,
 );
 typedef DatabaseCRef = AutoDisposeFutureProviderRef<Database>;
+String _$healthCHash() => r'f7e0382b16837862784ccc686d22781def294b41';
+
+/// See also [healthC].
+final healthCProvider = FutureProvider<HealthFactory>(
+  healthC,
+  name: r'healthCProvider',
+  debugGetCreateSourceHash:
+      const bool.fromEnvironment('dart.vm.product') ? null : _$healthCHash,
+);
+typedef HealthCRef = FutureProviderRef<HealthFactory>;
+String _$appleMindfulCHash() => r'ee9b03bdf7a0d3b949bb5024209ce6c6de3f3d0b';
+
+/// See also [appleMindfulC].
+final appleMindfulCProvider = FutureProvider<MindfulMinutesPlugin>(
+  appleMindfulC,
+  name: r'appleMindfulCProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$appleMindfulCHash,
+);
+typedef AppleMindfulCRef = FutureProviderRef<MindfulMinutesPlugin>;

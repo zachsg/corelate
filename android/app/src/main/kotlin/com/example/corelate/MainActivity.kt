@@ -1,4 +1,4 @@
-package com.example.corelate
+package app.getrecharge.corelate
 
 import io.flutter.embedding.android.FlutterActivity
 

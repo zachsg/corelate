@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:wakelock/wakelock.dart';
 
+import '../../../data/provider.dart';
 import '../../../helpers/strings.dart';
 import '../meditation_during/meditation_during_view.dart';
 import '../../../models/meditation_type.dart';
@@ -53,6 +54,7 @@ class MeditationConfigureView extends ConsumerWidget {
               Wakelock.enable();
               ref.read(meditationConfigureCProvider.notifier).resetDate();
               context.pushNamed(MeditationDuringView.routeName);
+              ref.read(healthCProvider);
             },
             child: const Text(startLabel),
           ),
