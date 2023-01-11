@@ -78,6 +78,21 @@ class MeditationDuringView extends ConsumerWidget {
     final seconds = minutes == 0 ? elapsed : elapsed - minutes * 60;
     final secondsText = seconds < 10 ? '0$seconds' : '$seconds';
 
+    final meditation = ref.watch(meditationDuringCProvider).meditation;
+    var message = '';
+
+    if (meditation.type == MeditationType.timed) {
+      if (meditation.goal! <= meditation.elapsed) {
+        message =
+            'Nice work! You completed your goal of ${meditation.goal! ~/ 60} minutes.';
+      } else {
+        message =
+            'Good effort. You completed $minutes:$secondsText of your ${meditation.goal! ~/ 60} minute goal.';
+      }
+    } else {
+      message = 'You just meditated for $minutes:$secondsText.';
+    }
+
     return showDialog(
       context: context,
       barrierDismissible: false, // user must tap button!
@@ -87,11 +102,11 @@ class MeditationDuringView extends ConsumerWidget {
           content: SingleChildScrollView(
             child: ListBody(
               children: [
-                Text('You meditated for $minutes:$secondsText.'),
+                Text(message),
               ],
             ),
           ),
-          actions: <Widget>[
+          actions: [
             TextButton(
               child: const Text('Go Home'),
               onPressed: () {
