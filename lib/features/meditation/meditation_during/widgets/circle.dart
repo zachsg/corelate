@@ -75,7 +75,7 @@ class CirclePainter extends CustomPainter {
     _circlePaint = Paint()
       ..color = color
       ..style = PaintingStyle.stroke
-      ..strokeWidth = 16.0
+      ..strokeWidth = 30.0
       ..strokeCap = StrokeCap.round;
   }
 

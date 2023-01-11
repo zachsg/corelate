@@ -1,6 +1,8 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
+import '../../../data/provider.dart';
 import '../../../models/meditation.dart';
+import '../../today/today_c.dart';
 import '../meditation_configure/meditation_configure_c.dart';
 import 'meditation_during.dart';
 
@@ -11,11 +13,13 @@ class MeditationDuringC extends _$MeditationDuringC {
   @override
   MeditationDuring build() {
     final meditation = ref.watch(meditationConfigureCProvider).meditation;
-    final type = meditation.type;
-    final goal = meditation.goal;
 
     return MeditationDuring(
-      Meditation(date: DateTime.now(), type: type, goal: goal),
+      Meditation(
+        date: DateTime.now(),
+        type: meditation.type,
+        goal: meditation.goal,
+      ),
     );
   }
 
@@ -27,5 +31,13 @@ class MeditationDuringC extends _$MeditationDuringC {
   void updateDate(DateTime date) {
     final meditation = state.meditation.copyWith(date: date);
     state = state.copyWith(meditation: meditation);
+  }
+
+  void save() {
+    ref
+        .read(databaseCProvider.future)
+        .then((db) async => await db.saveMeditation(state.meditation));
+
+    ref.read(todayCProvider.notifier).loadActivities();
   }
 }

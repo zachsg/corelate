@@ -13,17 +13,18 @@ class MeditationConfigureC extends _$MeditationConfigureC {
       MeditationConfigure(Meditation(date: DateTime.now()));
 
   void setType(MeditationType type) {
-    if (type == MeditationType.openEnded) {
-      final meditation = state.meditation.copyWith(type: type, goal: null);
-      state = state.copyWith(meditation: meditation);
-    } else {
-      final meditation = state.meditation.copyWith(type: type, goal: 600);
-      state = state.copyWith(meditation: meditation);
-    }
+    final goal = type == MeditationType.openEnded ? null : 600;
+    final meditation = state.meditation.copyWith(type: type, goal: goal);
+    state = state.copyWith(meditation: meditation);
   }
 
   void setGoal(int goal) {
     final meditation = state.meditation.copyWith(goal: goal);
+    state = state.copyWith(meditation: meditation);
+  }
+
+  void resetDate() {
+    final meditation = state.meditation.copyWith(date: DateTime.now());
     state = state.copyWith(meditation: meditation);
   }
 }

@@ -47,7 +47,10 @@ class MeditationConfigureView extends ConsumerWidget {
             ),
           const SizedBox(height: 32),
           ElevatedButton(
-            onPressed: () => context.pushNamed(MeditationDuringView.routeName),
+            onPressed: () {
+              ref.read(meditationConfigureCProvider.notifier).resetDate();
+              context.pushNamed(MeditationDuringView.routeName);
+            },
             child: const Text(startLabel),
           ),
         ],

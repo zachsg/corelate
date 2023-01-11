@@ -24,8 +24,10 @@ class ExpandedFloatingActionButtonWidget extends ConsumerWidget {
           ActionButtonWidget(
             title: meditationTitle,
             icon: Icons.self_improvement,
-            onPressed: () =>
-                context.pushNamed(MeditationConfigureView.routeName),
+            onPressed: () {
+              ref.read(todayCProvider.notifier).setFABExpanded(!fabIsExpanded);
+              context.pushNamed(MeditationConfigureView.routeName);
+            },
           ),
           ActionButtonWidget(
             title: breathworkTitle,

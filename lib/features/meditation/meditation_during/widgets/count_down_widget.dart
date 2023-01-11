@@ -7,7 +7,9 @@ import '../meditation_during_c.dart';
 import 'circle.dart';
 
 class CountDownWidget extends ConsumerStatefulWidget {
-  const CountDownWidget({super.key});
+  const CountDownWidget({super.key, required this.finished});
+
+  final VoidCallback finished;
 
   @override
   ConsumerState<ConsumerStatefulWidget> createState() =>
@@ -22,10 +24,16 @@ class _CountDownWidgetState extends ConsumerState<CountDownWidget> {
   void initState() {
     _stopwatch = Stopwatch()..start();
     _timer = Timer.periodic(const Duration(seconds: 1), (_) {
-      final duration = _stopwatch.elapsed;
+      final elapsed = _stopwatch.elapsed;
+      final goal = ref.read(meditationDuringCProvider).meditation.goal ?? 0;
+
       ref
           .read(meditationDuringCProvider.notifier)
-          .setElapsed(duration.inSeconds);
+          .setElapsed(elapsed.inSeconds);
+
+      if (goal <= elapsed.inSeconds) {
+        widget.finished();
+      }
     });
 
     super.initState();

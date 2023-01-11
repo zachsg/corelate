@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 import '../../../data/provider.dart';
 import '../../../helpers/strings.dart';
 import '../../../models/meditation_type.dart';
+import '../../bottom_navigation/bottom_navigation_view.dart';
 import 'meditation_during_c.dart';
 import 'widgets/xwidget.dart';
 
@@ -26,25 +27,19 @@ class MeditationDuringView extends ConsumerWidget {
           ref.watch(meditationDuringCProvider).meditation.type ==
                   MeditationType.openEnded
               ? const CountUpWidget()
-              : const CountDownWidget(),
+              : CountDownWidget(finished: () {
+                  ref.read(meditationDuringCProvider.notifier).save();
+                  _showSessionCompleteDialog(ref, context);
+                }),
           Column(
             children: [
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   ElevatedButton(
-                    onPressed: () async {
-                      // TODO: End session, save session, navigate to Today with new session at top
-                      final date = DateTime.now();
-                      ref
-                          .read(meditationDuringCProvider.notifier)
-                          .updateDate(date);
-
-                      final meditation =
-                          ref.read(meditationDuringCProvider).meditation;
-
-                      ref.read(databaseCProvider.future).then(
-                          (db) async => await db.saveMeditation(meditation));
+                    onPressed: () {
+                      ref.read(meditationDuringCProvider.notifier).save();
+                      _showSessionCompleteDialog(ref, context);
                     },
                     child: const Padding(
                       padding: EdgeInsets.symmetric(
@@ -71,6 +66,41 @@ class MeditationDuringView extends ConsumerWidget {
           const SizedBox(),
         ],
       ),
+    );
+  }
+
+  Future<void> _showSessionCompleteDialog(
+      WidgetRef ref, BuildContext context) async {
+    final elapsed = ref.watch(meditationDuringCProvider).meditation.elapsed;
+
+    final minutes = elapsed / 60 > 0 ? elapsed ~/ 60 : 0;
+    final seconds = minutes == 0 ? elapsed : elapsed - minutes * 60;
+    final secondsText = seconds < 10 ? '0$seconds' : '$seconds';
+
+    return showDialog(
+      context: context,
+      barrierDismissible: false, // user must tap button!
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text('Session Complete'),
+          content: SingleChildScrollView(
+            child: ListBody(
+              children: [
+                Text('You meditated for $minutes:$secondsText.'),
+              ],
+            ),
+          ),
+          actions: <Widget>[
+            TextButton(
+              child: const Text('Go Home'),
+              onPressed: () {
+                Navigator.of(context).pop();
+                context.goNamed(BottomNavigationView.routeName);
+              },
+            ),
+          ],
+        );
+      },
     );
   }
 }
