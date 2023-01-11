@@ -19,6 +19,7 @@ dependencies:
   isar: ^3.0.5
   isar_flutter_libs: ^3.0.5
   wakelock: ^0.6.2
+  intl: ^0.18.0
 
 dev_dependencies:
   flutter_test:
