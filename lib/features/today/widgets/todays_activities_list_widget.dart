@@ -29,11 +29,11 @@ class TodaysActivitiesListWidget extends ConsumerWidget {
           final seconds =
               minutes == 0 ? activity.elapsed : activity.elapsed - minutes * 60;
           if (minutes == 0) {
-            durationString = '${seconds}sec';
+            durationString = '${seconds}s';
           } else if (seconds == 0) {
-            durationString = '${minutes}min';
+            durationString = '${minutes}m';
           } else {
-            durationString = '${minutes}min, ${seconds}sec';
+            durationString = '${minutes}m ${seconds}s';
           }
         }
 
@@ -50,9 +50,9 @@ class TodaysActivitiesListWidget extends ConsumerWidget {
         }
 
         final color = Theme.of(context).colorScheme;
-        final morning = Icon(Icons.wb_twilight, size: 32, color: color.primary);
-        final midday = Icon(Icons.sunny, size: 32, color: color.secondary);
-        final night = Icon(Icons.bedtime, size: 32, color: color.tertiary);
+        final morning = Icon(Icons.wb_twilight, size: 28, color: color.primary);
+        final midday = Icon(Icons.sunny, size: 28, color: color.secondary);
+        final night = Icon(Icons.bedtime, size: 28, color: color.tertiary);
 
         return ListTile(
           contentPadding: const EdgeInsets.symmetric(
@@ -60,13 +60,17 @@ class TodaysActivitiesListWidget extends ConsumerWidget {
             horizontal: 20,
           ),
           leading: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               hour < 12
                   ? morning
                   : hour < 18
                       ? midday
                       : night,
-              Text(timeString),
+              Text(
+                timeString,
+                style: Theme.of(context).textTheme.bodySmall,
+              ),
             ],
           ),
           title: Text(title),

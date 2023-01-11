@@ -20,6 +20,7 @@ dependencies:
   isar_flutter_libs: ^3.0.5
   wakelock: ^0.6.2
   intl: ^0.18.0
+  health: ^3.0.6
 
 dev_dependencies:
   flutter_test:
