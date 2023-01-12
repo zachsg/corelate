@@ -39,7 +39,7 @@ class MeditationDuringC extends _$MeditationDuringC {
   void save() {
     ref.read(databaseCProvider.future).then((db) async {
       await db.saveMeditation(state.meditation);
-      ref.read(todayCProvider.notifier).loadActivities();
+      ref.read(todayCProvider.notifier).loadTodaysActivities();
     });
 
     sessionStopped(true);

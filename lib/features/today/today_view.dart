@@ -12,13 +12,15 @@ class TodayView extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final showingToday = ref.watch(todayCProvider).showingToday;
+
     return Scaffold(
       appBar: AppBar(
-        title: const Text(todayLabel),
+        title: Text(showingToday ? todayLabel : historyLabel),
         actions: [
           IconButton(
-            onPressed: () {},
-            icon: const Icon(Icons.calendar_month),
+            onPressed: ref.read(todayCProvider.notifier).toggleShowingToday,
+            icon: Icon(showingToday ? Icons.history : Icons.today),
           ),
         ],
       ),

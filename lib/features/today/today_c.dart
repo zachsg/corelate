@@ -13,9 +13,22 @@ class TodayC extends _$TodayC {
   void setFABExpanded(bool isExpanded) =>
       state = state.copyWith(fabExpanded: isExpanded);
 
-  void loadActivities() {
+  void toggleShowingToday() {
+    state.showingToday ? loadAllActivities() : loadTodaysActivities();
+
+    state = state.copyWith(showingToday: !state.showingToday);
+  }
+
+  void loadTodaysActivities() {
     ref.read(databaseCProvider.future).then((db) async {
       final activities = await db.loadTodaysActivities();
+      state = state.copyWith(activities: activities);
+    });
+  }
+
+  void loadAllActivities() {
+    ref.read(databaseCProvider.future).then((db) async {
+      final activities = await db.loadAllActivities();
       state = state.copyWith(activities: activities);
     });
   }

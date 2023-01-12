@@ -7,7 +7,12 @@ part 'today.g.dart';
 @CopyWith()
 class Today {
   List<Activity> activities;
+  bool showingToday;
   bool fabExpanded;
 
-  Today({required this.activities, this.fabExpanded = false});
+  Today({
+    required this.activities,
+    this.showingToday = true,
+    this.fabExpanded = false,
+  });
 }

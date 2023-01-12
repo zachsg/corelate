@@ -42,8 +42,12 @@ class TodaysActivitiesListWidget extends ConsumerWidget {
         final minuteString = minute < 10 ? '0$minute' : minute;
         var timeString = '';
 
+        final day = activity.date.day;
+
         final is24HoursFormat = MediaQuery.of(context).alwaysUse24HourFormat;
-        if (is24HoursFormat) {
+        if (day < DateTime.now().day) {
+          timeString = DateFormat('M/dd/yy').format(activity.date);
+        } else if (is24HoursFormat) {
           timeString = '$hour:$minuteString';
         } else {
           timeString = DateFormat('hh:mm a').format(activity.date);

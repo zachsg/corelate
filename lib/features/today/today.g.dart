@@ -9,6 +9,8 @@ part of 'today.dart';
 abstract class _$TodayCWProxy {
   Today activities(List<Activity> activities);
 
+  Today showingToday(bool showingToday);
+
   Today fabExpanded(bool fabExpanded);
 
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `Today(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
@@ -19,6 +21,7 @@ abstract class _$TodayCWProxy {
   /// ````
   Today call({
     List<Activity>? activities,
+    bool? showingToday,
     bool? fabExpanded,
   });
 }
@@ -33,6 +36,9 @@ class _$TodayCWProxyImpl implements _$TodayCWProxy {
   Today activities(List<Activity> activities) => this(activities: activities);
 
   @override
+  Today showingToday(bool showingToday) => this(showingToday: showingToday);
+
+  @override
   Today fabExpanded(bool fabExpanded) => this(fabExpanded: fabExpanded);
 
   @override
@@ -45,6 +51,7 @@ class _$TodayCWProxyImpl implements _$TodayCWProxy {
   /// ````
   Today call({
     Object? activities = const $CopyWithPlaceholder(),
+    Object? showingToday = const $CopyWithPlaceholder(),
     Object? fabExpanded = const $CopyWithPlaceholder(),
   }) {
     return Today(
@@ -54,6 +61,12 @@ class _$TodayCWProxyImpl implements _$TodayCWProxy {
               ? _value.activities!
               // ignore: cast_nullable_to_non_nullable
               : activities as List<Activity>,
+      showingToday:
+          showingToday == const $CopyWithPlaceholder() || showingToday == null
+              // ignore: unnecessary_non_null_assertion
+              ? _value.showingToday!
+              // ignore: cast_nullable_to_non_nullable
+              : showingToday as bool,
       fabExpanded:
           fabExpanded == const $CopyWithPlaceholder() || fabExpanded == null
               // ignore: unnecessary_non_null_assertion

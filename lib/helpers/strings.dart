@@ -2,6 +2,7 @@ const appNameLabel = 'CoRelate';
 
 /// Today
 const todayLabel = 'Today';
+const historyLabel = 'History';
 const meditationTitle = 'Meditate';
 const breathworkTitle = 'Breathwork';
 const journalTitle = 'Journal entry';
@@ -13,7 +14,7 @@ const profileLabel = 'Profile';
 /// Meditation
 const meditatingLabel = 'Meditating';
 const typeLabel = 'Meditation Type';
-const goalLabel = 'Length';
+const goalLabel = 'Duration';
 const openEndedLabel = 'Open-ended';
 const hoursLabel = 'hour';
 const minutesLabel = 'minutes';

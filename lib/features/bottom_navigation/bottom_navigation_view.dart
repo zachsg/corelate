@@ -19,7 +19,7 @@ class BottomNavigationView extends ConsumerStatefulWidget {
 class _BottomNavigationViewState extends ConsumerState<BottomNavigationView> {
   @override
   void initState() {
-    ref.read(todayCProvider.notifier).loadActivities();
+    ref.read(todayCProvider.notifier).loadTodaysActivities();
     super.initState();
   }
 
