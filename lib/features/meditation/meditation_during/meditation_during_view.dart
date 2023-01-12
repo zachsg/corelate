@@ -21,7 +21,7 @@ class MeditationDuringView extends ConsumerWidget {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        title: const Text(meditationTitle),
+        title: const Text(meditatingLabel),
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,

@@ -13,6 +13,17 @@ class MeditationTypeDropdownButtonWidget extends ConsumerWidget {
     final types = [MeditationType.openEnded, MeditationType.timed];
 
     return DropdownButton(
+      style: Theme.of(context)
+          .textTheme
+          .titleMedium
+          ?.copyWith(color: Theme.of(context).colorScheme.primary),
+      borderRadius: BorderRadius.circular(4.0),
+      underline: const SizedBox(),
+      alignment: AlignmentDirectional.centerEnd,
+      icon: Icon(
+        Icons.unfold_more,
+        color: Theme.of(context).colorScheme.primary,
+      ),
       value: ref.watch(meditationConfigureCProvider).meditation.type,
       items: types.map<DropdownMenuItem<MeditationType>>((MeditationType type) {
         final typeLabel =

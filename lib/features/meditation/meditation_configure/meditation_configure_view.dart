@@ -1,3 +1,4 @@
+import 'package:corelate/models/meditation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -26,25 +27,48 @@ class MeditationConfigureView extends ConsumerWidget {
       body: Column(
         children: [
           const SizedBox(height: 16),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: const [
-              Text(typeLabel),
-              SizedBox(width: 8),
-              MeditationTypeDropdownButtonWidget()
+          Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 32.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      typeLabel,
+                      style: Theme.of(context).textTheme.titleMedium,
+                    ),
+                    const SizedBox(width: 8),
+                    const MeditationTypeDropdownButtonWidget()
+                  ],
+                ),
+              ),
+              const Padding(
+                padding: EdgeInsets.only(left: 32.0),
+                child: Divider(),
+              ),
             ],
           ),
           if (meditation.type == MeditationType.timed)
             Column(
               children: [
-                const SizedBox(height: 16),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: const [
-                    Text(goalLabel),
-                    SizedBox(width: 8),
-                    MeditationGoalDropdownButtonWidget()
-                  ],
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 32.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        goalLabel,
+                        style: Theme.of(context).textTheme.titleMedium,
+                      ),
+                      const SizedBox(width: 8),
+                      const MeditationGoalDropdownButtonWidget()
+                    ],
+                  ),
+                ),
+                const Padding(
+                  padding: EdgeInsets.only(left: 32.0),
+                  child: Divider(),
                 ),
               ],
             ),
@@ -58,55 +82,19 @@ class MeditationConfigureView extends ConsumerWidget {
             },
             child: const Text(startLabel),
           ),
-          const SizedBox(height: 8),
           Padding(
             padding: const EdgeInsets.all(32.0),
-            child: Row(
-              children: [
-                meditation.type == MeditationType.timed
-                    ? Expanded(
-                        child: Row(
-                          children: [
-                            Icon(
-                              Icons.info,
-                              size: 32,
-                              color: Theme.of(context).colorScheme.onBackground,
-                            ),
-                            const SizedBox(width: 16),
-                            Expanded(
-                              child: Text(
-                                'Meditate for ${meditation.goal! ~/ 60} minutes. Tap on "Begin" to start. Once the session is underway, tap on "End Early" if you\'d like to cut your session short; otherwise just meditate until the session ends of its own volition.',
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .bodyLarge
-                                    ?.copyWith(fontStyle: FontStyle.italic),
-                              ),
-                            )
-                          ],
-                        ),
-                      )
-                    : Expanded(
-                        child: Row(
-                          children: [
-                            Icon(
-                              Icons.info,
-                              size: 32,
-                              color: Theme.of(context).colorScheme.onBackground,
-                            ),
-                            const SizedBox(width: 16),
-                            Expanded(
-                              child: Text(
-                                'Meditate for as long as you\'d like. Tap on "Begin" to start. Once the session is underway, tap on "End Session" to mark your meditation as complete.',
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .bodyLarge
-                                    ?.copyWith(fontStyle: FontStyle.italic),
-                              ),
-                            )
-                          ],
-                        ),
-                      ),
-              ],
+            child: Card(
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Row(
+                  children: [
+                    meditation.type == MeditationType.timed
+                        ? InfoTimedMeditationWidget(meditation: meditation)
+                        : const InfoOpenEndedMeditationWidget(),
+                  ],
+                ),
+              ),
             ),
           ),
         ],

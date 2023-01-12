@@ -11,7 +11,8 @@ const tagTitle = 'Add tags';
 const profileLabel = 'Profile';
 
 /// Meditation
-const typeLabel = 'Type';
+const meditatingLabel = 'Meditating';
+const typeLabel = 'Meditation Type';
 const goalLabel = 'Length';
 const openEndedLabel = 'Open-ended';
 const hoursLabel = 'hour';

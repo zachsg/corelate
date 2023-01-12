@@ -11,6 +11,17 @@ class MeditationGoalDropdownButtonWidget extends ConsumerWidget {
     final goals = [300, 600, 900, 1200, 1800, 2700, 3600];
 
     return DropdownButton(
+      style: Theme.of(context)
+          .textTheme
+          .titleMedium
+          ?.copyWith(color: Theme.of(context).colorScheme.primary),
+      borderRadius: BorderRadius.circular(4.0),
+      underline: const SizedBox(),
+      alignment: AlignmentDirectional.centerEnd,
+      icon: Icon(
+        Icons.unfold_more,
+        color: Theme.of(context).colorScheme.primary,
+      ),
       value: ref.watch(meditationConfigureCProvider).meditation.goal,
       items: goals.map<DropdownMenuItem<int>>((int goal) {
         String goalLabel;
