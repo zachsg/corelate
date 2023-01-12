@@ -22,6 +22,7 @@ dependencies:
   intl: ^0.17.0
   health: ^4.4.0
   mindful_minutes: ^1.1.0
+  flutter_native_splash: ^2.2.16
 
 dev_dependencies:
   flutter_test:
@@ -40,6 +41,10 @@ flutter_icons:
   remove_alpha_ios: true
   image_path: "assets/icons/app_icon.png"
   min_sdk_android: 21
+
+flutter_native_splash:
+  color: "F19D38"
+  image: assets/icons/splash_icon.png
 
 flutter:
   uses-material-design: true
