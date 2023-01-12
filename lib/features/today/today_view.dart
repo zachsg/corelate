@@ -1,31 +1,17 @@
-import 'package:corelate/helpers/extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../helpers/strings.dart';
-import '../../models/meditation.dart';
-import '../../models/meditation_type.dart';
 import 'widgets/xwidgets.dart';
 import 'today_c.dart';
 
-class TodayView extends ConsumerStatefulWidget {
+class TodayView extends ConsumerWidget {
   const TodayView({super.key});
 
   static const routeName = 'today';
 
   @override
-  ConsumerState<ConsumerStatefulWidget> createState() => _TodayViewState();
-}
-
-class _TodayViewState extends ConsumerState<TodayView> {
-  @override
-  void initState() {
-    ref.read(todayCProvider.notifier).loadActivities();
-    super.initState();
-  }
-
-  @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
       appBar: AppBar(
         title: const Text(todayLabel),

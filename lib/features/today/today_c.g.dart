@@ -29,18 +29,18 @@ class _SystemHash {
   }
 }
 
-String _$TodayCHash() => r'a08c1afcd2ffdef5bd990db3e22912a31c393d1e';
+String _$TodayCHash() => r'320a4c9e0eae57dab98157e1dabf2c32a37f3ab3';
 
 /// See also [TodayC].
-final todayCProvider = AutoDisposeNotifierProvider<TodayC, Today>(
+final todayCProvider = NotifierProvider<TodayC, Today>(
   TodayC.new,
   name: r'todayCProvider',
   debugGetCreateSourceHash:
       const bool.fromEnvironment('dart.vm.product') ? null : _$TodayCHash,
 );
-typedef TodayCRef = AutoDisposeNotifierProviderRef<Today>;
+typedef TodayCRef = NotifierProviderRef<Today>;
 
-abstract class _$TodayC extends AutoDisposeNotifier<Today> {
+abstract class _$TodayC extends Notifier<Today> {
   @override
   Today build();
 }

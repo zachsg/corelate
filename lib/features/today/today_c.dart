@@ -5,7 +5,7 @@ import 'today.dart';
 
 part 'today_c.g.dart';
 
-@riverpod
+@Riverpod(keepAlive: true)
 class TodayC extends _$TodayC {
   @override
   Today build() => Today(activities: []);
