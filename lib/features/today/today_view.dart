@@ -42,7 +42,8 @@ class TodayView extends ConsumerWidget {
             ),
         ],
       ),
-      floatingActionButton: const ExpandedFloatingActionButtonWidget(),
+      floatingActionButton:
+          showingToday ? const ExpandedFloatingActionButtonWidget() : null,
     );
   }
 }

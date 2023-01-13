@@ -44,7 +44,8 @@ class _CountUpWidgetState extends ConsumerState<CountUpWidget> {
 
   @override
   Widget build(BuildContext context) {
-    final elapsed = ref.watch(meditationDuringCProvider).meditation.elapsed;
+    final elapsed =
+        ref.watch(meditationDuringCProvider).activity.meditation!.elapsed;
 
     final minutes = elapsed / 60 > 0 ? elapsed ~/ 60 : 0;
     final seconds = minutes == 0 ? elapsed : elapsed - minutes * 60;

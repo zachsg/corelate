@@ -18,7 +18,8 @@ class MeditationConfigureView extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final meditation = ref.watch(meditationConfigureCProvider).meditation;
+    final meditation =
+        ref.watch(meditationConfigureCProvider).activity.meditation!;
 
     return Scaffold(
       appBar: AppBar(

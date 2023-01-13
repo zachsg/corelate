@@ -30,7 +30,7 @@ class _SystemHash {
 }
 
 String _$MeditationConfigureCHash() =>
-    r'5e4d3ac4f0e63348234d76130b932b835d7a1001';
+    r'8ca1924de38c11f6779c6e76a070b846969deb7f';
 
 /// See also [MeditationConfigureC].
 final meditationConfigureCProvider =

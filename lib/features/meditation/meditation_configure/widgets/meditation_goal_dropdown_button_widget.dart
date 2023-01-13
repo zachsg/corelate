@@ -25,7 +25,7 @@ class MeditationGoalDropdownButtonWidget extends ConsumerWidget {
           color: Theme.of(context).colorScheme.primary,
         ),
       ),
-      value: ref.watch(meditationConfigureCProvider).meditation.goal,
+      value: ref.watch(meditationConfigureCProvider).activity.meditation!.goal,
       items: goals.map<DropdownMenuItem<int>>((int goal) {
         String goalLabel;
         switch (goal) {

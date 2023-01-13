@@ -1,7 +1,5 @@
 import 'package:copy_with_extension/copy_with_extension.dart';
 
-import '../../models/activity.dart';
-
 part 'today.g.dart';
 
 @CopyWith()

@@ -29,7 +29,7 @@ class _SystemHash {
   }
 }
 
-String _$MeditationDuringCHash() => r'1be14ea7e9b87c71bf536ac8d40d1c37086c0060';
+String _$MeditationDuringCHash() => r'4c5b3b32edec3599a17e90e97813ab39def5c0f9';
 
 /// See also [MeditationDuringC].
 final meditationDuringCProvider =

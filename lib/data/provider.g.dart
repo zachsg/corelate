@@ -29,7 +29,7 @@ class _SystemHash {
   }
 }
 
-String _$isarCHash() => r'cecb37fa35b5d077eef9972286131c311508f202';
+String _$isarCHash() => r'e6ba787573b89153bb46feea5b5b1bb03c70eec0';
 
 /// See also [isarC].
 final isarCProvider = FutureProvider<Isar>(

@@ -25,7 +25,8 @@ class _CountDownWidgetState extends ConsumerState<CountDownWidget> {
     _stopwatch = Stopwatch()..start();
     _timer = Timer.periodic(const Duration(seconds: 1), (_) {
       final elapsed = _stopwatch.elapsed;
-      final goal = ref.read(meditationDuringCProvider).meditation.goal ?? 0;
+      final goal =
+          ref.read(meditationDuringCProvider).activity.meditation?.goal ?? 0;
 
       ref
           .read(meditationDuringCProvider.notifier)
@@ -54,7 +55,8 @@ class _CountDownWidgetState extends ConsumerState<CountDownWidget> {
 
   @override
   Widget build(BuildContext context) {
-    final meditation = ref.watch(meditationDuringCProvider).meditation;
+    final meditation =
+        ref.watch(meditationDuringCProvider).activity.meditation!;
     final duration = (meditation.goal ?? 0) * 1000;
     final elapsed = meditation.elapsed;
     final goal = meditation.goal ?? 600;

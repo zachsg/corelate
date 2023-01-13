@@ -1,11 +1,10 @@
 import 'dart:io';
 
-import 'package:health/health.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../../data/provider.dart';
+import '../../../models/activity.dart';
 import '../../../models/meditation.dart';
-import '../../today/today_c.dart';
 import '../meditation_configure/meditation_configure_c.dart';
 import 'meditation_during.dart';
 
@@ -15,40 +14,35 @@ part 'meditation_during_c.g.dart';
 class MeditationDuringC extends _$MeditationDuringC {
   @override
   MeditationDuring build() {
-    final meditation = ref.watch(meditationConfigureCProvider).meditation;
+    final activity = ref.watch(meditationConfigureCProvider).activity;
 
-    return MeditationDuring(
-      meditation: Meditation(
-        date: DateTime.now(),
-        type: meditation.type,
-        goal: meditation.goal,
-      ),
-    );
+    return MeditationDuring(activity: activity);
   }
 
   void setElapsed(int seconds) {
-    final meditation = state.meditation.copyWith(elapsed: seconds);
-    state = state.copyWith(meditation: meditation);
+    final meditation = state.activity.meditation!.copyWith(elapsed: seconds);
+    final activity = state.activity.copyWith(meditation: meditation);
+    state = state.copyWith(activity: activity);
   }
 
   void updateDate(DateTime date) {
-    final meditation = state.meditation.copyWith(date: date);
-    state = state.copyWith(meditation: meditation);
+    final activity = state.activity.copyWith(date: date);
+    state = state.copyWith(activity: activity);
   }
 
   void save() {
     ref.read(databaseCProvider.future).then((db) async {
-      await db.saveMeditation(state.meditation);
+      await db.saveMeditation(state.activity);
     });
 
     sessionStopped(true);
 
-    final meditation = state.meditation;
+    final activity = state.activity;
     if (Platform.isIOS) {
       ref.read(appleMindfulCProvider.future).then((health) async {
         await health.writeMindfulMinutes(
-          meditation.date,
-          meditation.date.add(Duration(seconds: meditation.elapsed)),
+          activity.date,
+          activity.date.add(Duration(seconds: activity.meditation!.elapsed)),
         );
       });
 

@@ -27,7 +27,7 @@ class MeditationTypeDropdownButtonWidget extends ConsumerWidget {
           color: Theme.of(context).colorScheme.primary,
         ),
       ),
-      value: ref.watch(meditationConfigureCProvider).meditation.type,
+      value: ref.watch(meditationConfigureCProvider).activity.meditation!.type,
       items: types.map<DropdownMenuItem<MeditationType>>((MeditationType type) {
         final typeLabel =
             type == MeditationType.openEnded ? openEndedLabel : timedLabel;

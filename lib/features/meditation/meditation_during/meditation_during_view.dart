@@ -16,7 +16,8 @@ class MeditationDuringView extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final meditation = ref.watch(meditationDuringCProvider).meditation;
+    final meditation =
+        ref.watch(meditationDuringCProvider).activity.meditation!;
 
     return Scaffold(
       appBar: AppBar(
@@ -74,12 +75,14 @@ class MeditationDuringView extends ConsumerWidget {
 
   Future<void> _showSessionCompleteDialog(
       WidgetRef ref, BuildContext context) async {
-    final elapsed = ref.watch(meditationDuringCProvider).meditation.elapsed;
+    final elapsed =
+        ref.watch(meditationDuringCProvider).activity.meditation!.elapsed;
 
     final minutes = elapsed / 60 > 0 ? elapsed ~/ 60 : 0;
     final seconds = minutes == 0 ? elapsed : elapsed - minutes * 60;
 
-    final meditation = ref.watch(meditationDuringCProvider).meditation;
+    final meditation =
+        ref.watch(meditationDuringCProvider).activity.meditation!;
     var message = '';
 
     var durationString = '';

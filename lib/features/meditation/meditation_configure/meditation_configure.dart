@@ -1,12 +1,12 @@
 import 'package:copy_with_extension/copy_with_extension.dart';
 
-import '../../../models/meditation.dart';
+import '../../../models/activity.dart';
 
 part 'meditation_configure.g.dart';
 
 @CopyWith()
 class MeditationConfigure {
-  Meditation meditation;
+  Activity activity;
 
-  MeditationConfigure(this.meditation);
+  MeditationConfigure(this.activity);
 }

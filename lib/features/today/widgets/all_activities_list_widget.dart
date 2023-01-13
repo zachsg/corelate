@@ -24,15 +24,15 @@ class AllActivitiesListWidget extends ConsumerWidget {
                 var type = '';
                 var durationString = '';
 
-                if (activity is Meditation) {
+                if (activity.meditation != null) {
                   title = 'Meditation';
-                  type = activity.type == MeditationType.timed
-                      ? activity.type.name.capitalize()
+                  type = activity.meditation!.type == MeditationType.timed
+                      ? activity.meditation!.type.name.capitalize()
                       : 'Open-ended';
-                  final minutes = activity.elapsed ~/ 60;
+                  final minutes = activity.meditation!.elapsed ~/ 60;
                   final seconds = minutes == 0
-                      ? activity.elapsed
-                      : activity.elapsed - minutes * 60;
+                      ? activity.meditation!.elapsed
+                      : activity.meditation!.elapsed - minutes * 60;
                   if (minutes == 0) {
                     durationString = '${seconds}s';
                   } else if (seconds == 0) {
