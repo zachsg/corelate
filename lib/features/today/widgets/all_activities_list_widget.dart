@@ -9,12 +9,12 @@ import '../../../models/meditation_type.dart';
 import '../today_c.dart';
 import 'empty_state_widget.dart';
 
-class TodaysActivitiesListWidget extends ConsumerWidget {
-  const TodaysActivitiesListWidget({super.key});
+class AllActivitiesListWidget extends ConsumerWidget {
+  const AllActivitiesListWidget({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return ref.watch(todayActivitiesStreamProvider).when(
+    return ref.watch(allActivitiesStreamProvider).when(
           data: (activities) {
             if (activities.isEmpty) {
               return const EmptyStateWidget();

@@ -23,3 +23,4 @@ const startLabel = 'Begin';
 const cancelLabel = 'Cancel';
 const endEarlyLabel = 'End Early';
 const endLabel = 'End Session';
+const somethingWrongLabel = 'Something went wrong';

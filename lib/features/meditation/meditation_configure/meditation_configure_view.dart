@@ -80,7 +80,13 @@ class MeditationConfigureView extends ConsumerWidget {
               context.pushNamed(MeditationDuringView.routeName);
               ref.read(healthCProvider);
             },
-            child: const Text(startLabel),
+            child: const Padding(
+              padding: EdgeInsets.symmetric(
+                horizontal: 32,
+                vertical: 16,
+              ),
+              child: Text(startLabel),
+            ),
           ),
           Padding(
             padding: const EdgeInsets.all(32.0),

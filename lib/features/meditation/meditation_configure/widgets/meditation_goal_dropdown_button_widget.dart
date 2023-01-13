@@ -18,9 +18,12 @@ class MeditationGoalDropdownButtonWidget extends ConsumerWidget {
       borderRadius: BorderRadius.circular(4.0),
       underline: const SizedBox(),
       alignment: AlignmentDirectional.centerEnd,
-      icon: Icon(
-        Icons.unfold_more,
-        color: Theme.of(context).colorScheme.primary,
+      icon: Padding(
+        padding: const EdgeInsets.only(left: 4.0),
+        child: Icon(
+          Icons.unfold_more,
+          color: Theme.of(context).colorScheme.primary,
+        ),
       ),
       value: ref.watch(meditationConfigureCProvider).meditation.goal,
       items: goals.map<DropdownMenuItem<int>>((int goal) {

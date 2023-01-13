@@ -51,4 +51,32 @@ class Database {
 
     return activities;
   }
+
+  Stream<List<Activity>> todayActivitiesStream() async* {
+    final date = DateTime.now().copyWith(hour: 0, minute: 0);
+    final query = isar.meditations
+        .filter()
+        .dateGreaterThan(date)
+        .sortByDateDesc()
+        .build();
+
+    await for (final results in query.watch(fireImmediately: true)) {
+      if (results.isNotEmpty) {
+        yield results;
+      }
+    }
+  }
+
+  Stream<List<Activity>> allActivitiesStream() async* {
+    // Show only activities occurring before today
+    final date = DateTime.now().copyWith(hour: 0, minute: 0);
+    final query =
+        isar.meditations.filter().dateLessThan(date).sortByDateDesc().build();
+
+    await for (final results in query.watch(fireImmediately: true)) {
+      if (results.isNotEmpty) {
+        yield results;
+      }
+    }
+  }
 }
