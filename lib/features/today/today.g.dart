@@ -7,8 +7,6 @@ part of 'today.dart';
 // **************************************************************************
 
 abstract class _$TodayCWProxy {
-  Today activities(List<Activity> activities);
-
   Today showingToday(bool showingToday);
 
   Today fabExpanded(bool fabExpanded);
@@ -20,7 +18,6 @@ abstract class _$TodayCWProxy {
   /// Today(...).copyWith(id: 12, name: "My name")
   /// ````
   Today call({
-    List<Activity>? activities,
     bool? showingToday,
     bool? fabExpanded,
   });
@@ -31,9 +28,6 @@ class _$TodayCWProxyImpl implements _$TodayCWProxy {
   const _$TodayCWProxyImpl(this._value);
 
   final Today _value;
-
-  @override
-  Today activities(List<Activity> activities) => this(activities: activities);
 
   @override
   Today showingToday(bool showingToday) => this(showingToday: showingToday);
@@ -50,17 +44,10 @@ class _$TodayCWProxyImpl implements _$TodayCWProxy {
   /// Today(...).copyWith(id: 12, name: "My name")
   /// ````
   Today call({
-    Object? activities = const $CopyWithPlaceholder(),
     Object? showingToday = const $CopyWithPlaceholder(),
     Object? fabExpanded = const $CopyWithPlaceholder(),
   }) {
     return Today(
-      activities:
-          activities == const $CopyWithPlaceholder() || activities == null
-              // ignore: unnecessary_non_null_assertion
-              ? _value.activities!
-              // ignore: cast_nullable_to_non_nullable
-              : activities as List<Activity>,
       showingToday:
           showingToday == const $CopyWithPlaceholder() || showingToday == null
               // ignore: unnecessary_non_null_assertion

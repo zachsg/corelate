@@ -7,6 +7,8 @@ const meditationTitle = 'Meditate';
 const breathworkTitle = 'Breathwork';
 const journalTitle = 'Journal entry';
 const tagTitle = 'Add tags';
+const emptyStateToday = 'It\'s a brand new day!';
+const emptyStateHistory = 'You have no past, only present.';
 
 /// Profile
 const profileLabel = 'Profile';
@@ -23,4 +25,4 @@ const startLabel = 'Begin';
 const cancelLabel = 'Cancel';
 const endEarlyLabel = 'End Early';
 const endLabel = 'End Session';
-const somethingWrongLabel = 'Something went wrong';
+const somethingWrongLabel = 'Something went wrong.';

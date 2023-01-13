@@ -2,29 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../helpers/strings.dart';
-import '../today/today_c.dart';
 import '../today/today_view.dart';
 import 'bottom_navigation_c.dart';
 
-class BottomNavigationView extends ConsumerStatefulWidget {
+class BottomNavigationView extends ConsumerWidget {
   const BottomNavigationView({super.key});
 
   static const routeName = '/bottom_navigation';
 
   @override
-  ConsumerState<ConsumerStatefulWidget> createState() =>
-      _BottomNavigationViewState();
-}
-
-class _BottomNavigationViewState extends ConsumerState<BottomNavigationView> {
-  @override
-  void initState() {
-    ref.read(todayCProvider.notifier).loadTodaysActivities();
-    super.initState();
-  }
-
-  @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
       body: ref.watch(bottomNavigationCProvider) == 0
           ? const TodayView()
