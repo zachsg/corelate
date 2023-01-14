@@ -4,6 +4,7 @@ import 'package:intl/intl.dart';
 
 import '../../../helpers/extensions.dart';
 import '../../../helpers/strings.dart';
+import '../../../models/activity.dart';
 import '../../../models/meditation_type.dart';
 import '../today_c.dart';
 import 'empty_state_widget.dart';
@@ -97,6 +98,8 @@ class TodaysActivitiesListWidget extends ConsumerWidget {
                       Text(durationString),
                     ],
                   ),
+                  onTap: () =>
+                      _showSessionCompleteDialog(ref, context, activity),
                 );
               },
             );
@@ -111,5 +114,63 @@ class TodaysActivitiesListWidget extends ConsumerWidget {
             message: emptyStateToday,
           ),
         );
+  }
+
+  Future<void> _showSessionCompleteDialog(
+      WidgetRef ref, BuildContext context, Activity activity) async {
+    final meditation = activity.meditation;
+    var title = '';
+    var message = '';
+
+    if (meditation != null) {
+      final elapsed = meditation.elapsed;
+
+      final minutes = elapsed / 60 > 0 ? elapsed ~/ 60 : 0;
+      final seconds = minutes == 0 ? elapsed : elapsed - minutes * 60;
+
+      var durationString = '';
+      if (minutes == 0) {
+        durationString = '$seconds seconds';
+      } else if (seconds == 0) {
+        durationString = '$minutes minutes';
+      } else {
+        durationString = '$minutes minutes and $seconds seconds';
+      }
+
+      message = 'You meditated for $durationString.';
+    }
+
+    return showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('$title Details'),
+          content: SingleChildScrollView(
+            child: ListBody(
+              children: [
+                Text(message),
+              ],
+            ),
+          ),
+          actions: [
+            TextButton(
+              child: Text(
+                'Delete',
+                style: TextStyle(color: Theme.of(context).colorScheme.error),
+              ),
+              onPressed: () {
+                ref.read(todayCProvider.notifier).deleteActivity(activity);
+                Navigator.of(context).pop();
+              },
+            ),
+            TextButton(
+              onPressed: Navigator.of(context).pop,
+              child: const Text('Done'),
+            ),
+          ],
+        );
+      },
+    );
   }
 }

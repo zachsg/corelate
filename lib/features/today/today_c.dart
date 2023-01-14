@@ -17,6 +17,12 @@ class TodayC extends _$TodayC {
 
   void toggleShowingToday() =>
       state = state.copyWith(showingToday: !state.showingToday);
+
+  void deleteActivity(Activity activity) {
+    ref.read(databaseCProvider.future).then((db) async {
+      await db.deleteActivity(activity);
+    });
+  }
 }
 
 final todayActivitiesStreamProvider =
