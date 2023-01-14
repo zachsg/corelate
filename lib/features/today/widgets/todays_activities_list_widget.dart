@@ -123,6 +123,7 @@ class TodaysActivitiesListWidget extends ConsumerWidget {
     var message = '';
 
     if (meditation != null) {
+      title = 'Meditation';
       final elapsed = meditation.elapsed;
 
       final minutes = elapsed / 60 > 0 ? elapsed ~/ 60 : 0;
