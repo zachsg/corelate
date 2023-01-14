@@ -25,6 +25,7 @@ class AllActivitiesListWidget extends ConsumerWidget {
                 var type = '';
                 var durationString = '';
 
+                // Format activity based on the type of activity
                 if (meditation != null) {
                   title = 'Meditation';
                   type = meditation.type == MeditationType.timed
@@ -43,6 +44,7 @@ class AllActivitiesListWidget extends ConsumerWidget {
                   }
                 }
 
+                // Setup the time of day / date, and appropriate icon
                 final hour = activity.date.hour;
                 final minute = activity.date.minute;
                 final minuteString = minute < 10 ? '0$minute' : minute;
