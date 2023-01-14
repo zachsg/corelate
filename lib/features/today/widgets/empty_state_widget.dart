@@ -45,7 +45,7 @@ class _EmptyStateWidgetState extends State<EmptyStateWidget> {
             Text(
               widget.message,
               textAlign: TextAlign.center,
-              style: Theme.of(context).textTheme.headlineLarge,
+              style: Theme.of(context).textTheme.headlineMedium,
             ),
           ],
         ),
