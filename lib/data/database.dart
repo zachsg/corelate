@@ -7,13 +7,13 @@ class Database {
 
   final Isar isar;
 
-  Future<void> saveMeditation(Activity activity) async {
+  Future<void> saveActivity(Activity activity) async {
     await isar.writeTxn(() async {
       await isar.activitys.put(activity);
     });
   }
 
-  Future<void> deleteMeditation(Activity activity) async {
+  Future<void> deleteActivity(Activity activity) async {
     await isar.writeTxn(() async {
       await isar.activitys.delete(activity.id);
     });
