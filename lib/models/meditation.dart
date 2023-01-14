@@ -14,8 +14,8 @@ class Meditation {
   int elapsed;
 
   Meditation({
-    this.type = MeditationType.openEnded,
-    this.goal,
+    this.type = MeditationType.timed,
+    this.goal = 300,
     this.elapsed = 0,
   });
 }

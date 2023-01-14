@@ -4,7 +4,6 @@ import 'package:intl/intl.dart';
 
 import '../../../helpers/extensions.dart';
 import '../../../helpers/strings.dart';
-import '../../../models/meditation.dart';
 import '../../../models/meditation_type.dart';
 import '../today_c.dart';
 import 'empty_state_widget.dart';

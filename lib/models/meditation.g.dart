@@ -143,7 +143,7 @@ Meditation _meditationDeserialize(
     elapsed: reader.readLongOrNull(offsets[0]) ?? 0,
     goal: reader.readLongOrNull(offsets[1]),
     type: _MeditationtypeValueEnumMap[reader.readByteOrNull(offsets[2])] ??
-        MeditationType.openEnded,
+        MeditationType.timed,
   );
   return object;
 }
@@ -161,7 +161,7 @@ P _meditationDeserializeProp<P>(
       return (reader.readLongOrNull(offset)) as P;
     case 2:
       return (_MeditationtypeValueEnumMap[reader.readByteOrNull(offset)] ??
-          MeditationType.openEnded) as P;
+          MeditationType.timed) as P;
     default:
       throw IsarError('Unknown property with id $propertyId');
   }
