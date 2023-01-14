@@ -2,6 +2,7 @@ import 'package:corelate/helpers/strings.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../../../models/meditation.dart';
 import '../../../../models/meditation_type.dart';
 import '../meditation_configure_c.dart';
 
@@ -11,6 +12,10 @@ class MeditationTypeDropdownButtonWidget extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final types = [MeditationType.openEnded, MeditationType.timed];
+
+    final meditation =
+        ref.watch(meditationConfigureCProvider).activity.meditation ??
+            Meditation();
 
     return DropdownButton(
       style: Theme.of(context)
@@ -27,7 +32,7 @@ class MeditationTypeDropdownButtonWidget extends ConsumerWidget {
           color: Theme.of(context).colorScheme.primary,
         ),
       ),
-      value: ref.watch(meditationConfigureCProvider).activity.meditation!.type,
+      value: meditation.type,
       items: types.map<DropdownMenuItem<MeditationType>>((MeditationType type) {
         final typeLabel =
             type == MeditationType.openEnded ? openEndedLabel : timedLabel;
@@ -36,8 +41,9 @@ class MeditationTypeDropdownButtonWidget extends ConsumerWidget {
           child: Text(typeLabel),
         );
       }).toList(),
-      onChanged: (type) =>
-          ref.read(meditationConfigureCProvider.notifier).setType(type!),
+      onChanged: (type) => ref
+          .read(meditationConfigureCProvider.notifier)
+          .setType(type ?? MeditationType.openEnded),
     );
   }
 }

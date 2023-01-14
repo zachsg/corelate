@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../../../models/meditation.dart';
 import '../meditation_during_c.dart';
 import 'circle.dart';
 
@@ -56,7 +57,8 @@ class _CountDownWidgetState extends ConsumerState<CountDownWidget> {
   @override
   Widget build(BuildContext context) {
     final meditation =
-        ref.watch(meditationDuringCProvider).activity.meditation!;
+        ref.watch(meditationDuringCProvider).activity.meditation ??
+            Meditation();
     final duration = (meditation.goal ?? 0) * 1000;
     final elapsed = meditation.elapsed;
     final goal = meditation.goal ?? 600;

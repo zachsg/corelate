@@ -1,4 +1,3 @@
-import 'package:corelate/models/meditation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -6,6 +5,7 @@ import 'package:wakelock/wakelock.dart';
 
 import '../../../data/provider.dart';
 import '../../../helpers/strings.dart';
+import '../../../models/meditation.dart';
 import '../meditation_during/meditation_during_view.dart';
 import '../../../models/meditation_type.dart';
 import 'meditation_configure_c.dart';
@@ -19,7 +19,8 @@ class MeditationConfigureView extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final meditation =
-        ref.watch(meditationConfigureCProvider).activity.meditation!;
+        ref.watch(meditationConfigureCProvider).activity.meditation ??
+            Meditation();
 
     return Scaffold(
       appBar: AppBar(

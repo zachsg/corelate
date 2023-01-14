@@ -20,19 +20,20 @@ class AllActivitiesListWidget extends ConsumerWidget {
               itemCount: activities.length,
               itemBuilder: (context, index) {
                 final activity = activities[index];
+                final meditation = activity.meditation;
                 var title = 'N/A';
                 var type = '';
                 var durationString = '';
 
-                if (activity.meditation != null) {
+                if (meditation != null) {
                   title = 'Meditation';
-                  type = activity.meditation!.type == MeditationType.timed
-                      ? activity.meditation!.type.name.capitalize()
+                  type = meditation.type == MeditationType.timed
+                      ? meditation.type.name.capitalize()
                       : 'Open-ended';
-                  final minutes = activity.meditation!.elapsed ~/ 60;
+                  final minutes = meditation.elapsed ~/ 60;
                   final seconds = minutes == 0
-                      ? activity.meditation!.elapsed
-                      : activity.meditation!.elapsed - minutes * 60;
+                      ? meditation.elapsed
+                      : meditation.elapsed - minutes * 60;
                   if (minutes == 0) {
                     durationString = '${seconds}s';
                   } else if (seconds == 0) {

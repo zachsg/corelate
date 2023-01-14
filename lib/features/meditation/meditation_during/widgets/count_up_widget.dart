@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../../../models/meditation.dart';
 import '../meditation_during_c.dart';
 
 class CountUpWidget extends ConsumerStatefulWidget {
@@ -44,8 +45,10 @@ class _CountUpWidgetState extends ConsumerState<CountUpWidget> {
 
   @override
   Widget build(BuildContext context) {
-    final elapsed =
-        ref.watch(meditationDuringCProvider).activity.meditation!.elapsed;
+    final meditation =
+        ref.watch(meditationDuringCProvider).activity.meditation ??
+            Meditation();
+    final elapsed = meditation.elapsed;
 
     final minutes = elapsed / 60 > 0 ? elapsed ~/ 60 : 0;
     final seconds = minutes == 0 ? elapsed : elapsed - minutes * 60;

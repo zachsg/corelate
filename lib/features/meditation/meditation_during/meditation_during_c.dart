@@ -20,9 +20,12 @@ class MeditationDuringC extends _$MeditationDuringC {
   }
 
   void setElapsed(int seconds) {
-    final meditation = state.activity.meditation!.copyWith(elapsed: seconds);
-    final activity = state.activity.copyWith(meditation: meditation);
-    state = state.copyWith(activity: activity);
+    final meditation = state.activity.meditation;
+    if (meditation != null) {
+      final meditationUpdated = meditation.copyWith(elapsed: seconds);
+      final activity = state.activity.copyWith(meditation: meditationUpdated);
+      state = state.copyWith(activity: activity);
+    }
   }
 
   void updateDate(DateTime date) {
@@ -39,13 +42,15 @@ class MeditationDuringC extends _$MeditationDuringC {
 
     final activity = state.activity;
     if (Platform.isIOS) {
-      ref.read(appleMindfulCProvider.future).then((health) async {
-        await health.writeMindfulMinutes(
-          activity.date,
-          activity.date.add(Duration(seconds: activity.meditation!.elapsed)),
-        );
-      });
-
+      final meditation = activity.meditation;
+      if (meditation != null) {
+        ref.read(appleMindfulCProvider.future).then((health) async {
+          await health.writeMindfulMinutes(
+            activity.date,
+            activity.date.add(Duration(seconds: meditation.elapsed)),
+          );
+        });
+      }
       // TODO: Currently health plugin crashes trying to save mindfulness (using mindful_minutes plugin instead)
       // ref.read(healthCProvider.future).then((health) async {
       //   final success = await health.writeHealthData(
