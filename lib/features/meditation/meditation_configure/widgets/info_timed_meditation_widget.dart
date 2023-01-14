@@ -23,7 +23,7 @@ class InfoTimedMeditationWidget extends StatelessWidget {
           const SizedBox(width: 16),
           Expanded(
             child: Text(
-              'Meditate for ${meditation.goal ?? 10 ~/ 60} minutes. Tap on "Begin" to start. Once the session is underway, tap on "End Early" if you\'d like to cut your session short; otherwise just meditate until the session ends of its own volition.',
+              'Meditate for ${(meditation.goal ?? 300) ~/ 60} minutes. Tap on "Begin" to start. Once the session is underway, tap on "End Early" if you\'d like to cut your session short; otherwise just meditate until the session ends of its own volition.',
               style: Theme.of(context).textTheme.bodyMedium,
             ),
           )
