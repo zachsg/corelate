@@ -2,9 +2,11 @@ import 'dart:io';
 
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
+import '../../../data/local_notification_service.dart';
 import '../../../data/provider.dart';
 import '../../../models/activity.dart';
 import '../../../models/meditation.dart';
+import '../../../models/meditation_type.dart';
 import '../meditation_configure/meditation_configure_c.dart';
 import 'meditation_during.dart';
 
@@ -72,6 +74,14 @@ class MeditationDuringC extends _$MeditationDuringC {
     }
   }
 
-  void sessionStopped(bool stopped) =>
-      state = state.copyWith(sessionStopped: stopped);
+  void sessionStopped(bool stopped) {
+    state = state.copyWith(sessionStopped: stopped);
+
+    final meditation = state.activity.meditation;
+    if (meditation != null) {
+      if (meditation.type == MeditationType.timed) {
+        LocalNotificationService().cancelNotificationWithId(0);
+      }
+    }
+  }
 }

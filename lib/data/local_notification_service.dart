@@ -65,7 +65,11 @@ class LocalNotificationService {
     );
   }
 
-  void cancelAllNotification() {
+  void cancelNotificationWithId(int id) {
+    _localNotificationsPlugin.cancel(id);
+  }
+
+  void cancelAllNotifications() {
     _localNotificationsPlugin.cancelAll();
   }
 }
