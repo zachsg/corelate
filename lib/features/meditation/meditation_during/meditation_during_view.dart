@@ -68,7 +68,12 @@ class MeditationDuringView extends ConsumerWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   TextButton(
-                    onPressed: context.pop,
+                    onPressed: () {
+                      ref
+                          .read(meditationDuringCProvider.notifier)
+                          .sessionStopped(true);
+                      context.pop();
+                    },
                     child: const Text(cancelLabel),
                   ),
                 ],
@@ -104,7 +109,7 @@ class MeditationDuringView extends ConsumerWidget {
     if (meditation.type == MeditationType.timed) {
       final goal = meditation.goal ?? 300;
       if (goal <= meditation.elapsed) {
-        message = 'Nice work! You completed your goal of $durationString.';
+        message = 'Nice work! You completed your goal of ${goal / 60} minutes.';
       } else {
         final percentage = ((elapsed / goal).toDouble() * 100).toInt();
         message =
