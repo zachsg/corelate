@@ -26,9 +26,11 @@ class TodayView extends ConsumerWidget {
       ),
       body: Stack(
         children: [
-          showingToday
-              ? const TodaysActivitiesListWidget()
-              : const AllActivitiesListWidget(),
+          Positioned.fill(
+            child: showingToday
+                ? const TodaysActivitiesListWidget()
+                : const AllActivitiesListWidget(),
+          ),
           if (ref.watch(todayCProvider).fabExpanded)
             Positioned.fill(
               child: GestureDetector(
