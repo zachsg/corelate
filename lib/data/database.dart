@@ -57,9 +57,7 @@ class Database {
         isar.activitys.filter().dateGreaterThan(date).sortByDateDesc().build();
 
     await for (final results in query.watch(fireImmediately: true)) {
-      if (results.isNotEmpty) {
-        yield results;
-      }
+      yield results;
     }
   }
 

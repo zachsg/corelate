@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:health/health.dart';
 import 'package:isar/isar.dart';
 import 'package:mindful_minutes/mindful_minutes.dart';
