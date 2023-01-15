@@ -28,6 +28,15 @@ class MeditationDuringC extends _$MeditationDuringC {
     }
   }
 
+  void setRating(double rating) {
+    final meditation = state.activity.meditation;
+    if (meditation != null) {
+      final meditationUpdated = meditation.copyWith(rating: rating);
+      final activity = state.activity.copyWith(meditation: meditationUpdated);
+      state = state.copyWith(activity: activity);
+    }
+  }
+
   void updateDate(DateTime date) {
     final activity = state.activity.copyWith(date: date);
     state = state.copyWith(activity: activity);
@@ -37,8 +46,6 @@ class MeditationDuringC extends _$MeditationDuringC {
     ref.read(databaseCProvider.future).then((db) async {
       await db.saveActivity(state.activity);
     });
-
-    sessionStopped(true);
 
     final activity = state.activity;
     if (Platform.isIOS) {

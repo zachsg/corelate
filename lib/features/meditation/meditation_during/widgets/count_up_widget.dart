@@ -20,17 +20,19 @@ class _CountUpWidgetState extends ConsumerState<CountUpWidget> {
   @override
   void initState() {
     _stopwatch = Stopwatch()..start();
-    _timer = Timer.periodic(const Duration(seconds: 1), (_) {
-      final duration = _stopwatch.elapsed;
-      ref
-          .read(meditationDuringCProvider.notifier)
-          .setElapsed(duration.inSeconds);
 
-      if (ref.read(meditationDuringCProvider).sessionStopped) {
+    var elapsed = 0;
+
+    _timer = Timer.periodic(const Duration(seconds: 1), (_) {
+      if (ref.watch(meditationDuringCProvider).sessionStopped) {
         _stopwatch
           ..stop()
           ..reset();
+      } else {
+        elapsed = _stopwatch.elapsed.inSeconds;
       }
+
+      ref.read(meditationDuringCProvider.notifier).setElapsed(elapsed);
     });
 
     super.initState();
@@ -54,9 +56,13 @@ class _CountUpWidgetState extends ConsumerState<CountUpWidget> {
     final seconds = minutes == 0 ? elapsed : elapsed - minutes * 60;
     final secondsText = seconds < 10 ? '0$seconds' : '$seconds';
 
-    return Text(
-      '$minutes:$secondsText',
-      style: Theme.of(context).textTheme.displayLarge,
-    );
+    final isStopped = ref.watch(meditationDuringCProvider).sessionStopped;
+
+    return isStopped
+        ? const SizedBox()
+        : Text(
+            '$minutes:$secondsText',
+            style: Theme.of(context).textTheme.displayLarge,
+          );
   }
 }

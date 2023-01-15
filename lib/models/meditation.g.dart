@@ -11,6 +11,8 @@ abstract class _$MeditationCWProxy {
 
   Meditation goal(int? goal);
 
+  Meditation rating(double? rating);
+
   Meditation elapsed(int elapsed);
 
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `Meditation(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
@@ -22,6 +24,7 @@ abstract class _$MeditationCWProxy {
   Meditation call({
     MeditationType? type,
     int? goal,
+    double? rating,
     int? elapsed,
   });
 }
@@ -39,6 +42,9 @@ class _$MeditationCWProxyImpl implements _$MeditationCWProxy {
   Meditation goal(int? goal) => this(goal: goal);
 
   @override
+  Meditation rating(double? rating) => this(rating: rating);
+
+  @override
   Meditation elapsed(int elapsed) => this(elapsed: elapsed);
 
   @override
@@ -52,6 +58,7 @@ class _$MeditationCWProxyImpl implements _$MeditationCWProxy {
   Meditation call({
     Object? type = const $CopyWithPlaceholder(),
     Object? goal = const $CopyWithPlaceholder(),
+    Object? rating = const $CopyWithPlaceholder(),
     Object? elapsed = const $CopyWithPlaceholder(),
   }) {
     return Meditation(
@@ -64,6 +71,10 @@ class _$MeditationCWProxyImpl implements _$MeditationCWProxy {
           ? _value.goal
           // ignore: cast_nullable_to_non_nullable
           : goal as int?,
+      rating: rating == const $CopyWithPlaceholder()
+          ? _value.rating
+          // ignore: cast_nullable_to_non_nullable
+          : rating as double?,
       elapsed: elapsed == const $CopyWithPlaceholder() || elapsed == null
           // ignore: unnecessary_non_null_assertion
           ? _value.elapsed!
@@ -100,8 +111,13 @@ const MeditationSchema = Schema(
       name: r'goal',
       type: IsarType.long,
     ),
-    r'type': PropertySchema(
+    r'rating': PropertySchema(
       id: 2,
+      name: r'rating',
+      type: IsarType.double,
+    ),
+    r'type': PropertySchema(
+      id: 3,
       name: r'type',
       type: IsarType.byte,
       enumMap: _MeditationtypeEnumValueMap,
@@ -130,7 +146,8 @@ void _meditationSerialize(
 ) {
   writer.writeLong(offsets[0], object.elapsed);
   writer.writeLong(offsets[1], object.goal);
-  writer.writeByte(offsets[2], object.type.index);
+  writer.writeDouble(offsets[2], object.rating);
+  writer.writeByte(offsets[3], object.type.index);
 }
 
 Meditation _meditationDeserialize(
@@ -142,7 +159,8 @@ Meditation _meditationDeserialize(
   final object = Meditation(
     elapsed: reader.readLongOrNull(offsets[0]) ?? 0,
     goal: reader.readLongOrNull(offsets[1]),
-    type: _MeditationtypeValueEnumMap[reader.readByteOrNull(offsets[2])] ??
+    rating: reader.readDoubleOrNull(offsets[2]),
+    type: _MeditationtypeValueEnumMap[reader.readByteOrNull(offsets[3])] ??
         MeditationType.timed,
   );
   return object;
@@ -160,6 +178,8 @@ P _meditationDeserializeProp<P>(
     case 1:
       return (reader.readLongOrNull(offset)) as P;
     case 2:
+      return (reader.readDoubleOrNull(offset)) as P;
+    case 3:
       return (_MeditationtypeValueEnumMap[reader.readByteOrNull(offset)] ??
           MeditationType.timed) as P;
     default:
@@ -297,6 +317,85 @@ extension MeditationQueryFilter
         includeLower: includeLower,
         upper: upper,
         includeUpper: includeUpper,
+      ));
+    });
+  }
+
+  QueryBuilder<Meditation, Meditation, QAfterFilterCondition> ratingIsNull() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(const FilterCondition.isNull(
+        property: r'rating',
+      ));
+    });
+  }
+
+  QueryBuilder<Meditation, Meditation, QAfterFilterCondition>
+      ratingIsNotNull() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(const FilterCondition.isNotNull(
+        property: r'rating',
+      ));
+    });
+  }
+
+  QueryBuilder<Meditation, Meditation, QAfterFilterCondition> ratingEqualTo(
+    double? value, {
+    double epsilon = Query.epsilon,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.equalTo(
+        property: r'rating',
+        value: value,
+        epsilon: epsilon,
+      ));
+    });
+  }
+
+  QueryBuilder<Meditation, Meditation, QAfterFilterCondition> ratingGreaterThan(
+    double? value, {
+    bool include = false,
+    double epsilon = Query.epsilon,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.greaterThan(
+        include: include,
+        property: r'rating',
+        value: value,
+        epsilon: epsilon,
+      ));
+    });
+  }
+
+  QueryBuilder<Meditation, Meditation, QAfterFilterCondition> ratingLessThan(
+    double? value, {
+    bool include = false,
+    double epsilon = Query.epsilon,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.lessThan(
+        include: include,
+        property: r'rating',
+        value: value,
+        epsilon: epsilon,
+      ));
+    });
+  }
+
+  QueryBuilder<Meditation, Meditation, QAfterFilterCondition> ratingBetween(
+    double? lower,
+    double? upper, {
+    bool includeLower = true,
+    bool includeUpper = true,
+    double epsilon = Query.epsilon,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.between(
+        property: r'rating',
+        lower: lower,
+        includeLower: includeLower,
+        upper: upper,
+        includeUpper: includeUpper,
+        epsilon: epsilon,
       ));
     });
   }

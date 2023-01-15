@@ -11,11 +11,13 @@ class Meditation {
   @enumerated
   MeditationType type;
   int? goal;
+  double? rating;
   int elapsed;
 
   Meditation({
     this.type = MeditationType.timed,
     this.goal = 300,
+    this.rating,
     this.elapsed = 0,
   });
 }

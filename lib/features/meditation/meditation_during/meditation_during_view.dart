@@ -31,10 +31,14 @@ class MeditationDuringView extends ConsumerWidget {
         children: [
           meditation.type == MeditationType.openEnded
               ? const CountUpWidget()
-              : CountDownWidget(finished: () {
-                  ref.read(meditationDuringCProvider.notifier).save();
-                  _showSessionCompleteDialog(ref, context);
-                }),
+              : CountDownWidget(
+                  finished: () {
+                    ref
+                        .read(meditationDuringCProvider.notifier)
+                        .sessionStopped(true);
+                    _showSessionCompleteDialog(ref, context);
+                  },
+                ),
           Column(
             children: [
               Row(
@@ -42,7 +46,9 @@ class MeditationDuringView extends ConsumerWidget {
                 children: [
                   ElevatedButton(
                     onPressed: () {
-                      ref.read(meditationDuringCProvider.notifier).save();
+                      ref
+                          .read(meditationDuringCProvider.notifier)
+                          .sessionStopped(true);
                       _showSessionCompleteDialog(ref, context);
                     },
                     child: Padding(
@@ -118,6 +124,8 @@ class MeditationDuringView extends ConsumerWidget {
             child: ListBody(
               children: [
                 Text(message),
+                const Text('\n\nHow it go?'),
+                const RatingBarWidget(),
               ],
             ),
           ),
@@ -127,6 +135,7 @@ class MeditationDuringView extends ConsumerWidget {
               onPressed: () {
                 Wakelock.disable();
                 Navigator.of(context).pop();
+                ref.read(meditationDuringCProvider.notifier).save();
                 context.goNamed(BottomNavigationView.routeName);
               },
             ),

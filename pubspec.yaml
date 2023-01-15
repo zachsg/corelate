@@ -23,6 +23,7 @@ dependencies:
   health: ^4.4.0
   mindful_minutes: ^1.1.0
   flutter_native_splash: ^2.2.16
+  flutter_rating_bar: ^4.0.1
 
 dev_dependencies:
   flutter_test:

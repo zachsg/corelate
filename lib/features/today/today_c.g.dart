@@ -29,7 +29,7 @@ class _SystemHash {
   }
 }
 
-String _$TodayCHash() => r'af09fbd77eb889eede28b3e62d0ea95a76051489';
+String _$TodayCHash() => r'd12d7a5bbc83b8602623b8ed7a9cb29fd97a6430';
 
 /// See also [TodayC].
 final todayCProvider = NotifierProvider<TodayC, Today>(

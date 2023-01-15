@@ -24,23 +24,24 @@ class _CountDownWidgetState extends ConsumerState<CountDownWidget> {
   @override
   void initState() {
     _stopwatch = Stopwatch()..start();
+
+    final goal =
+        ref.read(meditationDuringCProvider).activity.meditation?.goal ?? 0;
+    var elapsed = 0;
+
     _timer = Timer.periodic(const Duration(seconds: 1), (_) {
-      final elapsed = _stopwatch.elapsed;
-      final goal =
-          ref.read(meditationDuringCProvider).activity.meditation?.goal ?? 0;
-
-      ref
-          .read(meditationDuringCProvider.notifier)
-          .setElapsed(elapsed.inSeconds);
-
-      if (goal <= elapsed.inSeconds) {
-        widget.finished();
-      }
-
-      if (ref.read(meditationDuringCProvider).sessionStopped) {
+      if (ref.watch(meditationDuringCProvider).sessionStopped) {
         _stopwatch
           ..stop()
           ..reset();
+      } else {
+        elapsed = _stopwatch.elapsed.inSeconds;
+      }
+
+      ref.read(meditationDuringCProvider.notifier).setElapsed(elapsed);
+
+      if (goal <= elapsed) {
+        widget.finished();
       }
     });
 
@@ -74,6 +75,8 @@ class _CountDownWidgetState extends ConsumerState<CountDownWidget> {
     final seconds = minutes == 0 ? goneBy : goneBy - minutes * 60;
     final secondsText = seconds < 10 ? '0$seconds' : '$seconds';
 
+    final isStopped = ref.watch(meditationDuringCProvider).sessionStopped;
+
     return Stack(
       children: [
         Padding(
@@ -90,14 +93,16 @@ class _CountDownWidgetState extends ConsumerState<CountDownWidget> {
             milliseconds: duration,
           ),
         ),
-        Positioned.fill(
-          child: Align(
-            child: Text(
-              '$minutes:$secondsText',
-              style: Theme.of(context).textTheme.displayLarge,
-            ),
-          ),
-        ),
+        isStopped
+            ? const SizedBox()
+            : Positioned.fill(
+                child: Align(
+                  child: Text(
+                    '$minutes:$secondsText',
+                    style: Theme.of(context).textTheme.displayLarge,
+                  ),
+                ),
+              ),
       ],
     );
   }
