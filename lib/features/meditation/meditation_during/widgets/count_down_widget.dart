@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../../../data/local_notification_service.dart';
 import '../../../../models/meditation.dart';
 import '../meditation_during_c.dart';
 import 'circle.dart';
@@ -28,6 +29,13 @@ class _CountDownWidgetState extends ConsumerState<CountDownWidget> {
     final goal =
         ref.read(meditationDuringCProvider).activity.meditation?.goal ?? 0;
     var elapsed = 0;
+
+    LocalNotificationService().addNotification(
+      'Meditation Done',
+      'You completed your meditation goal',
+      DateTime.now().millisecondsSinceEpoch + (goal * 1000),
+      channel: 'meditation',
+    );
 
     _timer = Timer.periodic(const Duration(seconds: 1), (_) {
       if (ref.watch(meditationDuringCProvider).sessionStopped) {
