@@ -6,7 +6,7 @@ import '../../../models/activity.dart';
 import '../../../models/meditation_type.dart';
 import '../today_c.dart';
 
-class MeditationCardWidget extends ConsumerWidget {
+class MeditationCardWidget extends ConsumerStatefulWidget {
   const MeditationCardWidget({
     super.key,
     required this.title,
@@ -25,8 +25,16 @@ class MeditationCardWidget extends ConsumerWidget {
   final bool isFirstRow;
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final meditation = activity.meditation;
+  ConsumerState<ConsumerStatefulWidget> createState() =>
+      _MeditationCardWidgetState();
+}
+
+class _MeditationCardWidgetState extends ConsumerState<MeditationCardWidget> {
+  bool isTapped = false;
+
+  @override
+  Widget build(BuildContext context) {
+    final meditation = widget.activity.meditation;
     var type = '';
     var durationString = '';
 
@@ -49,25 +57,29 @@ class MeditationCardWidget extends ConsumerWidget {
 
     return Padding(
       padding: EdgeInsets.only(
-        bottom: isFirstRow ? 16.0 : 16.0,
-        left: isEven ? 16.0 : 8.0,
-        right: isEven ? 8.0 : 16.0,
+        bottom: widget.isFirstRow ? 16.0 : 16.0,
+        left: widget.isEven ? 16.0 : 8.0,
+        right: widget.isEven ? 8.0 : 16.0,
       ),
       child: GestureDetector(
-        onTap: () => _showSessionCompleteDialog(ref, context, activity),
+        onTapDown: (details) => setState(() => isTapped = true),
+        onTapUp: (details) => setState(() => isTapped = false),
+        onTapCancel: () => setState(() => isTapped = false),
+        onTap: () => _showSessionCompleteDialog(ref, context, widget.activity),
         child: Card(
+          elevation: isTapped ? 1 : 4,
           child: Stack(
             children: [
               Positioned(
                 top: 8,
                 right: 8,
-                child: icon,
+                child: widget.icon,
               ),
               Positioned(
                 top: 18,
                 left: 8,
                 child: Text(
-                  timeString,
+                  widget.timeString,
                   style: Theme.of(context).textTheme.bodySmall,
                 ),
               ),
@@ -80,7 +92,7 @@ class MeditationCardWidget extends ConsumerWidget {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     Text(
-                      title,
+                      widget.title,
                       style: Theme.of(context).textTheme.titleMedium,
                     ),
                     Row(
