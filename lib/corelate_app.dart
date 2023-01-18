@@ -4,6 +4,8 @@ import 'package:go_router/go_router.dart';
 
 import 'features/bottom_navigation/bottom_navigation_view.dart';
 import 'features/breathwork/breathwork_configure/breathwork_configure_view.dart';
+import 'features/breathwork/four_7_8/four_7_8_view.dart';
+import 'features/breathwork/wim_hof/wim_hof_view.dart';
 import 'features/meditation/meditation_configure/meditation_configure_view.dart';
 import 'features/meditation/meditation_during/meditation_during_view.dart';
 import 'features/today/today_view.dart';
@@ -71,7 +73,18 @@ class CorelateApp extends ConsumerWidget {
                 name: BreathworkConfigureView.routeName,
                 path: BreathworkConfigureView.routeName,
                 builder: (context, state) => const BreathworkConfigureView(),
-                routes: [],
+                routes: [
+                  GoRoute(
+                    name: Four78View.routeName,
+                    path: Four78View.routeName,
+                    builder: (context, state) => const Four78View(),
+                  ),
+                  GoRoute(
+                    name: WimHofView.routeName,
+                    path: WimHofView.routeName,
+                    builder: (context, state) => const WimHofView(),
+                  ),
+                ],
               ),
             ],
           ),

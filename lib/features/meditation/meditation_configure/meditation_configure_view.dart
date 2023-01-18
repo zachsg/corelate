@@ -100,11 +100,14 @@ class MeditationConfigureView extends ConsumerWidget {
   Widget _infoCardWidget(Meditation meditation) {
     var message = '';
     if (meditation.type == MeditationType.timed) {
-      message =
-          'Meditate for ${(meditation.goal ?? 300) ~/ 60} minutes. Tap on "Begin" to start. Once the session is underway, tap on "End Early" if you\'d like to cut your session short; otherwise just meditate until the session ends of its own volition.';
+      message = 'Meditate for ${(meditation.goal ?? 300) ~/ 60} minutes.'
+          ' Once the session is underway, tap on'
+          ' "End Early" if you\'d like to cut your session short; otherwise'
+          ' just meditate until the session ends of its own volition.';
     } else {
-      message =
-          'Meditate for as long as you\'d like. Tap on "Begin" to start. Once the session is underway, tap on "End Session" to mark your meditation as complete.';
+      message = 'Meditate for as long as you\'d like.'
+          ' Once the session is underway, tap on "End Session"'
+          ' to mark your meditation as complete.';
     }
 
     return InfoCardWidget(message: message);
