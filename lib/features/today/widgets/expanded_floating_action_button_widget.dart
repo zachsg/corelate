@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../helpers/strings.dart';
+import '../../breathwork/breathwork_configure/breathwork_configure_view.dart';
 import '../../meditation/meditation_configure/meditation_configure_view.dart';
 import 'action_button_widget.dart';
 import '../today_c.dart';
@@ -32,7 +33,10 @@ class ExpandedFloatingActionButtonWidget extends ConsumerWidget {
           ActionButtonWidget(
             title: breathworkTitle,
             icon: Icons.air,
-            onPressed: () {},
+            onPressed: () {
+              ref.read(todayCProvider.notifier).setFABExpanded(!fabIsExpanded);
+              context.pushNamed(BreathworkConfigureView.routeName);
+            },
           ),
           ActionButtonWidget(
             title: journalTitle,

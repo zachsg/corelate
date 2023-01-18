@@ -7,7 +7,11 @@ part of 'breathwork.dart';
 // **************************************************************************
 
 abstract class _$BreathworkCWProxy {
-  Breathwork placeholder(int? placeholder);
+  Breathwork type(BreathworkType type);
+
+  Breathwork rounds(int rounds);
+
+  Breathwork breathsPerRound(int breathsPerRound);
 
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `Breathwork(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
@@ -16,7 +20,9 @@ abstract class _$BreathworkCWProxy {
   /// Breathwork(...).copyWith(id: 12, name: "My name")
   /// ````
   Breathwork call({
-    int? placeholder,
+    BreathworkType? type,
+    int? rounds,
+    int? breathsPerRound,
   });
 }
 
@@ -27,7 +33,14 @@ class _$BreathworkCWProxyImpl implements _$BreathworkCWProxy {
   final Breathwork _value;
 
   @override
-  Breathwork placeholder(int? placeholder) => this(placeholder: placeholder);
+  Breathwork type(BreathworkType type) => this(type: type);
+
+  @override
+  Breathwork rounds(int rounds) => this(rounds: rounds);
+
+  @override
+  Breathwork breathsPerRound(int breathsPerRound) =>
+      this(breathsPerRound: breathsPerRound);
 
   @override
 
@@ -38,13 +51,27 @@ class _$BreathworkCWProxyImpl implements _$BreathworkCWProxy {
   /// Breathwork(...).copyWith(id: 12, name: "My name")
   /// ````
   Breathwork call({
-    Object? placeholder = const $CopyWithPlaceholder(),
+    Object? type = const $CopyWithPlaceholder(),
+    Object? rounds = const $CopyWithPlaceholder(),
+    Object? breathsPerRound = const $CopyWithPlaceholder(),
   }) {
     return Breathwork(
-      placeholder: placeholder == const $CopyWithPlaceholder()
-          ? _value.placeholder
+      type: type == const $CopyWithPlaceholder() || type == null
+          // ignore: unnecessary_non_null_assertion
+          ? _value.type!
           // ignore: cast_nullable_to_non_nullable
-          : placeholder as int?,
+          : type as BreathworkType,
+      rounds: rounds == const $CopyWithPlaceholder() || rounds == null
+          // ignore: unnecessary_non_null_assertion
+          ? _value.rounds!
+          // ignore: cast_nullable_to_non_nullable
+          : rounds as int,
+      breathsPerRound: breathsPerRound == const $CopyWithPlaceholder() ||
+              breathsPerRound == null
+          // ignore: unnecessary_non_null_assertion
+          ? _value.breathsPerRound!
+          // ignore: cast_nullable_to_non_nullable
+          : breathsPerRound as int,
     );
   }
 }
@@ -66,10 +93,26 @@ const BreathworkSchema = Schema(
   name: r'Breathwork',
   id: -5543349516693467140,
   properties: {
-    r'placeholder': PropertySchema(
+    r'breathsPerRound': PropertySchema(
       id: 0,
-      name: r'placeholder',
+      name: r'breathsPerRound',
       type: IsarType.long,
+    ),
+    r'rating': PropertySchema(
+      id: 1,
+      name: r'rating',
+      type: IsarType.double,
+    ),
+    r'rounds': PropertySchema(
+      id: 2,
+      name: r'rounds',
+      type: IsarType.long,
+    ),
+    r'type': PropertySchema(
+      id: 3,
+      name: r'type',
+      type: IsarType.byte,
+      enumMap: _BreathworktypeEnumValueMap,
     )
   },
   estimateSize: _breathworkEstimateSize,
@@ -93,7 +136,10 @@ void _breathworkSerialize(
   List<int> offsets,
   Map<Type, List<int>> allOffsets,
 ) {
-  writer.writeLong(offsets[0], object.placeholder);
+  writer.writeLong(offsets[0], object.breathsPerRound);
+  writer.writeDouble(offsets[1], object.rating);
+  writer.writeLong(offsets[2], object.rounds);
+  writer.writeByte(offsets[3], object.type.index);
 }
 
 Breathwork _breathworkDeserialize(
@@ -103,8 +149,12 @@ Breathwork _breathworkDeserialize(
   Map<Type, List<int>> allOffsets,
 ) {
   final object = Breathwork(
-    placeholder: reader.readLongOrNull(offsets[0]),
+    breathsPerRound: reader.readLongOrNull(offsets[0]) ?? 0,
+    rounds: reader.readLongOrNull(offsets[2]) ?? 8,
+    type: _BreathworktypeValueEnumMap[reader.readByteOrNull(offsets[3])] ??
+        BreathworkType.four78,
   );
+  object.rating = reader.readDoubleOrNull(offsets[1]);
   return object;
 }
 
@@ -116,80 +166,263 @@ P _breathworkDeserializeProp<P>(
 ) {
   switch (propertyId) {
     case 0:
-      return (reader.readLongOrNull(offset)) as P;
+      return (reader.readLongOrNull(offset) ?? 0) as P;
+    case 1:
+      return (reader.readDoubleOrNull(offset)) as P;
+    case 2:
+      return (reader.readLongOrNull(offset) ?? 8) as P;
+    case 3:
+      return (_BreathworktypeValueEnumMap[reader.readByteOrNull(offset)] ??
+          BreathworkType.four78) as P;
     default:
       throw IsarError('Unknown property with id $propertyId');
   }
 }
 
+const _BreathworktypeEnumValueMap = {
+  'four78': 0,
+  'wimHof': 1,
+};
+const _BreathworktypeValueEnumMap = {
+  0: BreathworkType.four78,
+  1: BreathworkType.wimHof,
+};
+
 extension BreathworkQueryFilter
     on QueryBuilder<Breathwork, Breathwork, QFilterCondition> {
   QueryBuilder<Breathwork, Breathwork, QAfterFilterCondition>
-      placeholderIsNull() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(const FilterCondition.isNull(
-        property: r'placeholder',
-      ));
-    });
-  }
-
-  QueryBuilder<Breathwork, Breathwork, QAfterFilterCondition>
-      placeholderIsNotNull() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(const FilterCondition.isNotNull(
-        property: r'placeholder',
-      ));
-    });
-  }
-
-  QueryBuilder<Breathwork, Breathwork, QAfterFilterCondition>
-      placeholderEqualTo(int? value) {
+      breathsPerRoundEqualTo(int value) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
-        property: r'placeholder',
+        property: r'breathsPerRound',
         value: value,
       ));
     });
   }
 
   QueryBuilder<Breathwork, Breathwork, QAfterFilterCondition>
-      placeholderGreaterThan(
-    int? value, {
+      breathsPerRoundGreaterThan(
+    int value, {
     bool include = false,
   }) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.greaterThan(
         include: include,
-        property: r'placeholder',
+        property: r'breathsPerRound',
         value: value,
       ));
     });
   }
 
   QueryBuilder<Breathwork, Breathwork, QAfterFilterCondition>
-      placeholderLessThan(
-    int? value, {
+      breathsPerRoundLessThan(
+    int value, {
     bool include = false,
   }) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.lessThan(
         include: include,
-        property: r'placeholder',
+        property: r'breathsPerRound',
         value: value,
       ));
     });
   }
 
   QueryBuilder<Breathwork, Breathwork, QAfterFilterCondition>
-      placeholderBetween(
-    int? lower,
-    int? upper, {
+      breathsPerRoundBetween(
+    int lower,
+    int upper, {
     bool includeLower = true,
     bool includeUpper = true,
   }) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.between(
-        property: r'placeholder',
+        property: r'breathsPerRound',
+        lower: lower,
+        includeLower: includeLower,
+        upper: upper,
+        includeUpper: includeUpper,
+      ));
+    });
+  }
+
+  QueryBuilder<Breathwork, Breathwork, QAfterFilterCondition> ratingIsNull() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(const FilterCondition.isNull(
+        property: r'rating',
+      ));
+    });
+  }
+
+  QueryBuilder<Breathwork, Breathwork, QAfterFilterCondition>
+      ratingIsNotNull() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(const FilterCondition.isNotNull(
+        property: r'rating',
+      ));
+    });
+  }
+
+  QueryBuilder<Breathwork, Breathwork, QAfterFilterCondition> ratingEqualTo(
+    double? value, {
+    double epsilon = Query.epsilon,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.equalTo(
+        property: r'rating',
+        value: value,
+        epsilon: epsilon,
+      ));
+    });
+  }
+
+  QueryBuilder<Breathwork, Breathwork, QAfterFilterCondition> ratingGreaterThan(
+    double? value, {
+    bool include = false,
+    double epsilon = Query.epsilon,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.greaterThan(
+        include: include,
+        property: r'rating',
+        value: value,
+        epsilon: epsilon,
+      ));
+    });
+  }
+
+  QueryBuilder<Breathwork, Breathwork, QAfterFilterCondition> ratingLessThan(
+    double? value, {
+    bool include = false,
+    double epsilon = Query.epsilon,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.lessThan(
+        include: include,
+        property: r'rating',
+        value: value,
+        epsilon: epsilon,
+      ));
+    });
+  }
+
+  QueryBuilder<Breathwork, Breathwork, QAfterFilterCondition> ratingBetween(
+    double? lower,
+    double? upper, {
+    bool includeLower = true,
+    bool includeUpper = true,
+    double epsilon = Query.epsilon,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.between(
+        property: r'rating',
+        lower: lower,
+        includeLower: includeLower,
+        upper: upper,
+        includeUpper: includeUpper,
+        epsilon: epsilon,
+      ));
+    });
+  }
+
+  QueryBuilder<Breathwork, Breathwork, QAfterFilterCondition> roundsEqualTo(
+      int value) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.equalTo(
+        property: r'rounds',
+        value: value,
+      ));
+    });
+  }
+
+  QueryBuilder<Breathwork, Breathwork, QAfterFilterCondition> roundsGreaterThan(
+    int value, {
+    bool include = false,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.greaterThan(
+        include: include,
+        property: r'rounds',
+        value: value,
+      ));
+    });
+  }
+
+  QueryBuilder<Breathwork, Breathwork, QAfterFilterCondition> roundsLessThan(
+    int value, {
+    bool include = false,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.lessThan(
+        include: include,
+        property: r'rounds',
+        value: value,
+      ));
+    });
+  }
+
+  QueryBuilder<Breathwork, Breathwork, QAfterFilterCondition> roundsBetween(
+    int lower,
+    int upper, {
+    bool includeLower = true,
+    bool includeUpper = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.between(
+        property: r'rounds',
+        lower: lower,
+        includeLower: includeLower,
+        upper: upper,
+        includeUpper: includeUpper,
+      ));
+    });
+  }
+
+  QueryBuilder<Breathwork, Breathwork, QAfterFilterCondition> typeEqualTo(
+      BreathworkType value) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.equalTo(
+        property: r'type',
+        value: value,
+      ));
+    });
+  }
+
+  QueryBuilder<Breathwork, Breathwork, QAfterFilterCondition> typeGreaterThan(
+    BreathworkType value, {
+    bool include = false,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.greaterThan(
+        include: include,
+        property: r'type',
+        value: value,
+      ));
+    });
+  }
+
+  QueryBuilder<Breathwork, Breathwork, QAfterFilterCondition> typeLessThan(
+    BreathworkType value, {
+    bool include = false,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.lessThan(
+        include: include,
+        property: r'type',
+        value: value,
+      ));
+    });
+  }
+
+  QueryBuilder<Breathwork, Breathwork, QAfterFilterCondition> typeBetween(
+    BreathworkType lower,
+    BreathworkType upper, {
+    bool includeLower = true,
+    bool includeUpper = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.between(
+        property: r'type',
         lower: lower,
         includeLower: includeLower,
         upper: upper,

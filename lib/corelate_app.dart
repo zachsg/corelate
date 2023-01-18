@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 import 'features/bottom_navigation/bottom_navigation_view.dart';
+import 'features/breathwork/breathwork_configure/breathwork_configure_view.dart';
 import 'features/meditation/meditation_configure/meditation_configure_view.dart';
 import 'features/meditation/meditation_during/meditation_during_view.dart';
 import 'features/today/today_view.dart';
@@ -61,6 +62,12 @@ class CorelateApp extends ConsumerWidget {
                     builder: (context, state) => const MeditationDuringView(),
                   ),
                 ],
+              ),
+              GoRoute(
+                name: BreathworkConfigureView.routeName,
+                path: BreathworkConfigureView.routeName,
+                builder: (context, state) => const BreathworkConfigureView(),
+                routes: [],
               ),
             ],
           ),

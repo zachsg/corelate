@@ -6,6 +6,7 @@ import 'package:wakelock/wakelock.dart';
 import '../../../data/provider.dart';
 import '../../../helpers/strings.dart';
 import '../../../models/meditation.dart';
+import '../../widgets/xwidgets.dart';
 import '../meditation_during/meditation_during_view.dart';
 import '../../../models/meditation_type.dart';
 import 'meditation_configure_c.dart';
@@ -90,23 +91,22 @@ class MeditationConfigureView extends ConsumerWidget {
               child: Text(startLabel),
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.all(32.0),
-            child: Card(
-              child: Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: Row(
-                  children: [
-                    meditation.type == MeditationType.timed
-                        ? InfoTimedMeditationWidget(meditation: meditation)
-                        : const InfoOpenEndedMeditationWidget(),
-                  ],
-                ),
-              ),
-            ),
-          ),
+          _infoCardWidget(meditation),
         ],
       ),
     );
+  }
+
+  Widget _infoCardWidget(Meditation meditation) {
+    var message = '';
+    if (meditation.type == MeditationType.timed) {
+      message =
+          'Meditate for ${(meditation.goal ?? 300) ~/ 60} minutes. Tap on "Begin" to start. Once the session is underway, tap on "End Early" if you\'d like to cut your session short; otherwise just meditate until the session ends of its own volition.';
+    } else {
+      message =
+          'Meditate for as long as you\'d like. Tap on "Begin" to start. Once the session is underway, tap on "End Session" to mark your meditation as complete.';
+    }
+
+    return InfoCardWidget(message: message);
   }
 }

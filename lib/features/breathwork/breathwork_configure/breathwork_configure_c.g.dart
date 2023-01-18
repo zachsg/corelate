@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'meditation_during_c.dart';
+part of 'breathwork_configure_c.dart';
 
 // **************************************************************************
 // RiverpodGenerator
@@ -29,21 +29,23 @@ class _SystemHash {
   }
 }
 
-String _$MeditationDuringCHash() => r'3565b76db2dc7b17b07e546e6124a569d1e4d78b';
+String _$BreathworkConfigureCHash() =>
+    r'f19ae08b5e511e2ee937a043bcb5959c3e2afb6f';
 
-/// See also [MeditationDuringC].
-final meditationDuringCProvider =
-    AutoDisposeNotifierProvider<MeditationDuringC, MeditationDuring>(
-  MeditationDuringC.new,
-  name: r'meditationDuringCProvider',
+/// See also [BreathworkConfigureC].
+final breathworkConfigureCProvider =
+    AutoDisposeNotifierProvider<BreathworkConfigureC, BreathworkConfigure>(
+  BreathworkConfigureC.new,
+  name: r'breathworkConfigureCProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
       ? null
-      : _$MeditationDuringCHash,
+      : _$BreathworkConfigureCHash,
 );
-typedef MeditationDuringCRef = AutoDisposeNotifierProviderRef<MeditationDuring>;
+typedef BreathworkConfigureCRef
+    = AutoDisposeNotifierProviderRef<BreathworkConfigure>;
 
-abstract class _$MeditationDuringC
-    extends AutoDisposeNotifier<MeditationDuring> {
+abstract class _$BreathworkConfigureC
+    extends AutoDisposeNotifier<BreathworkConfigure> {
   @override
-  MeditationDuring build();
+  BreathworkConfigure build();
 }
