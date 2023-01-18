@@ -150,7 +150,7 @@ Breathwork _breathworkDeserialize(
 ) {
   final object = Breathwork(
     breathsPerRound: reader.readLongOrNull(offsets[0]) ?? 0,
-    rounds: reader.readLongOrNull(offsets[2]) ?? 8,
+    rounds: reader.readLongOrNull(offsets[2]) ?? 4,
     type: _BreathworktypeValueEnumMap[reader.readByteOrNull(offsets[3])] ??
         BreathworkType.four78,
   );
@@ -170,7 +170,7 @@ P _breathworkDeserializeProp<P>(
     case 1:
       return (reader.readDoubleOrNull(offset)) as P;
     case 2:
-      return (reader.readLongOrNull(offset) ?? 8) as P;
+      return (reader.readLongOrNull(offset) ?? 4) as P;
     case 3:
       return (_BreathworktypeValueEnumMap[reader.readByteOrNull(offset)] ??
           BreathworkType.four78) as P;

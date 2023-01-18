@@ -5,13 +5,30 @@ import '../../helpers/strings.dart';
 import 'widgets/xwidgets.dart';
 import 'today_c.dart';
 
-class TodayView extends ConsumerWidget {
+class TodayView extends ConsumerStatefulWidget {
   const TodayView({super.key});
 
   static const routeName = 'today';
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<ConsumerStatefulWidget> createState() => _TodayViewState();
+}
+
+class _TodayViewState extends ConsumerState<TodayView>
+    with WidgetsBindingObserver {
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    ref.read(dateCProvider.notifier).reset();
+  }
+
+  @override
+  void initState() {
+    WidgetsBinding.instance.addObserver(this);
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
     final showingToday = ref.watch(todayCProvider).showingToday;
 
     return Scaffold(

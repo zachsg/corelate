@@ -7,6 +7,14 @@ import 'today.dart';
 
 part 'today_c.g.dart';
 
+@riverpod
+class DateC extends _$DateC {
+  @override
+  DateTime build() => DateTime.now().copyWith(hour: 0, minute: 0);
+
+  void reset() => state = DateTime.now().copyWith(hour: 0, minute: 0);
+}
+
 @Riverpod(keepAlive: true)
 class TodayC extends _$TodayC {
   @override
@@ -29,7 +37,9 @@ final todayActivitiesStreamProvider =
     StreamProvider.autoDispose<List<Activity>>((ref) async* {
   late Stream<List<Activity>> activitiesStream;
   await ref.watch(databaseCProvider.future).then((db) async {
-    activitiesStream = db.todayActivitiesStream();
+    // final date = DateTime.now().copyWith(hour: 0, minute: 0);
+
+    activitiesStream = db.todayActivitiesStream(ref.watch(dateCProvider));
   });
 
   await for (final activities in activitiesStream) {

@@ -30,7 +30,7 @@ class _SystemHash {
 }
 
 String _$BreathworkConfigureCHash() =>
-    r'f19ae08b5e511e2ee937a043bcb5959c3e2afb6f';
+    r'2f426ccee04e06bddcb040b0f681ca7a38a1af60';
 
 /// See also [BreathworkConfigureC].
 final breathworkConfigureCProvider =

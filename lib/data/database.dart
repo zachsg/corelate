@@ -51,8 +51,7 @@ class Database {
     return activities;
   }
 
-  Stream<List<Activity>> todayActivitiesStream() async* {
-    final date = DateTime.now().copyWith(hour: 0, minute: 0);
+  Stream<List<Activity>> todayActivitiesStream(DateTime date) async* {
     final query =
         isar.activitys.filter().dateGreaterThan(date).sortByDateDesc().build();
 

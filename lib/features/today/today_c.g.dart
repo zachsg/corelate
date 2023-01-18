@@ -29,6 +29,22 @@ class _SystemHash {
   }
 }
 
+String _$DateCHash() => r'ca3eb29dcba1299ea01c4957c123c13e7dd9e2c9';
+
+/// See also [DateC].
+final dateCProvider = AutoDisposeNotifierProvider<DateC, DateTime>(
+  DateC.new,
+  name: r'dateCProvider',
+  debugGetCreateSourceHash:
+      const bool.fromEnvironment('dart.vm.product') ? null : _$DateCHash,
+);
+typedef DateCRef = AutoDisposeNotifierProviderRef<DateTime>;
+
+abstract class _$DateC extends AutoDisposeNotifier<DateTime> {
+  @override
+  DateTime build();
+}
+
 String _$TodayCHash() => r'd12d7a5bbc83b8602623b8ed7a9cb29fd97a6430';
 
 /// See also [TodayC].
