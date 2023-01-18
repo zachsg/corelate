@@ -17,7 +17,7 @@ class Breathwork {
 
   Breathwork({
     this.type = BreathworkType.four78,
-    this.rounds = 8,
+    this.rounds = 4,
     this.breathsPerRound = 0,
   });
 }

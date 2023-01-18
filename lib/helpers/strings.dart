@@ -15,7 +15,7 @@ const profileLabel = 'Profile';
 
 /// Meditation
 const meditatingLabel = 'Meditating';
-const typeLabel = 'Meditation Type';
+const meditationTypeLabel = 'Meditation Type';
 const goalLabel = 'Duration';
 const openEndedLabel = 'Open-ended';
 const hoursLabel = 'hour';
@@ -28,3 +28,8 @@ const endLabel = 'End Session';
 const somethingWrongLabel = 'Something went wrong.';
 
 /// Breathwork
+const breathworkTypeLabel = 'Technique';
+const roundsLabel = 'Rounds';
+const breathsPerRoundLabel = 'Breaths Per Round';
+const four78Label = '4-7-8 Breath';
+const wimHofLabel = 'Wim Hof Method';

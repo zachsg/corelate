@@ -27,6 +27,10 @@ class CorelateApp extends ConsumerWidget {
           brightness: Brightness.light,
         ),
       ),
+      // ThemeData.light(
+      //   useMaterial3: true,
+      //   colorSchemeSeed: primaryColor,
+      // ),
       darkTheme: ThemeData.from(
         useMaterial3: true,
         colorScheme: ColorScheme.fromSeed(

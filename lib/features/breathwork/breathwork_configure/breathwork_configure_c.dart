@@ -1,4 +1,3 @@
-import 'package:corelate/models/meditation.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../../models/activity.dart';
@@ -13,11 +12,11 @@ class BreathworkConfigureC extends _$BreathworkConfigureC {
   @override
   BreathworkConfigure build() => BreathworkConfigure(Activity(
         date: DateTime.now(),
-        meditation: Meditation(),
+        breathwork: Breathwork(),
       ));
 
   void setType(BreathworkType type) {
-    final rounds = type == BreathworkType.four78 ? 8 : 3;
+    final rounds = type == BreathworkType.four78 ? 4 : 3;
     final breathsPerRound = type == BreathworkType.four78 ? 0 : 30;
 
     final breathwork = state.activity.breathwork;
@@ -49,5 +48,10 @@ class BreathworkConfigureC extends _$BreathworkConfigureC {
       final activity = state.activity.copyWith(breathwork: breathworkUpdated);
       state = state.copyWith(activity: activity);
     }
+  }
+
+  void resetDate() {
+    final activity = state.activity.copyWith(date: DateTime.now());
+    state = state.copyWith(activity: activity);
   }
 }
