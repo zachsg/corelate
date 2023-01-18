@@ -76,7 +76,7 @@ class MeditationConfigureView extends ConsumerWidget {
               ],
             ),
           const SizedBox(height: 32),
-          ElevatedButton(
+          FilledButton(
             onPressed: () {
               Wakelock.enable();
               ref.read(meditationConfigureCProvider.notifier).resetDate();

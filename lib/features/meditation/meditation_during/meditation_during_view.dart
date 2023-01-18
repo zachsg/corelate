@@ -44,7 +44,7 @@ class MeditationDuringView extends ConsumerWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  ElevatedButton(
+                  FilledButton(
                     onPressed: () {
                       ref
                           .read(meditationDuringCProvider.notifier)
