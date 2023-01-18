@@ -38,16 +38,16 @@ class ExpandedFloatingActionButtonWidget extends ConsumerWidget {
               context.pushNamed(BreathworkConfigureView.routeName);
             },
           ),
-          ActionButtonWidget(
-            title: journalTitle,
-            icon: Icons.edit_note,
-            onPressed: () {},
-          ),
-          ActionButtonWidget(
-            title: tagTitle,
-            icon: Icons.sell,
-            onPressed: () {},
-          ),
+          // ActionButtonWidget(
+          //   title: journalTitle,
+          //   icon: Icons.edit_note,
+          //   onPressed: () {},
+          // ),
+          // ActionButtonWidget(
+          //   title: tagTitle,
+          //   icon: Icons.sell,
+          //   onPressed: () {},
+          // ),
           AnimatedRotation(
             turns: fabIsExpanded ? 0.38 : 0,
             duration: const Duration(milliseconds: 250),
