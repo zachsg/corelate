@@ -12,12 +12,14 @@ class Breathwork {
   BreathworkType type;
   int rounds;
   int breathsPerRound;
-
+  List<int>? holdSecondsPerRound;
   double? rating;
 
   Breathwork({
     this.type = BreathworkType.four78,
     this.rounds = 4,
     this.breathsPerRound = 0,
+    this.holdSecondsPerRound,
+    this.rating,
   });
 }

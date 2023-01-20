@@ -22,7 +22,7 @@ class BreathworkConfigureView extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final breathwork =
         ref.watch(breathworkConfigureCProvider).activity.breathwork ??
-            Breathwork();
+            Breathwork(holdSecondsPerRound: []);
 
     return Scaffold(
       appBar: AppBar(

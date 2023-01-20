@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../meditation_during_c.dart';
-
 class RatingBarWidget extends ConsumerWidget {
-  const RatingBarWidget({super.key});
+  const RatingBarWidget({super.key, required this.onRatingChange});
+
+  final Function(double) onRatingChange;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -49,8 +49,7 @@ class RatingBarWidget extends ConsumerWidget {
             );
         }
       },
-      onRatingUpdate: (rating) =>
-          ref.read(meditationDuringCProvider.notifier).setRating(rating),
+      onRatingUpdate: (rating) => onRatingChange(rating),
     );
   }
 }

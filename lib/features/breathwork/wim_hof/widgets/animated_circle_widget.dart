@@ -3,7 +3,8 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'wim_hof_c.dart';
+import '../../breathwork_configure/breathwork_configure_c.dart';
+import '../wim_hof_c.dart';
 
 class AnimatedCircleWidget extends ConsumerStatefulWidget {
   const AnimatedCircleWidget({
@@ -29,6 +30,13 @@ class _AnimatedCircleWidgetState extends ConsumerState<AnimatedCircleWidget> {
 
   @override
   void initState() {
+    final breathGoal = ref
+            .read(breathworkConfigureCProvider)
+            .activity
+            .breathwork
+            ?.breathsPerRound ??
+        30;
+
     _timer = Timer.periodic(const Duration(milliseconds: 1500), (_) {
       if (_width == 0.0 && _height == 0.0) {
         setState(() {
@@ -45,6 +53,11 @@ class _AnimatedCircleWidgetState extends ConsumerState<AnimatedCircleWidget> {
       _count++;
       if (_count % 2 == 0) {
         ref.read(wimHofCProvider.notifier).incrementBreath();
+      }
+
+      if (_count == breathGoal * 2) {
+        _timer.cancel();
+        ref.read(wimHofCProvider.notifier).setHoldingExhale(true);
       }
     });
 

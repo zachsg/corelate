@@ -13,6 +13,10 @@ abstract class _$BreathworkCWProxy {
 
   Breathwork breathsPerRound(int breathsPerRound);
 
+  Breathwork holdSecondsPerRound(List<int>? holdSecondsPerRound);
+
+  Breathwork rating(double? rating);
+
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `Breathwork(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
   /// Usage
@@ -23,6 +27,8 @@ abstract class _$BreathworkCWProxy {
     BreathworkType? type,
     int? rounds,
     int? breathsPerRound,
+    List<int>? holdSecondsPerRound,
+    double? rating,
   });
 }
 
@@ -43,6 +49,13 @@ class _$BreathworkCWProxyImpl implements _$BreathworkCWProxy {
       this(breathsPerRound: breathsPerRound);
 
   @override
+  Breathwork holdSecondsPerRound(List<int>? holdSecondsPerRound) =>
+      this(holdSecondsPerRound: holdSecondsPerRound);
+
+  @override
+  Breathwork rating(double? rating) => this(rating: rating);
+
+  @override
 
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `Breathwork(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
@@ -54,6 +67,8 @@ class _$BreathworkCWProxyImpl implements _$BreathworkCWProxy {
     Object? type = const $CopyWithPlaceholder(),
     Object? rounds = const $CopyWithPlaceholder(),
     Object? breathsPerRound = const $CopyWithPlaceholder(),
+    Object? holdSecondsPerRound = const $CopyWithPlaceholder(),
+    Object? rating = const $CopyWithPlaceholder(),
   }) {
     return Breathwork(
       type: type == const $CopyWithPlaceholder() || type == null
@@ -72,6 +87,14 @@ class _$BreathworkCWProxyImpl implements _$BreathworkCWProxy {
           ? _value.breathsPerRound!
           // ignore: cast_nullable_to_non_nullable
           : breathsPerRound as int,
+      holdSecondsPerRound: holdSecondsPerRound == const $CopyWithPlaceholder()
+          ? _value.holdSecondsPerRound
+          // ignore: cast_nullable_to_non_nullable
+          : holdSecondsPerRound as List<int>?,
+      rating: rating == const $CopyWithPlaceholder()
+          ? _value.rating
+          // ignore: cast_nullable_to_non_nullable
+          : rating as double?,
     );
   }
 }
@@ -98,18 +121,23 @@ const BreathworkSchema = Schema(
       name: r'breathsPerRound',
       type: IsarType.long,
     ),
-    r'rating': PropertySchema(
+    r'holdSecondsPerRound': PropertySchema(
       id: 1,
+      name: r'holdSecondsPerRound',
+      type: IsarType.longList,
+    ),
+    r'rating': PropertySchema(
+      id: 2,
       name: r'rating',
       type: IsarType.double,
     ),
     r'rounds': PropertySchema(
-      id: 2,
+      id: 3,
       name: r'rounds',
       type: IsarType.long,
     ),
     r'type': PropertySchema(
-      id: 3,
+      id: 4,
       name: r'type',
       type: IsarType.byte,
       enumMap: _BreathworktypeEnumValueMap,
@@ -127,6 +155,12 @@ int _breathworkEstimateSize(
   Map<Type, List<int>> allOffsets,
 ) {
   var bytesCount = offsets.last;
+  {
+    final value = object.holdSecondsPerRound;
+    if (value != null) {
+      bytesCount += 3 + value.length * 8;
+    }
+  }
   return bytesCount;
 }
 
@@ -137,9 +171,10 @@ void _breathworkSerialize(
   Map<Type, List<int>> allOffsets,
 ) {
   writer.writeLong(offsets[0], object.breathsPerRound);
-  writer.writeDouble(offsets[1], object.rating);
-  writer.writeLong(offsets[2], object.rounds);
-  writer.writeByte(offsets[3], object.type.index);
+  writer.writeLongList(offsets[1], object.holdSecondsPerRound);
+  writer.writeDouble(offsets[2], object.rating);
+  writer.writeLong(offsets[3], object.rounds);
+  writer.writeByte(offsets[4], object.type.index);
 }
 
 Breathwork _breathworkDeserialize(
@@ -150,11 +185,12 @@ Breathwork _breathworkDeserialize(
 ) {
   final object = Breathwork(
     breathsPerRound: reader.readLongOrNull(offsets[0]) ?? 0,
-    rounds: reader.readLongOrNull(offsets[2]) ?? 4,
-    type: _BreathworktypeValueEnumMap[reader.readByteOrNull(offsets[3])] ??
+    holdSecondsPerRound: reader.readLongList(offsets[1]),
+    rating: reader.readDoubleOrNull(offsets[2]),
+    rounds: reader.readLongOrNull(offsets[3]) ?? 4,
+    type: _BreathworktypeValueEnumMap[reader.readByteOrNull(offsets[4])] ??
         BreathworkType.four78,
   );
-  object.rating = reader.readDoubleOrNull(offsets[1]);
   return object;
 }
 
@@ -168,10 +204,12 @@ P _breathworkDeserializeProp<P>(
     case 0:
       return (reader.readLongOrNull(offset) ?? 0) as P;
     case 1:
-      return (reader.readDoubleOrNull(offset)) as P;
+      return (reader.readLongList(offset)) as P;
     case 2:
-      return (reader.readLongOrNull(offset) ?? 4) as P;
+      return (reader.readDoubleOrNull(offset)) as P;
     case 3:
+      return (reader.readLongOrNull(offset) ?? 4) as P;
+    case 4:
       return (_BreathworktypeValueEnumMap[reader.readByteOrNull(offset)] ??
           BreathworkType.four78) as P;
     default:
@@ -243,6 +281,169 @@ extension BreathworkQueryFilter
         upper: upper,
         includeUpper: includeUpper,
       ));
+    });
+  }
+
+  QueryBuilder<Breathwork, Breathwork, QAfterFilterCondition>
+      holdSecondsPerRoundIsNull() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(const FilterCondition.isNull(
+        property: r'holdSecondsPerRound',
+      ));
+    });
+  }
+
+  QueryBuilder<Breathwork, Breathwork, QAfterFilterCondition>
+      holdSecondsPerRoundIsNotNull() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(const FilterCondition.isNotNull(
+        property: r'holdSecondsPerRound',
+      ));
+    });
+  }
+
+  QueryBuilder<Breathwork, Breathwork, QAfterFilterCondition>
+      holdSecondsPerRoundElementEqualTo(int value) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.equalTo(
+        property: r'holdSecondsPerRound',
+        value: value,
+      ));
+    });
+  }
+
+  QueryBuilder<Breathwork, Breathwork, QAfterFilterCondition>
+      holdSecondsPerRoundElementGreaterThan(
+    int value, {
+    bool include = false,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.greaterThan(
+        include: include,
+        property: r'holdSecondsPerRound',
+        value: value,
+      ));
+    });
+  }
+
+  QueryBuilder<Breathwork, Breathwork, QAfterFilterCondition>
+      holdSecondsPerRoundElementLessThan(
+    int value, {
+    bool include = false,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.lessThan(
+        include: include,
+        property: r'holdSecondsPerRound',
+        value: value,
+      ));
+    });
+  }
+
+  QueryBuilder<Breathwork, Breathwork, QAfterFilterCondition>
+      holdSecondsPerRoundElementBetween(
+    int lower,
+    int upper, {
+    bool includeLower = true,
+    bool includeUpper = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.between(
+        property: r'holdSecondsPerRound',
+        lower: lower,
+        includeLower: includeLower,
+        upper: upper,
+        includeUpper: includeUpper,
+      ));
+    });
+  }
+
+  QueryBuilder<Breathwork, Breathwork, QAfterFilterCondition>
+      holdSecondsPerRoundLengthEqualTo(int length) {
+    return QueryBuilder.apply(this, (query) {
+      return query.listLength(
+        r'holdSecondsPerRound',
+        length,
+        true,
+        length,
+        true,
+      );
+    });
+  }
+
+  QueryBuilder<Breathwork, Breathwork, QAfterFilterCondition>
+      holdSecondsPerRoundIsEmpty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.listLength(
+        r'holdSecondsPerRound',
+        0,
+        true,
+        0,
+        true,
+      );
+    });
+  }
+
+  QueryBuilder<Breathwork, Breathwork, QAfterFilterCondition>
+      holdSecondsPerRoundIsNotEmpty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.listLength(
+        r'holdSecondsPerRound',
+        0,
+        false,
+        999999,
+        true,
+      );
+    });
+  }
+
+  QueryBuilder<Breathwork, Breathwork, QAfterFilterCondition>
+      holdSecondsPerRoundLengthLessThan(
+    int length, {
+    bool include = false,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.listLength(
+        r'holdSecondsPerRound',
+        0,
+        true,
+        length,
+        include,
+      );
+    });
+  }
+
+  QueryBuilder<Breathwork, Breathwork, QAfterFilterCondition>
+      holdSecondsPerRoundLengthGreaterThan(
+    int length, {
+    bool include = false,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.listLength(
+        r'holdSecondsPerRound',
+        length,
+        include,
+        999999,
+        true,
+      );
+    });
+  }
+
+  QueryBuilder<Breathwork, Breathwork, QAfterFilterCondition>
+      holdSecondsPerRoundLengthBetween(
+    int lower,
+    int upper, {
+    bool includeLower = true,
+    bool includeUpper = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.listLength(
+        r'holdSecondsPerRound',
+        lower,
+        includeLower,
+        upper,
+        includeUpper,
+      );
     });
   }
 

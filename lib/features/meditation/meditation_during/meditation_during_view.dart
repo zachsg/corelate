@@ -7,6 +7,7 @@ import '../../../helpers/strings.dart';
 import '../../../models/meditation.dart';
 import '../../../models/meditation_type.dart';
 import '../../bottom_navigation/bottom_navigation_view.dart';
+import '../../widgets/xwidgets.dart';
 import 'meditation_during_c.dart';
 import 'widgets/xwidgets.dart';
 
@@ -130,7 +131,11 @@ class MeditationDuringView extends ConsumerWidget {
               children: [
                 Text(message),
                 const Text('\n\nHow it go?'),
-                const RatingBarWidget(),
+                RatingBarWidget(
+                  onRatingChange: (rating) => ref
+                      .read(meditationDuringCProvider.notifier)
+                      .setRating(rating),
+                ),
               ],
             ),
           ),
