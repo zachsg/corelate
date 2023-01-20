@@ -20,6 +20,7 @@ class WimHofC extends _$WimHofC {
     state = state.copyWith(
       currentRound: state.currentRound + 1,
       currentBreath: 0,
+      holdSecondsCurrentRound: 0,
       isHoldingExhale: false,
       isHoldingInhale: false,
     );
