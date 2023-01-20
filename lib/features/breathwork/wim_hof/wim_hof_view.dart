@@ -80,15 +80,38 @@ class WimHofView extends ConsumerWidget {
   Future<void> _showSessionCompleteDialog(
       WidgetRef ref, BuildContext context) async {
     final wimHof = ref.watch(wimHofCProvider);
+    final breathwork =
+        ref.watch(breathworkConfigureCProvider).activity.breathwork;
 
-    final elapsed = wimHof.holdSeconds.first;
+    var message = '';
 
-    final minutes = elapsed / 60 > 0 ? elapsed ~/ 60 : 0;
-    final seconds = minutes == 0 ? elapsed : elapsed - minutes * 60;
+    if (breathwork != null) {
+      final rounds = breathwork.rounds;
+      final breathsPerRound = breathwork.breathsPerRound;
 
-    var durationString = 'this is a duration $minutes : $seconds';
+      message = 'You did $rounds rounds of the Wim Hof Method'
+          ' ($breathsPerRound breaths per round).'
+          '\n\nIndividual breath holds:';
 
-    var message = 'this is a message';
+      var round = 0;
+      for (final hold in wimHof.holdSeconds) {
+        round += 1;
+
+        var durationString = '';
+
+        final minutes = hold ~/ 60;
+        final seconds = minutes == 0 ? hold : hold - minutes * 60;
+        if (minutes == 0) {
+          durationString = '${seconds}s';
+        } else if (seconds == 0) {
+          durationString = '${minutes}m';
+        } else {
+          durationString = '${minutes}m ${seconds}s';
+        }
+
+        message += '\n\t- Round #$round: $durationString';
+      }
+    }
 
     return showDialog(
       context: context,
@@ -100,7 +123,6 @@ class WimHofView extends ConsumerWidget {
             child: ListBody(
               children: [
                 Text(message),
-                Text(durationString),
                 const Text('\n\nHow it go?'),
                 RatingBarWidget(
                   onRatingChange: (rating) => ref

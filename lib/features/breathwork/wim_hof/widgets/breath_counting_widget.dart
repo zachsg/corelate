@@ -35,15 +35,15 @@ class BreathCountingWidget extends ConsumerWidget {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   Text(
-                    'Breath #',
-                    style: Theme.of(context).textTheme.titleLarge,
+                    wimHof.currentBreath == 0 ? '' : 'Breath',
+                    style: Theme.of(context).textTheme.displaySmall,
                   ),
                   Text(
-                    '${wimHof.currentBreath}',
+                    '${wimHof.currentBreath == 0 ? '' : wimHof.currentBreath}',
                     style: Theme.of(context).textTheme.displayLarge,
                   ),
                   Text(
-                    'Breathe with the pacer',
+                    'Breathe with the pacer...',
                     style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                           fontStyle: FontStyle.italic,
                           color: Theme.of(context)

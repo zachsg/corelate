@@ -4,9 +4,9 @@ import 'package:intl/intl.dart';
 
 import '../../../helpers/strings.dart';
 import '../../../models/activity.dart';
+import '../../../models/breathwork_type.dart';
 import '../today_c.dart';
-import 'empty_state_widget.dart';
-import 'meditation_card_widget.dart';
+import 'xwidgets.dart';
 
 class TodaysActivitiesListWidget extends ConsumerWidget {
   const TodaysActivitiesListWidget({super.key});
@@ -45,6 +45,19 @@ class TodaysActivitiesListWidget extends ConsumerWidget {
                       isEven: isEven,
                       isFirstRow: isFirstRow,
                     );
+                  } else if (activity.breathwork != null) {
+                    if (activity.breathwork!.type == BreathworkType.four78) {
+                      return const Text('4-7-8');
+                    } else {
+                      return BreathworkCardWidget(
+                        title: 'Breathwork',
+                        activity: activity,
+                        icon: icon,
+                        timeString: timeString,
+                        isEven: isEven,
+                        isFirstRow: isFirstRow,
+                      );
+                    }
                   } else {
                     return const Text('n/a');
                   }

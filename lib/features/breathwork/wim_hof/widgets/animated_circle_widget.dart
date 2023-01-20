@@ -50,12 +50,12 @@ class _AnimatedCircleWidgetState extends ConsumerState<AnimatedCircleWidget> {
         });
       }
 
-      _count++;
       if (_count % 2 == 0) {
         ref.read(wimHofCProvider.notifier).incrementBreath();
       }
 
-      if (_count == breathGoal * 2) {
+      _count++;
+      if (_count > breathGoal * 2) {
         _timer.cancel();
         ref.read(wimHofCProvider.notifier).setHoldingExhale(true);
       }

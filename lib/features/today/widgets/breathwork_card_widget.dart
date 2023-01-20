@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../../helpers/extensions.dart';
 import '../../../models/activity.dart';
-import '../../../models/meditation_type.dart';
+import '../../../models/breathwork_type.dart';
 import '../today_c.dart';
 import 'activity_card_widget.dart';
 
-class MeditationCardWidget extends ConsumerWidget {
-  const MeditationCardWidget({
+class BreathworkCardWidget extends ConsumerWidget {
+  const BreathworkCardWidget({
     super.key,
     required this.title,
     required this.activity,
@@ -27,25 +26,11 @@ class MeditationCardWidget extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final meditation = activity.meditation;
+    final breathwork = activity.breathwork;
     var type = '';
-    var durationString = '';
 
-    if (meditation != null) {
-      type = meditation.type == MeditationType.timed
-          ? meditation.type.name.capitalize()
-          : 'Open-ended';
-
-      final minutes = meditation.elapsed ~/ 60;
-      final seconds =
-          minutes == 0 ? meditation.elapsed : meditation.elapsed - minutes * 60;
-      if (minutes == 0) {
-        durationString = '${seconds}s';
-      } else if (seconds == 0) {
-        durationString = '${minutes}m';
-      } else {
-        durationString = '${minutes}m ${seconds}s';
-      }
+    if (breathwork != null) {
+      type = breathwork.type == BreathworkType.four78 ? '4-7-8' : 'Wim Hof';
     }
 
     return ActivityCardWidget(
@@ -93,12 +78,12 @@ class MeditationCardWidget extends ConsumerWidget {
                 Row(
                   children: [
                     Icon(
-                      Icons.timer,
+                      Icons.restart_alt,
                       size: 20,
                       color: Theme.of(context).colorScheme.onPrimaryContainer,
                     ),
                     const SizedBox(width: 4),
-                    Text(durationString),
+                    Text('${breathwork?.rounds} rounds'),
                   ],
                 ),
               ],
@@ -111,27 +96,40 @@ class MeditationCardWidget extends ConsumerWidget {
 
   Future<void> _showSessionCompleteDialog(
       WidgetRef ref, BuildContext context, Activity activity) async {
-    final meditation = activity.meditation;
-    var title = '';
+    final breathwork = activity.breathwork;
+    var title = 'Breathwork';
     var message = '';
 
-    if (meditation != null) {
-      title = 'Meditation';
-      final elapsed = meditation.elapsed;
-
-      final minutes = elapsed / 60 > 0 ? elapsed ~/ 60 : 0;
-      final seconds = minutes == 0 ? elapsed : elapsed - minutes * 60;
-
-      var durationString = '';
-      if (minutes == 0) {
-        durationString = '$seconds seconds';
-      } else if (seconds == 0) {
-        durationString = '$minutes minutes';
+    if (breathwork != null) {
+      final rounds = breathwork.rounds;
+      if (breathwork.type == BreathworkType.four78) {
+        title += ' (4-7-8)';
       } else {
-        durationString = '$minutes minutes and $seconds seconds';
-      }
+        title += ' (Wim Hof)';
+        final breathsPerRound = breathwork.breathsPerRound;
+        message = 'You did $rounds rounds of the Wim Hof Method'
+            ' ($breathsPerRound breaths per round).'
+            '\n\nIndividual breath holds:';
 
-      message = 'You meditated for $durationString.';
+        var round = 0;
+        for (final hold in breathwork.holdSecondsPerRound ?? []) {
+          round += 1;
+
+          var durationString = '';
+
+          final minutes = hold ~/ 60;
+          final seconds = minutes == 0 ? hold : hold - minutes * 60;
+          if (minutes == 0) {
+            durationString = '${seconds}s';
+          } else if (seconds == 0) {
+            durationString = '${minutes}m';
+          } else {
+            durationString = '${minutes}m ${seconds}s';
+          }
+
+          message += '\n\t- Round #$round: $durationString';
+        }
+      }
     }
 
     return showDialog(

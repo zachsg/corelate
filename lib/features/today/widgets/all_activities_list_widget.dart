@@ -4,7 +4,7 @@ import 'package:intl/intl.dart';
 
 import '../../../helpers/extensions.dart';
 import '../../../helpers/strings.dart';
-import '../../../models/meditation.dart';
+import '../../../models/breathwork_type.dart';
 import '../../../models/meditation_type.dart';
 import '../today_c.dart';
 import 'empty_state_widget.dart';
@@ -20,10 +20,12 @@ class AllActivitiesListWidget extends ConsumerWidget {
               itemCount: activities.length,
               itemBuilder: (context, index) {
                 final activity = activities[index];
-                final meditation = activity.meditation;
                 var title = 'N/A';
                 var type = '';
                 var durationString = '';
+
+                final meditation = activity.meditation;
+                final breathwork = activity.breathwork;
 
                 // Format activity based on the type of activity
                 if (meditation != null) {
@@ -42,6 +44,12 @@ class AllActivitiesListWidget extends ConsumerWidget {
                   } else {
                     durationString = '${minutes}m ${seconds}s';
                   }
+                } else if (breathwork != null) {
+                  title = 'Breathwork';
+                  type = breathwork.type == BreathworkType.four78
+                      ? '4-7-8 Breath'
+                      : 'Wim Hof Method';
+                  durationString = '{breathwork.rounds} rounds';
                 }
 
                 // Setup the time of day / date, and appropriate icon
