@@ -52,7 +52,22 @@ class WimHofView extends ConsumerWidget {
                 Column(
                   children: [
                     FilledButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        final wimHof = ref.read(wimHofCProvider);
+                        final breathworkConfig = ref
+                            .read(breathworkConfigureCProvider)
+                            .activity
+                            .breathwork;
+
+                        if (breathworkConfig != null) {
+                          if (wimHof.currentRound != 1) {
+                            ref.read(wimHofCProvider.notifier).markDone();
+                            _showSessionCompleteDialog(ref, context);
+                          } else {
+                            context.pop();
+                          }
+                        }
+                      },
                       child: const Padding(
                         padding: EdgeInsets.symmetric(
                           horizontal: 32,
@@ -63,10 +78,7 @@ class WimHofView extends ConsumerWidget {
                     ),
                     const SizedBox(height: 12.0),
                     TextButton(
-                      onPressed: () {
-                        // TODO: Do any cleanup to cancel session
-                        context.pop();
-                      },
+                      onPressed: context.pop,
                       child: const Text(cancelLabel),
                     ),
                   ],
@@ -86,10 +98,13 @@ class WimHofView extends ConsumerWidget {
     var message = '';
 
     if (breathwork != null) {
-      final rounds = breathwork.rounds;
+      final rounds = wimHof.currentRound > breathwork.rounds
+          ? breathwork.rounds
+          : wimHof.currentRound;
       final breathsPerRound = breathwork.breathsPerRound;
 
-      message = 'You did $rounds rounds of the Wim Hof Method'
+      message =
+          'You did $rounds ${rounds == 1 ? 'round' : 'rounds'} of the Wim Hof Method'
           ' ($breathsPerRound breaths per round).'
           '\n\nIndividual breath holds:';
 

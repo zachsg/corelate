@@ -14,6 +14,8 @@ class WimHofC extends _$WimHofC {
 
   void resetBreath() => state = state.copyWith(currentBreath: 0);
 
+  void reset() => state = WimHof(holdSeconds: []);
+
   void incrementRound() {
     _setHoldSeconds(state.holdSecondsCurrentRound);
 

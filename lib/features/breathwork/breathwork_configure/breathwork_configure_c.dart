@@ -93,7 +93,9 @@ class BreathworkConfigureC extends _$BreathworkConfigureC {
           final wimHof = ref.watch(wimHofCProvider);
 
           var holdsElapsed = 0;
-          wimHof.holdSeconds.map((e) => holdsElapsed += e);
+          for (final hold in wimHof.holdSeconds) {
+            holdsElapsed += hold;
+          }
           final countsElapsed =
               breathwork.rounds * (breathwork.breathsPerRound * 1.5);
           final inhalesElapsed = breathwork.rounds * 15;
