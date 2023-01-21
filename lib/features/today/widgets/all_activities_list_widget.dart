@@ -23,6 +23,7 @@ class AllActivitiesListWidget extends ConsumerWidget {
                 var title = 'N/A';
                 var type = '';
                 var durationString = '';
+                IconData icon;
 
                 final meditation = activity.meditation;
                 final breathwork = activity.breathwork;
@@ -30,6 +31,7 @@ class AllActivitiesListWidget extends ConsumerWidget {
                 // Format activity based on the type of activity
                 if (meditation != null) {
                   title = 'Meditation';
+                  icon = Icons.timer;
                   type = meditation.type == MeditationType.timed
                       ? meditation.type.name.capitalize()
                       : 'Open-ended';
@@ -46,10 +48,14 @@ class AllActivitiesListWidget extends ConsumerWidget {
                   }
                 } else if (breathwork != null) {
                   title = 'Breathwork';
+                  icon = Icons.restart_alt;
                   type = breathwork.type == BreathworkType.four78
-                      ? '4-7-8 Breath'
-                      : 'Wim Hof Method';
-                  durationString = '{breathwork.rounds} rounds';
+                      ? '4-7-8'
+                      : 'Wim Hof';
+                  durationString = '${breathwork.rounds} rounds';
+                } else {
+                  title = 'n/a';
+                  icon = Icons.question_mark;
                 }
 
                 // Setup the time of day / date, and appropriate icon
@@ -80,7 +86,7 @@ class AllActivitiesListWidget extends ConsumerWidget {
 
                 return ListTile(
                   contentPadding: const EdgeInsets.symmetric(
-                    vertical: 8,
+                    vertical: 4,
                     horizontal: 20,
                   ),
                   leading: Column(
@@ -102,7 +108,7 @@ class AllActivitiesListWidget extends ConsumerWidget {
                     children: [
                       Text('$type:'),
                       const SizedBox(width: 4),
-                      const Icon(Icons.timer, size: 20),
+                      Icon(icon, size: 20),
                       Text(durationString),
                     ],
                   ),
