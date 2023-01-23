@@ -110,11 +110,12 @@ class MeditationDuringView extends ConsumerWidget {
     if (meditation.type == MeditationType.timed) {
       final goal = meditation.goal ?? 300;
       if (goal <= meditation.elapsed) {
-        message = 'Nice work! You completed your goal of ${goal / 60} minutes.';
+        message = 'Nice work! You completed your goal of'
+            ' ${goal ~/ 60} minutes.';
       } else {
         final percentage = ((elapsed / goal).toDouble() * 100).toInt();
-        message =
-            'Good effort. You completed $durationString of your ${goal ~/ 60} minute goal ($percentage%).';
+        message = 'Good effort. You completed $durationString of your'
+            ' ${goal ~/ 60} minute goal ($percentage%).';
       }
     } else {
       message = 'You just meditated for $durationString.';

@@ -37,9 +37,8 @@ final todayActivitiesStreamProvider =
     StreamProvider.autoDispose<List<Activity>>((ref) async* {
   late Stream<List<Activity>> activitiesStream;
   await ref.watch(databaseCProvider.future).then((db) async {
-    // final date = DateTime.now().copyWith(hour: 0, minute: 0);
-
-    activitiesStream = db.todayActivitiesStream(ref.watch(dateCProvider));
+    final date = ref.watch(dateCProvider);
+    activitiesStream = db.todayActivitiesStream(date);
   });
 
   await for (final activities in activitiesStream) {

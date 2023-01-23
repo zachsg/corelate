@@ -18,13 +18,21 @@ class _TodayViewState extends ConsumerState<TodayView>
     with WidgetsBindingObserver {
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
-    ref.read(dateCProvider.notifier).reset();
+    if (state == AppLifecycleState.resumed) {
+      ref.read(dateCProvider.notifier).reset();
+    }
   }
 
   @override
   void initState() {
     WidgetsBinding.instance.addObserver(this);
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
+    super.dispose();
   }
 
   @override

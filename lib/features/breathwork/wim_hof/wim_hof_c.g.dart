@@ -29,7 +29,7 @@ class _SystemHash {
   }
 }
 
-String _$WimHofCHash() => r'ddd72b3d6236c4034b36596dac36c40f3172f440';
+String _$WimHofCHash() => r'1330ac9e5549984d2fb34649c9e0e3c3409d9733';
 
 /// See also [WimHofC].
 final wimHofCProvider = AutoDisposeNotifierProvider<WimHofC, WimHof>(
