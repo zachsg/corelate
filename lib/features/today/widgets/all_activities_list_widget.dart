@@ -52,7 +52,9 @@ class AllActivitiesListWidget extends ConsumerWidget {
                   type = breathwork.type == BreathworkType.four78
                       ? '4-7-8'
                       : 'Wim Hof';
-                  durationString = '${breathwork.rounds} rounds';
+                  final rounds = breathwork.holdSecondsPerRound?.length ?? 0;
+                  durationString =
+                      '$rounds ${rounds == 1 ? 'round' : 'rounds'}';
                 } else {
                   title = 'n/a';
                   icon = Icons.question_mark;

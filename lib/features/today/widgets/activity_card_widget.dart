@@ -27,9 +27,9 @@ class _ActivityCardWidgetState extends ConsumerState<ActivityCardWidget> {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.only(
-        bottom: widget.isFirstRow ? 16.0 : 16.0,
-        left: widget.isEven ? 16.0 : 8.0,
-        right: widget.isEven ? 8.0 : 16.0,
+        bottom: widget.isFirstRow ? 8.0 : 8.0,
+        left: widget.isEven ? 8.0 : 4.0,
+        right: widget.isEven ? 4.0 : 8.0,
       ),
       child: GestureDetector(
         onTapDown: (details) => setState(() => isTapped = true),
