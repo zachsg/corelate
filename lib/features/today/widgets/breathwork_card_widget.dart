@@ -28,9 +28,11 @@ class BreathworkCardWidget extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final breathwork = activity.breathwork;
     var type = '';
+    int rounds = 0;
 
     if (breathwork != null) {
       type = breathwork.type == BreathworkType.four78 ? '4-7-8' : 'Wim Hof';
+      rounds = breathwork.holdSecondsPerRound?.length ?? 0;
     }
 
     return ActivityCardWidget(
@@ -83,7 +85,7 @@ class BreathworkCardWidget extends ConsumerWidget {
                       color: Theme.of(context).colorScheme.onPrimaryContainer,
                     ),
                     const SizedBox(width: 4),
-                    Text('${breathwork?.rounds} rounds'),
+                    Text('$rounds ${rounds == 1 ? 'round' : 'rounds'}'),
                   ],
                 ),
               ],
@@ -101,13 +103,14 @@ class BreathworkCardWidget extends ConsumerWidget {
     var message = '';
 
     if (breathwork != null) {
-      final rounds = breathwork.rounds;
+      final rounds = breathwork.holdSecondsPerRound?.length ?? 0;
       if (breathwork.type == BreathworkType.four78) {
         title += ' (4-7-8)';
       } else {
         title += ' (Wim Hof)';
         final breathsPerRound = breathwork.breathsPerRound;
-        message = 'You did $rounds rounds of the Wim Hof Method'
+        message =
+            'You did $rounds ${rounds == 1 ? 'round' : 'rounds'} of the Wim Hof Method'
             ' ($breathsPerRound breaths per round).'
             '\n\nIndividual breath holds:';
 
@@ -127,7 +130,7 @@ class BreathworkCardWidget extends ConsumerWidget {
             durationString = '${minutes}m ${seconds}s';
           }
 
-          message += '\n\t- Round #$round: $durationString';
+          message += '\n\t- Round $round: $durationString';
         }
       }
     }

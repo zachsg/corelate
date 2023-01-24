@@ -98,9 +98,7 @@ class WimHofView extends ConsumerWidget {
     var message = '';
 
     if (breathwork != null) {
-      final rounds = wimHof.currentRound > breathwork.rounds
-          ? breathwork.rounds
-          : wimHof.currentRound;
+      final rounds = wimHof.holdSeconds.length;
       final breathsPerRound = breathwork.breathsPerRound;
 
       message =
