@@ -2,7 +2,7 @@ import 'dart:io';
 
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-import '../../../data/provider.dart';
+import '../../../services/provider.dart';
 import '../../../models/activity.dart';
 import '../../../models/breathwork.dart';
 import '../../../models/breathwork_type.dart';
@@ -75,8 +75,7 @@ class BreathworkConfigureC extends _$BreathworkConfigureC {
     if (breathwork != null) {
       final wimHof = ref.watch(wimHofCProvider);
       final rounds = wimHof.holdSeconds.length;
-      final breathworkUpdated =
-      breathwork.copyWith(
+      final breathworkUpdated = breathwork.copyWith(
           holdSecondsPerRound: wimHof.holdSeconds, rounds: rounds);
       final activity = state.activity.copyWith(breathwork: breathworkUpdated);
       state = state.copyWith(activity: activity);

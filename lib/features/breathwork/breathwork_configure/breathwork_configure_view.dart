@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:wakelock/wakelock.dart';
 
-import '../../../data/provider.dart';
+import '../../../services/provider.dart';
 import '../../../helpers/strings.dart';
 import '../../../models/breathwork.dart';
 import '../../../models/breathwork_type.dart';

@@ -2,8 +2,8 @@ import 'dart:io';
 
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-import '../../../data/local_notification_service.dart';
-import '../../../data/provider.dart';
+import '../../../services/local_notification_service.dart';
+import '../../../services/provider.dart';
 import '../../../models/activity.dart';
 import '../../../models/meditation.dart';
 import '../../../models/meditation_type.dart';

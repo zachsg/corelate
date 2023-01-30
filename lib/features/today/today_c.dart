@@ -1,7 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-import '../../data/provider.dart';
+import '../../services/provider.dart';
 import '../../models/activity.dart';
 import 'today.dart';
 

@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../../../data/local_notification_service.dart';
+import '../../../../services/local_notification_service.dart';
 import '../../../../models/meditation.dart';
 import '../meditation_during_c.dart';
 import 'circle.dart';
