@@ -159,7 +159,7 @@ class BreathworkCardWidget extends ConsumerWidget {
                 Navigator.of(context).pop();
               },
             ),
-            TextButton(
+            FilledButton(
               onPressed: Navigator.of(context).pop,
               child: const Text('Done'),
             ),

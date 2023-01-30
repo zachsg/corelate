@@ -71,21 +71,22 @@ class BreathworkConfigureC extends _$BreathworkConfigureC {
   }
 
   void save() {
-    ref.read(databaseCProvider.future).then((db) async {
-      final breathwork = state.activity.breathwork;
-      if (breathwork != null) {
-        final wimHof = ref.watch(wimHofCProvider);
-        final breathworkUpdated =
-            breathwork.copyWith(holdSecondsPerRound: wimHof.holdSeconds);
-        final activity = state.activity.copyWith(breathwork: breathworkUpdated);
-
+    final breathwork = state.activity.breathwork;
+    if (breathwork != null) {
+      final wimHof = ref.watch(wimHofCProvider);
+      final rounds = wimHof.holdSeconds.length;
+      final breathworkUpdated =
+      breathwork.copyWith(
+          holdSecondsPerRound: wimHof.holdSeconds, rounds: rounds);
+      final activity = state.activity.copyWith(breathwork: breathworkUpdated);
+      state = state.copyWith(activity: activity);
+      ref.read(databaseCProvider.future).then((db) async {
         await db.saveActivity(activity);
-      }
-    });
+      });
+    }
 
-    final activity = state.activity;
     if (Platform.isIOS) {
-      final breathwork = activity.breathwork;
+      final breathwork = state.activity.breathwork;
       if (breathwork != null) {
         if (breathwork.type == BreathworkType.four78) {
           // TODO: Save 4-7-8 minutes to mindful minutes in apple health
@@ -97,14 +98,14 @@ class BreathworkConfigureC extends _$BreathworkConfigureC {
             holdsElapsed += hold;
           }
           final countsElapsed =
-              breathwork.rounds * (breathwork.breathsPerRound * 1.5);
+              breathwork.rounds * (breathwork.breathsPerRound * 1.5 * 2.0);
           final inhalesElapsed = breathwork.rounds * 15;
 
           final elapsed = countsElapsed.toInt() + holdsElapsed + inhalesElapsed;
           ref.read(appleMindfulCProvider.future).then((health) async {
             await health.writeMindfulMinutes(
-              activity.date,
-              activity.date.add(Duration(seconds: elapsed)),
+              state.activity.date,
+              state.activity.date.add(Duration(seconds: elapsed)),
             );
           });
         }
