@@ -31,7 +31,7 @@ class AllActivitiesListWidget extends ConsumerWidget {
                 // Format activity based on the type of activity
                 if (meditation != null) {
                   title = 'Meditation';
-                  icon = Icons.timer;
+                  icon = Icons.timer_outlined;
                   type = meditation.type == MeditationType.timed
                       ? meditation.type.name.capitalize()
                       : 'Open-ended';
@@ -88,11 +88,11 @@ class AllActivitiesListWidget extends ConsumerWidget {
 
                 final color = Theme.of(context).colorScheme;
                 final morning =
-                    Icon(Icons.wb_twilight, size: 28, color: color.primary);
+                    Icon(Icons.wb_twilight, size: 32, color: color.primary);
                 final midday =
-                    Icon(Icons.sunny, size: 28, color: color.secondary);
+                    Icon(Icons.sunny, size: 32, color: color.secondary);
                 final night =
-                    Icon(Icons.bedtime, size: 28, color: color.tertiary);
+                    Icon(Icons.bedtime, size: 32, color: color.tertiary);
 
                 return Dismissible(
                   key: Key(activity.id.toString()),
@@ -130,33 +130,93 @@ class AllActivitiesListWidget extends ConsumerWidget {
                       ],
                     ),
                   ),
-                  child: ListTile(
-                    contentPadding: const EdgeInsets.symmetric(
-                      vertical: 4,
-                      horizontal: 20,
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 16.0,
+                      vertical: 4.0,
                     ),
-                    leading: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        hour < 12
-                            ? morning
-                            : hour < 18
-                                ? midday
-                                : night,
-                        Text(
-                          timeString,
-                          style: Theme.of(context).textTheme.bodySmall,
+                    child: Card(
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 16.0,
+                          vertical: 24.0,
                         ),
-                      ],
-                    ),
-                    title: Text(title),
-                    subtitle: Row(
-                      children: [
-                        Text('$type:'),
-                        const SizedBox(width: 4),
-                        Icon(icon, size: 20),
-                        Text(durationString),
-                      ],
+                        child: Row(
+                          children: [
+                            Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                hour < 12
+                                    ? morning
+                                    : hour < 18
+                                        ? midday
+                                        : night,
+                                Text(
+                                  timeString,
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .bodySmall
+                                      ?.copyWith(
+                                          color: Theme.of(context)
+                                              .colorScheme
+                                              .onBackground),
+                                ),
+                              ],
+                            ),
+                            const SizedBox(width: 20),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  title,
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .titleLarge
+                                      ?.copyWith(
+                                          color: Theme.of(context)
+                                              .colorScheme
+                                              .onBackground),
+                                ),
+                                Row(
+                                  children: [
+                                    Text(
+                                      type,
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .titleMedium
+                                          ?.copyWith(
+                                              color: Theme.of(context)
+                                                  .colorScheme
+                                                  .onBackground),
+                                    ),
+                                    const SizedBox(width: 4),
+                                    Icon(
+                                      Icons.navigate_next,
+                                      size: 24,
+                                      color: Theme.of(context)
+                                          .colorScheme
+                                          .onBackground
+                                          .withOpacity(0.5),
+                                    ),
+                                    const SizedBox(width: 4),
+                                    Icon(icon, size: 20),
+                                    Text(
+                                      durationString,
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .titleMedium
+                                          ?.copyWith(
+                                              color: Theme.of(context)
+                                                  .colorScheme
+                                                  .onBackground),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
                     ),
                   ),
                 );

@@ -10,8 +10,8 @@ const tagTitle = 'Add tags';
 const emptyStateToday = 'It\'s a brand new day!';
 const emptyStateHistory = 'You have no past, only present.';
 
-/// Profile
-const profileLabel = 'Profile';
+/// Insights
+const insightsLabel = 'Insights';
 
 /// Meditation
 const meditatingLabel = 'Meditating';

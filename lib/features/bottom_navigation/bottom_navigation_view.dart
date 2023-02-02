@@ -15,7 +15,7 @@ class BottomNavigationView extends ConsumerWidget {
     return Scaffold(
       body: ref.watch(bottomNavigationCProvider) == 0
           ? const TodayView()
-          : const Center(child: Text(profileLabel)),
+          : const Center(child: Text('$insightsLabel coming soon...')),
       bottomNavigationBar: NavigationBar(
         // labelBehavior: NavigationDestinationLabelBehavior.alwaysHide,
         height: 60,
@@ -27,9 +27,9 @@ class BottomNavigationView extends ConsumerWidget {
             label: todayLabel,
           ),
           NavigationDestination(
-            icon: Icon(Icons.face_outlined),
-            selectedIcon: Icon(Icons.face),
-            label: profileLabel,
+            icon: Icon(Icons.lightbulb_outlined),
+            selectedIcon: Icon(Icons.lightbulb),
+            label: insightsLabel,
           ),
         ],
         onDestinationSelected: (index) =>
