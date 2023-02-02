@@ -53,7 +53,7 @@ class ExpandedFloatingActionButtonWidget extends ConsumerWidget {
             duration: const Duration(milliseconds: 250),
             child: Material(
               shape: const CircleBorder(),
-              elevation: fabIsExpanded ? 0 : 8,
+              elevation: fabIsExpanded ? 0 : 6,
               child: Container(
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
@@ -62,11 +62,11 @@ class ExpandedFloatingActionButtonWidget extends ConsumerWidget {
                       : Theme.of(context).colorScheme.primaryContainer,
                 ),
                 child: Padding(
-                  padding: const EdgeInsets.all(8.0),
+                  padding: const EdgeInsets.all(12.0),
                   child: Icon(
                     Icons.add,
-                    size: 28,
-                    color: Theme.of(context).colorScheme.onPrimaryContainer,
+                    size: 32,
+                    color: Theme.of(context).colorScheme.primary,
                   ),
                 ),
               ),

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
+import 'corelate_theme.dart';
 import 'features/bottom_navigation/bottom_navigation_view.dart';
 import 'features/breathwork/breathwork_configure/breathwork_configure_view.dart';
 import 'features/breathwork/four_7_8/four_7_8_view.dart';
@@ -17,29 +18,16 @@ class CorelateApp extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    const corelateTheme = CorelateTheme();
+    const corelateDarkTheme = CorelateDarkTheme();
+
     return MaterialApp.router(
       routeInformationParser: router.routeInformationParser,
       routeInformationProvider: router.routeInformationProvider,
       routerDelegate: router.routerDelegate,
       title: appNameLabel,
-      theme: ThemeData.from(
-        useMaterial3: true,
-        colorScheme: ColorScheme.fromSeed(
-          seedColor: primaryColor,
-          brightness: Brightness.light,
-        ),
-      ),
-      // ThemeData.light(
-      //   useMaterial3: true,
-      //   colorSchemeSeed: primaryColor,
-      // ),
-      darkTheme: ThemeData.from(
-        useMaterial3: true,
-        colorScheme: ColorScheme.fromSeed(
-          seedColor: primaryColor,
-          brightness: Brightness.dark,
-        ),
-      ),
+      theme: corelateTheme.toThemeData(),
+      darkTheme: corelateDarkTheme.toThemeData(),
       themeMode: ThemeMode.system,
     );
   }

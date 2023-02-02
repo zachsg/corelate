@@ -29,7 +29,7 @@ class ActionButtonWidget extends ConsumerWidget {
             Text(title),
             const SizedBox(width: 12),
             Padding(
-              padding: const EdgeInsets.all(0.0),
+              padding: const EdgeInsets.only(right: 6.0),
               child: Icon(icon, size: 28),
             ),
           ],
