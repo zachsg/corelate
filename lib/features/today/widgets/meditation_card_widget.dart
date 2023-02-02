@@ -149,10 +149,7 @@ class MeditationCardWidget extends ConsumerWidget {
           ),
           actions: [
             TextButton(
-              child: Text(
-                'Delete',
-                style: TextStyle(color: Theme.of(context).colorScheme.error),
-              ),
+              child: const Text('Delete'),
               onPressed: () {
                 ref.read(todayCProvider.notifier).deleteActivity(activity);
                 Navigator.of(context).pop();

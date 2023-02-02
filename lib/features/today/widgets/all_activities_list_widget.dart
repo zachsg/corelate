@@ -67,11 +67,19 @@ class AllActivitiesListWidget extends ConsumerWidget {
                 var timeString = '';
 
                 final day = activity.date.day;
+                final month = activity.date.month;
+                final year = activity.date.year;
+
+                final now = DateTime.now();
 
                 final is24HoursFormat =
                     MediaQuery.of(context).alwaysUse24HourFormat;
-                if (day < DateTime.now().day) {
-                  timeString = DateFormat('M/dd/yy').format(activity.date);
+                if (day < now.day || month < now.month) {
+                  if (year == now.year) {
+                    timeString = DateFormat('MMM dd').format(activity.date);
+                  } else {
+                    timeString = DateFormat('M/dd/yy').format(activity.date);
+                  }
                 } else if (is24HoursFormat) {
                   timeString = '$hour:$minuteString';
                 } else {
@@ -86,33 +94,70 @@ class AllActivitiesListWidget extends ConsumerWidget {
                 final night =
                     Icon(Icons.bedtime, size: 28, color: color.tertiary);
 
-                return ListTile(
-                  contentPadding: const EdgeInsets.symmetric(
-                    vertical: 4,
-                    horizontal: 20,
+                return Dismissible(
+                  key: Key(activity.id.toString()),
+                  direction: DismissDirection.endToStart,
+                  onDismissed: (direction) => ref
+                      .read(todayCProvider.notifier)
+                      .deleteActivity(activity),
+                  background: Container(
+                    color: Theme.of(context).colorScheme.primaryContainer,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        const SizedBox(),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 12.0),
+                          child: Row(
+                            children: [
+                              Text(
+                                'Delete',
+                                style: TextStyle(
+                                    color: Theme.of(context)
+                                        .colorScheme
+                                        .onPrimaryContainer),
+                              ),
+                              const SizedBox(width: 4),
+                              Icon(
+                                Icons.delete,
+                                color: Theme.of(context)
+                                    .colorScheme
+                                    .onPrimaryContainer,
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
-                  leading: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      hour < 12
-                          ? morning
-                          : hour < 18
-                              ? midday
-                              : night,
-                      Text(
-                        timeString,
-                        style: Theme.of(context).textTheme.bodySmall,
-                      ),
-                    ],
-                  ),
-                  title: Text(title),
-                  subtitle: Row(
-                    children: [
-                      Text('$type:'),
-                      const SizedBox(width: 4),
-                      Icon(icon, size: 20),
-                      Text(durationString),
-                    ],
+                  child: ListTile(
+                    contentPadding: const EdgeInsets.symmetric(
+                      vertical: 4,
+                      horizontal: 20,
+                    ),
+                    leading: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        hour < 12
+                            ? morning
+                            : hour < 18
+                                ? midday
+                                : night,
+                        Text(
+                          timeString,
+                          style: Theme.of(context).textTheme.bodySmall,
+                        ),
+                      ],
+                    ),
+                    title: Text(title),
+                    subtitle: Row(
+                      children: [
+                        Text('$type:'),
+                        const SizedBox(width: 4),
+                        Icon(icon, size: 20),
+                        Text(durationString),
+                      ],
+                    ),
                   ),
                 );
               },
