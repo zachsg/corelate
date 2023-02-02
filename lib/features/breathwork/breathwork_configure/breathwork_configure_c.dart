@@ -73,10 +73,17 @@ class BreathworkConfigureC extends _$BreathworkConfigureC {
   void save() {
     final breathwork = state.activity.breathwork;
     if (breathwork != null) {
-      final wimHof = ref.watch(wimHofCProvider);
-      final rounds = wimHof.holdSeconds.length;
-      final breathworkUpdated = breathwork.copyWith(
-          holdSecondsPerRound: wimHof.holdSeconds, rounds: rounds);
+      Breathwork breathworkUpdated;
+
+      if (breathwork.type == BreathworkType.four78) {
+        // TODO: Save 4-7-8 session
+        breathworkUpdated = breathwork;
+      } else {
+        final wimHof = ref.watch(wimHofCProvider);
+        final rounds = wimHof.holdSeconds.length;
+        breathworkUpdated = breathwork.copyWith(
+            holdSecondsPerRound: wimHof.holdSeconds, rounds: rounds);
+      }
       final activity = state.activity.copyWith(breathwork: breathworkUpdated);
       state = state.copyWith(activity: activity);
       ref.read(databaseCProvider.future).then((db) async {
@@ -87,8 +94,11 @@ class BreathworkConfigureC extends _$BreathworkConfigureC {
     if (Platform.isIOS) {
       final breathwork = state.activity.breathwork;
       if (breathwork != null) {
+        int elapsed;
+
         if (breathwork.type == BreathworkType.four78) {
           // TODO: Save 4-7-8 minutes to mindful minutes in apple health
+          elapsed = 0;
         } else {
           final wimHof = ref.watch(wimHofCProvider);
 
@@ -100,14 +110,15 @@ class BreathworkConfigureC extends _$BreathworkConfigureC {
               breathwork.rounds * (breathwork.breathsPerRound * 1.5 * 2.0);
           final inhalesElapsed = breathwork.rounds * 15;
 
-          final elapsed = countsElapsed.toInt() + holdsElapsed + inhalesElapsed;
-          ref.read(appleMindfulCProvider.future).then((health) async {
-            await health.writeMindfulMinutes(
-              state.activity.date,
-              state.activity.date.add(Duration(seconds: elapsed)),
-            );
-          });
+          elapsed = countsElapsed.toInt() + holdsElapsed + inhalesElapsed;
         }
+
+        ref.read(appleMindfulCProvider.future).then((health) async {
+          await health.writeMindfulMinutes(
+            state.activity.date,
+            state.activity.date.add(Duration(seconds: elapsed)),
+          );
+        });
       }
       // TODO: Currently health plugin crashes trying to save mindfulness (using mindful_minutes plugin instead)
       // ref.read(healthCProvider.future).then((health) async {

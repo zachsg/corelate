@@ -132,8 +132,8 @@ class AllActivitiesListWidget extends ConsumerWidget {
                   ),
                   child: Padding(
                     padding: const EdgeInsets.symmetric(
-                      horizontal: 16.0,
-                      vertical: 4.0,
+                      horizontal: 10.0,
+                      vertical: 2.0,
                     ),
                     child: Card(
                       child: Padding(
