@@ -45,7 +45,7 @@ abstract class _$DateC extends AutoDisposeNotifier<DateTime> {
   DateTime build();
 }
 
-String _$TodayCHash() => r'60fa72d644f31009b51b1cb1225a32f8e445ec9b';
+String _$TodayCHash() => r'97d0849f6705f283e388b5546e8a10bf9b373e4f';
 
 /// See also [TodayC].
 final todayCProvider = NotifierProvider<TodayC, Today>(

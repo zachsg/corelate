@@ -1,4 +1,7 @@
+import 'package:isar/isar.dart';
+
 class Activity {
+  @Index()
   DateTime date;
 
   Activity({

@@ -40,18 +40,20 @@ class Database {
 
     final date = DateTime.now().copyWith(hour: 0, minute: 0);
     final meditations = await isar.meditations
-        .filter()
+        .where()
         .dateGreaterThan(date)
         .sortByDateDesc()
         .findAll();
     activities.addAll(meditations);
 
     final breathworks = await isar.breathworks
-        .filter()
+        .where()
         .dateGreaterThan(date)
         .sortByDateDesc()
         .findAll();
     activities.addAll(breathworks);
+
+    activities.sort((a1, a2) => a2.date.compareTo(a1.date));
 
     return activities;
   }
@@ -63,18 +65,20 @@ class Database {
     final date = DateTime.now().copyWith(hour: 0, minute: 0);
 
     final meditations = await isar.meditations
-        .filter()
+        .where()
         .dateLessThan(date)
         .sortByDateDesc()
         .findAll();
     activities.addAll(meditations);
 
     final breathworks = await isar.breathworks
-        .filter()
+        .where()
         .dateLessThan(date)
         .sortByDateDesc()
         .findAll();
     activities.addAll(breathworks);
+
+    activities.sort((a1, a2) => a2.date.compareTo(a1.date));
 
     return activities;
   }

@@ -19,7 +19,11 @@ class _TodayViewState extends ConsumerState<TodayView>
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
     if (state == AppLifecycleState.resumed) {
-      ref.read(dateCProvider.notifier).reset();
+      if (ref.read(todayCProvider).showingToday) {
+        ref.read(todayCProvider.notifier).loadTodaysActivities();
+      } else {
+        ref.read(todayCProvider.notifier).loadAllActivities();
+      }
     }
   }
 
