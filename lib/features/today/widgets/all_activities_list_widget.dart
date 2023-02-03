@@ -31,11 +31,18 @@ class _AllActivitiesListWidgetState
 
   @override
   Widget build(BuildContext context) {
-    final formatter = DateFormat('MMM dd, yyyy');
-    final historyDate = ref.read(todayCProvider).historyDate;
-    final historyFormatted = formatter.format(historyDate);
+    final formatterThisYear = DateFormat('MMMM d');
+    final formatterPrevYear = DateFormat('MMMM d, yyyy');
 
     final today = DateTime.now().copyWith(hour: 0, minute: 0);
+    final historyDate = ref.read(todayCProvider).historyDate;
+
+    final isThisYear = historyDate.year == today.year;
+
+    final historyFormatted = isThisYear
+        ? formatterThisYear.format(historyDate)
+        : formatterPrevYear.format(historyDate);
+
     final isViewingToday = today.compareTo(historyDate) == -1;
 
     return Column(
