@@ -22,7 +22,8 @@ class _TodayViewState extends ConsumerState<TodayView>
       if (ref.read(todayCProvider).showingToday) {
         ref.read(todayCProvider.notifier).loadTodaysActivities();
       } else {
-        ref.read(todayCProvider.notifier).loadAllActivities();
+        final date = ref.read(todayCProvider).historyDate;
+        ref.read(todayCProvider.notifier).loadActivitiesForDate(date);
       }
     }
   }

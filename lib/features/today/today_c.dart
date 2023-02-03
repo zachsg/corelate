@@ -55,7 +55,7 @@ class TodayC extends _$TodayC {
 
     state = state.copyWith(historyDate: date);
 
-    _loadActivitiesForDate(date);
+    loadActivitiesForDate(date);
   }
 
   void decrementHistoryDate() {
@@ -63,10 +63,10 @@ class TodayC extends _$TodayC {
 
     state = state.copyWith(historyDate: date);
 
-    _loadActivitiesForDate(date);
+    loadActivitiesForDate(date);
   }
 
-  Future<void> _loadActivitiesForDate(DateTime date) async {
+  Future<void> loadActivitiesForDate(DateTime date) async {
     ref.read(databaseCProvider.future).then((db) async {
       final activities = await db.loadActivitiesForDay(date);
       state = state.copyWith(activities: activities);

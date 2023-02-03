@@ -24,7 +24,8 @@ class _AllActivitiesListWidgetState
     extends ConsumerState<AllActivitiesListWidget> {
   @override
   void initState() {
-    ref.read(todayCProvider.notifier).loadAllActivities();
+    final date = ref.read(todayCProvider).historyDate;
+    ref.read(todayCProvider.notifier).loadActivitiesForDate(date);
     super.initState();
   }
 
