@@ -18,7 +18,7 @@ class BottomNavigationView extends ConsumerWidget {
           : const Center(child: Text('$insightsLabel coming soon...')),
       bottomNavigationBar: NavigationBar(
         // labelBehavior: NavigationDestinationLabelBehavior.alwaysHide,
-        height: 60,
+        // height: 60,
         selectedIndex: ref.watch(bottomNavigationCProvider),
         destinations: const [
           NavigationDestination(

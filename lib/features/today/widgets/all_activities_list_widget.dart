@@ -107,7 +107,7 @@ class _AllActivitiesListWidgetState
                                     ),
                                     const SizedBox(width: 4),
                                     Icon(
-                                      Icons.delete,
+                                      Icons.delete_outline,
                                       color: Theme.of(context)
                                           .colorScheme
                                           .onPrimaryContainer,
