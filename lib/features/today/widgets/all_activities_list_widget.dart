@@ -46,7 +46,8 @@ class _AllActivitiesListWidgetState
     final isViewingToday = today.compareTo(historyDate) == -1;
 
     final primaryColor = Theme.of(context).colorScheme.primaryContainer;
-    final backgroundColor = Theme.of(context).colorScheme.onPrimaryContainer;
+    final backgroundColor =
+        Theme.of(context).colorScheme.onPrimaryContainer.withOpacity(0.7);
 
     return Column(
       children: [
