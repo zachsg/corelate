@@ -30,82 +30,121 @@ class _AllActivitiesListWidgetState
 
   @override
   Widget build(BuildContext context) {
-    return ref.watch(todayCProvider).activities.isEmpty
-        ? const EmptyStateWidget(
-            icon: Icons.psychology_alt,
-            message: emptyStateHistory,
-          )
-        : ListView.builder(
-            itemCount: ref.watch(todayCProvider).activities.length,
-            itemBuilder: (context, index) {
-              final activity = ref.watch(todayCProvider).activities[index];
+    final formatter = DateFormat('MMM dd, yyyy');
+    final historyDate = ref.read(todayCProvider).historyDate;
+    final historyFormatted = formatter.format(historyDate);
 
-              return Dismissible(
-                key: UniqueKey(),
-                direction: DismissDirection.endToStart,
-                onDismissed: (direction) => ref
-                    .read(todayCProvider.notifier)
-                    .deleteActivity(isToday: false, activity: activity),
-                background: Container(
-                  color: Theme.of(context).colorScheme.primaryContainer,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      const SizedBox(),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 12.0),
-                        child: Row(
-                          children: [
-                            Text(
-                              'Delete',
-                              style: TextStyle(
-                                  color: Theme.of(context)
-                                      .colorScheme
-                                      .onPrimaryContainer),
-                            ),
-                            const SizedBox(width: 4),
-                            Icon(
-                              Icons.delete,
-                              color: Theme.of(context)
-                                  .colorScheme
-                                  .onPrimaryContainer,
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
+    final today = DateTime.now().copyWith(hour: 0, minute: 0);
+    final isViewingToday = today.compareTo(historyDate) == -1;
+
+    return Column(
+      children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            IconButton(
+              onPressed: ref.read(todayCProvider.notifier).decrementHistoryDate,
+              icon: const Icon(Icons.undo),
+            ),
+            Text(
+              historyFormatted,
+              style: Theme.of(context).textTheme.titleMedium,
+            ),
+            isViewingToday
+                ? IconButton(onPressed: () {}, icon: const SizedBox())
+                : IconButton(
+                    onPressed:
+                        ref.read(todayCProvider.notifier).incrementHistoryDate,
+                    icon: const Icon(Icons.redo),
                   ),
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 10.0,
-                    vertical: 2.0,
-                  ),
-                  child: Card(
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 16.0,
-                        vertical: 24.0,
-                      ),
-                      child: Row(
-                        children: [
-                          _leadingWidget(context, activity),
-                          const SizedBox(width: 20),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
+          ],
+        ),
+        ref.watch(todayCProvider).activities.isEmpty
+            ? const EmptyStateWidget(
+                icon: Icons.psychology_alt,
+                message: emptyStateHistory,
+              )
+            : Column(
+                children: [
+                  ListView.builder(
+                    shrinkWrap: true,
+                    itemCount: ref.watch(todayCProvider).activities.length,
+                    itemBuilder: (context, index) {
+                      final activity =
+                          ref.watch(todayCProvider).activities[index];
+
+                      return Dismissible(
+                        key: UniqueKey(),
+                        direction: DismissDirection.endToStart,
+                        onDismissed: (direction) => ref
+                            .read(todayCProvider.notifier)
+                            .deleteActivity(isToday: false, activity: activity),
+                        background: Container(
+                          color: Theme.of(context).colorScheme.primaryContainer,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              _titleWidget(context, activity),
-                              _subtitleWidget(context, activity),
+                              const SizedBox(),
+                              Padding(
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 12.0),
+                                child: Row(
+                                  children: [
+                                    Text(
+                                      'Delete',
+                                      style: TextStyle(
+                                          color: Theme.of(context)
+                                              .colorScheme
+                                              .onPrimaryContainer),
+                                    ),
+                                    const SizedBox(width: 4),
+                                    Icon(
+                                      Icons.delete,
+                                      color: Theme.of(context)
+                                          .colorScheme
+                                          .onPrimaryContainer,
+                                    ),
+                                  ],
+                                ),
+                              ),
                             ],
                           ),
-                        ],
-                      ),
-                    ),
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 10.0,
+                            vertical: 2.0,
+                          ),
+                          child: Card(
+                            child: Padding(
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 16.0,
+                                vertical: 24.0,
+                              ),
+                              child: Row(
+                                children: [
+                                  _leadingWidget(context, activity),
+                                  const SizedBox(width: 20),
+                                  Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      _titleWidget(context, activity),
+                                      _subtitleWidget(context, activity),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+                      );
+                    },
                   ),
-                ),
-              );
-            },
-          );
+                ],
+              ),
+      ],
+    );
   }
 
   Widget _leadingWidget(BuildContext context, Activity activity) {

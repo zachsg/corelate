@@ -9,10 +9,12 @@ class Today {
   bool showingToday;
   bool fabExpanded;
   List<Activity> activities;
+  DateTime historyDate;
 
   Today({
     this.showingToday = true,
     this.fabExpanded = false,
     required this.activities,
+    required this.historyDate,
   });
 }

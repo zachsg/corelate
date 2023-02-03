@@ -19,15 +19,21 @@ class DateC extends _$DateC {
 @Riverpod(keepAlive: true)
 class TodayC extends _$TodayC {
   @override
-  Today build() => Today(activities: []);
+  Today build() => Today(
+      activities: [],
+      historyDate: DateTime.now().subtract(const Duration(days: 1)));
 
   void setFABExpanded(bool isExpanded) =>
       state = state.copyWith(fabExpanded: isExpanded);
 
-  void toggleShowingToday() => state = state.copyWith(
-        activities: [],
-        showingToday: !state.showingToday,
-      );
+  void toggleShowingToday() {
+    state = state.copyWith(
+      activities: [],
+      showingToday: !state.showingToday,
+    );
+
+    _resetHistoryDate();
+  }
 
   void deleteActivity({required bool isToday, required Activity activity}) {
     ref.read(databaseCProvider.future).then((db) async {
@@ -38,6 +44,32 @@ class TodayC extends _$TodayC {
       }
 
       isToday ? loadTodaysActivities() : loadAllActivities();
+    });
+  }
+
+  void _resetHistoryDate() => state = state.copyWith(
+      historyDate: DateTime.now().subtract(const Duration(days: 1)));
+
+  void incrementHistoryDate() {
+    final date = state.historyDate.add(const Duration(days: 1));
+
+    state = state.copyWith(historyDate: date);
+
+    _loadActivitiesForDate(date);
+  }
+
+  void decrementHistoryDate() {
+    final date = state.historyDate.subtract(const Duration(days: 1));
+
+    state = state.copyWith(historyDate: date);
+
+    _loadActivitiesForDate(date);
+  }
+
+  Future<void> _loadActivitiesForDate(DateTime date) async {
+    ref.read(databaseCProvider.future).then((db) async {
+      final activities = await db.loadActivitiesForDay(date);
+      state = state.copyWith(activities: activities);
     });
   }
 

@@ -82,6 +82,30 @@ class Database {
     return activities;
   }
 
+  Future<List<Activity>> loadActivitiesForDay(DateTime date) async {
+    List<Activity> activities = [];
+
+    final dateStart = date.copyWith(hour: 0, minute: 0);
+    final dateEnd = dateStart.add(const Duration(hours: 23, minutes: 59));
+
+    final meditations = await isar.meditations
+        .where()
+        .dateBetween(dateStart, dateEnd)
+        .sortByDateDesc()
+        .findAll();
+
+    final breathworks = await isar.breathworks
+        .where()
+        .dateBetween(dateStart, dateEnd)
+        .sortByDateDesc()
+        .findAll();
+
+    activities = [...meditations, ...breathworks]
+      ..sort((a1, a2) => a2.date.compareTo(a1.date));
+
+    return activities;
+  }
+
   // Stream<List<Activity>> todayActivitiesStream(DateTime date) async* {
   //   final query = isar.activitys
   //       .filter()

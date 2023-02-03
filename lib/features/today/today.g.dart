@@ -13,6 +13,8 @@ abstract class _$TodayCWProxy {
 
   Today activities(List<Activity> activities);
 
+  Today historyDate(DateTime historyDate);
+
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `Today(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
   /// Usage
@@ -23,6 +25,7 @@ abstract class _$TodayCWProxy {
     bool? showingToday,
     bool? fabExpanded,
     List<Activity>? activities,
+    DateTime? historyDate,
   });
 }
 
@@ -42,6 +45,9 @@ class _$TodayCWProxyImpl implements _$TodayCWProxy {
   Today activities(List<Activity> activities) => this(activities: activities);
 
   @override
+  Today historyDate(DateTime historyDate) => this(historyDate: historyDate);
+
+  @override
 
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `Today(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
@@ -53,6 +59,7 @@ class _$TodayCWProxyImpl implements _$TodayCWProxy {
     Object? showingToday = const $CopyWithPlaceholder(),
     Object? fabExpanded = const $CopyWithPlaceholder(),
     Object? activities = const $CopyWithPlaceholder(),
+    Object? historyDate = const $CopyWithPlaceholder(),
   }) {
     return Today(
       showingToday:
@@ -73,6 +80,12 @@ class _$TodayCWProxyImpl implements _$TodayCWProxy {
               ? _value.activities!
               // ignore: cast_nullable_to_non_nullable
               : activities as List<Activity>,
+      historyDate:
+          historyDate == const $CopyWithPlaceholder() || historyDate == null
+              // ignore: unnecessary_non_null_assertion
+              ? _value.historyDate!
+              // ignore: cast_nullable_to_non_nullable
+              : historyDate as DateTime,
     );
   }
 }
