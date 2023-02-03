@@ -45,27 +45,57 @@ class _AllActivitiesListWidgetState
 
     final isViewingToday = today.compareTo(historyDate) == -1;
 
+    final primaryColor = Theme.of(context).colorScheme.primaryContainer;
+    final backgroundColor = Theme.of(context).colorScheme.onPrimaryContainer;
+
     return Column(
       children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            IconButton(
-              onPressed: ref.read(todayCProvider.notifier).decrementHistoryDate,
-              icon: const Icon(Icons.undo),
-            ),
-            Text(
-              historyFormatted,
-              style: Theme.of(context).textTheme.titleMedium,
-            ),
-            isViewingToday
-                ? IconButton(onPressed: () {}, icon: const SizedBox())
-                : IconButton(
-                    onPressed:
-                        ref.read(todayCProvider.notifier).incrementHistoryDate,
-                    icon: const Icon(Icons.redo),
+        Container(
+          color: Theme.of(context).colorScheme.primaryContainer,
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                Container(
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: backgroundColor,
                   ),
-          ],
+                  child: IconButton(
+                    onPressed:
+                        ref.read(todayCProvider.notifier).decrementHistoryDate,
+                    icon: Icon(
+                      Icons.undo,
+                      color: primaryColor,
+                    ),
+                  ),
+                ),
+                Text(
+                  historyFormatted,
+                  style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                      color: Theme.of(context).colorScheme.onPrimaryContainer),
+                ),
+                isViewingToday
+                    ? IconButton(onPressed: () {}, icon: const SizedBox())
+                    : Container(
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: backgroundColor,
+                        ),
+                        child: IconButton(
+                          onPressed: ref
+                              .read(todayCProvider.notifier)
+                              .incrementHistoryDate,
+                          icon: Icon(
+                            Icons.redo,
+                            color: primaryColor,
+                          ),
+                        ),
+                      ),
+              ],
+            ),
+          ),
         ),
         ref.watch(todayCProvider).activities.isEmpty
             ? const EmptyStateWidget(
