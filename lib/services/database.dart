@@ -35,6 +35,7 @@ class Database {
     });
   }
 
+  /// Activities
   Future<List<Activity>> loadTodaysActivities() async {
     List<Activity> activities = [];
 
