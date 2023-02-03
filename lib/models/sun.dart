@@ -3,9 +3,10 @@ import 'package:isar/isar.dart';
 
 part 'sun.g.dart';
 
-@embedded
+@collection
 @CopyWith()
 class Sun {
+  Id id = Isar.autoIncrement;
   int? placeholder;
 
   Sun({

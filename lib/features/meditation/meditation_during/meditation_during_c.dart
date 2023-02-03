@@ -4,9 +4,9 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../../services/local_notification_service.dart';
 import '../../../services/provider.dart';
-import '../../../models/activity.dart';
 import '../../../models/meditation.dart';
 import '../../../models/meditation_type.dart';
+import '../../today/today_c.dart';
 import '../meditation_configure/meditation_configure_c.dart';
 import 'meditation_during.dart';
 
@@ -16,50 +16,42 @@ part 'meditation_during_c.g.dart';
 class MeditationDuringC extends _$MeditationDuringC {
   @override
   MeditationDuring build() {
-    final activity = ref.watch(meditationConfigureCProvider).activity;
+    final meditation = ref.watch(meditationConfigureCProvider).meditation;
 
-    return MeditationDuring(activity: activity);
+    return MeditationDuring(meditation: meditation);
   }
 
   void setElapsed(int seconds) {
-    final meditation = state.activity.meditation;
-    if (meditation != null) {
-      final meditationUpdated = meditation.copyWith(elapsed: seconds);
-      final activity = state.activity.copyWith(meditation: meditationUpdated);
-      state = state.copyWith(activity: activity);
-    }
+    final meditation = state.meditation.copyWith(elapsed: seconds);
+    state = state.copyWith(meditation: meditation);
   }
 
   void setRating(double rating) {
-    final meditation = state.activity.meditation;
-    if (meditation != null) {
-      final meditationUpdated = meditation.copyWith(rating: rating);
-      final activity = state.activity.copyWith(meditation: meditationUpdated);
-      state = state.copyWith(activity: activity);
-    }
+    final meditation = state.meditation.copyWith(rating: rating);
+    state = state.copyWith(meditation: meditation);
   }
 
   void updateDate(DateTime date) {
-    final activity = state.activity.copyWith(date: date);
-    state = state.copyWith(activity: activity);
+    final meditation = state.meditation.copyWith(date: date);
+    state = state.copyWith(meditation: meditation);
   }
 
   void save() {
     ref.read(databaseCProvider.future).then((db) async {
-      await db.saveActivity(state.activity);
+      await db.saveMeditation(state.meditation);
+
+      ref.read(todayCProvider.notifier).loadTodaysActivities();
     });
 
-    final activity = state.activity;
     if (Platform.isIOS) {
-      final meditation = activity.meditation;
-      if (meditation != null) {
-        ref.read(appleMindfulCProvider.future).then((health) async {
-          await health.writeMindfulMinutes(
-            activity.date,
-            activity.date.add(Duration(seconds: meditation.elapsed)),
-          );
-        });
-      }
+      ref.read(appleMindfulCProvider.future).then((health) async {
+        await health.writeMindfulMinutes(
+          state.meditation.date,
+          state.meditation.date
+              .add(Duration(seconds: state.meditation.elapsed)),
+        );
+      });
+
       // TODO: Currently health plugin crashes trying to save mindfulness (using mindful_minutes plugin instead)
       // ref.read(healthCProvider.future).then((health) async {
       //   final success = await health.writeHealthData(
@@ -77,11 +69,8 @@ class MeditationDuringC extends _$MeditationDuringC {
   void sessionStopped(bool stopped) {
     state = state.copyWith(sessionStopped: stopped);
 
-    final meditation = state.activity.meditation;
-    if (meditation != null) {
-      if (meditation.type == MeditationType.timed) {
-        LocalNotificationService().cancelNotificationWithId(0);
-      }
+    if (state.meditation.type == MeditationType.timed) {
+      LocalNotificationService().cancelNotificationWithId(0);
     }
   }
 }

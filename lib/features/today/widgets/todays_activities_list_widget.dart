@@ -4,77 +4,94 @@ import 'package:intl/intl.dart';
 
 import '../../../helpers/strings.dart';
 import '../../../models/activity.dart';
+import '../../../models/breathwork.dart';
 import '../../../models/breathwork_type.dart';
+import '../../../models/meditation.dart';
 import '../today_c.dart';
 import 'xwidgets.dart';
 
-class TodaysActivitiesListWidget extends ConsumerWidget {
+class XXX extends ConsumerStatefulWidget {
+  const XXX({super.key});
+
+  @override
+  ConsumerState<ConsumerStatefulWidget> createState() => _XXXState();
+}
+
+class _XXXState extends ConsumerState<XXX> {
+  @override
+  Widget build(BuildContext context) {
+    return Container();
+  }
+}
+
+class TodaysActivitiesListWidget extends ConsumerStatefulWidget {
   const TodaysActivitiesListWidget({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    return ref.watch(todayActivitiesStreamProvider).when(
-          data: (activities) {
-            if (activities.isEmpty) {
-              return const EmptyStateWidget(
-                icon: Icons.sunny,
-                message: emptyStateToday,
-              );
-            } else {
-              return GridView.builder(
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
-                  childAspectRatio: 1.25,
-                ),
-                itemCount: activities.length,
-                itemBuilder: (context, index) {
-                  final activity = activities[index];
+  ConsumerState<ConsumerStatefulWidget> createState() =>
+      _TodaysActivitiesListWidgetState();
+}
 
-                  final timeString = _getTimeFormatted(context, activity);
-                  Icon icon = _getTimeIcon(context, activity.date.hour);
+class _TodaysActivitiesListWidgetState
+    extends ConsumerState<TodaysActivitiesListWidget> {
+  @override
+  void initState() {
+    ref.read(todayCProvider.notifier).loadTodaysActivities();
 
-                  final isEven = index % 2 == 0;
-                  final isFirstRow = index == 0 || index == 1;
+    super.initState();
+  }
 
-                  if (activity.meditation != null) {
-                    return MeditationCardWidget(
-                      title: 'Meditation',
-                      activity: activity,
-                      icon: icon,
-                      timeString: timeString,
-                      isEven: isEven,
-                      isFirstRow: isFirstRow,
-                    );
-                  } else if (activity.breathwork != null) {
-                    if (activity.breathwork!.type == BreathworkType.four78) {
-                      return const Text('4-7-8');
-                    } else {
-                      return BreathworkCardWidget(
-                        title: 'Breathwork',
-                        activity: activity,
-                        icon: icon,
-                        timeString: timeString,
-                        isEven: isEven,
-                        isFirstRow: isFirstRow,
-                      );
-                    }
-                  } else {
-                    return const Text('n/a');
-                  }
-                },
-              );
-            }
-          },
-          error: (error, stackTrace) => Center(
-            child: Expanded(
-              child: Text('$somethingWrongLabel: $error'),
-            ),
-          ),
-          loading: () => const EmptyStateWidget(
+  @override
+  Widget build(BuildContext context) {
+    return ref.watch(todayCProvider).activities.isEmpty
+        ? const EmptyStateWidget(
             icon: Icons.sunny,
             message: emptyStateToday,
-          ),
-        );
+          )
+        : GridView.builder(
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 2,
+              childAspectRatio: 1.25,
+            ),
+            itemCount: ref.watch(todayCProvider).activities.length,
+            itemBuilder: (context, index) {
+              final activity = ref.watch(todayCProvider).activities[index];
+
+              final timeString = _getTimeFormatted(context, activity);
+              Icon icon = _getTimeIcon(context, activity.date.hour);
+
+              final isEven = index % 2 == 0;
+              final isFirstRow = index == 0 || index == 1;
+
+              if (activity is Meditation) {
+                final meditation = activity;
+                return MeditationCardWidget(
+                  title: 'Meditation',
+                  meditation: meditation,
+                  icon: icon,
+                  timeString: timeString,
+                  isEven: isEven,
+                  isFirstRow: isFirstRow,
+                );
+              } else if (activity is Breathwork) {
+                final breathwork = activity;
+                if (breathwork.type == BreathworkType.four78) {
+                  return const Text('4-7-8');
+                } else {
+                  return BreathworkCardWidget(
+                    title: 'Breathwork',
+                    breathwork: breathwork,
+                    icon: icon,
+                    timeString: timeString,
+                    isEven: isEven,
+                    isFirstRow: isFirstRow,
+                  );
+                }
+              } else {
+                return const Text('n/a');
+              }
+            },
+          );
   }
 
   String _getTimeFormatted(BuildContext context, Activity activity) {

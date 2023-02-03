@@ -54,18 +54,12 @@ class WimHofView extends ConsumerWidget {
                     FilledButton(
                       onPressed: () {
                         final wimHof = ref.read(wimHofCProvider);
-                        final breathworkConfig = ref
-                            .read(breathworkConfigureCProvider)
-                            .activity
-                            .breathwork;
 
-                        if (breathworkConfig != null) {
-                          if (wimHof.currentRound != 1) {
-                            ref.read(wimHofCProvider.notifier).markDone();
-                            _showSessionCompleteDialog(ref, context);
-                          } else {
-                            context.pop();
-                          }
+                        if (wimHof.currentRound != 1) {
+                          ref.read(wimHofCProvider.notifier).markDone();
+                          _showSessionCompleteDialog(ref, context);
+                        } else {
+                          context.pop();
                         }
                       },
                       child: const Padding(
@@ -92,38 +86,35 @@ class WimHofView extends ConsumerWidget {
   Future<void> _showSessionCompleteDialog(
       WidgetRef ref, BuildContext context) async {
     final wimHof = ref.watch(wimHofCProvider);
-    final breathwork =
-        ref.watch(breathworkConfigureCProvider).activity.breathwork;
+    final breathwork = ref.watch(breathworkConfigureCProvider).breathwork;
 
     var message = '';
 
-    if (breathwork != null) {
-      final rounds = wimHof.holdSeconds.length;
-      final breathsPerRound = breathwork.breathsPerRound;
+    final rounds = wimHof.holdSeconds.length;
+    final breathsPerRound = breathwork.breathsPerRound;
 
-      message =
-          'You did $rounds ${rounds == 1 ? 'round' : 'rounds'} of the Wim Hof Method'
-          ' ($breathsPerRound breaths per round).'
-          '\n\nIndividual breath holds:';
+    message =
+        'You did $rounds ${rounds == 1 ? 'round' : 'rounds'} of the Wim Hof Method'
+        ' ($breathsPerRound breaths per round).'
+        '\n\nIndividual breath holds:';
 
-      var round = 0;
-      for (final hold in wimHof.holdSeconds) {
-        round += 1;
+    var round = 0;
+    for (final hold in wimHof.holdSeconds) {
+      round += 1;
 
-        var durationString = '';
+      var durationString = '';
 
-        final minutes = hold ~/ 60;
-        final seconds = minutes == 0 ? hold : hold - minutes * 60;
-        if (minutes == 0) {
-          durationString = '${seconds}s';
-        } else if (seconds == 0) {
-          durationString = '${minutes}m';
-        } else {
-          durationString = '${minutes}m ${seconds}s';
-        }
-
-        message += '\n\t- Round #$round: $durationString';
+      final minutes = hold ~/ 60;
+      final seconds = minutes == 0 ? hold : hold - minutes * 60;
+      if (minutes == 0) {
+        durationString = '${seconds}s';
+      } else if (seconds == 0) {
+        durationString = '${minutes}m';
+      } else {
+        durationString = '${minutes}m ${seconds}s';
       }
+
+      message += '\n\t- Round #$round: $durationString';
     }
 
     return showDialog(

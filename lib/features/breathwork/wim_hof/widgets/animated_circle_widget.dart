@@ -30,12 +30,8 @@ class _AnimatedCircleWidgetState extends ConsumerState<AnimatedCircleWidget> {
 
   @override
   void initState() {
-    final breathGoal = ref
-            .read(breathworkConfigureCProvider)
-            .activity
-            .breathwork
-            ?.breathsPerRound ??
-        30;
+    final breathGoal =
+        ref.read(breathworkConfigureCProvider).breathwork.breathsPerRound;
 
     _timer = Timer.periodic(const Duration(milliseconds: 1500), (_) {
       if (_width == 0.0 && _height == 0.0) {

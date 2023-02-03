@@ -3,9 +3,10 @@ import 'package:isar/isar.dart';
 
 part 'tag.g.dart';
 
-@embedded
+@collection
 @CopyWith()
 class Tag {
+  Id id = Isar.autoIncrement;
   int? placeholder;
 
   Tag({

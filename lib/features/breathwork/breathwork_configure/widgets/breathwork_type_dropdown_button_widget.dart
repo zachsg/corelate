@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../../helpers/strings.dart';
-import '../../../../models/breathwork.dart';
 import '../../../../models/breathwork_type.dart';
 import '../breathwork_configure_c.dart';
 
@@ -13,9 +12,7 @@ class BreathworkTypeDropdownButtonWidget extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final types = [BreathworkType.four78, BreathworkType.wimHof];
 
-    final meditation =
-        ref.watch(breathworkConfigureCProvider).activity.breathwork ??
-            Breathwork();
+    final meditation = ref.watch(breathworkConfigureCProvider).breathwork;
 
     return DropdownButton(
       style: Theme.of(context)

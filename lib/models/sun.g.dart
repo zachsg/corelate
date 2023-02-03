@@ -56,13 +56,17 @@ extension $SunCopyWith on Sun {
 }
 
 // **************************************************************************
-// IsarEmbeddedGenerator
+// IsarCollectionGenerator
 // **************************************************************************
 
 // coverage:ignore-file
 // ignore_for_file: duplicate_ignore, non_constant_identifier_names, constant_identifier_names, invalid_use_of_protected_member, unnecessary_cast, prefer_const_constructors, lines_longer_than_80_chars, require_trailing_commas, inference_failure_on_function_invocation, unnecessary_parenthesis, unnecessary_raw_strings, unnecessary_null_checks, join_return_with_assignment, prefer_final_locals, avoid_js_rounded_ints, avoid_positional_boolean_parameters
 
-const SunSchema = Schema(
+extension GetSunCollection on Isar {
+  IsarCollection<Sun> get suns => this.collection();
+}
+
+const SunSchema = CollectionSchema(
   name: r'Sun',
   id: -8380427164950527963,
   properties: {
@@ -76,6 +80,14 @@ const SunSchema = Schema(
   serialize: _sunSerialize,
   deserialize: _sunDeserialize,
   deserializeProp: _sunDeserializeProp,
+  idName: r'id',
+  indexes: {},
+  links: {},
+  embeddedSchemas: {},
+  getId: _sunGetId,
+  getLinks: _sunGetLinks,
+  attach: _sunAttach,
+  version: '3.0.5',
 );
 
 int _sunEstimateSize(
@@ -105,6 +117,7 @@ Sun _sunDeserialize(
   final object = Sun(
     placeholder: reader.readLongOrNull(offsets[0]),
   );
+  object.id = id;
   return object;
 }
 
@@ -122,7 +135,146 @@ P _sunDeserializeProp<P>(
   }
 }
 
+Id _sunGetId(Sun object) {
+  return object.id;
+}
+
+List<IsarLinkBase<dynamic>> _sunGetLinks(Sun object) {
+  return [];
+}
+
+void _sunAttach(IsarCollection<dynamic> col, Id id, Sun object) {
+  object.id = id;
+}
+
+extension SunQueryWhereSort on QueryBuilder<Sun, Sun, QWhere> {
+  QueryBuilder<Sun, Sun, QAfterWhere> anyId() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addWhereClause(const IdWhereClause.any());
+    });
+  }
+}
+
+extension SunQueryWhere on QueryBuilder<Sun, Sun, QWhereClause> {
+  QueryBuilder<Sun, Sun, QAfterWhereClause> idEqualTo(Id id) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addWhereClause(IdWhereClause.between(
+        lower: id,
+        upper: id,
+      ));
+    });
+  }
+
+  QueryBuilder<Sun, Sun, QAfterWhereClause> idNotEqualTo(Id id) {
+    return QueryBuilder.apply(this, (query) {
+      if (query.whereSort == Sort.asc) {
+        return query
+            .addWhereClause(
+              IdWhereClause.lessThan(upper: id, includeUpper: false),
+            )
+            .addWhereClause(
+              IdWhereClause.greaterThan(lower: id, includeLower: false),
+            );
+      } else {
+        return query
+            .addWhereClause(
+              IdWhereClause.greaterThan(lower: id, includeLower: false),
+            )
+            .addWhereClause(
+              IdWhereClause.lessThan(upper: id, includeUpper: false),
+            );
+      }
+    });
+  }
+
+  QueryBuilder<Sun, Sun, QAfterWhereClause> idGreaterThan(Id id,
+      {bool include = false}) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addWhereClause(
+        IdWhereClause.greaterThan(lower: id, includeLower: include),
+      );
+    });
+  }
+
+  QueryBuilder<Sun, Sun, QAfterWhereClause> idLessThan(Id id,
+      {bool include = false}) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addWhereClause(
+        IdWhereClause.lessThan(upper: id, includeUpper: include),
+      );
+    });
+  }
+
+  QueryBuilder<Sun, Sun, QAfterWhereClause> idBetween(
+    Id lowerId,
+    Id upperId, {
+    bool includeLower = true,
+    bool includeUpper = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addWhereClause(IdWhereClause.between(
+        lower: lowerId,
+        includeLower: includeLower,
+        upper: upperId,
+        includeUpper: includeUpper,
+      ));
+    });
+  }
+}
+
 extension SunQueryFilter on QueryBuilder<Sun, Sun, QFilterCondition> {
+  QueryBuilder<Sun, Sun, QAfterFilterCondition> idEqualTo(Id value) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.equalTo(
+        property: r'id',
+        value: value,
+      ));
+    });
+  }
+
+  QueryBuilder<Sun, Sun, QAfterFilterCondition> idGreaterThan(
+    Id value, {
+    bool include = false,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.greaterThan(
+        include: include,
+        property: r'id',
+        value: value,
+      ));
+    });
+  }
+
+  QueryBuilder<Sun, Sun, QAfterFilterCondition> idLessThan(
+    Id value, {
+    bool include = false,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.lessThan(
+        include: include,
+        property: r'id',
+        value: value,
+      ));
+    });
+  }
+
+  QueryBuilder<Sun, Sun, QAfterFilterCondition> idBetween(
+    Id lower,
+    Id upper, {
+    bool includeLower = true,
+    bool includeUpper = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.between(
+        property: r'id',
+        lower: lower,
+        includeLower: includeLower,
+        upper: upper,
+        includeUpper: includeUpper,
+      ));
+    });
+  }
+
   QueryBuilder<Sun, Sun, QAfterFilterCondition> placeholderIsNull() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(const FilterCondition.isNull(
@@ -193,3 +345,67 @@ extension SunQueryFilter on QueryBuilder<Sun, Sun, QFilterCondition> {
 }
 
 extension SunQueryObject on QueryBuilder<Sun, Sun, QFilterCondition> {}
+
+extension SunQueryLinks on QueryBuilder<Sun, Sun, QFilterCondition> {}
+
+extension SunQuerySortBy on QueryBuilder<Sun, Sun, QSortBy> {
+  QueryBuilder<Sun, Sun, QAfterSortBy> sortByPlaceholder() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'placeholder', Sort.asc);
+    });
+  }
+
+  QueryBuilder<Sun, Sun, QAfterSortBy> sortByPlaceholderDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'placeholder', Sort.desc);
+    });
+  }
+}
+
+extension SunQuerySortThenBy on QueryBuilder<Sun, Sun, QSortThenBy> {
+  QueryBuilder<Sun, Sun, QAfterSortBy> thenById() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'id', Sort.asc);
+    });
+  }
+
+  QueryBuilder<Sun, Sun, QAfterSortBy> thenByIdDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'id', Sort.desc);
+    });
+  }
+
+  QueryBuilder<Sun, Sun, QAfterSortBy> thenByPlaceholder() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'placeholder', Sort.asc);
+    });
+  }
+
+  QueryBuilder<Sun, Sun, QAfterSortBy> thenByPlaceholderDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'placeholder', Sort.desc);
+    });
+  }
+}
+
+extension SunQueryWhereDistinct on QueryBuilder<Sun, Sun, QDistinct> {
+  QueryBuilder<Sun, Sun, QDistinct> distinctByPlaceholder() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addDistinctBy(r'placeholder');
+    });
+  }
+}
+
+extension SunQueryProperty on QueryBuilder<Sun, Sun, QQueryProperty> {
+  QueryBuilder<Sun, int, QQueryOperations> idProperty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addPropertyName(r'id');
+    });
+  }
+
+  QueryBuilder<Sun, int?, QQueryOperations> placeholderProperty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addPropertyName(r'placeholder');
+    });
+  }
+}

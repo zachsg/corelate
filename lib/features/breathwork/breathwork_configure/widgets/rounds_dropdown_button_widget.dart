@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../../../models/breathwork.dart';
 import '../breathwork_configure_c.dart';
 
 class RoundsDropdownButtonWidget extends ConsumerWidget {
@@ -11,9 +10,7 @@ class RoundsDropdownButtonWidget extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final rounds = [2, 3, 4, 5, 6, 7, 8, 9, 10];
 
-    final breathwork =
-        ref.watch(breathworkConfigureCProvider).activity.breathwork ??
-            Breathwork();
+    final breathwork = ref.watch(breathworkConfigureCProvider).breathwork;
 
     return DropdownButton(
       style: Theme.of(context)

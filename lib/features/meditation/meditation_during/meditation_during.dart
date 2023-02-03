@@ -1,13 +1,13 @@
 import 'package:copy_with_extension/copy_with_extension.dart';
 
-import '../../../models/activity.dart';
+import '../../../models/meditation.dart';
 
 part 'meditation_during.g.dart';
 
 @CopyWith()
 class MeditationDuring {
-  Activity activity;
+  Meditation meditation;
   bool sessionStopped;
 
-  MeditationDuring({required this.activity, this.sessionStopped = false});
+  MeditationDuring({required this.meditation, this.sessionStopped = false});
 }

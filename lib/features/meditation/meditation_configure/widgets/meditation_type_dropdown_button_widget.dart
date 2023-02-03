@@ -2,7 +2,6 @@ import 'package:corelate/helpers/strings.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../../../models/meditation.dart';
 import '../../../../models/meditation_type.dart';
 import '../meditation_configure_c.dart';
 
@@ -13,9 +12,7 @@ class MeditationTypeDropdownButtonWidget extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final types = [MeditationType.openEnded, MeditationType.timed];
 
-    final meditation =
-        ref.watch(meditationConfigureCProvider).activity.meditation ??
-            Meditation();
+    final meditation = ref.watch(meditationConfigureCProvider).meditation;
 
     return DropdownButton(
       style: Theme.of(context)

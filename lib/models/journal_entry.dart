@@ -3,9 +3,10 @@ import 'package:isar/isar.dart';
 
 part 'journal_entry.g.dart';
 
-@embedded
+@collection
 @CopyWith()
 class JournalEntry {
+  Id id = Isar.autoIncrement;
   int? placeholder;
 
   JournalEntry({

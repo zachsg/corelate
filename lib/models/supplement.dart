@@ -3,9 +3,10 @@ import 'package:isar/isar.dart';
 
 part 'supplement.g.dart';
 
-@embedded
+@collection
 @CopyWith()
 class Supplement {
+  Id id = Isar.autoIncrement;
   int? placeholder;
 
   Supplement({

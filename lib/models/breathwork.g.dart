@@ -7,6 +7,8 @@ part of 'breathwork.dart';
 // **************************************************************************
 
 abstract class _$BreathworkCWProxy {
+  Breathwork date(DateTime date);
+
   Breathwork type(BreathworkType type);
 
   Breathwork rounds(int rounds);
@@ -24,6 +26,7 @@ abstract class _$BreathworkCWProxy {
   /// Breathwork(...).copyWith(id: 12, name: "My name")
   /// ````
   Breathwork call({
+    DateTime? date,
     BreathworkType? type,
     int? rounds,
     int? breathsPerRound,
@@ -37,6 +40,9 @@ class _$BreathworkCWProxyImpl implements _$BreathworkCWProxy {
   const _$BreathworkCWProxyImpl(this._value);
 
   final Breathwork _value;
+
+  @override
+  Breathwork date(DateTime date) => this(date: date);
 
   @override
   Breathwork type(BreathworkType type) => this(type: type);
@@ -64,6 +70,7 @@ class _$BreathworkCWProxyImpl implements _$BreathworkCWProxy {
   /// Breathwork(...).copyWith(id: 12, name: "My name")
   /// ````
   Breathwork call({
+    Object? date = const $CopyWithPlaceholder(),
     Object? type = const $CopyWithPlaceholder(),
     Object? rounds = const $CopyWithPlaceholder(),
     Object? breathsPerRound = const $CopyWithPlaceholder(),
@@ -71,6 +78,11 @@ class _$BreathworkCWProxyImpl implements _$BreathworkCWProxy {
     Object? rating = const $CopyWithPlaceholder(),
   }) {
     return Breathwork(
+      date: date == const $CopyWithPlaceholder() || date == null
+          // ignore: unnecessary_non_null_assertion
+          ? _value.date!
+          // ignore: cast_nullable_to_non_nullable
+          : date as DateTime,
       type: type == const $CopyWithPlaceholder() || type == null
           // ignore: unnecessary_non_null_assertion
           ? _value.type!
@@ -106,13 +118,17 @@ extension $BreathworkCopyWith on Breathwork {
 }
 
 // **************************************************************************
-// IsarEmbeddedGenerator
+// IsarCollectionGenerator
 // **************************************************************************
 
 // coverage:ignore-file
 // ignore_for_file: duplicate_ignore, non_constant_identifier_names, constant_identifier_names, invalid_use_of_protected_member, unnecessary_cast, prefer_const_constructors, lines_longer_than_80_chars, require_trailing_commas, inference_failure_on_function_invocation, unnecessary_parenthesis, unnecessary_raw_strings, unnecessary_null_checks, join_return_with_assignment, prefer_final_locals, avoid_js_rounded_ints, avoid_positional_boolean_parameters
 
-const BreathworkSchema = Schema(
+extension GetBreathworkCollection on Isar {
+  IsarCollection<Breathwork> get breathworks => this.collection();
+}
+
+const BreathworkSchema = CollectionSchema(
   name: r'Breathwork',
   id: -5543349516693467140,
   properties: {
@@ -121,23 +137,28 @@ const BreathworkSchema = Schema(
       name: r'breathsPerRound',
       type: IsarType.long,
     ),
-    r'holdSecondsPerRound': PropertySchema(
+    r'date': PropertySchema(
       id: 1,
+      name: r'date',
+      type: IsarType.dateTime,
+    ),
+    r'holdSecondsPerRound': PropertySchema(
+      id: 2,
       name: r'holdSecondsPerRound',
       type: IsarType.longList,
     ),
     r'rating': PropertySchema(
-      id: 2,
+      id: 3,
       name: r'rating',
       type: IsarType.double,
     ),
     r'rounds': PropertySchema(
-      id: 3,
+      id: 4,
       name: r'rounds',
       type: IsarType.long,
     ),
     r'type': PropertySchema(
-      id: 4,
+      id: 5,
       name: r'type',
       type: IsarType.byte,
       enumMap: _BreathworktypeEnumValueMap,
@@ -147,6 +168,14 @@ const BreathworkSchema = Schema(
   serialize: _breathworkSerialize,
   deserialize: _breathworkDeserialize,
   deserializeProp: _breathworkDeserializeProp,
+  idName: r'id',
+  indexes: {},
+  links: {},
+  embeddedSchemas: {},
+  getId: _breathworkGetId,
+  getLinks: _breathworkGetLinks,
+  attach: _breathworkAttach,
+  version: '3.0.5',
 );
 
 int _breathworkEstimateSize(
@@ -171,10 +200,11 @@ void _breathworkSerialize(
   Map<Type, List<int>> allOffsets,
 ) {
   writer.writeLong(offsets[0], object.breathsPerRound);
-  writer.writeLongList(offsets[1], object.holdSecondsPerRound);
-  writer.writeDouble(offsets[2], object.rating);
-  writer.writeLong(offsets[3], object.rounds);
-  writer.writeByte(offsets[4], object.type.index);
+  writer.writeDateTime(offsets[1], object.date);
+  writer.writeLongList(offsets[2], object.holdSecondsPerRound);
+  writer.writeDouble(offsets[3], object.rating);
+  writer.writeLong(offsets[4], object.rounds);
+  writer.writeByte(offsets[5], object.type.index);
 }
 
 Breathwork _breathworkDeserialize(
@@ -185,12 +215,14 @@ Breathwork _breathworkDeserialize(
 ) {
   final object = Breathwork(
     breathsPerRound: reader.readLongOrNull(offsets[0]) ?? 0,
-    holdSecondsPerRound: reader.readLongList(offsets[1]),
-    rating: reader.readDoubleOrNull(offsets[2]),
-    rounds: reader.readLongOrNull(offsets[3]) ?? 4,
-    type: _BreathworktypeValueEnumMap[reader.readByteOrNull(offsets[4])] ??
+    date: reader.readDateTime(offsets[1]),
+    holdSecondsPerRound: reader.readLongList(offsets[2]),
+    rating: reader.readDoubleOrNull(offsets[3]),
+    rounds: reader.readLongOrNull(offsets[4]) ?? 4,
+    type: _BreathworktypeValueEnumMap[reader.readByteOrNull(offsets[5])] ??
         BreathworkType.four78,
   );
+  object.id = id;
   return object;
 }
 
@@ -204,12 +236,14 @@ P _breathworkDeserializeProp<P>(
     case 0:
       return (reader.readLongOrNull(offset) ?? 0) as P;
     case 1:
-      return (reader.readLongList(offset)) as P;
+      return (reader.readDateTime(offset)) as P;
     case 2:
-      return (reader.readDoubleOrNull(offset)) as P;
+      return (reader.readLongList(offset)) as P;
     case 3:
-      return (reader.readLongOrNull(offset) ?? 4) as P;
+      return (reader.readDoubleOrNull(offset)) as P;
     case 4:
+      return (reader.readLongOrNull(offset) ?? 4) as P;
+    case 5:
       return (_BreathworktypeValueEnumMap[reader.readByteOrNull(offset)] ??
           BreathworkType.four78) as P;
     default:
@@ -225,6 +259,95 @@ const _BreathworktypeValueEnumMap = {
   0: BreathworkType.four78,
   1: BreathworkType.wimHof,
 };
+
+Id _breathworkGetId(Breathwork object) {
+  return object.id;
+}
+
+List<IsarLinkBase<dynamic>> _breathworkGetLinks(Breathwork object) {
+  return [];
+}
+
+void _breathworkAttach(IsarCollection<dynamic> col, Id id, Breathwork object) {
+  object.id = id;
+}
+
+extension BreathworkQueryWhereSort
+    on QueryBuilder<Breathwork, Breathwork, QWhere> {
+  QueryBuilder<Breathwork, Breathwork, QAfterWhere> anyId() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addWhereClause(const IdWhereClause.any());
+    });
+  }
+}
+
+extension BreathworkQueryWhere
+    on QueryBuilder<Breathwork, Breathwork, QWhereClause> {
+  QueryBuilder<Breathwork, Breathwork, QAfterWhereClause> idEqualTo(Id id) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addWhereClause(IdWhereClause.between(
+        lower: id,
+        upper: id,
+      ));
+    });
+  }
+
+  QueryBuilder<Breathwork, Breathwork, QAfterWhereClause> idNotEqualTo(Id id) {
+    return QueryBuilder.apply(this, (query) {
+      if (query.whereSort == Sort.asc) {
+        return query
+            .addWhereClause(
+              IdWhereClause.lessThan(upper: id, includeUpper: false),
+            )
+            .addWhereClause(
+              IdWhereClause.greaterThan(lower: id, includeLower: false),
+            );
+      } else {
+        return query
+            .addWhereClause(
+              IdWhereClause.greaterThan(lower: id, includeLower: false),
+            )
+            .addWhereClause(
+              IdWhereClause.lessThan(upper: id, includeUpper: false),
+            );
+      }
+    });
+  }
+
+  QueryBuilder<Breathwork, Breathwork, QAfterWhereClause> idGreaterThan(Id id,
+      {bool include = false}) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addWhereClause(
+        IdWhereClause.greaterThan(lower: id, includeLower: include),
+      );
+    });
+  }
+
+  QueryBuilder<Breathwork, Breathwork, QAfterWhereClause> idLessThan(Id id,
+      {bool include = false}) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addWhereClause(
+        IdWhereClause.lessThan(upper: id, includeUpper: include),
+      );
+    });
+  }
+
+  QueryBuilder<Breathwork, Breathwork, QAfterWhereClause> idBetween(
+    Id lowerId,
+    Id upperId, {
+    bool includeLower = true,
+    bool includeUpper = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addWhereClause(IdWhereClause.between(
+        lower: lowerId,
+        includeLower: includeLower,
+        upper: upperId,
+        includeUpper: includeUpper,
+      ));
+    });
+  }
+}
 
 extension BreathworkQueryFilter
     on QueryBuilder<Breathwork, Breathwork, QFilterCondition> {
@@ -276,6 +399,59 @@ extension BreathworkQueryFilter
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.between(
         property: r'breathsPerRound',
+        lower: lower,
+        includeLower: includeLower,
+        upper: upper,
+        includeUpper: includeUpper,
+      ));
+    });
+  }
+
+  QueryBuilder<Breathwork, Breathwork, QAfterFilterCondition> dateEqualTo(
+      DateTime value) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.equalTo(
+        property: r'date',
+        value: value,
+      ));
+    });
+  }
+
+  QueryBuilder<Breathwork, Breathwork, QAfterFilterCondition> dateGreaterThan(
+    DateTime value, {
+    bool include = false,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.greaterThan(
+        include: include,
+        property: r'date',
+        value: value,
+      ));
+    });
+  }
+
+  QueryBuilder<Breathwork, Breathwork, QAfterFilterCondition> dateLessThan(
+    DateTime value, {
+    bool include = false,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.lessThan(
+        include: include,
+        property: r'date',
+        value: value,
+      ));
+    });
+  }
+
+  QueryBuilder<Breathwork, Breathwork, QAfterFilterCondition> dateBetween(
+    DateTime lower,
+    DateTime upper, {
+    bool includeLower = true,
+    bool includeUpper = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.between(
+        property: r'date',
         lower: lower,
         includeLower: includeLower,
         upper: upper,
@@ -444,6 +620,59 @@ extension BreathworkQueryFilter
         upper,
         includeUpper,
       );
+    });
+  }
+
+  QueryBuilder<Breathwork, Breathwork, QAfterFilterCondition> idEqualTo(
+      Id value) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.equalTo(
+        property: r'id',
+        value: value,
+      ));
+    });
+  }
+
+  QueryBuilder<Breathwork, Breathwork, QAfterFilterCondition> idGreaterThan(
+    Id value, {
+    bool include = false,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.greaterThan(
+        include: include,
+        property: r'id',
+        value: value,
+      ));
+    });
+  }
+
+  QueryBuilder<Breathwork, Breathwork, QAfterFilterCondition> idLessThan(
+    Id value, {
+    bool include = false,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.lessThan(
+        include: include,
+        property: r'id',
+        value: value,
+      ));
+    });
+  }
+
+  QueryBuilder<Breathwork, Breathwork, QAfterFilterCondition> idBetween(
+    Id lower,
+    Id upper, {
+    bool includeLower = true,
+    bool includeUpper = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.between(
+        property: r'id',
+        lower: lower,
+        includeLower: includeLower,
+        upper: upper,
+        includeUpper: includeUpper,
+      ));
     });
   }
 
@@ -635,3 +864,232 @@ extension BreathworkQueryFilter
 
 extension BreathworkQueryObject
     on QueryBuilder<Breathwork, Breathwork, QFilterCondition> {}
+
+extension BreathworkQueryLinks
+    on QueryBuilder<Breathwork, Breathwork, QFilterCondition> {}
+
+extension BreathworkQuerySortBy
+    on QueryBuilder<Breathwork, Breathwork, QSortBy> {
+  QueryBuilder<Breathwork, Breathwork, QAfterSortBy> sortByBreathsPerRound() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'breathsPerRound', Sort.asc);
+    });
+  }
+
+  QueryBuilder<Breathwork, Breathwork, QAfterSortBy>
+      sortByBreathsPerRoundDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'breathsPerRound', Sort.desc);
+    });
+  }
+
+  QueryBuilder<Breathwork, Breathwork, QAfterSortBy> sortByDate() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'date', Sort.asc);
+    });
+  }
+
+  QueryBuilder<Breathwork, Breathwork, QAfterSortBy> sortByDateDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'date', Sort.desc);
+    });
+  }
+
+  QueryBuilder<Breathwork, Breathwork, QAfterSortBy> sortByRating() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'rating', Sort.asc);
+    });
+  }
+
+  QueryBuilder<Breathwork, Breathwork, QAfterSortBy> sortByRatingDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'rating', Sort.desc);
+    });
+  }
+
+  QueryBuilder<Breathwork, Breathwork, QAfterSortBy> sortByRounds() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'rounds', Sort.asc);
+    });
+  }
+
+  QueryBuilder<Breathwork, Breathwork, QAfterSortBy> sortByRoundsDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'rounds', Sort.desc);
+    });
+  }
+
+  QueryBuilder<Breathwork, Breathwork, QAfterSortBy> sortByType() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'type', Sort.asc);
+    });
+  }
+
+  QueryBuilder<Breathwork, Breathwork, QAfterSortBy> sortByTypeDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'type', Sort.desc);
+    });
+  }
+}
+
+extension BreathworkQuerySortThenBy
+    on QueryBuilder<Breathwork, Breathwork, QSortThenBy> {
+  QueryBuilder<Breathwork, Breathwork, QAfterSortBy> thenByBreathsPerRound() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'breathsPerRound', Sort.asc);
+    });
+  }
+
+  QueryBuilder<Breathwork, Breathwork, QAfterSortBy>
+      thenByBreathsPerRoundDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'breathsPerRound', Sort.desc);
+    });
+  }
+
+  QueryBuilder<Breathwork, Breathwork, QAfterSortBy> thenByDate() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'date', Sort.asc);
+    });
+  }
+
+  QueryBuilder<Breathwork, Breathwork, QAfterSortBy> thenByDateDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'date', Sort.desc);
+    });
+  }
+
+  QueryBuilder<Breathwork, Breathwork, QAfterSortBy> thenById() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'id', Sort.asc);
+    });
+  }
+
+  QueryBuilder<Breathwork, Breathwork, QAfterSortBy> thenByIdDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'id', Sort.desc);
+    });
+  }
+
+  QueryBuilder<Breathwork, Breathwork, QAfterSortBy> thenByRating() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'rating', Sort.asc);
+    });
+  }
+
+  QueryBuilder<Breathwork, Breathwork, QAfterSortBy> thenByRatingDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'rating', Sort.desc);
+    });
+  }
+
+  QueryBuilder<Breathwork, Breathwork, QAfterSortBy> thenByRounds() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'rounds', Sort.asc);
+    });
+  }
+
+  QueryBuilder<Breathwork, Breathwork, QAfterSortBy> thenByRoundsDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'rounds', Sort.desc);
+    });
+  }
+
+  QueryBuilder<Breathwork, Breathwork, QAfterSortBy> thenByType() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'type', Sort.asc);
+    });
+  }
+
+  QueryBuilder<Breathwork, Breathwork, QAfterSortBy> thenByTypeDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'type', Sort.desc);
+    });
+  }
+}
+
+extension BreathworkQueryWhereDistinct
+    on QueryBuilder<Breathwork, Breathwork, QDistinct> {
+  QueryBuilder<Breathwork, Breathwork, QDistinct> distinctByBreathsPerRound() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addDistinctBy(r'breathsPerRound');
+    });
+  }
+
+  QueryBuilder<Breathwork, Breathwork, QDistinct> distinctByDate() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addDistinctBy(r'date');
+    });
+  }
+
+  QueryBuilder<Breathwork, Breathwork, QDistinct>
+      distinctByHoldSecondsPerRound() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addDistinctBy(r'holdSecondsPerRound');
+    });
+  }
+
+  QueryBuilder<Breathwork, Breathwork, QDistinct> distinctByRating() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addDistinctBy(r'rating');
+    });
+  }
+
+  QueryBuilder<Breathwork, Breathwork, QDistinct> distinctByRounds() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addDistinctBy(r'rounds');
+    });
+  }
+
+  QueryBuilder<Breathwork, Breathwork, QDistinct> distinctByType() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addDistinctBy(r'type');
+    });
+  }
+}
+
+extension BreathworkQueryProperty
+    on QueryBuilder<Breathwork, Breathwork, QQueryProperty> {
+  QueryBuilder<Breathwork, int, QQueryOperations> idProperty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addPropertyName(r'id');
+    });
+  }
+
+  QueryBuilder<Breathwork, int, QQueryOperations> breathsPerRoundProperty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addPropertyName(r'breathsPerRound');
+    });
+  }
+
+  QueryBuilder<Breathwork, DateTime, QQueryOperations> dateProperty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addPropertyName(r'date');
+    });
+  }
+
+  QueryBuilder<Breathwork, List<int>?, QQueryOperations>
+      holdSecondsPerRoundProperty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addPropertyName(r'holdSecondsPerRound');
+    });
+  }
+
+  QueryBuilder<Breathwork, double?, QQueryOperations> ratingProperty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addPropertyName(r'rating');
+    });
+  }
+
+  QueryBuilder<Breathwork, int, QQueryOperations> roundsProperty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addPropertyName(r'rounds');
+    });
+  }
+
+  QueryBuilder<Breathwork, BreathworkType, QQueryOperations> typeProperty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addPropertyName(r'type');
+    });
+  }
+}

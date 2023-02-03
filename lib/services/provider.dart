@@ -3,14 +3,15 @@ import 'package:isar/isar.dart';
 import 'package:mindful_minutes/mindful_minutes.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-import '../models/activity.dart';
+import '../models/breathwork.dart';
+import '../models/meditation.dart';
 import 'database.dart';
 
 part 'provider.g.dart';
 
 @Riverpod(keepAlive: true)
 Future<Isar> isarC(IsarCRef ref) async {
-  return await Isar.open([ActivitySchema]);
+  return await Isar.open([MeditationSchema, BreathworkSchema]);
 }
 
 @riverpod

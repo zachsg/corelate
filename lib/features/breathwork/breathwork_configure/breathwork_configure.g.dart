@@ -7,7 +7,7 @@ part of 'breathwork_configure.dart';
 // **************************************************************************
 
 abstract class _$BreathworkConfigureCWProxy {
-  BreathworkConfigure activity(Activity activity);
+  BreathworkConfigure breathwork(Breathwork breathwork);
 
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `BreathworkConfigure(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
@@ -16,7 +16,7 @@ abstract class _$BreathworkConfigureCWProxy {
   /// BreathworkConfigure(...).copyWith(id: 12, name: "My name")
   /// ````
   BreathworkConfigure call({
-    Activity? activity,
+    Breathwork? breathwork,
   });
 }
 
@@ -27,7 +27,8 @@ class _$BreathworkConfigureCWProxyImpl implements _$BreathworkConfigureCWProxy {
   final BreathworkConfigure _value;
 
   @override
-  BreathworkConfigure activity(Activity activity) => this(activity: activity);
+  BreathworkConfigure breathwork(Breathwork breathwork) =>
+      this(breathwork: breathwork);
 
   @override
 
@@ -38,14 +39,14 @@ class _$BreathworkConfigureCWProxyImpl implements _$BreathworkConfigureCWProxy {
   /// BreathworkConfigure(...).copyWith(id: 12, name: "My name")
   /// ````
   BreathworkConfigure call({
-    Object? activity = const $CopyWithPlaceholder(),
+    Object? breathwork = const $CopyWithPlaceholder(),
   }) {
     return BreathworkConfigure(
-      activity == const $CopyWithPlaceholder() || activity == null
+      breathwork == const $CopyWithPlaceholder() || breathwork == null
           // ignore: unnecessary_non_null_assertion
-          ? _value.activity!
+          ? _value.breathwork!
           // ignore: cast_nullable_to_non_nullable
-          : activity as Activity,
+          : breathwork as Breathwork,
     );
   }
 }

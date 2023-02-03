@@ -7,7 +7,7 @@ part of 'meditation_configure.dart';
 // **************************************************************************
 
 abstract class _$MeditationConfigureCWProxy {
-  MeditationConfigure activity(Activity activity);
+  MeditationConfigure meditation(Meditation meditation);
 
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `MeditationConfigure(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
@@ -16,7 +16,7 @@ abstract class _$MeditationConfigureCWProxy {
   /// MeditationConfigure(...).copyWith(id: 12, name: "My name")
   /// ````
   MeditationConfigure call({
-    Activity? activity,
+    Meditation? meditation,
   });
 }
 
@@ -27,7 +27,8 @@ class _$MeditationConfigureCWProxyImpl implements _$MeditationConfigureCWProxy {
   final MeditationConfigure _value;
 
   @override
-  MeditationConfigure activity(Activity activity) => this(activity: activity);
+  MeditationConfigure meditation(Meditation meditation) =>
+      this(meditation: meditation);
 
   @override
 
@@ -38,14 +39,14 @@ class _$MeditationConfigureCWProxyImpl implements _$MeditationConfigureCWProxy {
   /// MeditationConfigure(...).copyWith(id: 12, name: "My name")
   /// ````
   MeditationConfigure call({
-    Object? activity = const $CopyWithPlaceholder(),
+    Object? meditation = const $CopyWithPlaceholder(),
   }) {
     return MeditationConfigure(
-      activity == const $CopyWithPlaceholder() || activity == null
+      meditation == const $CopyWithPlaceholder() || meditation == null
           // ignore: unnecessary_non_null_assertion
-          ? _value.activity!
+          ? _value.meditation!
           // ignore: cast_nullable_to_non_nullable
-          : activity as Activity,
+          : meditation as Meditation,
     );
   }
 }

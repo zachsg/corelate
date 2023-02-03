@@ -3,9 +3,10 @@ import 'package:isar/isar.dart';
 
 part 'grounding.g.dart';
 
-@embedded
+@collection
 @CopyWith()
 class Grounding {
+  Id id = Isar.autoIncrement;
   int? placeholder;
 
   Grounding({

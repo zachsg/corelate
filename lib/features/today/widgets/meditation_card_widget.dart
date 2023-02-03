@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../helpers/extensions.dart';
-import '../../../models/activity.dart';
+import '../../../models/meditation.dart';
 import '../../../models/meditation_type.dart';
 import '../today_c.dart';
 import 'activity_card_widget.dart';
@@ -11,7 +11,7 @@ class MeditationCardWidget extends ConsumerWidget {
   const MeditationCardWidget({
     super.key,
     required this.title,
-    required this.activity,
+    required this.meditation,
     required this.icon,
     required this.timeString,
     required this.isEven,
@@ -19,7 +19,7 @@ class MeditationCardWidget extends ConsumerWidget {
   });
 
   final String title;
-  final Activity activity;
+  final Meditation meditation;
   final String timeString;
   final Icon icon;
   final bool isEven;
@@ -27,31 +27,28 @@ class MeditationCardWidget extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final meditation = activity.meditation;
     var type = '';
     var durationString = '';
 
-    if (meditation != null) {
-      type = meditation.type == MeditationType.timed
-          ? meditation.type.name.capitalize()
-          : 'Open-ended';
+    type = meditation.type == MeditationType.timed
+        ? meditation.type.name.capitalize()
+        : 'Open-ended';
 
-      final minutes = meditation.elapsed ~/ 60;
-      final seconds =
-          minutes == 0 ? meditation.elapsed : meditation.elapsed - minutes * 60;
-      if (minutes == 0) {
-        durationString = '${seconds}s';
-      } else if (seconds == 0) {
-        durationString = '${minutes}m';
-      } else {
-        durationString = '${minutes}m ${seconds}s';
-      }
+    final minutes = meditation.elapsed ~/ 60;
+    final seconds =
+        minutes == 0 ? meditation.elapsed : meditation.elapsed - minutes * 60;
+    if (minutes == 0) {
+      durationString = '${seconds}s';
+    } else if (seconds == 0) {
+      durationString = '${minutes}m';
+    } else {
+      durationString = '${minutes}m ${seconds}s';
     }
 
     return ActivityCardWidget(
       isEven: isEven,
       isFirstRow: isFirstRow,
-      onTap: () => _showSessionCompleteDialog(ref, context, activity),
+      onTap: () => _showSessionCompleteDialog(ref, context, meditation),
       child: Stack(
         children: [
           Positioned(
@@ -110,29 +107,26 @@ class MeditationCardWidget extends ConsumerWidget {
   }
 
   Future<void> _showSessionCompleteDialog(
-      WidgetRef ref, BuildContext context, Activity activity) async {
-    final meditation = activity.meditation;
+      WidgetRef ref, BuildContext context, Meditation meditation) async {
     var title = '';
     var message = '';
 
-    if (meditation != null) {
-      title = 'Meditation';
-      final elapsed = meditation.elapsed;
+    title = 'Meditation';
+    final elapsed = meditation.elapsed;
 
-      final minutes = elapsed / 60 > 0 ? elapsed ~/ 60 : 0;
-      final seconds = minutes == 0 ? elapsed : elapsed - minutes * 60;
+    final minutes = elapsed / 60 > 0 ? elapsed ~/ 60 : 0;
+    final seconds = minutes == 0 ? elapsed : elapsed - minutes * 60;
 
-      var durationString = '';
-      if (minutes == 0) {
-        durationString = '$seconds seconds';
-      } else if (seconds == 0) {
-        durationString = '$minutes minutes';
-      } else {
-        durationString = '$minutes minutes and $seconds seconds';
-      }
-
-      message = 'You meditated for $durationString.';
+    var durationString = '';
+    if (minutes == 0) {
+      durationString = '$seconds seconds';
+    } else if (seconds == 0) {
+      durationString = '$minutes minutes';
+    } else {
+      durationString = '$minutes minutes and $seconds seconds';
     }
+
+    message = 'You meditated for $durationString.';
 
     return showDialog(
       context: context,
@@ -151,7 +145,9 @@ class MeditationCardWidget extends ConsumerWidget {
             TextButton(
               child: const Text('Delete'),
               onPressed: () {
-                ref.read(todayCProvider.notifier).deleteActivity(activity);
+                ref
+                    .read(todayCProvider.notifier)
+                    .deleteActivity(isToday: true, activity: meditation);
                 Navigator.of(context).pop();
               },
             ),

@@ -7,7 +7,7 @@ part of 'meditation_during.dart';
 // **************************************************************************
 
 abstract class _$MeditationDuringCWProxy {
-  MeditationDuring activity(Activity activity);
+  MeditationDuring meditation(Meditation meditation);
 
   MeditationDuring sessionStopped(bool sessionStopped);
 
@@ -18,7 +18,7 @@ abstract class _$MeditationDuringCWProxy {
   /// MeditationDuring(...).copyWith(id: 12, name: "My name")
   /// ````
   MeditationDuring call({
-    Activity? activity,
+    Meditation? meditation,
     bool? sessionStopped,
   });
 }
@@ -30,7 +30,8 @@ class _$MeditationDuringCWProxyImpl implements _$MeditationDuringCWProxy {
   final MeditationDuring _value;
 
   @override
-  MeditationDuring activity(Activity activity) => this(activity: activity);
+  MeditationDuring meditation(Meditation meditation) =>
+      this(meditation: meditation);
 
   @override
   MeditationDuring sessionStopped(bool sessionStopped) =>
@@ -45,15 +46,16 @@ class _$MeditationDuringCWProxyImpl implements _$MeditationDuringCWProxy {
   /// MeditationDuring(...).copyWith(id: 12, name: "My name")
   /// ````
   MeditationDuring call({
-    Object? activity = const $CopyWithPlaceholder(),
+    Object? meditation = const $CopyWithPlaceholder(),
     Object? sessionStopped = const $CopyWithPlaceholder(),
   }) {
     return MeditationDuring(
-      activity: activity == const $CopyWithPlaceholder() || activity == null
-          // ignore: unnecessary_non_null_assertion
-          ? _value.activity!
-          // ignore: cast_nullable_to_non_nullable
-          : activity as Activity,
+      meditation:
+          meditation == const $CopyWithPlaceholder() || meditation == null
+              // ignore: unnecessary_non_null_assertion
+              ? _value.meditation!
+              // ignore: cast_nullable_to_non_nullable
+              : meditation as Meditation,
       sessionStopped: sessionStopped == const $CopyWithPlaceholder() ||
               sessionStopped == null
           // ignore: unnecessary_non_null_assertion

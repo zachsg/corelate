@@ -20,9 +20,7 @@ class BreathworkConfigureView extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final breathwork =
-        ref.watch(breathworkConfigureCProvider).activity.breathwork ??
-            Breathwork(holdSecondsPerRound: []);
+    final breathwork = ref.watch(breathworkConfigureCProvider).breathwork;
 
     return Scaffold(
       appBar: AppBar(
@@ -59,12 +57,9 @@ class BreathworkConfigureView extends ConsumerWidget {
             const SizedBox(height: 32),
             FilledButton(
               onPressed: () {
-                final is478 = ref
-                        .read(breathworkConfigureCProvider)
-                        .activity
-                        .breathwork
-                        ?.type ==
-                    BreathworkType.four78;
+                final is478 =
+                    ref.read(breathworkConfigureCProvider).breathwork.type ==
+                        BreathworkType.four78;
                 Wakelock.enable();
                 ref.read(breathworkConfigureCProvider.notifier).resetDate();
                 context.pushNamed(

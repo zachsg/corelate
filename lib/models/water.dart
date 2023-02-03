@@ -3,9 +3,10 @@ import 'package:isar/isar.dart';
 
 part 'water.g.dart';
 
-@embedded
+@collection
 @CopyWith()
 class Water {
+  Id id = Isar.autoIncrement;
   int? placeholder;
 
   Water({

@@ -34,12 +34,8 @@ class _HoldingInhaleWidgetState extends ConsumerState<HoldingInhaleWidget> {
         _timer.cancel();
         ref.read(wimHofCProvider.notifier).incrementRound();
 
-        final roundsGoal = ref
-                .watch(breathworkConfigureCProvider)
-                .activity
-                .breathwork
-                ?.rounds ??
-            3;
+        final roundsGoal =
+            ref.watch(breathworkConfigureCProvider).breathwork.rounds;
 
         if (ref.watch(wimHofCProvider).currentRound > roundsGoal) {
           ref.read(wimHofCProvider.notifier).markDone();

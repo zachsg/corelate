@@ -3,9 +3,10 @@ import 'package:isar/isar.dart';
 
 part 'workout.g.dart';
 
-@embedded
+@collection
 @CopyWith()
 class Workout {
+  Id id = Isar.autoIncrement;
   int? placeholder;
 
   Workout({
