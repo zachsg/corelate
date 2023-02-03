@@ -36,32 +36,31 @@ class Database {
   }
 
   Future<List<Activity>> loadTodaysActivities() async {
-    final List<Activity> activities = [];
+    List<Activity> activities = [];
 
     final date = DateTime.now().copyWith(hour: 0, minute: 0);
+
     final meditations = await isar.meditations
         .where()
         .dateGreaterThan(date)
         .sortByDateDesc()
         .findAll();
-    activities.addAll(meditations);
 
     final breathworks = await isar.breathworks
         .where()
         .dateGreaterThan(date)
         .sortByDateDesc()
         .findAll();
-    activities.addAll(breathworks);
 
-    activities.sort((a1, a2) => a2.date.compareTo(a1.date));
+    activities = [...meditations, ...breathworks]
+      ..sort((a1, a2) => a2.date.compareTo(a1.date));
 
     return activities;
   }
 
   Future<List<Activity>> loadAllActivities() async {
-    final List<Activity> activities = [];
+    List<Activity> activities = [];
 
-    // Get all meditations
     final date = DateTime.now().copyWith(hour: 0, minute: 0);
 
     final meditations = await isar.meditations
@@ -69,16 +68,15 @@ class Database {
         .dateLessThan(date)
         .sortByDateDesc()
         .findAll();
-    activities.addAll(meditations);
 
     final breathworks = await isar.breathworks
         .where()
         .dateLessThan(date)
         .sortByDateDesc()
         .findAll();
-    activities.addAll(breathworks);
 
-    activities.sort((a1, a2) => a2.date.compareTo(a1.date));
+    activities = [...meditations, ...breathworks]
+      ..sort((a1, a2) => a2.date.compareTo(a1.date));
 
     return activities;
   }
