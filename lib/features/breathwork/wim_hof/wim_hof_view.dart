@@ -96,7 +96,7 @@ class WimHofView extends ConsumerWidget {
 
     message =
         'You did $rounds ${rounds == 1 ? 'round' : 'rounds'} of the Wim Hof Method'
-        ' ($breathsPerRound breaths per round).';
+        ' ($breathsPerRound breaths per round).\n';
 
     return showDialog(
       context: context,
