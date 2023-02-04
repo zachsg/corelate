@@ -10,20 +10,6 @@ import '../../../models/meditation.dart';
 import '../today_c.dart';
 import 'xwidgets.dart';
 
-class XXX extends ConsumerStatefulWidget {
-  const XXX({super.key});
-
-  @override
-  ConsumerState<ConsumerStatefulWidget> createState() => _XXXState();
-}
-
-class _XXXState extends ConsumerState<XXX> {
-  @override
-  Widget build(BuildContext context) {
-    return Container();
-  }
-}
-
 class TodaysActivitiesListWidget extends ConsumerStatefulWidget {
   const TodaysActivitiesListWidget({super.key});
 

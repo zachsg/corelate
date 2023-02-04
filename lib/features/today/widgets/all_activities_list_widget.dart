@@ -208,12 +208,6 @@ class _AllActivitiesListWidgetState
     final minuteString = minute < 10 ? '0$minute' : minute;
     var timeString = '';
 
-    final day = activity.date.day;
-    final month = activity.date.month;
-    final year = activity.date.year;
-
-    final now = DateTime.now();
-
     final is24HoursFormat = MediaQuery.of(context).alwaysUse24HourFormat;
     if (is24HoursFormat) {
       timeString = '$hour:$minuteString';

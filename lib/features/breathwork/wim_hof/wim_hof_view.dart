@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:wakelock/wakelock.dart';
 
 import '../../../helpers/strings.dart';
+import '../../../models/breathwork_type.dart';
 import '../../bottom_navigation/bottom_navigation_view.dart';
 import '../../widgets/xwidgets.dart';
 import '../breathwork_configure/breathwork_configure_c.dart';
@@ -95,27 +96,7 @@ class WimHofView extends ConsumerWidget {
 
     message =
         'You did $rounds ${rounds == 1 ? 'round' : 'rounds'} of the Wim Hof Method'
-        ' ($breathsPerRound breaths per round).'
-        '\n\nIndividual breath holds:';
-
-    var round = 0;
-    for (final hold in wimHof.holdSeconds) {
-      round += 1;
-
-      var durationString = '';
-
-      final minutes = hold ~/ 60;
-      final seconds = minutes == 0 ? hold : hold - minutes * 60;
-      if (minutes == 0) {
-        durationString = '${seconds}s';
-      } else if (seconds == 0) {
-        durationString = '${minutes}m';
-      } else {
-        durationString = '${minutes}m ${seconds}s';
-      }
-
-      message += '\n\t- Round #$round: $durationString';
-    }
+        ' ($breathsPerRound breaths per round).';
 
     return showDialog(
       context: context,
@@ -127,6 +108,12 @@ class WimHofView extends ConsumerWidget {
             child: ListBody(
               children: [
                 Text(message),
+                if (breathwork.type == BreathworkType.wimHof)
+                  SizedBox(
+                    height: 150,
+                    width: MediaQuery.of(context).size.width,
+                    child: WimHofBarChartWidget(breathwork: breathwork),
+                  ),
                 const Text('\n\nHow it go?'),
                 RatingBarWidget(
                   onRatingChange: (rating) => ref

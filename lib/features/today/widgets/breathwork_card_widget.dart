@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../models/breathwork.dart';
 import '../../../models/breathwork_type.dart';
+import '../../widgets/xwidgets.dart';
 import '../today_c.dart';
 import 'activity_card_widget.dart';
 
@@ -106,27 +107,7 @@ class BreathworkCardWidget extends ConsumerWidget {
       final breathsPerRound = breathwork.breathsPerRound;
       message =
           'You did $rounds ${rounds == 1 ? 'round' : 'rounds'} of the Wim Hof Method'
-          ' ($breathsPerRound breaths per round).'
-          '\n\nIndividual breath holds:';
-
-      var round = 0;
-      for (final hold in breathwork.holdSecondsPerRound ?? []) {
-        round += 1;
-
-        var durationString = '';
-
-        final minutes = hold ~/ 60;
-        final seconds = minutes == 0 ? hold : hold - minutes * 60;
-        if (minutes == 0) {
-          durationString = '${seconds}s';
-        } else if (seconds == 0) {
-          durationString = '${minutes}m';
-        } else {
-          durationString = '${minutes}m ${seconds}s';
-        }
-
-        message += '\n\t- Round $round: $durationString';
-      }
+          ' ($breathsPerRound breaths per round).\n';
     }
 
     return showDialog(
@@ -139,6 +120,12 @@ class BreathworkCardWidget extends ConsumerWidget {
             child: ListBody(
               children: [
                 Text(message),
+                if (breathwork.type == BreathworkType.wimHof)
+                  SizedBox(
+                    height: 150,
+                    width: MediaQuery.of(context).size.width,
+                    child: WimHofBarChartWidget(breathwork: breathwork),
+                  ),
               ],
             ),
           ),
