@@ -52,7 +52,10 @@ class _AllActivitiesListWidgetState
     return Column(
       children: [
         Container(
-          color: Theme.of(context).colorScheme.primaryContainer,
+          decoration: BoxDecoration(
+            color: Theme.of(context).colorScheme.primaryContainer,
+            boxShadow: kElevationToShadow[1],
+          ),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
@@ -115,6 +118,9 @@ class _AllActivitiesListWidgetState
                       final activity =
                           ref.watch(todayCProvider).activities[index];
 
+                      final last =
+                          ref.watch(todayCProvider).activities.length - 1;
+
                       return Dismissible(
                         key: UniqueKey(),
                         direction: DismissDirection.endToStart,
@@ -153,9 +159,11 @@ class _AllActivitiesListWidgetState
                           ),
                         ),
                         child: Padding(
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 10.0,
-                            vertical: 2.0,
+                          padding: EdgeInsets.only(
+                            left: 10.0,
+                            right: 10.0,
+                            top: index == 0 ? 6.0 : 2.0,
+                            bottom: index == last ? 6.0 : 2.0,
                           ),
                           child: Card(
                             child: Padding(
@@ -207,13 +215,7 @@ class _AllActivitiesListWidgetState
     final now = DateTime.now();
 
     final is24HoursFormat = MediaQuery.of(context).alwaysUse24HourFormat;
-    if (day < now.day || month < now.month) {
-      if (year == now.year) {
-        timeString = DateFormat('MMM dd').format(activity.date);
-      } else {
-        timeString = DateFormat('M/dd/yy').format(activity.date);
-      }
-    } else if (is24HoursFormat) {
+    if (is24HoursFormat) {
       timeString = '$hour:$minuteString';
     } else {
       timeString = DateFormat('hh:mm a').format(activity.date);
