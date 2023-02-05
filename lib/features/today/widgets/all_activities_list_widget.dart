@@ -168,8 +168,11 @@ class _AllActivitiesListWidgetState
                           ),
                           child: GestureDetector(
                             onTap: () {
-                              if (activity is Breathwork) {
-                                _showSessionCompleteDialog(
+                              if (activity is Meditation) {
+                                _showMeditationSessionCompleteDialog(
+                                    ref, context, activity);
+                              } else if (activity is Breathwork) {
+                                _showBreathworkSessionCompleteDialog(
                                     ref, context, activity);
                               }
                             },
@@ -313,7 +316,7 @@ class _AllActivitiesListWidgetState
     );
   }
 
-  Future<void> _showSessionCompleteDialog(
+  Future<void> _showBreathworkSessionCompleteDialog(
       WidgetRef ref, BuildContext context, Breathwork breathwork) async {
     var title = 'Breathwork';
     var message = '';
@@ -345,6 +348,52 @@ class _AllActivitiesListWidgetState
                     width: MediaQuery.of(context).size.width,
                     child: WimHofBarChartWidget(breathwork: breathwork),
                   ),
+              ],
+            ),
+          ),
+          actions: [
+            FilledButton(
+              onPressed: Navigator.of(context).pop,
+              child: const Text('Done'),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  Future<void> _showMeditationSessionCompleteDialog(
+      WidgetRef ref, BuildContext context, Meditation meditation) async {
+    var title = '';
+    var message = '';
+
+    title = 'Meditation';
+    final elapsed = meditation.elapsed;
+
+    final minutes = elapsed / 60 > 0 ? elapsed ~/ 60 : 0;
+    final seconds = minutes == 0 ? elapsed : elapsed - minutes * 60;
+
+    var durationString = '';
+    if (minutes == 0) {
+      durationString = '$seconds seconds';
+    } else if (seconds == 0) {
+      durationString = '$minutes minutes';
+    } else {
+      durationString = '$minutes minutes and $seconds seconds';
+    }
+
+    message = 'You meditated for $durationString.';
+
+    return showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('$title Details'),
+          content: SingleChildScrollView(
+            child: ListBody(
+              children: [
+                Text(message),
               ],
             ),
           ),
