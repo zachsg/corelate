@@ -51,26 +51,48 @@ class _TodaysActivitiesListWidgetState
 
               if (activity is Meditation) {
                 final meditation = activity;
-                return MeditationCardWidget(
-                  title: 'Meditation',
-                  meditation: meditation,
-                  icon: icon,
-                  timeString: timeString,
-                  isEven: isEven,
-                  isFirstRow: isFirstRow,
+                return Dismissible(
+                  key: UniqueKey(),
+                  direction: DismissDirection.endToStart,
+                  onDismissed: (direction) => ref
+                      .read(todayCProvider.notifier)
+                      .deleteActivity(isToday: false, activity: activity),
+                  background: Container(
+                    color: Theme.of(context).colorScheme.primaryContainer,
+                    child: _dismissibleBackgroundWidget(),
+                  ),
+                  child: MeditationCardWidget(
+                    title: 'Meditation',
+                    meditation: meditation,
+                    icon: icon,
+                    timeString: timeString,
+                    isEven: isEven,
+                    isFirstRow: isFirstRow,
+                  ),
                 );
               } else if (activity is Breathwork) {
                 final breathwork = activity;
                 if (breathwork.type == BreathworkType.four78) {
                   return const Text('4-7-8');
                 } else {
-                  return BreathworkCardWidget(
-                    title: 'Breathwork',
-                    breathwork: breathwork,
-                    icon: icon,
-                    timeString: timeString,
-                    isEven: isEven,
-                    isFirstRow: isFirstRow,
+                  return Dismissible(
+                    key: UniqueKey(),
+                    direction: DismissDirection.endToStart,
+                    onDismissed: (direction) => ref
+                        .read(todayCProvider.notifier)
+                        .deleteActivity(isToday: false, activity: activity),
+                    background: Container(
+                      color: Theme.of(context).colorScheme.primaryContainer,
+                      child: _dismissibleBackgroundWidget(),
+                    ),
+                    child: BreathworkCardWidget(
+                      title: 'Breathwork',
+                      breathwork: breathwork,
+                      icon: icon,
+                      timeString: timeString,
+                      isEven: isEven,
+                      isFirstRow: isFirstRow,
+                    ),
                   );
                 }
               } else {
@@ -78,6 +100,32 @@ class _TodaysActivitiesListWidgetState
               }
             },
           );
+  }
+
+  Widget _dismissibleBackgroundWidget() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        const SizedBox(),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 12.0),
+          child: Row(
+            children: [
+              Text(
+                'Delete',
+                style: TextStyle(
+                    color: Theme.of(context).colorScheme.onPrimaryContainer),
+              ),
+              const SizedBox(width: 4),
+              Icon(
+                Icons.delete_outline,
+                color: Theme.of(context).colorScheme.onPrimaryContainer,
+              ),
+            ],
+          ),
+        ),
+      ],
+    );
   }
 
   String _getTimeFormatted(BuildContext context, Activity activity) {

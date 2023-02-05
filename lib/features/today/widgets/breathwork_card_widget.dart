@@ -4,7 +4,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../models/breathwork.dart';
 import '../../../models/breathwork_type.dart';
 import '../../widgets/xwidgets.dart';
-import '../today_c.dart';
 import 'activity_card_widget.dart';
 
 class BreathworkCardWidget extends ConsumerWidget {
@@ -107,7 +106,7 @@ class BreathworkCardWidget extends ConsumerWidget {
       final breathsPerRound = breathwork.breathsPerRound;
       message =
           'You did $rounds ${rounds == 1 ? 'round' : 'rounds'} of the Wim Hof Method'
-          ' ($breathsPerRound breaths per round).\n';
+          ' ($breathsPerRound breaths per round).\n\nIndividual breath holds:\n';
     }
 
     return showDialog(
@@ -130,15 +129,6 @@ class BreathworkCardWidget extends ConsumerWidget {
             ),
           ),
           actions: [
-            TextButton(
-              child: const Text('Delete'),
-              onPressed: () {
-                ref
-                    .read(todayCProvider.notifier)
-                    .deleteActivity(isToday: true, activity: breathwork);
-                Navigator.of(context).pop();
-              },
-            ),
             FilledButton(
               onPressed: Navigator.of(context).pop,
               child: const Text('Done'),

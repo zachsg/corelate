@@ -9,6 +9,7 @@ import '../../../models/breathwork.dart';
 import '../../../models/breathwork_type.dart';
 import '../../../models/meditation.dart';
 import '../../../models/meditation_type.dart';
+import '../../widgets/xwidgets.dart';
 import '../today_c.dart';
 import 'empty_state_widget.dart';
 
@@ -165,25 +166,33 @@ class _AllActivitiesListWidgetState
                             top: index == 0 ? 6.0 : 2.0,
                             bottom: index == last ? 6.0 : 2.0,
                           ),
-                          child: Card(
-                            child: Padding(
-                              padding: const EdgeInsets.symmetric(
-                                horizontal: 16.0,
-                                vertical: 24.0,
-                              ),
-                              child: Row(
-                                children: [
-                                  _leadingWidget(context, activity),
-                                  const SizedBox(width: 20),
-                                  Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      _titleWidget(context, activity),
-                                      _subtitleWidget(context, activity),
-                                    ],
-                                  ),
-                                ],
+                          child: GestureDetector(
+                            onTap: () {
+                              if (activity is Breathwork) {
+                                _showSessionCompleteDialog(
+                                    ref, context, activity);
+                              }
+                            },
+                            child: Card(
+                              child: Padding(
+                                padding: const EdgeInsets.symmetric(
+                                  horizontal: 16.0,
+                                  vertical: 24.0,
+                                ),
+                                child: Row(
+                                  children: [
+                                    _leadingWidget(context, activity),
+                                    const SizedBox(width: 20),
+                                    Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        _titleWidget(context, activity),
+                                        _subtitleWidget(context, activity),
+                                      ],
+                                    ),
+                                  ],
+                                ),
                               ),
                             ),
                           ),
@@ -301,6 +310,52 @@ class _AllActivitiesListWidgetState
         Icon(icon, size: 18),
         Text(durationString, style: style),
       ],
+    );
+  }
+
+  Future<void> _showSessionCompleteDialog(
+      WidgetRef ref, BuildContext context, Breathwork breathwork) async {
+    var title = 'Breathwork';
+    var message = '';
+
+    final rounds = breathwork.holdSecondsPerRound?.length ?? 0;
+    if (breathwork.type == BreathworkType.four78) {
+      title += ' (4-7-8)';
+    } else {
+      title += ' (Wim Hof)';
+      final breathsPerRound = breathwork.breathsPerRound;
+      message =
+          'You did $rounds ${rounds == 1 ? 'round' : 'rounds'} of the Wim Hof Method'
+          ' ($breathsPerRound breaths per round).\n\nIndividual breath holds:\n';
+    }
+
+    return showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('$title Details'),
+          content: SingleChildScrollView(
+            child: ListBody(
+              children: [
+                Text(message),
+                if (breathwork.type == BreathworkType.wimHof)
+                  SizedBox(
+                    height: 150,
+                    width: MediaQuery.of(context).size.width,
+                    child: WimHofBarChartWidget(breathwork: breathwork),
+                  ),
+              ],
+            ),
+          ),
+          actions: [
+            FilledButton(
+              onPressed: Navigator.of(context).pop,
+              child: const Text('Done'),
+            ),
+          ],
+        );
+      },
     );
   }
 }

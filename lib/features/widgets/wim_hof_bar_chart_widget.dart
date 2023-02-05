@@ -25,7 +25,7 @@ class WimHofBarChartWidget extends ConsumerWidget {
       barGroups: barGroups(context, breathwork),
       gridData: FlGridData(show: false),
       alignment: BarChartAlignment.spaceEvenly,
-      maxY: max.toDouble() + 30,
+      maxY: max.toDouble() + 15,
     ));
   }
 
@@ -58,37 +58,49 @@ class WimHofBarChartWidget extends ConsumerWidget {
       );
 
   Widget getTitles(double value, TitleMeta meta) {
-    String text;
+    String text = '';
+    String modifier = '';
+
     switch (value.toInt()) {
       case 0:
-        text = 'Rd 1';
+        text = '1';
+        modifier = 'st';
         break;
       case 1:
-        text = 'Rd 2';
+        text = '2';
+        modifier = 'nd';
         break;
       case 2:
-        text = 'Rd 3';
+        text = '3';
+        modifier = 'rd';
         break;
       case 3:
-        text = 'Rd 4';
+        text = '4';
+        modifier = 'th';
         break;
       case 4:
-        text = 'Rd 5';
+        text = '5';
+        modifier = 'th';
         break;
       case 5:
-        text = 'Rd 6';
+        text = '6';
+        modifier = 'th';
         break;
       case 6:
-        text = 'Rd 7';
+        text = '7';
+        modifier = 'th';
         break;
       case 7:
-        text = 'Rd 8';
+        text = '8';
+        modifier = 'th';
         break;
       case 8:
-        text = 'Rd 9';
+        text = '9';
+        modifier = 'th';
         break;
       case 9:
-        text = 'Rd 10';
+        text = '10';
+        modifier = 'th';
         break;
       default:
         text = '';
@@ -97,7 +109,16 @@ class WimHofBarChartWidget extends ConsumerWidget {
     return SideTitleWidget(
       axisSide: meta.axisSide,
       space: 4,
-      child: Text(text),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(text),
+          Text(
+            modifier,
+            style: const TextStyle(fontSize: 12),
+          ),
+        ],
+      ),
     );
   }
 

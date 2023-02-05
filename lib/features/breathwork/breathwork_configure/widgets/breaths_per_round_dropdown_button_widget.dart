@@ -8,7 +8,7 @@ class BreathsPerRoundDropdownButtonWidget extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final breathsPerRounds = [15, 20, 25, 30, 35, 40];
+    final breathsPerRounds = [20, 25, 30, 35, 40];
 
     final breathwork = ref.watch(breathworkConfigureCProvider).breathwork;
 
