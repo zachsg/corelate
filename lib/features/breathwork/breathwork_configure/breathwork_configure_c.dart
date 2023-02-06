@@ -6,6 +6,7 @@ import '../../../services/provider.dart';
 import '../../../models/breathwork.dart';
 import '../../../models/breathwork_type.dart';
 import '../../today/today_c.dart';
+import '../four_7_8/four_7_8_c.dart';
 import '../wim_hof/wim_hof_c.dart';
 import 'breathwork_configure.dart';
 
@@ -57,7 +58,8 @@ class BreathworkConfigureC extends _$BreathworkConfigureC {
 
     if (state.breathwork.type == BreathworkType.four78) {
       // TODO: Save 4-7-8 session
-      breathwork = state.breathwork;
+      final four78 = ref.watch(four78CProvider);
+      breathwork = state.breathwork.copyWith(rounds: four78.currentRound);
     } else {
       final wimHof = ref.watch(wimHofCProvider);
       final rounds = wimHof.holdSeconds.length;
@@ -75,8 +77,8 @@ class BreathworkConfigureC extends _$BreathworkConfigureC {
       int elapsed;
 
       if (breathwork.type == BreathworkType.four78) {
-        // TODO: Save 4-7-8 minutes to mindful minutes in apple health
-        elapsed = 0;
+        final four78 = ref.watch(four78CProvider);
+        elapsed = four78.currentRound * 14;
       } else {
         final wimHof = ref.watch(wimHofCProvider);
 

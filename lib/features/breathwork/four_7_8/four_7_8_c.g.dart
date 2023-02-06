@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'today_c.dart';
+part of 'four_7_8_c.dart';
 
 // **************************************************************************
 // RiverpodGenerator
@@ -29,34 +29,18 @@ class _SystemHash {
   }
 }
 
-String _$DateCHash() => r'ca3eb29dcba1299ea01c4957c123c13e7dd9e2c9';
+String _$Four78CHash() => r'8103e8f05c1c10f3c581508f872ca51aedddfd6c';
 
-/// See also [DateC].
-final dateCProvider = AutoDisposeNotifierProvider<DateC, DateTime>(
-  DateC.new,
-  name: r'dateCProvider',
+/// See also [Four78C].
+final four78CProvider = AutoDisposeNotifierProvider<Four78C, Four78>(
+  Four78C.new,
+  name: r'four78CProvider',
   debugGetCreateSourceHash:
-      const bool.fromEnvironment('dart.vm.product') ? null : _$DateCHash,
+      const bool.fromEnvironment('dart.vm.product') ? null : _$Four78CHash,
 );
-typedef DateCRef = AutoDisposeNotifierProviderRef<DateTime>;
+typedef Four78CRef = AutoDisposeNotifierProviderRef<Four78>;
 
-abstract class _$DateC extends AutoDisposeNotifier<DateTime> {
+abstract class _$Four78C extends AutoDisposeNotifier<Four78> {
   @override
-  DateTime build();
-}
-
-String _$TodayCHash() => r'923103dcb37626acb1e5a37db0949f07d115a336';
-
-/// See also [TodayC].
-final todayCProvider = NotifierProvider<TodayC, Today>(
-  TodayC.new,
-  name: r'todayCProvider',
-  debugGetCreateSourceHash:
-      const bool.fromEnvironment('dart.vm.product') ? null : _$TodayCHash,
-);
-typedef TodayCRef = NotifierProviderRef<Today>;
-
-abstract class _$TodayC extends Notifier<Today> {
-  @override
-  Today build();
+  Four78 build();
 }

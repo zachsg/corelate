@@ -20,6 +20,7 @@ class WimHofView extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final wimHof = ref.watch(wimHofCProvider);
+    final breathworkConfig = ref.watch(breathworkConfigureCProvider);
 
     return Scaffold(
       appBar: AppBar(
@@ -34,9 +35,20 @@ class WimHofView extends ConsumerWidget {
               children: [
                 Column(
                   children: [
-                    Text(
-                      'Round ${wimHof.currentRound}',
-                      style: Theme.of(context).textTheme.titleLarge,
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.baseline,
+                      textBaseline: TextBaseline.alphabetic,
+                      children: [
+                        Text(
+                          'Round ${wimHof.currentRound}',
+                          style: Theme.of(context).textTheme.titleLarge,
+                        ),
+                        Text(
+                          ' of ${breathworkConfig.breathwork.rounds}',
+                          style: Theme.of(context).textTheme.titleSmall,
+                        ),
+                      ],
                     ),
                     SizedBox(
                       height: MediaQuery.of(context).size.width / 1.3,
