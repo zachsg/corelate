@@ -4,7 +4,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../helpers/extensions.dart';
 import '../../../models/meditation.dart';
 import '../../../models/meditation_type.dart';
-import '../today_c.dart';
 import 'activity_card_widget.dart';
 
 class MeditationCardWidget extends ConsumerWidget {
@@ -99,6 +98,15 @@ class MeditationCardWidget extends ConsumerWidget {
                   ],
                 ),
               ],
+            ),
+          ),
+          Positioned(
+            bottom: 8,
+            right: 8,
+            child: Icon(
+              meditation.rating?.iconForRating(),
+              color: Theme.of(context).colorScheme.primary.withOpacity(0.7),
+              size: 30,
             ),
           ),
         ],

@@ -118,6 +118,13 @@ class _AllActivitiesListWidgetState
                     final activity =
                         ref.watch(todayCProvider).activities[index];
 
+                    IconData? ratingIcon;
+                    if (activity is Meditation) {
+                      ratingIcon = activity.rating?.iconForRating();
+                    } else if (activity is Breathwork) {
+                      ratingIcon = activity.rating?.iconForRating();
+                    }
+
                     final last =
                         ref.watch(todayCProvider).activities.length - 1;
 
@@ -193,6 +200,14 @@ class _AllActivitiesListWidgetState
                                       _subtitleWidget(context, activity),
                                     ],
                                   ),
+                                  const Spacer(),
+                                  if (ratingIcon != null)
+                                    Icon(
+                                      ratingIcon,
+                                      color:
+                                          Theme.of(context).colorScheme.primary,
+                                      size: 30,
+                                    ),
                                 ],
                               ),
                             ),
@@ -252,6 +267,7 @@ class _AllActivitiesListWidgetState
         ?.copyWith(color: Theme.of(context).colorScheme.onBackground);
 
     String title = '';
+
     if (activity is Meditation) {
       title = 'Meditation';
     } else if (activity is Breathwork) {

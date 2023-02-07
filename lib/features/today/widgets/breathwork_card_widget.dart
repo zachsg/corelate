@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../models/breathwork.dart';
 import '../../../models/breathwork_type.dart';
 import '../../widgets/xwidgets.dart';
+import '../../../helpers/extensions.dart';
 import 'activity_card_widget.dart';
 
 class BreathworkCardWidget extends ConsumerWidget {
@@ -83,6 +84,15 @@ class BreathworkCardWidget extends ConsumerWidget {
                   ],
                 ),
               ],
+            ),
+          ),
+          Positioned(
+            bottom: 8,
+            right: 8,
+            child: Icon(
+              breathwork.rating?.iconForRating(),
+              color: Theme.of(context).colorScheme.primary.withOpacity(0.7),
+              size: 28,
             ),
           ),
         ],
