@@ -43,7 +43,9 @@ class TodayC extends _$TodayC {
         await db.deleteBreathwork(activity);
       }
 
-      isToday ? loadTodaysActivities() : loadAllActivities();
+      isToday
+          ? loadTodaysActivities()
+          : loadActivitiesForDate(state.historyDate);
     });
   }
 

@@ -75,7 +75,7 @@ class _TodaysActivitiesListWidgetState
                   direction: DismissDirection.endToStart,
                   onDismissed: (direction) => ref
                       .read(todayCProvider.notifier)
-                      .deleteActivity(isToday: false, activity: activity),
+                      .deleteActivity(isToday: true, activity: activity),
                   background: Container(
                     color: Theme.of(context).colorScheme.primaryContainer,
                     child: _dismissibleBackgroundWidget(),
