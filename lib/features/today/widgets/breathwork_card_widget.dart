@@ -26,11 +26,8 @@ class BreathworkCardWidget extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    var type = '';
-    int rounds = 0;
-
-    type = breathwork.type == BreathworkType.four78 ? '4-7-8' : 'Wim Hof';
-    rounds = breathwork.holdSecondsPerRound?.length ?? 0;
+    final type = breathwork.type == BreathworkType.four78 ? '4-7-8' : 'Wim Hof';
+    final rounds = breathwork.rounds;
 
     return ActivityCardWidget(
       isEven: isEven,
@@ -98,9 +95,11 @@ class BreathworkCardWidget extends ConsumerWidget {
     var title = 'Breathwork';
     var message = '';
 
-    final rounds = breathwork.holdSecondsPerRound?.length ?? 0;
+    final rounds = breathwork.rounds;
     if (breathwork.type == BreathworkType.four78) {
       title += ' (4-7-8)';
+      message = 'You did $rounds ${rounds == 1 ? 'round' : 'rounds'} of the'
+          ' 4-7-8 breathing technicque.';
     } else {
       title += ' (Wim Hof)';
       final breathsPerRound = breathwork.breathsPerRound;

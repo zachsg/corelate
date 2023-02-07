@@ -37,7 +37,7 @@ class _ActivityCardWidgetState extends ConsumerState<ActivityCardWidget> {
         onTapCancel: () => setState(() => isTapped = false),
         onTap: widget.onTap,
         child: Card(
-          elevation: isTapped ? 1 : 4,
+          elevation: isTapped ? 0 : 1,
           child: widget.child,
         ),
       ),

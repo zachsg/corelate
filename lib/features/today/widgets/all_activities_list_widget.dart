@@ -110,100 +110,98 @@ class _AllActivitiesListWidgetState
                 icon: Icons.psychology_alt,
                 message: emptyStateHistory,
               )
-            : Column(
-                children: [
-                  ListView.builder(
-                    shrinkWrap: true,
-                    itemCount: ref.watch(todayCProvider).activities.length,
-                    itemBuilder: (context, index) {
-                      final activity =
-                          ref.watch(todayCProvider).activities[index];
+            : Expanded(
+                child: ListView.builder(
+                  // shrinkWrap: true,
+                  itemCount: ref.watch(todayCProvider).activities.length,
+                  itemBuilder: (context, index) {
+                    final activity =
+                        ref.watch(todayCProvider).activities[index];
 
-                      final last =
-                          ref.watch(todayCProvider).activities.length - 1;
+                    final last =
+                        ref.watch(todayCProvider).activities.length - 1;
 
-                      return Dismissible(
-                        key: UniqueKey(),
-                        direction: DismissDirection.endToStart,
-                        onDismissed: (direction) => ref
-                            .read(todayCProvider.notifier)
-                            .deleteActivity(isToday: false, activity: activity),
-                        background: Container(
-                          color: Theme.of(context).colorScheme.primaryContainer,
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              const SizedBox(),
-                              Padding(
-                                padding: const EdgeInsets.symmetric(
-                                    horizontal: 12.0),
-                                child: Row(
-                                  children: [
-                                    Text(
-                                      'Delete',
-                                      style: TextStyle(
-                                          color: Theme.of(context)
-                                              .colorScheme
-                                              .onPrimaryContainer),
-                                    ),
-                                    const SizedBox(width: 4),
-                                    Icon(
-                                      Icons.delete_outline,
-                                      color: Theme.of(context)
-                                          .colorScheme
-                                          .onPrimaryContainer,
-                                    ),
-                                  ],
-                                ),
+                    return Dismissible(
+                      key: UniqueKey(),
+                      direction: DismissDirection.endToStart,
+                      onDismissed: (direction) => ref
+                          .read(todayCProvider.notifier)
+                          .deleteActivity(isToday: false, activity: activity),
+                      background: Container(
+                        color: Theme.of(context).colorScheme.primaryContainer,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            const SizedBox(),
+                            Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 12.0),
+                              child: Row(
+                                children: [
+                                  Text(
+                                    'Delete',
+                                    style: TextStyle(
+                                        color: Theme.of(context)
+                                            .colorScheme
+                                            .onPrimaryContainer),
+                                  ),
+                                  const SizedBox(width: 4),
+                                  Icon(
+                                    Icons.delete_outline,
+                                    color: Theme.of(context)
+                                        .colorScheme
+                                        .onPrimaryContainer,
+                                  ),
+                                ],
                               ),
-                            ],
-                          ),
+                            ),
+                          ],
                         ),
-                        child: Padding(
-                          padding: EdgeInsets.only(
-                            left: 10.0,
-                            right: 10.0,
-                            top: index == 0 ? 6.0 : 2.0,
-                            bottom: index == last ? 6.0 : 2.0,
-                          ),
-                          child: GestureDetector(
-                            onTap: () {
-                              if (activity is Meditation) {
-                                _showMeditationSessionCompleteDialog(
-                                    ref, context, activity);
-                              } else if (activity is Breathwork) {
-                                _showBreathworkSessionCompleteDialog(
-                                    ref, context, activity);
-                              }
-                            },
-                            child: Card(
-                              child: Padding(
-                                padding: const EdgeInsets.symmetric(
-                                  horizontal: 16.0,
-                                  vertical: 24.0,
-                                ),
-                                child: Row(
-                                  children: [
-                                    _leadingWidget(context, activity),
-                                    const SizedBox(width: 20),
-                                    Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        _titleWidget(context, activity),
-                                        _subtitleWidget(context, activity),
-                                      ],
-                                    ),
-                                  ],
-                                ),
+                      ),
+                      child: Padding(
+                        padding: EdgeInsets.only(
+                          left: 10.0,
+                          right: 10.0,
+                          top: index == 0 ? 6.0 : 2.0,
+                          bottom: index == last ? 6.0 : 2.0,
+                        ),
+                        child: GestureDetector(
+                          onTap: () {
+                            if (activity is Meditation) {
+                              _showMeditationSessionCompleteDialog(
+                                  ref, context, activity);
+                            } else if (activity is Breathwork) {
+                              _showBreathworkSessionCompleteDialog(
+                                  ref, context, activity);
+                            }
+                          },
+                          child: Card(
+                            child: Padding(
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 16.0,
+                                vertical: 24.0,
+                              ),
+                              child: Row(
+                                children: [
+                                  _leadingWidget(context, activity),
+                                  const SizedBox(width: 20),
+                                  Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      _titleWidget(context, activity),
+                                      _subtitleWidget(context, activity),
+                                    ],
+                                  ),
+                                ],
                               ),
                             ),
                           ),
                         ),
-                      );
-                    },
-                  ),
-                ],
+                      ),
+                    );
+                  },
+                ),
               ),
       ],
     );
@@ -294,7 +292,7 @@ class _AllActivitiesListWidgetState
       final breathwork = activity;
       icon = Icons.restart_alt;
       type = breathwork.type == BreathworkType.four78 ? '4-7-8' : 'Wim Hof';
-      final rounds = breathwork.holdSecondsPerRound?.length ?? 0;
+      final rounds = breathwork.rounds;
       durationString = '$rounds ${rounds == 1 ? 'round' : 'rounds'}';
     } else {
       icon = Icons.question_mark;
@@ -321,9 +319,11 @@ class _AllActivitiesListWidgetState
     var title = 'Breathwork';
     var message = '';
 
-    final rounds = breathwork.holdSecondsPerRound?.length ?? 0;
+    final rounds = breathwork.rounds;
     if (breathwork.type == BreathworkType.four78) {
       title += ' (4-7-8)';
+      message = 'You did $rounds ${rounds == 1 ? 'round' : 'rounds'} of the'
+          ' 4-7-8 breathing technicque.';
     } else {
       title += ' (Wim Hof)';
       final breathsPerRound = breathwork.breathsPerRound;

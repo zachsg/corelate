@@ -50,7 +50,6 @@ class _TodaysActivitiesListWidgetState
               final isFirstRow = index == 0 || index == 1;
 
               if (activity is Meditation) {
-                final meditation = activity;
                 return Dismissible(
                   key: UniqueKey(),
                   direction: DismissDirection.endToStart,
@@ -63,7 +62,7 @@ class _TodaysActivitiesListWidgetState
                   ),
                   child: MeditationCardWidget(
                     title: 'Meditation',
-                    meditation: meditation,
+                    meditation: activity,
                     icon: icon,
                     timeString: timeString,
                     isEven: isEven,
@@ -71,30 +70,25 @@ class _TodaysActivitiesListWidgetState
                   ),
                 );
               } else if (activity is Breathwork) {
-                final breathwork = activity;
-                if (breathwork.type == BreathworkType.four78) {
-                  return const Text('4-7-8');
-                } else {
-                  return Dismissible(
-                    key: UniqueKey(),
-                    direction: DismissDirection.endToStart,
-                    onDismissed: (direction) => ref
-                        .read(todayCProvider.notifier)
-                        .deleteActivity(isToday: false, activity: activity),
-                    background: Container(
-                      color: Theme.of(context).colorScheme.primaryContainer,
-                      child: _dismissibleBackgroundWidget(),
-                    ),
-                    child: BreathworkCardWidget(
-                      title: 'Breathwork',
-                      breathwork: breathwork,
-                      icon: icon,
-                      timeString: timeString,
-                      isEven: isEven,
-                      isFirstRow: isFirstRow,
-                    ),
-                  );
-                }
+                return Dismissible(
+                  key: UniqueKey(),
+                  direction: DismissDirection.endToStart,
+                  onDismissed: (direction) => ref
+                      .read(todayCProvider.notifier)
+                      .deleteActivity(isToday: false, activity: activity),
+                  background: Container(
+                    color: Theme.of(context).colorScheme.primaryContainer,
+                    child: _dismissibleBackgroundWidget(),
+                  ),
+                  child: BreathworkCardWidget(
+                    title: 'Breathwork',
+                    breathwork: activity,
+                    icon: icon,
+                    timeString: timeString,
+                    isEven: isEven,
+                    isFirstRow: isFirstRow,
+                  ),
+                );
               } else {
                 return const Text('n/a');
               }
