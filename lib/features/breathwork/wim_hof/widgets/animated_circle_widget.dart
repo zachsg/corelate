@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:vibration/vibration.dart';
 
 import '../../breathwork_configure/breathwork_configure_c.dart';
 import '../wim_hof_c.dart';
@@ -28,10 +29,18 @@ class _AnimatedCircleWidgetState extends ConsumerState<AnimatedCircleWidget> {
   double _width = 0.0;
   double _height = 0.0;
 
+  bool _canVibrate = false;
+
+  Future<void> _checkForVibrate() async {
+    _canVibrate = await Vibration.hasVibrator() ?? false;
+  }
+
   @override
   void initState() {
     final breathGoal =
         ref.read(breathworkConfigureCProvider).breathwork.breathsPerRound;
+
+    _checkForVibrate();
 
     _timer = Timer.periodic(const Duration(milliseconds: 1500), (_) {
       if (_width == 0.0 && _height == 0.0) {
@@ -39,11 +48,19 @@ class _AnimatedCircleWidgetState extends ConsumerState<AnimatedCircleWidget> {
           _width = widget.size;
           _height = widget.size;
         });
+
+        if (_canVibrate) {
+          Vibration.vibrate();
+        }
       } else {
         setState(() {
           _width = 0.0;
           _height = 0.0;
         });
+
+        if (_canVibrate) {
+          Vibration.vibrate();
+        }
       }
 
       if (_count % 2 == 0) {

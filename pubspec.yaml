@@ -27,6 +27,7 @@ dependencies:
   timezone: ^0.9.1
   vibration: ^1.7.6
   fl_chart: ^0.60.0
+  audioplayers: ^3.0.1
 
 dev_dependencies:
   flutter_test:
@@ -56,6 +57,7 @@ flutter:
   assets:
     - assets/icons/
     - assets/images/
+    - assets/sounds/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

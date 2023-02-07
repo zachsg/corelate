@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:vibration/vibration.dart';
 import 'package:wakelock/wakelock.dart';
 
 import '../../breathwork_configure/breathwork_configure_c.dart';
@@ -31,6 +32,11 @@ class _AnimatedRoundsWidgetState extends ConsumerState<AnimatedRoundsWidget> {
   int _count = 0;
   int _displayCount = 0;
   String _breathText = 'Inhale';
+  bool _canVibrate = false;
+
+  Future<void> _checkForVibrate() async {
+    _canVibrate = await Vibration.hasVibrator() ?? false;
+  }
 
   @override
   void initState() {
@@ -56,6 +62,10 @@ class _AnimatedRoundsWidgetState extends ConsumerState<AnimatedRoundsWidget> {
             _width = widget.size;
             _height = widget.size;
           });
+
+          if (_canVibrate) {
+            Vibration.vibrate();
+          }
         }
       } else if (_count >= 4 && _count < 11) {
         // Hold
@@ -64,6 +74,10 @@ class _AnimatedRoundsWidgetState extends ConsumerState<AnimatedRoundsWidget> {
             _breathText = 'Hold';
             _displayCount = 0;
           });
+
+          if (_canVibrate) {
+            Vibration.vibrate();
+          }
         }
       } else if (_count >= 11 && _count < 19) {
         // Exhale
@@ -74,6 +88,10 @@ class _AnimatedRoundsWidgetState extends ConsumerState<AnimatedRoundsWidget> {
             _width = 0.0;
             _height = 0.0;
           });
+
+          if (_canVibrate) {
+            Vibration.vibrate();
+          }
         }
       }
 
