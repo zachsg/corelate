@@ -26,6 +26,8 @@ class _RatingBarWidgetState extends ConsumerState<RatingBarWidget> {
         crossAxisAlignment: WrapCrossAlignment.center,
         children: [
           IconButton(
+            visualDensity: VisualDensity.compact,
+            padding: const EdgeInsets.all(0),
             onPressed: () {
               ratingUpdated(0);
               widget.onRatingChange(0);
@@ -39,6 +41,8 @@ class _RatingBarWidgetState extends ConsumerState<RatingBarWidget> {
             ),
           ),
           IconButton(
+            visualDensity: VisualDensity.compact,
+            padding: const EdgeInsets.all(0),
             onPressed: () {
               ratingUpdated(1);
               widget.onRatingChange(1);
@@ -52,6 +56,8 @@ class _RatingBarWidgetState extends ConsumerState<RatingBarWidget> {
             ),
           ),
           IconButton(
+            visualDensity: VisualDensity.compact,
+            padding: const EdgeInsets.all(0),
             onPressed: () {
               ratingUpdated(2);
               widget.onRatingChange(2);
@@ -65,6 +71,8 @@ class _RatingBarWidgetState extends ConsumerState<RatingBarWidget> {
             ),
           ),
           IconButton(
+            visualDensity: VisualDensity.compact,
+            padding: const EdgeInsets.all(0),
             onPressed: () {
               ratingUpdated(3);
               widget.onRatingChange(3);
@@ -78,6 +86,8 @@ class _RatingBarWidgetState extends ConsumerState<RatingBarWidget> {
             ),
           ),
           IconButton(
+            visualDensity: VisualDensity.compact,
+            padding: const EdgeInsets.all(0),
             onPressed: () {
               ratingUpdated(4);
               widget.onRatingChange(4);
