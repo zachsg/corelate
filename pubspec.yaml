@@ -14,7 +14,7 @@ dependencies:
   cupertino_icons: ^1.0.5
   flutter_riverpod: ^2.1.3
   riverpod_annotation: ^1.1.1
-  go_router: ^6.0.3
+  go_router: ^6.0.4
   copy_with_extension: ^5.0.0
   isar: ^3.0.5
   isar_flutter_libs: ^3.0.5
@@ -23,7 +23,6 @@ dependencies:
   health: ^4.4.0
   mindful_minutes: ^1.1.0
   flutter_native_splash: ^2.2.16
-  flutter_rating_bar: ^4.0.1
   flutter_local_notifications: ^13.0.0
   timezone: ^0.9.1
   vibration: ^1.7.6

@@ -67,6 +67,7 @@ class WimHofView extends ConsumerWidget {
                   children: [
                     FilledButton(
                       onPressed: () {
+                        Wakelock.disable();
                         final wimHof = ref.read(wimHofCProvider);
 
                         if (wimHof.currentRound != 1) {
@@ -86,7 +87,10 @@ class WimHofView extends ConsumerWidget {
                     ),
                     const SizedBox(height: 12.0),
                     TextButton(
-                      onPressed: context.pop,
+                      onPressed: () {
+                        Wakelock.disable();
+                        context.pop();
+                      },
                       child: const Text(cancelLabel),
                     ),
                   ],

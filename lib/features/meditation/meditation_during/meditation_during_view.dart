@@ -4,7 +4,6 @@ import 'package:go_router/go_router.dart';
 import 'package:wakelock/wakelock.dart';
 
 import '../../../helpers/strings.dart';
-import '../../../models/meditation.dart';
 import '../../../models/meditation_type.dart';
 import '../../bottom_navigation/bottom_navigation_view.dart';
 import '../../widgets/xwidgets.dart';
@@ -45,6 +44,7 @@ class MeditationDuringView extends ConsumerWidget {
                 children: [
                   FilledButton(
                     onPressed: () {
+                      Wakelock.disable();
                       ref
                           .read(meditationDuringCProvider.notifier)
                           .sessionStopped(true);
@@ -68,6 +68,7 @@ class MeditationDuringView extends ConsumerWidget {
                 children: [
                   TextButton(
                     onPressed: () {
+                      Wakelock.disable();
                       ref
                           .read(meditationDuringCProvider.notifier)
                           .sessionStopped(true);

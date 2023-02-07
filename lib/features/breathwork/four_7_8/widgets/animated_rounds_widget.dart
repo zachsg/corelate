@@ -34,8 +34,6 @@ class _AnimatedRoundsWidgetState extends ConsumerState<AnimatedRoundsWidget> {
 
   @override
   void initState() {
-    Wakelock.enable();
-
     _timer = Timer.periodic(const Duration(milliseconds: 650), (_) {
       if (_count == 19) {
         _count = 0;
