@@ -67,6 +67,8 @@ class _AnimatedCircleWidgetState extends ConsumerState<AnimatedCircleWidget> {
         ref.read(wimHofCProvider.notifier).incrementBreath();
       }
 
+      ref.read(wimHofCProvider.notifier).toggleIsInhaling();
+
       _count++;
       if (_count > breathGoal * 2) {
         _timer.cancel();

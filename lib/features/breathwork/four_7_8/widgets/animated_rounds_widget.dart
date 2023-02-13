@@ -141,7 +141,7 @@ class _AnimatedRoundsWidgetState extends ConsumerState<AnimatedRoundsWidget> {
               children: [
                 Text(
                   _breathText,
-                  style: Theme.of(context).textTheme.titleLarge,
+                  style: Theme.of(context).textTheme.displaySmall,
                 ),
                 Text(
                   '$_displayCount',

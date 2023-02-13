@@ -16,6 +16,9 @@ class WimHofC extends _$WimHofC {
 
   void reset() => state = WimHof(holdSeconds: []);
 
+  void toggleIsInhaling() =>
+      state = state.copyWith(isInhaling: !state.isInhaling);
+
   void incrementRound() {
     _setHoldSeconds(state.holdSecondsCurrentRound);
 
@@ -28,8 +31,11 @@ class WimHofC extends _$WimHofC {
     );
   }
 
-  void setHoldingExhale(bool holding) => state =
-      state.copyWith(isHoldingExhale: holding, isHoldingInhale: !holding);
+  void setHoldingExhale(bool holding) => state = state.copyWith(
+        isHoldingExhale: holding,
+        isHoldingInhale: !holding,
+        isInhaling: false,
+      );
 
   void setHoldSecondsCurrentRount(int seconds) =>
       state = state.copyWith(holdSecondsCurrentRound: seconds);

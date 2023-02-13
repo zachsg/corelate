@@ -11,6 +11,8 @@ abstract class _$WimHofCWProxy {
 
   WimHof currentBreath(int currentBreath);
 
+  WimHof isInhaling(bool isInhaling);
+
   WimHof isHoldingExhale(bool isHoldingExhale);
 
   WimHof isHoldingInhale(bool isHoldingInhale);
@@ -30,6 +32,7 @@ abstract class _$WimHofCWProxy {
   WimHof call({
     int? currentRound,
     int? currentBreath,
+    bool? isInhaling,
     bool? isHoldingExhale,
     bool? isHoldingInhale,
     bool? isDone,
@@ -49,6 +52,9 @@ class _$WimHofCWProxyImpl implements _$WimHofCWProxy {
 
   @override
   WimHof currentBreath(int currentBreath) => this(currentBreath: currentBreath);
+
+  @override
+  WimHof isInhaling(bool isInhaling) => this(isInhaling: isInhaling);
 
   @override
   WimHof isHoldingExhale(bool isHoldingExhale) =>
@@ -79,6 +85,7 @@ class _$WimHofCWProxyImpl implements _$WimHofCWProxy {
   WimHof call({
     Object? currentRound = const $CopyWithPlaceholder(),
     Object? currentBreath = const $CopyWithPlaceholder(),
+    Object? isInhaling = const $CopyWithPlaceholder(),
     Object? isHoldingExhale = const $CopyWithPlaceholder(),
     Object? isHoldingInhale = const $CopyWithPlaceholder(),
     Object? isDone = const $CopyWithPlaceholder(),
@@ -98,6 +105,12 @@ class _$WimHofCWProxyImpl implements _$WimHofCWProxy {
               ? _value.currentBreath!
               // ignore: cast_nullable_to_non_nullable
               : currentBreath as int,
+      isInhaling:
+          isInhaling == const $CopyWithPlaceholder() || isInhaling == null
+              // ignore: unnecessary_non_null_assertion
+              ? _value.isInhaling!
+              // ignore: cast_nullable_to_non_nullable
+              : isInhaling as bool,
       isHoldingExhale: isHoldingExhale == const $CopyWithPlaceholder() ||
               isHoldingExhale == null
           // ignore: unnecessary_non_null_assertion

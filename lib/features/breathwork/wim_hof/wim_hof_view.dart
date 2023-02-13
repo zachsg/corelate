@@ -26,6 +26,29 @@ class WimHofView extends ConsumerWidget {
       appBar: AppBar(
         automaticallyImplyLeading: false,
         title: const Text(wimHofLabel),
+        actions: [
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 8.0),
+            child: IconButton(
+              icon: Icon(
+                Icons.dangerous_outlined,
+                size: 32,
+                color: Theme.of(context).colorScheme.primary,
+              ),
+              onPressed: () {
+                Wakelock.disable();
+                final wimHof = ref.read(wimHofCProvider);
+
+                if (wimHof.currentRound != 1) {
+                  ref.read(wimHofCProvider.notifier).markDone();
+                  _showSessionCompleteDialog(ref, context);
+                } else {
+                  context.pop();
+                }
+              },
+            ),
+          ),
+        ],
       ),
       body: wimHof.isDone
           ? const SizedBox()
@@ -63,39 +86,7 @@ class WimHofView extends ConsumerWidget {
                     ),
                   ],
                 ),
-                Column(
-                  children: [
-                    FilledButton(
-                      onPressed: () {
-                        Wakelock.disable();
-                        final wimHof = ref.read(wimHofCProvider);
-
-                        if (wimHof.currentRound != 1) {
-                          ref.read(wimHofCProvider.notifier).markDone();
-                          _showSessionCompleteDialog(ref, context);
-                        } else {
-                          context.pop();
-                        }
-                      },
-                      child: const Padding(
-                        padding: EdgeInsets.symmetric(
-                          horizontal: 32,
-                          vertical: 16,
-                        ),
-                        child: Text(endEarlyLabel),
-                      ),
-                    ),
-                    const SizedBox(height: 12.0),
-                    TextButton(
-                      onPressed: () {
-                        Wakelock.disable();
-                        context.pop();
-                      },
-                      child: const Text(cancelLabel),
-                    ),
-                  ],
-                ),
-                const SizedBox(),
+                SizedBox(height: MediaQuery.of(context).size.height / 4),
               ],
             ),
     );

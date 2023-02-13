@@ -4,7 +4,6 @@ import 'package:go_router/go_router.dart';
 import 'package:wakelock/wakelock.dart';
 
 import '../../../helpers/strings.dart';
-import '../../../models/breathing.dart';
 import '../../bottom_navigation/bottom_navigation_view.dart';
 import '../../widgets/rating_bar_widget.dart';
 import '../breathwork_configure/breathwork_configure_c.dart';
@@ -21,14 +20,34 @@ class Four78View extends ConsumerWidget {
     final four78 = ref.watch(four78CProvider);
     final breathworkConfig = ref.watch(breathworkConfigureCProvider);
 
-    bool isInhaling = four78.breathing == Breathing.inhale;
-    bool isExhaling = four78.breathing == Breathing.exhale;
-    bool isHolding = four78.breathing == Breathing.hold;
-
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
         title: const Text(four78Label),
+        actions: [
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 8.0),
+            child: IconButton(
+              icon: Icon(
+                Icons.dangerous_outlined,
+                size: 32,
+                color: Theme.of(context).colorScheme.primary,
+              ),
+              onPressed: () {
+                Wakelock.disable();
+
+                final four78 = ref.read(four78CProvider);
+
+                if (four78.currentRound != 1) {
+                  ref.read(four78CProvider.notifier).markDone();
+                  _showSessionCompleteDialog(ref, context);
+                } else {
+                  context.pop();
+                }
+              },
+            ),
+          ),
+        ],
       ),
       body: four78.isDone
           ? const SizedBox()
@@ -68,40 +87,7 @@ class Four78View extends ConsumerWidget {
                     ),
                   ],
                 ),
-                Column(
-                  children: [
-                    FilledButton(
-                      onPressed: () {
-                        Wakelock.disable();
-
-                        final four78 = ref.read(four78CProvider);
-
-                        if (four78.currentRound != 1) {
-                          ref.read(four78CProvider.notifier).markDone();
-                          _showSessionCompleteDialog(ref, context);
-                        } else {
-                          context.pop();
-                        }
-                      },
-                      child: const Padding(
-                        padding: EdgeInsets.symmetric(
-                          horizontal: 32,
-                          vertical: 16,
-                        ),
-                        child: Text(endEarlyLabel),
-                      ),
-                    ),
-                    const SizedBox(height: 12.0),
-                    TextButton(
-                      onPressed: () {
-                        Wakelock.disable();
-                        context.pop();
-                      },
-                      child: const Text(cancelLabel),
-                    ),
-                  ],
-                ),
-                const SizedBox(),
+                SizedBox(height: MediaQuery.of(context).size.height / 4),
               ],
             ),
     );

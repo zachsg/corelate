@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../breathwork_configure/breathwork_configure_c.dart';
 import '../wim_hof_c.dart';
 import 'animated_circle_widget.dart';
 
@@ -10,6 +11,7 @@ class BreathCountingWidget extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final wimHof = ref.watch(wimHofCProvider);
+    final breathwork = ref.watch(breathworkConfigureCProvider).breathwork;
 
     return Stack(
       children: [
@@ -34,13 +36,42 @@ class BreathCountingWidget extends ConsumerWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  Text(
-                    wimHof.currentBreath == 0 ? '' : 'Breath',
-                    style: Theme.of(context).textTheme.displaySmall,
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        wimHof.currentBreath == 0 ? '' : 'Breathe ',
+                        style: Theme.of(context).textTheme.displaySmall,
+                      ),
+                      SizedBox(
+                        width: 58,
+                        child: Text(
+                          wimHof.currentBreath == 0
+                              ? ''
+                              : wimHof.isInhaling
+                                  ? 'in'
+                                  : 'out',
+                          style: Theme.of(context).textTheme.displaySmall,
+                        ),
+                      ),
+                    ],
                   ),
-                  Text(
-                    '${wimHof.currentBreath == 0 ? '' : wimHof.currentBreath}',
-                    style: Theme.of(context).textTheme.displayLarge,
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.baseline,
+                    textBaseline: TextBaseline.alphabetic,
+                    children: [
+                      Text(
+                        '${wimHof.currentBreath == 0 ? '' : wimHof.currentBreath}',
+                        style: Theme.of(context).textTheme.displayLarge,
+                      ),
+                      Text(
+                        wimHof.currentBreath == 0
+                            ? ''
+                            : ' of ${breathwork.breathsPerRound}',
+                        style: Theme.of(context).textTheme.titleMedium,
+                      ),
+                    ],
                   ),
                   Text(
                     'Breathe with the pacer...',

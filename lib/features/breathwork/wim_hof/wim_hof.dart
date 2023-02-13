@@ -6,6 +6,7 @@ part 'wim_hof.g.dart';
 class WimHof {
   final int currentBreath;
   final int currentRound;
+  final bool isInhaling;
   final bool isHoldingExhale;
   final bool isHoldingInhale;
   final bool isDone;
@@ -15,6 +16,7 @@ class WimHof {
   WimHof({
     this.currentRound = 1,
     this.currentBreath = 0,
+    this.isInhaling = false,
     this.isHoldingExhale = false,
     this.isHoldingInhale = false,
     this.isDone = false,
