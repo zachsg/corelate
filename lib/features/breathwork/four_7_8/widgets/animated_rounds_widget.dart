@@ -3,7 +3,6 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:vibration/vibration.dart';
-import 'package:wakelock/wakelock.dart';
 
 import '../../breathwork_configure/breathwork_configure_c.dart';
 import '../four_7_8_c.dart';
