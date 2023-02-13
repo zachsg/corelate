@@ -109,7 +109,7 @@ class BreathworkCardWidget extends ConsumerWidget {
     if (breathwork.type == BreathworkType.four78) {
       title += ' (4-7-8)';
       message = 'You did $rounds ${rounds == 1 ? 'round' : 'rounds'} of the'
-          ' 4-7-8 breathing technicque.';
+          ' 4-7-8 breathing technique.';
     } else {
       title += ' (Wim Hof)';
       final breathsPerRound = breathwork.breathsPerRound;
