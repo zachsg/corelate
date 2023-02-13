@@ -3,8 +3,10 @@ const appNameLabel = 'CoRelate';
 /// Today
 const todayLabel = 'Today';
 const historyLabel = 'History';
-const meditationTitle = 'Meditate';
+const meditationTitle = 'Meditation';
+const meditationActionTitle = 'Meditate';
 const breathworkTitle = 'Breathwork';
+const breathworkActionTitle = 'Breathe';
 const journalTitle = 'Journal entry';
 const tagTitle = 'Add tags';
 const emptyStateToday = 'It\'s a brand new day!';

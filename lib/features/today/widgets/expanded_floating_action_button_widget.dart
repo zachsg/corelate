@@ -23,7 +23,7 @@ class ExpandedFloatingActionButtonWidget extends ConsumerWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           ActionButtonWidget(
-            title: meditationTitle,
+            title: meditationActionTitle,
             icon: Icons.self_improvement,
             onPressed: () {
               ref.read(todayCProvider.notifier).setFABExpanded(!fabIsExpanded);
@@ -31,7 +31,7 @@ class ExpandedFloatingActionButtonWidget extends ConsumerWidget {
             },
           ),
           ActionButtonWidget(
-            title: breathworkTitle,
+            title: breathworkActionTitle,
             icon: Icons.air,
             onPressed: () {
               ref.read(todayCProvider.notifier).setFABExpanded(!fabIsExpanded);
