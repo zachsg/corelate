@@ -32,9 +32,6 @@ class MeditationDuringView extends ConsumerWidget {
               ? const CountUpWidget()
               : CountDownWidget(
                   finished: () {
-                    AudioPlayer()
-                        .play(DeviceFileSource('sounds/singing-bowl.mp3'));
-
                     ref
                         .read(meditationDuringCProvider.notifier)
                         .sessionStopped(true);
@@ -113,6 +110,8 @@ class MeditationDuringView extends ConsumerWidget {
       if (goal <= meditation.elapsed) {
         message = 'Nice work! You completed your goal of'
             ' ${goal ~/ 60} minutes.';
+
+        AudioPlayer().play(DeviceFileSource('sounds/singing-bowl.mp3'));
       } else {
         final percentage = ((elapsed / goal).toDouble() * 100).toInt();
         message = 'Good effort. You completed $durationString of your'
