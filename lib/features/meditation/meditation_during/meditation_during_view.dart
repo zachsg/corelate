@@ -87,6 +87,9 @@ class MeditationDuringView extends ConsumerWidget {
     );
   }
 
+  Future<void> _playTone() async =>
+      AudioPlayer().play(AssetSource('sounds/singing-bowl.mp3'));
+
   Future<void> _showSessionCompleteDialog(
       WidgetRef ref, BuildContext context) async {
     final meditation = ref.watch(meditationDuringCProvider).meditation;
@@ -108,10 +111,10 @@ class MeditationDuringView extends ConsumerWidget {
     if (meditation.type == MeditationType.timed) {
       final goal = meditation.goal ?? 300;
       if (goal <= meditation.elapsed) {
+        _playTone();
+
         message = 'Nice work! You completed your goal of'
             ' ${goal ~/ 60} minutes.';
-
-        AudioPlayer().play(DeviceFileSource('sounds/singing-bowl.mp3'));
       } else {
         final percentage = ((elapsed / goal).toDouble() * 100).toInt();
         message = 'Good effort. You completed $durationString of your'
