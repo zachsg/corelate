@@ -184,30 +184,26 @@ class _AllActivitiesListWidgetState
                           },
                           child: Card(
                             child: Padding(
-                              padding: const EdgeInsets.symmetric(
-                                horizontal: 16.0,
-                                vertical: 24.0,
-                              ),
-                              child: Row(
+                              padding: const EdgeInsets.all(16.0),
+                              child: Column(
                                 children: [
-                                  _leadingWidget(context, activity),
-                                  const SizedBox(width: 20),
-                                  Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
+                                  _headerWidget(context, activity),
+                                  const SizedBox(height: 12),
+                                  Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
                                     children: [
                                       _titleWidget(context, activity),
-                                      _subtitleWidget(context, activity),
+                                      if (ratingIcon != null)
+                                        Icon(
+                                          ratingIcon,
+                                          color: Theme.of(context)
+                                              .colorScheme
+                                              .primary,
+                                          size: 24,
+                                        ),
                                     ],
                                   ),
-                                  const Spacer(),
-                                  if (ratingIcon != null)
-                                    Icon(
-                                      ratingIcon,
-                                      color:
-                                          Theme.of(context).colorScheme.primary,
-                                      size: 30,
-                                    ),
                                 ],
                               ),
                             ),
@@ -222,11 +218,43 @@ class _AllActivitiesListWidgetState
     );
   }
 
-  Widget _leadingWidget(BuildContext context, Activity activity) {
+  Widget _headerWidget(BuildContext context, Activity activity) {
+    IconData icon;
+    String title;
+
+    if (activity is Breathwork) {
+      icon = Icons.air;
+      title = 'Breathwork';
+    } else {
+      icon = Icons.self_improvement;
+      title = 'Meditation';
+    }
+    return Row(
+      children: [
+        Icon(
+          icon,
+          color: Theme.of(context).colorScheme.secondary,
+          size: 16,
+        ),
+        const SizedBox(width: 4),
+        Text(
+          title,
+          style: Theme.of(context)
+              .textTheme
+              .bodySmall
+              ?.copyWith(color: Theme.of(context).colorScheme.secondary),
+        ),
+        const Spacer(),
+        _timeWidget(context, activity),
+      ],
+    );
+  }
+
+  Widget _timeWidget(BuildContext context, Activity activity) {
     final style = Theme.of(context)
         .textTheme
         .bodySmall
-        ?.copyWith(color: Theme.of(context).colorScheme.onBackground);
+        ?.copyWith(color: Theme.of(context).colorScheme.secondary);
 
     final hour = activity.date.hour;
     final minute = activity.date.minute;
@@ -241,9 +269,9 @@ class _AllActivitiesListWidgetState
     }
 
     final color = Theme.of(context).colorScheme;
-    final morning = Icon(Icons.wb_twilight, size: 28, color: color.primary);
-    final midday = Icon(Icons.sunny, size: 28, color: color.secondary);
-    final night = Icon(Icons.bedtime, size: 28, color: color.tertiary);
+    final morning = Icon(Icons.wb_twilight, size: 16, color: color.secondary);
+    final midday = Icon(Icons.sunny, size: 16, color: color.secondary);
+    final night = Icon(Icons.bedtime, size: 16, color: color.secondary);
 
     final icon = hour < 12
         ? morning
@@ -251,37 +279,26 @@ class _AllActivitiesListWidgetState
             ? midday
             : night;
 
-    return Column(
+    return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        icon,
         Text(timeString, style: style),
+        const SizedBox(width: 4),
+        icon,
       ],
     );
   }
 
   Widget _titleWidget(BuildContext context, Activity activity) {
-    final style = Theme.of(context)
-        .textTheme
-        .titleMedium
-        ?.copyWith(color: Theme.of(context).colorScheme.onBackground);
+    final styleMain = Theme.of(context).textTheme.titleMedium?.copyWith(
+          color: Theme.of(context).colorScheme.onBackground,
+          fontWeight: FontWeight.bold,
+        );
 
-    String title = '';
-
-    if (activity is Meditation) {
-      title = 'Meditation';
-    } else if (activity is Breathwork) {
-      title = 'Breathwork';
-    }
-
-    return Text(title, style: style);
-  }
-
-  Widget _subtitleWidget(BuildContext context, Activity activity) {
-    final style = Theme.of(context)
-        .textTheme
-        .bodyMedium
-        ?.copyWith(color: Theme.of(context).colorScheme.onBackground);
+    final styleSecondary = Theme.of(context).textTheme.titleMedium?.copyWith(
+          color: Theme.of(context).colorScheme.onBackground,
+          fontWeight: FontWeight.normal,
+        );
 
     var type = '';
     var durationString = '';
@@ -316,7 +333,7 @@ class _AllActivitiesListWidgetState
 
     return Row(
       children: [
-        Text(type, style: style),
+        Text(type, style: styleMain),
         const SizedBox(width: 2),
         Icon(
           Icons.navigate_next,
@@ -325,7 +342,7 @@ class _AllActivitiesListWidgetState
         ),
         const SizedBox(width: 2),
         Icon(icon, size: 18),
-        Text(durationString, style: style),
+        Text(durationString, style: styleSecondary),
       ],
     );
   }
