@@ -64,26 +64,22 @@ class _$TodayCWProxyImpl implements _$TodayCWProxy {
     return Today(
       showingToday:
           showingToday == const $CopyWithPlaceholder() || showingToday == null
-              // ignore: unnecessary_non_null_assertion
-              ? _value.showingToday!
+              ? _value.showingToday
               // ignore: cast_nullable_to_non_nullable
               : showingToday as bool,
       fabExpanded:
           fabExpanded == const $CopyWithPlaceholder() || fabExpanded == null
-              // ignore: unnecessary_non_null_assertion
-              ? _value.fabExpanded!
+              ? _value.fabExpanded
               // ignore: cast_nullable_to_non_nullable
               : fabExpanded as bool,
       activities:
           activities == const $CopyWithPlaceholder() || activities == null
-              // ignore: unnecessary_non_null_assertion
-              ? _value.activities!
+              ? _value.activities
               // ignore: cast_nullable_to_non_nullable
               : activities as List<Activity>,
       historyDate:
           historyDate == const $CopyWithPlaceholder() || historyDate == null
-              // ignore: unnecessary_non_null_assertion
-              ? _value.historyDate!
+              ? _value.historyDate
               // ignore: cast_nullable_to_non_nullable
               : historyDate as DateTime,
     );

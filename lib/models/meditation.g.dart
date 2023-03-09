@@ -70,13 +70,11 @@ class _$MeditationCWProxyImpl implements _$MeditationCWProxy {
   }) {
     return Meditation(
       date: date == const $CopyWithPlaceholder() || date == null
-          // ignore: unnecessary_non_null_assertion
-          ? _value.date!
+          ? _value.date
           // ignore: cast_nullable_to_non_nullable
           : date as DateTime,
       type: type == const $CopyWithPlaceholder() || type == null
-          // ignore: unnecessary_non_null_assertion
-          ? _value.type!
+          ? _value.type
           // ignore: cast_nullable_to_non_nullable
           : type as MeditationType,
       goal: goal == const $CopyWithPlaceholder()
@@ -88,8 +86,7 @@ class _$MeditationCWProxyImpl implements _$MeditationCWProxy {
           // ignore: cast_nullable_to_non_nullable
           : rating as double?,
       elapsed: elapsed == const $CopyWithPlaceholder() || elapsed == null
-          // ignore: unnecessary_non_null_assertion
-          ? _value.elapsed!
+          ? _value.elapsed
           // ignore: cast_nullable_to_non_nullable
           : elapsed as int,
     );

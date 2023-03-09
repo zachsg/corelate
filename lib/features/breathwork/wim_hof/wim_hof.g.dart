@@ -95,50 +95,42 @@ class _$WimHofCWProxyImpl implements _$WimHofCWProxy {
     return WimHof(
       currentRound:
           currentRound == const $CopyWithPlaceholder() || currentRound == null
-              // ignore: unnecessary_non_null_assertion
-              ? _value.currentRound!
+              ? _value.currentRound
               // ignore: cast_nullable_to_non_nullable
               : currentRound as int,
       currentBreath:
           currentBreath == const $CopyWithPlaceholder() || currentBreath == null
-              // ignore: unnecessary_non_null_assertion
-              ? _value.currentBreath!
+              ? _value.currentBreath
               // ignore: cast_nullable_to_non_nullable
               : currentBreath as int,
       isInhaling:
           isInhaling == const $CopyWithPlaceholder() || isInhaling == null
-              // ignore: unnecessary_non_null_assertion
-              ? _value.isInhaling!
+              ? _value.isInhaling
               // ignore: cast_nullable_to_non_nullable
               : isInhaling as bool,
       isHoldingExhale: isHoldingExhale == const $CopyWithPlaceholder() ||
               isHoldingExhale == null
-          // ignore: unnecessary_non_null_assertion
-          ? _value.isHoldingExhale!
+          ? _value.isHoldingExhale
           // ignore: cast_nullable_to_non_nullable
           : isHoldingExhale as bool,
       isHoldingInhale: isHoldingInhale == const $CopyWithPlaceholder() ||
               isHoldingInhale == null
-          // ignore: unnecessary_non_null_assertion
-          ? _value.isHoldingInhale!
+          ? _value.isHoldingInhale
           // ignore: cast_nullable_to_non_nullable
           : isHoldingInhale as bool,
       isDone: isDone == const $CopyWithPlaceholder() || isDone == null
-          // ignore: unnecessary_non_null_assertion
-          ? _value.isDone!
+          ? _value.isDone
           // ignore: cast_nullable_to_non_nullable
           : isDone as bool,
       holdSecondsCurrentRound:
           holdSecondsCurrentRound == const $CopyWithPlaceholder() ||
                   holdSecondsCurrentRound == null
-              // ignore: unnecessary_non_null_assertion
-              ? _value.holdSecondsCurrentRound!
+              ? _value.holdSecondsCurrentRound
               // ignore: cast_nullable_to_non_nullable
               : holdSecondsCurrentRound as int,
       holdSeconds:
           holdSeconds == const $CopyWithPlaceholder() || holdSeconds == null
-              // ignore: unnecessary_non_null_assertion
-              ? _value.holdSeconds!
+              ? _value.holdSeconds
               // ignore: cast_nullable_to_non_nullable
               : holdSeconds as List<int>,
     );

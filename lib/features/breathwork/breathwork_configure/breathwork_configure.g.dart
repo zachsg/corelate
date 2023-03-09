@@ -43,8 +43,7 @@ class _$BreathworkConfigureCWProxyImpl implements _$BreathworkConfigureCWProxy {
   }) {
     return BreathworkConfigure(
       breathwork == const $CopyWithPlaceholder() || breathwork == null
-          // ignore: unnecessary_non_null_assertion
-          ? _value.breathwork!
+          ? _value.breathwork
           // ignore: cast_nullable_to_non_nullable
           : breathwork as Breathwork,
     );

@@ -79,24 +79,20 @@ class _$BreathworkCWProxyImpl implements _$BreathworkCWProxy {
   }) {
     return Breathwork(
       date: date == const $CopyWithPlaceholder() || date == null
-          // ignore: unnecessary_non_null_assertion
-          ? _value.date!
+          ? _value.date
           // ignore: cast_nullable_to_non_nullable
           : date as DateTime,
       type: type == const $CopyWithPlaceholder() || type == null
-          // ignore: unnecessary_non_null_assertion
-          ? _value.type!
+          ? _value.type
           // ignore: cast_nullable_to_non_nullable
           : type as BreathworkType,
       rounds: rounds == const $CopyWithPlaceholder() || rounds == null
-          // ignore: unnecessary_non_null_assertion
-          ? _value.rounds!
+          ? _value.rounds
           // ignore: cast_nullable_to_non_nullable
           : rounds as int,
       breathsPerRound: breathsPerRound == const $CopyWithPlaceholder() ||
               breathsPerRound == null
-          // ignore: unnecessary_non_null_assertion
-          ? _value.breathsPerRound!
+          ? _value.breathsPerRound
           // ignore: cast_nullable_to_non_nullable
           : breathsPerRound as int,
       holdSecondsPerRound: holdSecondsPerRound == const $CopyWithPlaceholder()

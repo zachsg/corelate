@@ -56,19 +56,16 @@ class _$Four78CWProxyImpl implements _$Four78CWProxy {
   }) {
     return Four78(
       breathing: breathing == const $CopyWithPlaceholder() || breathing == null
-          // ignore: unnecessary_non_null_assertion
-          ? _value.breathing!
+          ? _value.breathing
           // ignore: cast_nullable_to_non_nullable
           : breathing as Breathing,
       currentRound:
           currentRound == const $CopyWithPlaceholder() || currentRound == null
-              // ignore: unnecessary_non_null_assertion
-              ? _value.currentRound!
+              ? _value.currentRound
               // ignore: cast_nullable_to_non_nullable
               : currentRound as int,
       isDone: isDone == const $CopyWithPlaceholder() || isDone == null
-          // ignore: unnecessary_non_null_assertion
-          ? _value.isDone!
+          ? _value.isDone
           // ignore: cast_nullable_to_non_nullable
           : isDone as bool,
     );

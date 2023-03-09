@@ -68,7 +68,7 @@ SPEC CHECKSUMS:
   health: 5a380c0f6c4f619535845992993964293962e99e
   isar_flutter_libs: b69f437aeab9c521821c3f376198c4371fa21073
   mindful_minutes: 11823f3e539027407e115237c05f8e4aa0391968
-  path_provider_foundation: 37748e03f12783f9de2cb2c4eadfaa25fe6d4852
+  path_provider_foundation: c68054786f1b4f3343858c1e1d0caaded73f0be9
   vibration: 7d883d141656a1c1a6d8d238616b2042a51a1241
   wakelock: d0fc7c864128eac40eba1617cb5264d9c940b46f
 

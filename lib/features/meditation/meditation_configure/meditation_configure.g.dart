@@ -43,8 +43,7 @@ class _$MeditationConfigureCWProxyImpl implements _$MeditationConfigureCWProxy {
   }) {
     return MeditationConfigure(
       meditation == const $CopyWithPlaceholder() || meditation == null
-          // ignore: unnecessary_non_null_assertion
-          ? _value.meditation!
+          ? _value.meditation
           // ignore: cast_nullable_to_non_nullable
           : meditation as Meditation,
     );

@@ -52,14 +52,12 @@ class _$MeditationDuringCWProxyImpl implements _$MeditationDuringCWProxy {
     return MeditationDuring(
       meditation:
           meditation == const $CopyWithPlaceholder() || meditation == null
-              // ignore: unnecessary_non_null_assertion
-              ? _value.meditation!
+              ? _value.meditation
               // ignore: cast_nullable_to_non_nullable
               : meditation as Meditation,
       sessionStopped: sessionStopped == const $CopyWithPlaceholder() ||
               sessionStopped == null
-          // ignore: unnecessary_non_null_assertion
-          ? _value.sessionStopped!
+          ? _value.sessionStopped
           // ignore: cast_nullable_to_non_nullable
           : sessionStopped as bool,
     );
