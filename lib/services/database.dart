@@ -41,17 +41,11 @@ class Database {
 
     final date = DateTime.now().copyWith(hour: 0, minute: 0);
 
-    final meditations = await isar.meditations
-        .where()
-        .dateGreaterThan(date)
-        .sortByDateDesc()
-        .findAll();
+    final meditations =
+        await isar.meditations.where().dateGreaterThan(date).findAll();
 
-    final breathworks = await isar.breathworks
-        .where()
-        .dateGreaterThan(date)
-        .sortByDateDesc()
-        .findAll();
+    final breathworks =
+        await isar.breathworks.where().dateGreaterThan(date).findAll();
 
     activities = [...meditations, ...breathworks]
       ..sort((a1, a2) => a2.date.compareTo(a1.date));
@@ -64,17 +58,11 @@ class Database {
 
     final date = DateTime.now().copyWith(hour: 0, minute: 0);
 
-    final meditations = await isar.meditations
-        .where()
-        .dateLessThan(date)
-        .sortByDateDesc()
-        .findAll();
+    final meditations =
+        await isar.meditations.where().dateLessThan(date).findAll();
 
-    final breathworks = await isar.breathworks
-        .where()
-        .dateLessThan(date)
-        .sortByDateDesc()
-        .findAll();
+    final breathworks =
+        await isar.breathworks.where().dateLessThan(date).findAll();
 
     activities = [...meditations, ...breathworks]
       ..sort((a1, a2) => a2.date.compareTo(a1.date));
@@ -91,13 +79,11 @@ class Database {
     final meditations = await isar.meditations
         .where()
         .dateBetween(dateStart, dateEnd)
-        .sortByDateDesc()
         .findAll();
 
     final breathworks = await isar.breathworks
         .where()
         .dateBetween(dateStart, dateEnd)
-        .sortByDateDesc()
         .findAll();
 
     activities = [...meditations, ...breathworks]

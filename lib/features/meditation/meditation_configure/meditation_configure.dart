@@ -1,6 +1,5 @@
 import 'package:copy_with_extension/copy_with_extension.dart';
 
-import '../../../models/activity.dart';
 import '../../../models/meditation.dart';
 
 part 'meditation_configure.g.dart';
