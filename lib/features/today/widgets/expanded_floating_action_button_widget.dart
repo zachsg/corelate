@@ -52,22 +52,19 @@ class ExpandedFloatingActionButtonWidget extends ConsumerWidget {
             turns: fabIsExpanded ? 0.38 : 0,
             duration: const Duration(milliseconds: 250),
             child: Material(
-              shape: const CircleBorder(),
+              color: fabIsExpanded
+                  ? null
+                  : Theme.of(context).colorScheme.primaryContainer,
+              shape: const RoundedRectangleBorder(
+                borderRadius: BorderRadius.all(Radius.circular(12.0)),
+              ),
               elevation: fabIsExpanded ? 0 : 6,
-              child: Container(
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: fabIsExpanded
-                      ? null
-                      : Theme.of(context).colorScheme.primaryContainer,
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.all(12.0),
-                  child: Icon(
-                    Icons.add,
-                    size: 32,
-                    color: Theme.of(context).colorScheme.primary,
-                  ),
+              child: Padding(
+                padding: const EdgeInsets.all(12.0),
+                child: Icon(
+                  Icons.add,
+                  size: 32,
+                  color: Theme.of(context).colorScheme.primary,
                 ),
               ),
             ),

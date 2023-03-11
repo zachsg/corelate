@@ -20,8 +20,9 @@ class DateC extends _$DateC {
 class TodayC extends _$TodayC {
   @override
   Today build() => Today(
-      activities: [],
-      historyDate: DateTime.now().subtract(const Duration(days: 1)));
+        activities: [],
+        historyDate: DateTime.now().subtract(const Duration(days: 1)),
+      );
 
   void setFABExpanded(bool isExpanded) =>
       state = state.copyWith(fabExpanded: isExpanded);
