@@ -175,11 +175,17 @@ class _AllActivitiesListWidgetState
                         child: GestureDetector(
                           onTap: () {
                             if (activity is Meditation) {
-                              _showMeditationSessionCompleteDialog(
-                                  ref, context, activity);
+                              showModalBottomSheet<void>(
+                                context: context,
+                                builder: (BuildContext context) =>
+                                    _meditationSheet(ref, context, activity),
+                              );
                             } else if (activity is Breathwork) {
-                              _showBreathworkSessionCompleteDialog(
-                                  ref, context, activity);
+                              showModalBottomSheet<void>(
+                                context: context,
+                                builder: (BuildContext context) =>
+                                    _breathworkSheet(ref, context, activity),
+                              );
                             }
                           },
                           child: Card(
@@ -347,8 +353,8 @@ class _AllActivitiesListWidgetState
     );
   }
 
-  Future<void> _showBreathworkSessionCompleteDialog(
-      WidgetRef ref, BuildContext context, Breathwork breathwork) async {
+  Widget _breathworkSheet(
+      WidgetRef ref, BuildContext context, Breathwork breathwork) {
     var title = 'Breathwork';
     var message = '';
 
@@ -365,38 +371,44 @@ class _AllActivitiesListWidgetState
           ' ($breathsPerRound breaths per round).\n\nIndividual breath holds:\n';
     }
 
-    return showDialog(
-      context: context,
-      barrierDismissible: false,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: Text('$title Details'),
-          content: SingleChildScrollView(
-            child: ListBody(
-              children: [
-                Text(message),
-                if (breathwork.type == BreathworkType.wimHof)
-                  SizedBox(
-                    height: 150,
-                    width: MediaQuery.of(context).size.width,
-                    child: WimHofBarChartWidget(breathwork: breathwork),
-                  ),
-              ],
-            ),
+    return Padding(
+      padding: const EdgeInsets.all(12.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                title,
+                style: Theme.of(context).textTheme.titleLarge,
+              ),
+              IconButton(
+                onPressed: Navigator.of(context).pop,
+                icon: const Icon(Icons.cancel_outlined, size: 32),
+              ),
+            ],
           ),
-          actions: [
-            FilledButton(
-              onPressed: Navigator.of(context).pop,
-              child: const Text('Done'),
+          const SizedBox(height: 20),
+          Text(
+            message,
+            style: Theme.of(context).textTheme.bodyLarge,
+          ),
+          if (breathwork.type == BreathworkType.wimHof)
+            SizedBox(
+              height: 150,
+              width: MediaQuery.of(context).size.width,
+              child: WimHofBarChartWidget(breathwork: breathwork),
             ),
-          ],
-        );
-      },
+          const SizedBox(height: 48),
+        ],
+      ),
     );
   }
 
-  Future<void> _showMeditationSessionCompleteDialog(
-      WidgetRef ref, BuildContext context, Meditation meditation) async {
+  Widget _meditationSheet(
+      WidgetRef ref, BuildContext context, Meditation meditation) {
     var title = '';
     var message = '';
 
@@ -417,27 +429,33 @@ class _AllActivitiesListWidgetState
 
     message = 'You meditated for $durationString.';
 
-    return showDialog(
-      context: context,
-      barrierDismissible: false,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: Text('$title Details'),
-          content: SingleChildScrollView(
-            child: ListBody(
-              children: [
-                Text(message),
-              ],
-            ),
+    return Padding(
+      padding: const EdgeInsets.all(12.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                '$title Details',
+                style: Theme.of(context).textTheme.titleLarge,
+              ),
+              IconButton(
+                onPressed: Navigator.of(context).pop,
+                icon: const Icon(Icons.cancel_outlined, size: 32),
+              ),
+            ],
           ),
-          actions: [
-            FilledButton(
-              onPressed: Navigator.of(context).pop,
-              child: const Text('Done'),
-            ),
-          ],
-        );
-      },
+          const SizedBox(height: 20),
+          Text(
+            message,
+            style: Theme.of(context).textTheme.bodyLarge,
+          ),
+          const SizedBox(height: 48),
+        ],
+      ),
     );
   }
 }

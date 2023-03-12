@@ -5,7 +5,6 @@ import 'package:intl/intl.dart';
 import '../../../helpers/strings.dart';
 import '../../../models/activity.dart';
 import '../../../models/breathwork.dart';
-import '../../../models/breathwork_type.dart';
 import '../../../models/meditation.dart';
 import '../today_c.dart';
 import 'xwidgets.dart';

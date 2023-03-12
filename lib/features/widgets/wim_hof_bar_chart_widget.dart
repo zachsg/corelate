@@ -18,15 +18,17 @@ class WimHofBarChartWidget extends ConsumerWidget {
       }
     }
 
-    return BarChart(BarChartData(
-      barTouchData: barTouchData(context),
-      titlesData: titlesData(context, breathwork),
-      borderData: borderData,
-      barGroups: barGroups(context, breathwork),
-      gridData: FlGridData(show: false),
-      alignment: BarChartAlignment.spaceEvenly,
-      maxY: max.toDouble() + 15,
-    ));
+    return BarChart(
+      BarChartData(
+        barTouchData: barTouchData(context),
+        titlesData: titlesData(context, breathwork),
+        borderData: borderData,
+        barGroups: barGroups(context, breathwork),
+        gridData: FlGridData(show: false),
+        alignment: BarChartAlignment.spaceEvenly,
+        maxY: max.toDouble() + max / 10,
+      ),
+    );
   }
 
   BarTouchData barTouchData(BuildContext context) => BarTouchData(

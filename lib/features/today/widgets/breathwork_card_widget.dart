@@ -33,7 +33,11 @@ class BreathworkCardWidget extends ConsumerWidget {
     return ActivityCardWidget(
       isEven: isEven,
       isFirstRow: isFirstRow,
-      onTap: () => _showSessionCompleteDialog(ref, context, breathwork),
+      onTap: () => showModalBottomSheet<void>(
+        context: context,
+        builder: (BuildContext context) =>
+            _breathworkSheet(ref, context, breathwork),
+      ),
       child: Stack(
         children: [
           Positioned(
@@ -100,8 +104,8 @@ class BreathworkCardWidget extends ConsumerWidget {
     );
   }
 
-  Future<void> _showSessionCompleteDialog(
-      WidgetRef ref, BuildContext context, Breathwork breathwork) async {
+  Widget _breathworkSheet(
+      WidgetRef ref, BuildContext context, Breathwork breathwork) {
     var title = 'Breathwork';
     var message = '';
 
@@ -118,33 +122,39 @@ class BreathworkCardWidget extends ConsumerWidget {
           ' ($breathsPerRound breaths per round).\n\nIndividual breath holds:\n';
     }
 
-    return showDialog(
-      context: context,
-      barrierDismissible: false,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: Text('$title Details'),
-          content: SingleChildScrollView(
-            child: ListBody(
-              children: [
-                Text(message),
-                if (breathwork.type == BreathworkType.wimHof)
-                  SizedBox(
-                    height: 150,
-                    width: MediaQuery.of(context).size.width,
-                    child: WimHofBarChartWidget(breathwork: breathwork),
-                  ),
-              ],
-            ),
+    return Padding(
+      padding: const EdgeInsets.all(12.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                title,
+                style: Theme.of(context).textTheme.titleLarge,
+              ),
+              IconButton(
+                onPressed: Navigator.of(context).pop,
+                icon: const Icon(Icons.cancel_outlined, size: 32),
+              ),
+            ],
           ),
-          actions: [
-            FilledButton(
-              onPressed: Navigator.of(context).pop,
-              child: const Text('Done'),
+          const SizedBox(height: 20),
+          Text(
+            message,
+            style: Theme.of(context).textTheme.bodyLarge,
+          ),
+          if (breathwork.type == BreathworkType.wimHof)
+            SizedBox(
+              height: 150,
+              width: MediaQuery.of(context).size.width,
+              child: WimHofBarChartWidget(breathwork: breathwork),
             ),
-          ],
-        );
-      },
+          const SizedBox(height: 48),
+        ],
+      ),
     );
   }
 }

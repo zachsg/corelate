@@ -47,7 +47,11 @@ class MeditationCardWidget extends ConsumerWidget {
     return ActivityCardWidget(
       isEven: isEven,
       isFirstRow: isFirstRow,
-      onTap: () => _showSessionCompleteDialog(ref, context, meditation),
+      onTap: () => showModalBottomSheet<void>(
+        context: context,
+        builder: (BuildContext context) =>
+            _meditationSheet(ref, context, meditation),
+      ),
       child: Stack(
         children: [
           Positioned(
@@ -114,8 +118,8 @@ class MeditationCardWidget extends ConsumerWidget {
     );
   }
 
-  Future<void> _showSessionCompleteDialog(
-      WidgetRef ref, BuildContext context, Meditation meditation) async {
+  Widget _meditationSheet(
+      WidgetRef ref, BuildContext context, Meditation meditation) {
     var title = '';
     var message = '';
 
@@ -136,27 +140,33 @@ class MeditationCardWidget extends ConsumerWidget {
 
     message = 'You meditated for $durationString.';
 
-    return showDialog(
-      context: context,
-      barrierDismissible: false,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: Text('$title Details'),
-          content: SingleChildScrollView(
-            child: ListBody(
-              children: [
-                Text(message),
-              ],
-            ),
+    return Padding(
+      padding: const EdgeInsets.all(12.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                '$title Details',
+                style: Theme.of(context).textTheme.titleLarge,
+              ),
+              IconButton(
+                onPressed: Navigator.of(context).pop,
+                icon: const Icon(Icons.cancel_outlined, size: 32),
+              ),
+            ],
           ),
-          actions: [
-            FilledButton(
-              onPressed: Navigator.of(context).pop,
-              child: const Text('Done'),
-            ),
-          ],
-        );
-      },
+          const SizedBox(height: 20),
+          Text(
+            message,
+            style: Theme.of(context).textTheme.bodyLarge,
+          ),
+          const SizedBox(height: 48),
+        ],
+      ),
     );
   }
 }

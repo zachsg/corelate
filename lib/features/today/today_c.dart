@@ -43,10 +43,6 @@ class TodayC extends _$TodayC {
       } else if (activity is Breathwork) {
         await db.deleteBreathwork(activity);
       }
-
-      // isToday
-      //     ? loadTodaysActivities()
-      //     : loadActivitiesForDate(state.historyDate);
     });
   }
 
