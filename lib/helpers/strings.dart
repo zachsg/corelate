@@ -12,8 +12,8 @@ const tagTitle = 'Add tags';
 const emptyStateToday = 'It\'s a brand new day!';
 const emptyStateHistory = 'You have no past, only present.';
 
-/// Health
-const healthLabel = 'Health';
+/// Balance
+const balanceLabel = 'Balance';
 
 /// Insights
 const insightsLabel = 'Insights';

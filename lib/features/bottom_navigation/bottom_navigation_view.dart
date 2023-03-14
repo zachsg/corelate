@@ -16,7 +16,7 @@ class BottomNavigationView extends ConsumerWidget {
       body: ref.watch(bottomNavigationCProvider) == 0
           ? const TodayView()
           : ref.watch(bottomNavigationCProvider) == 1
-              ? const Center(child: Text('$healthLabel coming soon...'))
+              ? const Center(child: Text('$balanceLabel coming soon...'))
               : const Center(child: Text('$insightsLabel coming soon...')),
       bottomNavigationBar: NavigationBar(
         selectedIndex: ref.watch(bottomNavigationCProvider),
@@ -29,7 +29,7 @@ class BottomNavigationView extends ConsumerWidget {
           NavigationDestination(
             icon: Icon(Icons.spa_outlined),
             selectedIcon: Icon(Icons.spa),
-            label: healthLabel,
+            label: balanceLabel,
           ),
           NavigationDestination(
             icon: Icon(Icons.lightbulb_outlined),
