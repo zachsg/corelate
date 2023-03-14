@@ -6,7 +6,7 @@ part of 'meditation_during_c.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$meditationDuringCHash() => r'9d91031f4f7c219f7150cb5e3705ffb4dfaf9294';
+String _$meditationDuringCHash() => r'1a0092934243d3a65eabcb157e9479cbac7d066a';
 
 /// See also [MeditationDuringC].
 @ProviderFor(MeditationDuringC)

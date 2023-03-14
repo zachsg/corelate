@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:health/health.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../../services/local_notification_service.dart';
@@ -38,7 +39,15 @@ class MeditationDuringC extends _$MeditationDuringC {
 
   void save() {
     ref.read(databaseCProvider.future).then((db) async {
-      await db.saveMeditation(state.meditation);
+      final energy = (state.meditation.elapsed / 60 / 3).round();
+      final stress = 0 - energy;
+      final mood = state.meditation.rating?.toInt() ?? 3;
+      final meditation = state.meditation.copyWith(
+        energy: energy,
+        stress: stress,
+        mood: mood,
+      );
+      await db.saveMeditation(meditation);
 
       ref.read(todayCProvider.notifier).loadTodaysActivities();
     });
@@ -55,12 +64,12 @@ class MeditationDuringC extends _$MeditationDuringC {
       // TODO: Currently health plugin crashes trying to save mindfulness (using mindful_minutes plugin instead)
       // ref.read(healthCProvider.future).then((health) async {
       //   final success = await health.writeHealthData(
-      //     meditation.elapsed.toDouble(),
+      //     state.meditation.elapsed.toDouble(),
       //     HealthDataType.MINDFULNESS,
-      //     // meditation.date,
-      //     // meditation.date.add(
-      //     //   Duration(seconds: meditation.elapsed),
-      //     // ),
+      //     state.meditation.date,
+      //     state.meditation.date.add(
+      //       Duration(seconds: state.meditation.elapsed),
+      //     ),
       //   );
       // });
     }

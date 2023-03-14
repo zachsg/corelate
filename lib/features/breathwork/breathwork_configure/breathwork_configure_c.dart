@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:corelate/features/breathwork/four_7_8/four_7_8.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../../services/provider.dart';
@@ -59,12 +60,28 @@ class BreathworkConfigureC extends _$BreathworkConfigureC {
     if (state.breathwork.type == BreathworkType.four78) {
       // TODO: Save 4-7-8 session
       final four78 = ref.watch(four78CProvider);
-      breathwork = state.breathwork.copyWith(rounds: four78.currentRound);
+      final energy = (four78.currentRound / 2).round();
+      final stress = 0 - energy;
+      final mood = state.breathwork.mood;
+      breathwork = state.breathwork.copyWith(
+        rounds: four78.currentRound,
+        stress: stress,
+        mood: mood,
+        energy: energy,
+      );
     } else {
       final wimHof = ref.watch(wimHofCProvider);
       final rounds = wimHof.holdSeconds.length;
-      breathwork = state.breathwork
-          .copyWith(holdSecondsPerRound: wimHof.holdSeconds, rounds: rounds);
+      final energy = (rounds / 2).round();
+      final stress = 0 - energy;
+      final mood = state.breathwork.mood;
+      breathwork = state.breathwork.copyWith(
+        holdSecondsPerRound: wimHof.holdSeconds,
+        rounds: rounds,
+        stress: stress,
+        mood: mood,
+        energy: energy,
+      );
     }
     state = state.copyWith(breathwork: breathwork);
     ref.read(databaseCProvider.future).then((db) async {

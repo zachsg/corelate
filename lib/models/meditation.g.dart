@@ -9,6 +9,12 @@ part of 'meditation.dart';
 abstract class _$MeditationCWProxy {
   Meditation date(DateTime date);
 
+  Meditation stress(int stress);
+
+  Meditation mood(int mood);
+
+  Meditation energy(int energy);
+
   Meditation type(MeditationType type);
 
   Meditation goal(int? goal);
@@ -25,6 +31,9 @@ abstract class _$MeditationCWProxy {
   /// ````
   Meditation call({
     DateTime? date,
+    int? stress,
+    int? mood,
+    int? energy,
     MeditationType? type,
     int? goal,
     double? rating,
@@ -40,6 +49,15 @@ class _$MeditationCWProxyImpl implements _$MeditationCWProxy {
 
   @override
   Meditation date(DateTime date) => this(date: date);
+
+  @override
+  Meditation stress(int stress) => this(stress: stress);
+
+  @override
+  Meditation mood(int mood) => this(mood: mood);
+
+  @override
+  Meditation energy(int energy) => this(energy: energy);
 
   @override
   Meditation type(MeditationType type) => this(type: type);
@@ -63,6 +81,9 @@ class _$MeditationCWProxyImpl implements _$MeditationCWProxy {
   /// ````
   Meditation call({
     Object? date = const $CopyWithPlaceholder(),
+    Object? stress = const $CopyWithPlaceholder(),
+    Object? mood = const $CopyWithPlaceholder(),
+    Object? energy = const $CopyWithPlaceholder(),
     Object? type = const $CopyWithPlaceholder(),
     Object? goal = const $CopyWithPlaceholder(),
     Object? rating = const $CopyWithPlaceholder(),
@@ -73,6 +94,18 @@ class _$MeditationCWProxyImpl implements _$MeditationCWProxy {
           ? _value.date
           // ignore: cast_nullable_to_non_nullable
           : date as DateTime,
+      stress: stress == const $CopyWithPlaceholder() || stress == null
+          ? _value.stress
+          // ignore: cast_nullable_to_non_nullable
+          : stress as int,
+      mood: mood == const $CopyWithPlaceholder() || mood == null
+          ? _value.mood
+          // ignore: cast_nullable_to_non_nullable
+          : mood as int,
+      energy: energy == const $CopyWithPlaceholder() || energy == null
+          ? _value.energy
+          // ignore: cast_nullable_to_non_nullable
+          : energy as int,
       type: type == const $CopyWithPlaceholder() || type == null
           ? _value.type
           // ignore: cast_nullable_to_non_nullable
@@ -124,18 +157,33 @@ const MeditationSchema = CollectionSchema(
       name: r'elapsed',
       type: IsarType.long,
     ),
-    r'goal': PropertySchema(
+    r'energy': PropertySchema(
       id: 2,
+      name: r'energy',
+      type: IsarType.long,
+    ),
+    r'goal': PropertySchema(
+      id: 3,
       name: r'goal',
       type: IsarType.long,
     ),
+    r'mood': PropertySchema(
+      id: 4,
+      name: r'mood',
+      type: IsarType.long,
+    ),
     r'rating': PropertySchema(
-      id: 3,
+      id: 5,
       name: r'rating',
       type: IsarType.double,
     ),
+    r'stress': PropertySchema(
+      id: 6,
+      name: r'stress',
+      type: IsarType.long,
+    ),
     r'type': PropertySchema(
-      id: 4,
+      id: 7,
       name: r'type',
       type: IsarType.byte,
       enumMap: _MeditationtypeEnumValueMap,
@@ -186,9 +234,12 @@ void _meditationSerialize(
 ) {
   writer.writeDateTime(offsets[0], object.date);
   writer.writeLong(offsets[1], object.elapsed);
-  writer.writeLong(offsets[2], object.goal);
-  writer.writeDouble(offsets[3], object.rating);
-  writer.writeByte(offsets[4], object.type.index);
+  writer.writeLong(offsets[2], object.energy);
+  writer.writeLong(offsets[3], object.goal);
+  writer.writeLong(offsets[4], object.mood);
+  writer.writeDouble(offsets[5], object.rating);
+  writer.writeLong(offsets[6], object.stress);
+  writer.writeByte(offsets[7], object.type.index);
 }
 
 Meditation _meditationDeserialize(
@@ -200,9 +251,12 @@ Meditation _meditationDeserialize(
   final object = Meditation(
     date: reader.readDateTime(offsets[0]),
     elapsed: reader.readLongOrNull(offsets[1]) ?? 0,
-    goal: reader.readLongOrNull(offsets[2]),
-    rating: reader.readDoubleOrNull(offsets[3]),
-    type: _MeditationtypeValueEnumMap[reader.readByteOrNull(offsets[4])] ??
+    energy: reader.readLongOrNull(offsets[2]) ?? 0,
+    goal: reader.readLongOrNull(offsets[3]),
+    mood: reader.readLongOrNull(offsets[4]) ?? 0,
+    rating: reader.readDoubleOrNull(offsets[5]),
+    stress: reader.readLongOrNull(offsets[6]) ?? 0,
+    type: _MeditationtypeValueEnumMap[reader.readByteOrNull(offsets[7])] ??
         MeditationType.timed,
   );
   object.id = id;
@@ -221,10 +275,16 @@ P _meditationDeserializeProp<P>(
     case 1:
       return (reader.readLongOrNull(offset) ?? 0) as P;
     case 2:
-      return (reader.readLongOrNull(offset)) as P;
+      return (reader.readLongOrNull(offset) ?? 0) as P;
     case 3:
-      return (reader.readDoubleOrNull(offset)) as P;
+      return (reader.readLongOrNull(offset)) as P;
     case 4:
+      return (reader.readLongOrNull(offset) ?? 0) as P;
+    case 5:
+      return (reader.readDoubleOrNull(offset)) as P;
+    case 6:
+      return (reader.readLongOrNull(offset) ?? 0) as P;
+    case 7:
       return (_MeditationtypeValueEnumMap[reader.readByteOrNull(offset)] ??
           MeditationType.timed) as P;
     default:
@@ -537,6 +597,59 @@ extension MeditationQueryFilter
     });
   }
 
+  QueryBuilder<Meditation, Meditation, QAfterFilterCondition> energyEqualTo(
+      int value) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.equalTo(
+        property: r'energy',
+        value: value,
+      ));
+    });
+  }
+
+  QueryBuilder<Meditation, Meditation, QAfterFilterCondition> energyGreaterThan(
+    int value, {
+    bool include = false,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.greaterThan(
+        include: include,
+        property: r'energy',
+        value: value,
+      ));
+    });
+  }
+
+  QueryBuilder<Meditation, Meditation, QAfterFilterCondition> energyLessThan(
+    int value, {
+    bool include = false,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.lessThan(
+        include: include,
+        property: r'energy',
+        value: value,
+      ));
+    });
+  }
+
+  QueryBuilder<Meditation, Meditation, QAfterFilterCondition> energyBetween(
+    int lower,
+    int upper, {
+    bool includeLower = true,
+    bool includeUpper = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.between(
+        property: r'energy',
+        lower: lower,
+        includeLower: includeLower,
+        upper: upper,
+        includeUpper: includeUpper,
+      ));
+    });
+  }
+
   QueryBuilder<Meditation, Meditation, QAfterFilterCondition> goalIsNull() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(const FilterCondition.isNull(
@@ -659,6 +772,59 @@ extension MeditationQueryFilter
     });
   }
 
+  QueryBuilder<Meditation, Meditation, QAfterFilterCondition> moodEqualTo(
+      int value) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.equalTo(
+        property: r'mood',
+        value: value,
+      ));
+    });
+  }
+
+  QueryBuilder<Meditation, Meditation, QAfterFilterCondition> moodGreaterThan(
+    int value, {
+    bool include = false,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.greaterThan(
+        include: include,
+        property: r'mood',
+        value: value,
+      ));
+    });
+  }
+
+  QueryBuilder<Meditation, Meditation, QAfterFilterCondition> moodLessThan(
+    int value, {
+    bool include = false,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.lessThan(
+        include: include,
+        property: r'mood',
+        value: value,
+      ));
+    });
+  }
+
+  QueryBuilder<Meditation, Meditation, QAfterFilterCondition> moodBetween(
+    int lower,
+    int upper, {
+    bool includeLower = true,
+    bool includeUpper = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.between(
+        property: r'mood',
+        lower: lower,
+        includeLower: includeLower,
+        upper: upper,
+        includeUpper: includeUpper,
+      ));
+    });
+  }
+
   QueryBuilder<Meditation, Meditation, QAfterFilterCondition> ratingIsNull() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(const FilterCondition.isNull(
@@ -734,6 +900,59 @@ extension MeditationQueryFilter
         upper: upper,
         includeUpper: includeUpper,
         epsilon: epsilon,
+      ));
+    });
+  }
+
+  QueryBuilder<Meditation, Meditation, QAfterFilterCondition> stressEqualTo(
+      int value) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.equalTo(
+        property: r'stress',
+        value: value,
+      ));
+    });
+  }
+
+  QueryBuilder<Meditation, Meditation, QAfterFilterCondition> stressGreaterThan(
+    int value, {
+    bool include = false,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.greaterThan(
+        include: include,
+        property: r'stress',
+        value: value,
+      ));
+    });
+  }
+
+  QueryBuilder<Meditation, Meditation, QAfterFilterCondition> stressLessThan(
+    int value, {
+    bool include = false,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.lessThan(
+        include: include,
+        property: r'stress',
+        value: value,
+      ));
+    });
+  }
+
+  QueryBuilder<Meditation, Meditation, QAfterFilterCondition> stressBetween(
+    int lower,
+    int upper, {
+    bool includeLower = true,
+    bool includeUpper = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.between(
+        property: r'stress',
+        lower: lower,
+        includeLower: includeLower,
+        upper: upper,
+        includeUpper: includeUpper,
       ));
     });
   }
@@ -824,6 +1043,18 @@ extension MeditationQuerySortBy
     });
   }
 
+  QueryBuilder<Meditation, Meditation, QAfterSortBy> sortByEnergy() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'energy', Sort.asc);
+    });
+  }
+
+  QueryBuilder<Meditation, Meditation, QAfterSortBy> sortByEnergyDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'energy', Sort.desc);
+    });
+  }
+
   QueryBuilder<Meditation, Meditation, QAfterSortBy> sortByGoal() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'goal', Sort.asc);
@@ -836,6 +1067,18 @@ extension MeditationQuerySortBy
     });
   }
 
+  QueryBuilder<Meditation, Meditation, QAfterSortBy> sortByMood() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'mood', Sort.asc);
+    });
+  }
+
+  QueryBuilder<Meditation, Meditation, QAfterSortBy> sortByMoodDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'mood', Sort.desc);
+    });
+  }
+
   QueryBuilder<Meditation, Meditation, QAfterSortBy> sortByRating() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'rating', Sort.asc);
@@ -845,6 +1088,18 @@ extension MeditationQuerySortBy
   QueryBuilder<Meditation, Meditation, QAfterSortBy> sortByRatingDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'rating', Sort.desc);
+    });
+  }
+
+  QueryBuilder<Meditation, Meditation, QAfterSortBy> sortByStress() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'stress', Sort.asc);
+    });
+  }
+
+  QueryBuilder<Meditation, Meditation, QAfterSortBy> sortByStressDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'stress', Sort.desc);
     });
   }
 
@@ -887,6 +1142,18 @@ extension MeditationQuerySortThenBy
     });
   }
 
+  QueryBuilder<Meditation, Meditation, QAfterSortBy> thenByEnergy() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'energy', Sort.asc);
+    });
+  }
+
+  QueryBuilder<Meditation, Meditation, QAfterSortBy> thenByEnergyDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'energy', Sort.desc);
+    });
+  }
+
   QueryBuilder<Meditation, Meditation, QAfterSortBy> thenByGoal() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'goal', Sort.asc);
@@ -911,6 +1178,18 @@ extension MeditationQuerySortThenBy
     });
   }
 
+  QueryBuilder<Meditation, Meditation, QAfterSortBy> thenByMood() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'mood', Sort.asc);
+    });
+  }
+
+  QueryBuilder<Meditation, Meditation, QAfterSortBy> thenByMoodDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'mood', Sort.desc);
+    });
+  }
+
   QueryBuilder<Meditation, Meditation, QAfterSortBy> thenByRating() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'rating', Sort.asc);
@@ -920,6 +1199,18 @@ extension MeditationQuerySortThenBy
   QueryBuilder<Meditation, Meditation, QAfterSortBy> thenByRatingDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'rating', Sort.desc);
+    });
+  }
+
+  QueryBuilder<Meditation, Meditation, QAfterSortBy> thenByStress() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'stress', Sort.asc);
+    });
+  }
+
+  QueryBuilder<Meditation, Meditation, QAfterSortBy> thenByStressDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'stress', Sort.desc);
     });
   }
 
@@ -950,15 +1241,33 @@ extension MeditationQueryWhereDistinct
     });
   }
 
+  QueryBuilder<Meditation, Meditation, QDistinct> distinctByEnergy() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addDistinctBy(r'energy');
+    });
+  }
+
   QueryBuilder<Meditation, Meditation, QDistinct> distinctByGoal() {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'goal');
     });
   }
 
+  QueryBuilder<Meditation, Meditation, QDistinct> distinctByMood() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addDistinctBy(r'mood');
+    });
+  }
+
   QueryBuilder<Meditation, Meditation, QDistinct> distinctByRating() {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'rating');
+    });
+  }
+
+  QueryBuilder<Meditation, Meditation, QDistinct> distinctByStress() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addDistinctBy(r'stress');
     });
   }
 
@@ -989,15 +1298,33 @@ extension MeditationQueryProperty
     });
   }
 
+  QueryBuilder<Meditation, int, QQueryOperations> energyProperty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addPropertyName(r'energy');
+    });
+  }
+
   QueryBuilder<Meditation, int?, QQueryOperations> goalProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'goal');
     });
   }
 
+  QueryBuilder<Meditation, int, QQueryOperations> moodProperty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addPropertyName(r'mood');
+    });
+  }
+
   QueryBuilder<Meditation, double?, QQueryOperations> ratingProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'rating');
+    });
+  }
+
+  QueryBuilder<Meditation, int, QQueryOperations> stressProperty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addPropertyName(r'stress');
     });
   }
 

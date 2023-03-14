@@ -7,7 +7,7 @@ part of 'breathwork_configure_c.dart';
 // **************************************************************************
 
 String _$breathworkConfigureCHash() =>
-    r'cbd394e0d284bdb126f418eab017f3738a9d13c5';
+    r'b42e9e5e176289f19fa260fb7d6116d4afcfe9ef';
 
 /// See also [BreathworkConfigureC].
 @ProviderFor(BreathworkConfigureC)

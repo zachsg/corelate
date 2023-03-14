@@ -19,6 +19,9 @@ class Breathwork extends Activity {
 
   Breathwork({
     required super.date,
+    super.stress,
+    super.mood,
+    super.energy,
     this.type = BreathworkType.four78,
     this.rounds = 4,
     this.breathsPerRound = 0,
