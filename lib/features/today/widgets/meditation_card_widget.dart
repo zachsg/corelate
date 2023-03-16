@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../helpers/extensions.dart';
 import '../../../models/meditation.dart';
 import '../../../models/meditation_type.dart';
+import '../../widgets/xwidgets.dart';
 import 'activity_card_widget.dart';
 
 class MeditationCardWidget extends ConsumerWidget {
@@ -141,21 +142,19 @@ class MeditationCardWidget extends ConsumerWidget {
     message = 'You meditated for $durationString.';
 
     return Padding(
-      padding: const EdgeInsets.all(12.0),
+      padding: const EdgeInsets.all(16.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisSize: MainAxisSize.min,
         children: [
+          const GrabHandleWidget(),
+          const SizedBox(height: 16),
           Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
                 '$title Details',
                 style: Theme.of(context).textTheme.titleLarge,
-              ),
-              IconButton(
-                onPressed: Navigator.of(context).pop,
-                icon: const Icon(Icons.cancel_outlined, size: 32),
               ),
             ],
           ),

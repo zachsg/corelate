@@ -8,15 +8,21 @@ PODS:
     - Flutter
   - flutter_native_splash (0.0.1):
     - Flutter
+  - flutter_web_auth_2 (1.1.1):
+    - Flutter
   - health (1.0.4):
     - Flutter
   - isar_flutter_libs (1.0.0):
     - Flutter
   - mindful_minutes (1.1.0):
     - Flutter
+  - package_info_plus (0.4.5):
+    - Flutter
   - path_provider_foundation (0.0.1):
     - Flutter
     - FlutterMacOS
+  - url_launcher_ios (0.0.1):
+    - Flutter
   - vibration (1.7.5):
     - Flutter
   - wakelock (0.0.1):
@@ -28,10 +34,13 @@ DEPENDENCIES:
   - Flutter (from `Flutter`)
   - flutter_local_notifications (from `.symlinks/plugins/flutter_local_notifications/ios`)
   - flutter_native_splash (from `.symlinks/plugins/flutter_native_splash/ios`)
+  - flutter_web_auth_2 (from `.symlinks/plugins/flutter_web_auth_2/ios`)
   - health (from `.symlinks/plugins/health/ios`)
   - isar_flutter_libs (from `.symlinks/plugins/isar_flutter_libs/ios`)
   - mindful_minutes (from `.symlinks/plugins/mindful_minutes/ios`)
+  - package_info_plus (from `.symlinks/plugins/package_info_plus/ios`)
   - path_provider_foundation (from `.symlinks/plugins/path_provider_foundation/ios`)
+  - url_launcher_ios (from `.symlinks/plugins/url_launcher_ios/ios`)
   - vibration (from `.symlinks/plugins/vibration/ios`)
   - wakelock (from `.symlinks/plugins/wakelock/ios`)
 
@@ -46,14 +55,20 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/flutter_local_notifications/ios"
   flutter_native_splash:
     :path: ".symlinks/plugins/flutter_native_splash/ios"
+  flutter_web_auth_2:
+    :path: ".symlinks/plugins/flutter_web_auth_2/ios"
   health:
     :path: ".symlinks/plugins/health/ios"
   isar_flutter_libs:
     :path: ".symlinks/plugins/isar_flutter_libs/ios"
   mindful_minutes:
     :path: ".symlinks/plugins/mindful_minutes/ios"
+  package_info_plus:
+    :path: ".symlinks/plugins/package_info_plus/ios"
   path_provider_foundation:
     :path: ".symlinks/plugins/path_provider_foundation/ios"
+  url_launcher_ios:
+    :path: ".symlinks/plugins/url_launcher_ios/ios"
   vibration:
     :path: ".symlinks/plugins/vibration/ios"
   wakelock:
@@ -65,10 +80,13 @@ SPEC CHECKSUMS:
   Flutter: f04841e97a9d0b0a8025694d0796dd46242b2854
   flutter_local_notifications: 0c0b1ae97e741e1521e4c1629a459d04b9aec743
   flutter_native_splash: 52501b97d1c0a5f898d687f1646226c1f93c56ef
+  flutter_web_auth_2: a1bc00762c408a8f80b72a538cd7ff5b601c3e71
   health: 5a380c0f6c4f619535845992993964293962e99e
   isar_flutter_libs: b69f437aeab9c521821c3f376198c4371fa21073
   mindful_minutes: 11823f3e539027407e115237c05f8e4aa0391968
+  package_info_plus: 6c92f08e1f853dc01228d6f553146438dafcd14e
   path_provider_foundation: c68054786f1b4f3343858c1e1d0caaded73f0be9
+  url_launcher_ios: 08a3dfac5fb39e8759aeb0abbd5d9480f30fc8b4
   vibration: 7d883d141656a1c1a6d8d238616b2042a51a1241
   wakelock: d0fc7c864128eac40eba1617cb5264d9c940b46f
 

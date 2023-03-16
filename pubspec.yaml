@@ -19,6 +19,7 @@ dependencies:
   copy_with_extension: ^5.0.0
   isar: ^3.0.5
   isar_flutter_libs: ^3.0.5
+  appwrite: ^8.3.0
   wakelock: ^0.6.2
   intl: ^0.18.0
   health: ^4.6.0
