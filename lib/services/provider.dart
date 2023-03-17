@@ -27,7 +27,7 @@ Future<HealthFactory> healthC(HealthCRef ref) async {
   final types = [
     HealthDataType.MINDFULNESS,
     HealthDataType.STEPS,
-    HealthDataType.SLEEP_ASLEEP,
+    HealthDataType.SLEEP_IN_BED,
     HealthDataType.HEART_RATE,
   ];
 

@@ -43,7 +43,7 @@ class _TodayViewState extends ConsumerState<TodayView>
       final dateStart = now.subtract(const Duration(hours: 6));
       final dateEnd = DateTime.now();
       final sleepList = await health.getHealthDataFromTypes(
-          dateStart, dateEnd, [HealthDataType.SLEEP_ASLEEP]);
+          dateStart, dateEnd, [HealthDataType.SLEEP_IN_BED]);
       if (sleepList.isNotEmpty) {
         final sleep = sleepList.first;
         final sleepTime = sleep.dateTo.difference(sleep.dateFrom).inMinutes;
