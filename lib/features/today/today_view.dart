@@ -45,8 +45,10 @@ class _TodayViewState extends ConsumerState<TodayView>
       final sleepList = await health.getHealthDataFromTypes(
           dateStart, dateEnd, [HealthDataType.SLEEP_IN_BED]);
       if (sleepList.isNotEmpty) {
-        final sleep = sleepList.first;
-        final sleepTime = sleep.dateTo.difference(sleep.dateFrom).inMinutes;
+        final sleepStart = sleepList.first;
+        final sleepEnd = sleepList.last;
+        final sleepTime =
+            sleepEnd.dateTo.difference(sleepStart.dateFrom).inMinutes;
         ref.read(todayProvider.notifier).setSleep(sleepTime);
       }
     });
@@ -55,6 +57,31 @@ class _TodayViewState extends ConsumerState<TodayView>
   @override
   void initState() {
     WidgetsBinding.instance.addObserver(this);
+
+    ref.read(healthCProvider.future).then((health) async {
+      final dateStart = DateTime.now().copyWith(hour: 0, minute: 0);
+      final dateEnd = DateTime.now();
+      final steps = await health.getTotalStepsInInterval(dateStart, dateEnd);
+      if (steps != null) {
+        ref.read(todayProvider.notifier).setSteps(steps);
+      }
+    });
+
+    ref.read(healthCProvider.future).then((health) async {
+      final now = DateTime.now().copyWith(hour: 0, minute: 0);
+      final dateStart = now.subtract(const Duration(hours: 6));
+      final dateEnd = DateTime.now();
+      final sleepList = await health.getHealthDataFromTypes(
+          dateStart, dateEnd, [HealthDataType.SLEEP_IN_BED]);
+      if (sleepList.isNotEmpty) {
+        final sleepStart = sleepList.first;
+        final sleepEnd = sleepList.last;
+        final sleepTime =
+            sleepEnd.dateTo.difference(sleepStart.dateFrom).inMinutes;
+        ref.read(todayProvider.notifier).setSleep(sleepTime);
+      }
+    });
+
     super.initState();
   }
 
