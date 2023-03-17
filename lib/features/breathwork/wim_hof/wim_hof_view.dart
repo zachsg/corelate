@@ -10,7 +10,7 @@ import '../../bottom_navigation/bottom_navigation_view.dart';
 import '../../widgets/xwidgets.dart';
 import '../breathwork_setup/breathwork_setup.dart';
 import 'widgets/xwidgets.dart';
-import 'wim_hof_c.dart';
+import 'wim_hof.dart';
 
 class WimHofView extends ConsumerWidget {
   const WimHofView({super.key});
@@ -19,7 +19,7 @@ class WimHofView extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final wimHof = ref.watch(wimHofCProvider);
+    final wimHof = ref.watch(wimHofProvider);
     final breathworkSetup = ref.watch(breathworkSetupProvider);
 
     return Scaffold(
@@ -37,10 +37,10 @@ class WimHofView extends ConsumerWidget {
               ),
               onPressed: () {
                 Wakelock.disable();
-                final wimHof = ref.read(wimHofCProvider);
+                final wimHof = ref.read(wimHofProvider);
 
                 if (wimHof.currentRound != 1) {
-                  ref.read(wimHofCProvider.notifier).markDone();
+                  ref.read(wimHofProvider.notifier).markDone();
                   _showSessionCompleteDialog(ref, context);
                 } else {
                   context.pop();
@@ -94,7 +94,7 @@ class WimHofView extends ConsumerWidget {
 
   Future<void> _showSessionCompleteDialog(
       WidgetRef ref, BuildContext context) async {
-    final wimHof = ref.watch(wimHofCProvider);
+    final wimHof = ref.watch(wimHofProvider);
     final breathwork = ref.watch(breathworkSetupProvider).breathwork;
 
     var message = '';

@@ -3,77 +3,22 @@
 part of 'four_7_8.dart';
 
 // **************************************************************************
-// CopyWithGenerator
+// RiverpodGenerator
 // **************************************************************************
 
-abstract class _$Four78CWProxy {
-  Four78 breathing(Breathing breathing);
+String _$four78Hash() => r'c87fc20408c0340cf1cad19d3bc78140cf68fd58';
 
-  Four78 currentRound(int currentRound);
+/// See also [Four78].
+@ProviderFor(Four78)
+final four78Provider =
+    AutoDisposeNotifierProvider<Four78, Four78Model>.internal(
+  Four78.new,
+  name: r'four78Provider',
+  debugGetCreateSourceHash:
+      const bool.fromEnvironment('dart.vm.product') ? null : _$four78Hash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
 
-  Four78 isDone(bool isDone);
-
-  /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `Four78(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
-  ///
-  /// Usage
-  /// ```dart
-  /// Four78(...).copyWith(id: 12, name: "My name")
-  /// ````
-  Four78 call({
-    Breathing? breathing,
-    int? currentRound,
-    bool? isDone,
-  });
-}
-
-/// Proxy class for `copyWith` functionality. This is a callable class and can be used as follows: `instanceOfFour78.copyWith(...)`. Additionally contains functions for specific fields e.g. `instanceOfFour78.copyWith.fieldName(...)`
-class _$Four78CWProxyImpl implements _$Four78CWProxy {
-  const _$Four78CWProxyImpl(this._value);
-
-  final Four78 _value;
-
-  @override
-  Four78 breathing(Breathing breathing) => this(breathing: breathing);
-
-  @override
-  Four78 currentRound(int currentRound) => this(currentRound: currentRound);
-
-  @override
-  Four78 isDone(bool isDone) => this(isDone: isDone);
-
-  @override
-
-  /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `Four78(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
-  ///
-  /// Usage
-  /// ```dart
-  /// Four78(...).copyWith(id: 12, name: "My name")
-  /// ````
-  Four78 call({
-    Object? breathing = const $CopyWithPlaceholder(),
-    Object? currentRound = const $CopyWithPlaceholder(),
-    Object? isDone = const $CopyWithPlaceholder(),
-  }) {
-    return Four78(
-      breathing: breathing == const $CopyWithPlaceholder() || breathing == null
-          ? _value.breathing
-          // ignore: cast_nullable_to_non_nullable
-          : breathing as Breathing,
-      currentRound:
-          currentRound == const $CopyWithPlaceholder() || currentRound == null
-              ? _value.currentRound
-              // ignore: cast_nullable_to_non_nullable
-              : currentRound as int,
-      isDone: isDone == const $CopyWithPlaceholder() || isDone == null
-          ? _value.isDone
-          // ignore: cast_nullable_to_non_nullable
-          : isDone as bool,
-    );
-  }
-}
-
-extension $Four78CopyWith on Four78 {
-  /// Returns a callable class that can be used as follows: `instanceOfFour78.copyWith(...)` or like so:`instanceOfFour78.copyWith.fieldName(...)`.
-  // ignore: library_private_types_in_public_api
-  _$Four78CWProxy get copyWith => _$Four78CWProxyImpl(this);
-}
+typedef _$Four78 = AutoDisposeNotifier<Four78Model>;
+// ignore_for_file: unnecessary_raw_strings, subtype_of_sealed_class, invalid_use_of_internal_member, do_not_use_environment, prefer_const_constructors, public_member_api_docs, avoid_private_typedef_functions

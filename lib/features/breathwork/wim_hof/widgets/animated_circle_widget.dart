@@ -5,7 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:vibration/vibration.dart';
 
 import '../../breathwork_setup/breathwork_setup.dart';
-import '../wim_hof_c.dart';
+import '../wim_hof.dart';
 
 class AnimatedCircleWidget extends ConsumerStatefulWidget {
   const AnimatedCircleWidget({
@@ -64,15 +64,15 @@ class _AnimatedCircleWidgetState extends ConsumerState<AnimatedCircleWidget> {
       }
 
       if (_count % 2 == 0) {
-        ref.read(wimHofCProvider.notifier).incrementBreath();
+        ref.read(wimHofProvider.notifier).incrementBreath();
       }
 
-      ref.read(wimHofCProvider.notifier).toggleIsInhaling();
+      ref.read(wimHofProvider.notifier).toggleIsInhaling();
 
       _count++;
       if (_count > breathGoal * 2) {
         _timer.cancel();
-        ref.read(wimHofCProvider.notifier).setHoldingExhale(true);
+        ref.read(wimHofProvider.notifier).setHoldingExhale(true);
       }
     });
 

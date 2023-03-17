@@ -1,18 +1,17 @@
-import 'package:copy_with_extension/copy_with_extension.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-import '../../../models/breathing.dart';
+import 'four_7_8_model.dart';
 
 part 'four_7_8.g.dart';
 
-@CopyWith()
-class Four78 {
-  final Breathing breathing;
-  final int currentRound;
-  final bool isDone;
+@riverpod
+class Four78 extends _$Four78 {
+  @override
+  Four78Model build() => Four78Model();
 
-  Four78({
-    this.breathing = Breathing.inhale,
-    this.currentRound = 1,
-    this.isDone = false,
-  });
+  void incrementRound() =>
+      state = state.copyWith(currentRound: state.currentRound + 1);
+
+  void markDone() => state =
+      state.copyWith(isDone: true, currentRound: state.currentRound - 1);
 }

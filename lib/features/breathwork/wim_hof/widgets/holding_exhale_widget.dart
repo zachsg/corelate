@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../wim_hof_c.dart';
+import '../wim_hof.dart';
 
 class HoldingExhaleWidget extends ConsumerStatefulWidget {
   const HoldingExhaleWidget({super.key});
@@ -24,7 +24,7 @@ class _HoldingExhaleWidgetState extends ConsumerState<HoldingExhaleWidget> {
     var elapsed = 0;
 
     _timer = Timer.periodic(const Duration(seconds: 1), (_) {
-      if (ref.watch(wimHofCProvider).isHoldingInhale) {
+      if (ref.watch(wimHofProvider).isHoldingInhale) {
         _stopwatch
           ..stop()
           ..reset();
@@ -32,7 +32,7 @@ class _HoldingExhaleWidgetState extends ConsumerState<HoldingExhaleWidget> {
         elapsed = _stopwatch.elapsed.inSeconds;
       }
 
-      ref.read(wimHofCProvider.notifier).setHoldSecondsCurrentRount(elapsed);
+      ref.read(wimHofProvider.notifier).setHoldSecondsCurrentRount(elapsed);
     });
 
     super.initState();
@@ -49,7 +49,7 @@ class _HoldingExhaleWidgetState extends ConsumerState<HoldingExhaleWidget> {
 
   @override
   Widget build(BuildContext context) {
-    final wimHof = ref.watch(wimHofCProvider);
+    final wimHof = ref.watch(wimHofProvider);
     final elapsed = wimHof.holdSecondsCurrentRound;
 
     final minutes = elapsed / 60 > 0 ? elapsed ~/ 60 : 0;
@@ -61,7 +61,7 @@ class _HoldingExhaleWidgetState extends ConsumerState<HoldingExhaleWidget> {
         _stopwatch
           ..stop()
           ..reset();
-        ref.read(wimHofCProvider.notifier).setHoldingExhale(false);
+        ref.read(wimHofProvider.notifier).setHoldingExhale(false);
       },
       child: Center(
         child: Column(

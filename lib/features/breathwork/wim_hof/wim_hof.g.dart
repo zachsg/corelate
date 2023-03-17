@@ -3,142 +3,22 @@
 part of 'wim_hof.dart';
 
 // **************************************************************************
-// CopyWithGenerator
+// RiverpodGenerator
 // **************************************************************************
 
-abstract class _$WimHofCWProxy {
-  WimHof currentRound(int currentRound);
+String _$wimHofHash() => r'7ef3038566d8fb50855f3b550d1ff68142b4a225';
 
-  WimHof currentBreath(int currentBreath);
+/// See also [WimHof].
+@ProviderFor(WimHof)
+final wimHofProvider =
+    AutoDisposeNotifierProvider<WimHof, WimHofModel>.internal(
+  WimHof.new,
+  name: r'wimHofProvider',
+  debugGetCreateSourceHash:
+      const bool.fromEnvironment('dart.vm.product') ? null : _$wimHofHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
 
-  WimHof isInhaling(bool isInhaling);
-
-  WimHof isHoldingExhale(bool isHoldingExhale);
-
-  WimHof isHoldingInhale(bool isHoldingInhale);
-
-  WimHof isDone(bool isDone);
-
-  WimHof holdSecondsCurrentRound(int holdSecondsCurrentRound);
-
-  WimHof holdSeconds(List<int> holdSeconds);
-
-  /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `WimHof(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
-  ///
-  /// Usage
-  /// ```dart
-  /// WimHof(...).copyWith(id: 12, name: "My name")
-  /// ````
-  WimHof call({
-    int? currentRound,
-    int? currentBreath,
-    bool? isInhaling,
-    bool? isHoldingExhale,
-    bool? isHoldingInhale,
-    bool? isDone,
-    int? holdSecondsCurrentRound,
-    List<int>? holdSeconds,
-  });
-}
-
-/// Proxy class for `copyWith` functionality. This is a callable class and can be used as follows: `instanceOfWimHof.copyWith(...)`. Additionally contains functions for specific fields e.g. `instanceOfWimHof.copyWith.fieldName(...)`
-class _$WimHofCWProxyImpl implements _$WimHofCWProxy {
-  const _$WimHofCWProxyImpl(this._value);
-
-  final WimHof _value;
-
-  @override
-  WimHof currentRound(int currentRound) => this(currentRound: currentRound);
-
-  @override
-  WimHof currentBreath(int currentBreath) => this(currentBreath: currentBreath);
-
-  @override
-  WimHof isInhaling(bool isInhaling) => this(isInhaling: isInhaling);
-
-  @override
-  WimHof isHoldingExhale(bool isHoldingExhale) =>
-      this(isHoldingExhale: isHoldingExhale);
-
-  @override
-  WimHof isHoldingInhale(bool isHoldingInhale) =>
-      this(isHoldingInhale: isHoldingInhale);
-
-  @override
-  WimHof isDone(bool isDone) => this(isDone: isDone);
-
-  @override
-  WimHof holdSecondsCurrentRound(int holdSecondsCurrentRound) =>
-      this(holdSecondsCurrentRound: holdSecondsCurrentRound);
-
-  @override
-  WimHof holdSeconds(List<int> holdSeconds) => this(holdSeconds: holdSeconds);
-
-  @override
-
-  /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `WimHof(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
-  ///
-  /// Usage
-  /// ```dart
-  /// WimHof(...).copyWith(id: 12, name: "My name")
-  /// ````
-  WimHof call({
-    Object? currentRound = const $CopyWithPlaceholder(),
-    Object? currentBreath = const $CopyWithPlaceholder(),
-    Object? isInhaling = const $CopyWithPlaceholder(),
-    Object? isHoldingExhale = const $CopyWithPlaceholder(),
-    Object? isHoldingInhale = const $CopyWithPlaceholder(),
-    Object? isDone = const $CopyWithPlaceholder(),
-    Object? holdSecondsCurrentRound = const $CopyWithPlaceholder(),
-    Object? holdSeconds = const $CopyWithPlaceholder(),
-  }) {
-    return WimHof(
-      currentRound:
-          currentRound == const $CopyWithPlaceholder() || currentRound == null
-              ? _value.currentRound
-              // ignore: cast_nullable_to_non_nullable
-              : currentRound as int,
-      currentBreath:
-          currentBreath == const $CopyWithPlaceholder() || currentBreath == null
-              ? _value.currentBreath
-              // ignore: cast_nullable_to_non_nullable
-              : currentBreath as int,
-      isInhaling:
-          isInhaling == const $CopyWithPlaceholder() || isInhaling == null
-              ? _value.isInhaling
-              // ignore: cast_nullable_to_non_nullable
-              : isInhaling as bool,
-      isHoldingExhale: isHoldingExhale == const $CopyWithPlaceholder() ||
-              isHoldingExhale == null
-          ? _value.isHoldingExhale
-          // ignore: cast_nullable_to_non_nullable
-          : isHoldingExhale as bool,
-      isHoldingInhale: isHoldingInhale == const $CopyWithPlaceholder() ||
-              isHoldingInhale == null
-          ? _value.isHoldingInhale
-          // ignore: cast_nullable_to_non_nullable
-          : isHoldingInhale as bool,
-      isDone: isDone == const $CopyWithPlaceholder() || isDone == null
-          ? _value.isDone
-          // ignore: cast_nullable_to_non_nullable
-          : isDone as bool,
-      holdSecondsCurrentRound:
-          holdSecondsCurrentRound == const $CopyWithPlaceholder() ||
-                  holdSecondsCurrentRound == null
-              ? _value.holdSecondsCurrentRound
-              // ignore: cast_nullable_to_non_nullable
-              : holdSecondsCurrentRound as int,
-      holdSeconds:
-          holdSeconds == const $CopyWithPlaceholder() || holdSeconds == null
-              ? _value.holdSeconds
-              // ignore: cast_nullable_to_non_nullable
-              : holdSeconds as List<int>,
-    );
-  }
-}
-
-extension $WimHofCopyWith on WimHof {
-  /// Returns a callable class that can be used as follows: `instanceOfWimHof.copyWith(...)` or like so:`instanceOfWimHof.copyWith.fieldName(...)`.
-  // ignore: library_private_types_in_public_api
-  _$WimHofCWProxy get copyWith => _$WimHofCWProxyImpl(this);
-}
+typedef _$WimHof = AutoDisposeNotifier<WimHofModel>;
+// ignore_for_file: unnecessary_raw_strings, subtype_of_sealed_class, invalid_use_of_internal_member, do_not_use_environment, prefer_const_constructors, public_member_api_docs, avoid_private_typedef_functions

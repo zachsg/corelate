@@ -7,7 +7,7 @@ import '../../../helpers/strings.dart';
 import '../../bottom_navigation/bottom_navigation_view.dart';
 import '../../widgets/rating_bar_widget.dart';
 import '../breathwork_setup/breathwork_setup.dart';
-import 'four_7_8_c.dart';
+import 'four_7_8.dart';
 import 'widgets/animated_rounds_widget.dart';
 
 class Four78View extends ConsumerWidget {
@@ -17,7 +17,7 @@ class Four78View extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final four78 = ref.watch(four78CProvider);
+    final four78 = ref.watch(four78Provider);
     final breathworkSetup = ref.watch(breathworkSetupProvider);
 
     return Scaffold(
@@ -36,10 +36,10 @@ class Four78View extends ConsumerWidget {
               onPressed: () {
                 Wakelock.disable();
 
-                final four78 = ref.read(four78CProvider);
+                final four78 = ref.read(four78Provider);
 
                 if (four78.currentRound != 1) {
-                  ref.read(four78CProvider.notifier).markDone();
+                  ref.read(four78Provider.notifier).markDone();
                   _showSessionCompleteDialog(ref, context);
                 } else {
                   context.pop();
@@ -95,7 +95,7 @@ class Four78View extends ConsumerWidget {
 
   Future<void> _showSessionCompleteDialog(
       WidgetRef ref, BuildContext context) async {
-    final four78 = ref.watch(four78CProvider);
+    final four78 = ref.watch(four78Provider);
 
     var message = '';
     final rounds = four78.currentRound;

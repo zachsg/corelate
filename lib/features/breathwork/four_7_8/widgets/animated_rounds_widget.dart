@@ -5,7 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:vibration/vibration.dart';
 
 import '../../breathwork_setup/breathwork_setup.dart';
-import '../four_7_8_c.dart';
+import '../four_7_8.dart';
 
 class AnimatedRoundsWidget extends ConsumerStatefulWidget {
   const AnimatedRoundsWidget({
@@ -44,13 +44,13 @@ class _AnimatedRoundsWidgetState extends ConsumerState<AnimatedRoundsWidget> {
     _timer = Timer.periodic(const Duration(milliseconds: 650), (_) {
       if (_count == 19) {
         _count = 0;
-        ref.read(four78CProvider.notifier).incrementRound();
+        ref.read(four78Provider.notifier).incrementRound();
       }
 
-      if (ref.watch(four78CProvider).currentRound >
+      if (ref.watch(four78Provider).currentRound >
           ref.watch(breathworkSetupProvider).breathwork.rounds) {
         _timer.cancel();
-        ref.read(four78CProvider.notifier).markDone();
+        ref.read(four78Provider.notifier).markDone();
         widget.onFinished();
       }
 

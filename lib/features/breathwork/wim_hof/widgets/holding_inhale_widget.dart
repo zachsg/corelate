@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../breathwork_setup/breathwork_setup.dart';
-import '../wim_hof_c.dart';
+import '../wim_hof.dart';
 
 class HoldingInhaleWidget extends ConsumerStatefulWidget {
   const HoldingInhaleWidget({super.key, required this.finished});
@@ -32,12 +32,12 @@ class _HoldingInhaleWidgetState extends ConsumerState<HoldingInhaleWidget> {
 
       if (_elapsed == 0) {
         _timer.cancel();
-        ref.read(wimHofCProvider.notifier).incrementRound();
+        ref.read(wimHofProvider.notifier).incrementRound();
 
         final roundsGoal = ref.watch(breathworkSetupProvider).breathwork.rounds;
 
-        if (ref.watch(wimHofCProvider).currentRound > roundsGoal) {
-          ref.read(wimHofCProvider.notifier).markDone();
+        if (ref.watch(wimHofProvider).currentRound > roundsGoal) {
+          ref.read(wimHofProvider.notifier).markDone();
           widget.finished();
         }
       }

@@ -7,8 +7,8 @@ import '../../../services/provider.dart';
 import '../../../models/breathwork.dart';
 import '../../../models/breathwork_type.dart';
 import '../../today/today_c.dart';
-import '../four_7_8/four_7_8_c.dart';
-import '../wim_hof/wim_hof_c.dart';
+import '../four_7_8/four_7_8.dart';
+import '../wim_hof/wim_hof.dart';
 import 'breathwork_setup_model.dart';
 
 part 'breathwork_setup.g.dart';
@@ -59,7 +59,7 @@ class BreathworkSetup extends _$BreathworkSetup {
 
     if (state.breathwork.type == BreathworkType.four78) {
       // TODO: Save 4-7-8 session
-      final four78 = ref.watch(four78CProvider);
+      final four78 = ref.watch(four78Provider);
       final energy = (four78.currentRound / 2).round();
       final stress = 0 - energy;
       final mood = state.breathwork.mood;
@@ -70,7 +70,7 @@ class BreathworkSetup extends _$BreathworkSetup {
         energy: energy,
       );
     } else {
-      final wimHof = ref.watch(wimHofCProvider);
+      final wimHof = ref.watch(wimHofProvider);
       final rounds = wimHof.holdSeconds.length;
       final energy = (rounds / 2).round();
       final stress = 0 - energy;
@@ -94,10 +94,10 @@ class BreathworkSetup extends _$BreathworkSetup {
       int elapsed;
 
       if (breathwork.type == BreathworkType.four78) {
-        final four78 = ref.watch(four78CProvider);
+        final four78 = ref.watch(four78Provider);
         elapsed = four78.currentRound * 14;
       } else {
-        final wimHof = ref.watch(wimHofCProvider);
+        final wimHof = ref.watch(wimHofProvider);
 
         var holdsElapsed = 0;
         for (final hold in wimHof.holdSeconds) {
