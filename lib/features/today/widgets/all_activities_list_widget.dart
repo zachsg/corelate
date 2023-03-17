@@ -10,7 +10,7 @@ import '../../../models/breathwork_type.dart';
 import '../../../models/meditation.dart';
 import '../../../models/meditation_type.dart';
 import '../../widgets/xwidgets.dart';
-import '../today_c.dart';
+import '../today.dart';
 import 'empty_state_widget.dart';
 
 class AllActivitiesListWidget extends ConsumerStatefulWidget {
@@ -25,8 +25,8 @@ class _AllActivitiesListWidgetState
     extends ConsumerState<AllActivitiesListWidget> {
   @override
   void initState() {
-    final date = ref.read(todayCProvider).historyDate;
-    ref.read(todayCProvider.notifier).loadActivitiesForDate(date);
+    final date = ref.read(todayProvider).historyDate;
+    ref.read(todayProvider.notifier).loadActivitiesForDate(date);
     super.initState();
   }
 
@@ -36,7 +36,7 @@ class _AllActivitiesListWidgetState
     final formatterPrevYear = DateFormat('MMMM d, yyyy');
 
     final today = DateTime.now().copyWith(hour: 0, minute: 0);
-    final historyDate = ref.read(todayCProvider).historyDate;
+    final historyDate = ref.read(todayProvider).historyDate;
 
     final isThisYear = historyDate.year == today.year;
 
@@ -62,7 +62,7 @@ class _AllActivitiesListWidgetState
             children: [
               IconButton(
                 onPressed:
-                    ref.read(todayCProvider.notifier).decrementHistoryDate,
+                    ref.read(todayProvider.notifier).decrementHistoryDate,
                 icon: Container(
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
@@ -85,9 +85,8 @@ class _AllActivitiesListWidgetState
               isViewingToday
                   ? IconButton(onPressed: () {}, icon: const SizedBox())
                   : IconButton(
-                      onPressed: ref
-                          .read(todayCProvider.notifier)
-                          .incrementHistoryDate,
+                      onPressed:
+                          ref.read(todayProvider.notifier).incrementHistoryDate,
                       icon: Container(
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
@@ -105,7 +104,7 @@ class _AllActivitiesListWidgetState
             ],
           ),
         ),
-        ref.watch(todayCProvider).activities.isEmpty
+        ref.watch(todayProvider).activities.isEmpty
             ? const EmptyStateWidget(
                 icon: Icons.psychology_alt,
                 message: emptyStateHistory,
@@ -113,10 +112,9 @@ class _AllActivitiesListWidgetState
             : Expanded(
                 child: ListView.builder(
                   // shrinkWrap: true,
-                  itemCount: ref.watch(todayCProvider).activities.length,
+                  itemCount: ref.watch(todayProvider).activities.length,
                   itemBuilder: (context, index) {
-                    final activity =
-                        ref.watch(todayCProvider).activities[index];
+                    final activity = ref.watch(todayProvider).activities[index];
 
                     IconData? ratingIcon;
                     if (activity is Meditation) {
@@ -125,14 +123,13 @@ class _AllActivitiesListWidgetState
                       ratingIcon = activity.rating?.iconForRating();
                     }
 
-                    final last =
-                        ref.watch(todayCProvider).activities.length - 1;
+                    final last = ref.watch(todayProvider).activities.length - 1;
 
                     return Dismissible(
                       key: UniqueKey(),
                       direction: DismissDirection.endToStart,
                       onDismissed: (direction) => ref
-                          .read(todayCProvider.notifier)
+                          .read(todayProvider.notifier)
                           .deleteActivity(isToday: false, activity: activity),
                       background: Container(
                         color: Theme.of(context).colorScheme.primaryContainer,

@@ -6,8 +6,7 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 import '../../../services/provider.dart';
 import '../../../models/breathwork.dart';
 import '../../../models/breathwork_type.dart';
-import '../../today/today_c.dart';
-import '../four_7_8/four_7_8.dart';
+import '../../today/today.dart';
 import '../wim_hof/wim_hof.dart';
 import 'breathwork_setup_model.dart';
 
@@ -87,7 +86,7 @@ class BreathworkSetup extends _$BreathworkSetup {
     ref.read(databaseCProvider.future).then((db) async {
       await db.saveBreathwork(breathwork);
 
-      ref.read(todayCProvider.notifier).loadTodaysActivities();
+      ref.read(todayProvider.notifier).loadTodaysActivities();
     });
 
     if (Platform.isIOS) {

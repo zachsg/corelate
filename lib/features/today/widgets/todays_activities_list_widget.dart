@@ -6,7 +6,7 @@ import '../../../helpers/strings.dart';
 import '../../../models/activity.dart';
 import '../../../models/breathwork.dart';
 import '../../../models/meditation.dart';
-import '../today_c.dart';
+import '../today.dart';
 import 'xwidgets.dart';
 
 class TodaysActivitiesListWidget extends ConsumerStatefulWidget {
@@ -21,14 +21,14 @@ class _TodaysActivitiesListWidgetState
     extends ConsumerState<TodaysActivitiesListWidget> {
   @override
   void initState() {
-    ref.read(todayCProvider.notifier).loadTodaysActivities();
+    ref.read(todayProvider.notifier).loadTodaysActivities();
 
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    return ref.watch(todayCProvider).activities.isEmpty
+    return ref.watch(todayProvider).activities.isEmpty
         ? const EmptyStateWidget(
             icon: Icons.sunny,
             message: emptyStateToday,
@@ -38,9 +38,9 @@ class _TodaysActivitiesListWidgetState
               crossAxisCount: 2,
               childAspectRatio: 1.25,
             ),
-            itemCount: ref.watch(todayCProvider).activities.length,
+            itemCount: ref.watch(todayProvider).activities.length,
             itemBuilder: (context, index) {
-              final activity = ref.watch(todayCProvider).activities[index];
+              final activity = ref.watch(todayProvider).activities[index];
 
               final timeString = _getTimeFormatted(context, activity);
               Icon icon = _getTimeIcon(context, activity.date.hour);
@@ -53,7 +53,7 @@ class _TodaysActivitiesListWidgetState
                   key: UniqueKey(),
                   direction: DismissDirection.endToStart,
                   onDismissed: (direction) => ref
-                      .read(todayCProvider.notifier)
+                      .read(todayProvider.notifier)
                       .deleteActivity(isToday: false, activity: activity),
                   background: Container(
                     color: Theme.of(context).colorScheme.primaryContainer,
@@ -73,7 +73,7 @@ class _TodaysActivitiesListWidgetState
                   key: UniqueKey(),
                   direction: DismissDirection.endToStart,
                   onDismissed: (direction) => ref
-                      .read(todayCProvider.notifier)
+                      .read(todayProvider.notifier)
                       .deleteActivity(isToday: true, activity: activity),
                   background: Container(
                     color: Theme.of(context).colorScheme.primaryContainer,

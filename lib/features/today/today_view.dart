@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../helpers/strings.dart';
 import 'widgets/xwidgets.dart';
-import 'today_c.dart';
+import 'today.dart';
 
 class TodayView extends ConsumerStatefulWidget {
   const TodayView({super.key});
@@ -19,11 +19,11 @@ class _TodayViewState extends ConsumerState<TodayView>
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
     if (state == AppLifecycleState.resumed) {
-      if (ref.read(todayCProvider).showingToday) {
-        ref.read(todayCProvider.notifier).loadTodaysActivities();
+      if (ref.read(todayProvider).showingToday) {
+        ref.read(todayProvider.notifier).loadTodaysActivities();
       } else {
-        final date = ref.read(todayCProvider).historyDate;
-        ref.read(todayCProvider.notifier).loadActivitiesForDate(date);
+        final date = ref.read(todayProvider).historyDate;
+        ref.read(todayProvider.notifier).loadActivitiesForDate(date);
       }
     }
   }
@@ -42,14 +42,14 @@ class _TodayViewState extends ConsumerState<TodayView>
 
   @override
   Widget build(BuildContext context) {
-    final showingToday = ref.watch(todayCProvider).showingToday;
+    final showingToday = ref.watch(todayProvider).showingToday;
 
     return Scaffold(
       appBar: AppBar(
         title: Text(showingToday ? todayLabel : historyLabel),
         actions: [
           IconButton(
-            onPressed: ref.read(todayCProvider.notifier).toggleShowingToday,
+            onPressed: ref.read(todayProvider.notifier).toggleShowingToday,
             icon: Icon(showingToday ? Icons.history : Icons.today),
           ),
         ],
@@ -61,11 +61,11 @@ class _TodayViewState extends ConsumerState<TodayView>
                 ? const TodaysActivitiesListWidget()
                 : const AllActivitiesListWidget(),
           ),
-          if (ref.watch(todayCProvider).fabExpanded)
+          if (ref.watch(todayProvider).fabExpanded)
             Positioned.fill(
               child: GestureDetector(
                 onTap: () =>
-                    ref.read(todayCProvider.notifier).setFABExpanded(false),
+                    ref.read(todayProvider.notifier).setFABExpanded(false),
                 child: Container(
                   color:
                       Theme.of(context).colorScheme.background.withOpacity(0.8),

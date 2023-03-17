@@ -6,18 +6,18 @@ import '../../../helpers/strings.dart';
 import '../../breathwork/breathwork_setup/breathwork_setup_view.dart';
 import '../../meditation/meditation_setup/meditation_setup_view.dart';
 import 'action_button_widget.dart';
-import '../today_c.dart';
+import '../today.dart';
 
 class ExpandedFloatingActionButtonWidget extends ConsumerWidget {
   const ExpandedFloatingActionButtonWidget({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final fabIsExpanded = ref.watch(todayCProvider).fabExpanded;
+    final fabIsExpanded = ref.watch(todayProvider).fabExpanded;
 
     final fab = GestureDetector(
       onTap: () =>
-          ref.read(todayCProvider.notifier).setFABExpanded(!fabIsExpanded),
+          ref.read(todayProvider.notifier).setFABExpanded(!fabIsExpanded),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.end,
         mainAxisSize: MainAxisSize.min,
@@ -26,7 +26,7 @@ class ExpandedFloatingActionButtonWidget extends ConsumerWidget {
             title: meditationActionTitle,
             icon: Icons.self_improvement,
             onPressed: () {
-              ref.read(todayCProvider.notifier).setFABExpanded(!fabIsExpanded);
+              ref.read(todayProvider.notifier).setFABExpanded(!fabIsExpanded);
               context.pushNamed(MeditationSetupView.routeName);
             },
           ),
@@ -34,7 +34,7 @@ class ExpandedFloatingActionButtonWidget extends ConsumerWidget {
             title: breathworkActionTitle,
             icon: Icons.air,
             onPressed: () {
-              ref.read(todayCProvider.notifier).setFABExpanded(!fabIsExpanded);
+              ref.read(todayProvider.notifier).setFABExpanded(!fabIsExpanded);
               context.pushNamed(BreathworkSetupView.routeName);
             },
           ),

@@ -3,91 +3,35 @@
 part of 'today.dart';
 
 // **************************************************************************
-// CopyWithGenerator
+// RiverpodGenerator
 // **************************************************************************
 
-abstract class _$TodayCWProxy {
-  Today showingToday(bool showingToday);
+String _$dateCHash() => r'ca3eb29dcba1299ea01c4957c123c13e7dd9e2c9';
 
-  Today fabExpanded(bool fabExpanded);
+/// See also [DateC].
+@ProviderFor(DateC)
+final dateCProvider = AutoDisposeNotifierProvider<DateC, DateTime>.internal(
+  DateC.new,
+  name: r'dateCProvider',
+  debugGetCreateSourceHash:
+      const bool.fromEnvironment('dart.vm.product') ? null : _$dateCHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
 
-  Today activities(List<Activity> activities);
+typedef _$DateC = AutoDisposeNotifier<DateTime>;
+String _$todayHash() => r'9dafe741e7b4679b2fb305cad9f47929e87e7ca4';
 
-  Today historyDate(DateTime historyDate);
+/// See also [Today].
+@ProviderFor(Today)
+final todayProvider = NotifierProvider<Today, TodayModel>.internal(
+  Today.new,
+  name: r'todayProvider',
+  debugGetCreateSourceHash:
+      const bool.fromEnvironment('dart.vm.product') ? null : _$todayHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
 
-  /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `Today(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
-  ///
-  /// Usage
-  /// ```dart
-  /// Today(...).copyWith(id: 12, name: "My name")
-  /// ````
-  Today call({
-    bool? showingToday,
-    bool? fabExpanded,
-    List<Activity>? activities,
-    DateTime? historyDate,
-  });
-}
-
-/// Proxy class for `copyWith` functionality. This is a callable class and can be used as follows: `instanceOfToday.copyWith(...)`. Additionally contains functions for specific fields e.g. `instanceOfToday.copyWith.fieldName(...)`
-class _$TodayCWProxyImpl implements _$TodayCWProxy {
-  const _$TodayCWProxyImpl(this._value);
-
-  final Today _value;
-
-  @override
-  Today showingToday(bool showingToday) => this(showingToday: showingToday);
-
-  @override
-  Today fabExpanded(bool fabExpanded) => this(fabExpanded: fabExpanded);
-
-  @override
-  Today activities(List<Activity> activities) => this(activities: activities);
-
-  @override
-  Today historyDate(DateTime historyDate) => this(historyDate: historyDate);
-
-  @override
-
-  /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `Today(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
-  ///
-  /// Usage
-  /// ```dart
-  /// Today(...).copyWith(id: 12, name: "My name")
-  /// ````
-  Today call({
-    Object? showingToday = const $CopyWithPlaceholder(),
-    Object? fabExpanded = const $CopyWithPlaceholder(),
-    Object? activities = const $CopyWithPlaceholder(),
-    Object? historyDate = const $CopyWithPlaceholder(),
-  }) {
-    return Today(
-      showingToday:
-          showingToday == const $CopyWithPlaceholder() || showingToday == null
-              ? _value.showingToday
-              // ignore: cast_nullable_to_non_nullable
-              : showingToday as bool,
-      fabExpanded:
-          fabExpanded == const $CopyWithPlaceholder() || fabExpanded == null
-              ? _value.fabExpanded
-              // ignore: cast_nullable_to_non_nullable
-              : fabExpanded as bool,
-      activities:
-          activities == const $CopyWithPlaceholder() || activities == null
-              ? _value.activities
-              // ignore: cast_nullable_to_non_nullable
-              : activities as List<Activity>,
-      historyDate:
-          historyDate == const $CopyWithPlaceholder() || historyDate == null
-              ? _value.historyDate
-              // ignore: cast_nullable_to_non_nullable
-              : historyDate as DateTime,
-    );
-  }
-}
-
-extension $TodayCopyWith on Today {
-  /// Returns a callable class that can be used as follows: `instanceOfToday.copyWith(...)` or like so:`instanceOfToday.copyWith.fieldName(...)`.
-  // ignore: library_private_types_in_public_api
-  _$TodayCWProxy get copyWith => _$TodayCWProxyImpl(this);
-}
+typedef _$Today = Notifier<TodayModel>;
+// ignore_for_file: unnecessary_raw_strings, subtype_of_sealed_class, invalid_use_of_internal_member, do_not_use_environment, prefer_const_constructors, public_member_api_docs, avoid_private_typedef_functions

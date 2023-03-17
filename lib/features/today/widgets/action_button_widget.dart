@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../today_c.dart';
+import '../today.dart';
 
 class ActionButtonWidget extends ConsumerWidget {
   const ActionButtonWidget({
@@ -19,7 +19,7 @@ class ActionButtonWidget extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return AnimatedContainer(
       width: MediaQuery.of(context).size.width,
-      height: ref.watch(todayCProvider).fabExpanded ? 60 : 0,
+      height: ref.watch(todayProvider).fabExpanded ? 60 : 0,
       duration: const Duration(milliseconds: 200),
       child: TextButton(
         onPressed: onPressed,

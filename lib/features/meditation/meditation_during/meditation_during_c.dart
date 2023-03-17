@@ -7,7 +7,7 @@ import '../../../services/local_notification_service.dart';
 import '../../../services/provider.dart';
 import '../../../models/meditation.dart';
 import '../../../models/meditation_type.dart';
-import '../../today/today_c.dart';
+import '../../today/today.dart';
 import '../meditation_setup/meditation_setup.dart';
 import 'meditation_during.dart';
 
@@ -49,7 +49,7 @@ class MeditationDuringC extends _$MeditationDuringC {
       );
       await db.saveMeditation(meditation);
 
-      ref.read(todayCProvider.notifier).loadTodaysActivities();
+      ref.read(todayProvider.notifier).loadTodaysActivities();
     });
 
     if (Platform.isIOS) {
