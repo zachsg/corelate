@@ -8,12 +8,16 @@ part 'today_model.g.dart';
 class TodayModel {
   bool showingToday;
   bool fabExpanded;
+  int steps;
+  int sleepMinutes;
   List<Activity> activities;
   DateTime historyDate;
 
   TodayModel({
     this.showingToday = true,
     this.fabExpanded = false,
+    this.steps = 0,
+    this.sleepMinutes = 0,
     required this.activities,
     required this.historyDate,
   });

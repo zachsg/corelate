@@ -28,70 +28,160 @@ class _TodaysActivitiesListWidgetState
 
   @override
   Widget build(BuildContext context) {
+    final sleepMinutes = ref.watch(todayProvider).sleepMinutes;
+    final hours = sleepMinutes ~/ 60;
+    final minutes = sleepMinutes - hours * 60;
+
     return ref.watch(todayProvider).activities.isEmpty
         ? const EmptyStateWidget(
             icon: Icons.sunny,
             message: emptyStateToday,
           )
-        : GridView.builder(
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2,
-              childAspectRatio: 1.25,
-            ),
-            itemCount: ref.watch(todayProvider).activities.length,
-            itemBuilder: (context, index) {
-              final activity = ref.watch(todayProvider).activities[index];
+        : Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(
+                  left: 8.0,
+                  right: 8.0,
+                  bottom: 8.0,
+                ),
+                child: Card(
+                  child: Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Row(
+                          children: [
+                            Text(
+                              'Today',
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodySmall
+                                  ?.copyWith(
+                                      color: Theme.of(context)
+                                          .colorScheme
+                                          .secondary),
+                            ),
+                          ],
+                        ),
+                        const SizedBox(height: 10),
+                        Row(
+                          children: [
+                            Row(
+                              children: [
+                                const Icon(Icons.directions_walk, size: 24),
+                                const SizedBox(width: 8),
+                                Text(
+                                  'Step Count:',
+                                  style:
+                                      Theme.of(context).textTheme.titleMedium,
+                                ),
+                                const SizedBox(width: 4),
+                                Text(
+                                  '${ref.watch(todayProvider).steps}',
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .titleMedium
+                                      ?.copyWith(fontWeight: FontWeight.bold),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                        const SizedBox(height: 4),
+                        if (sleepMinutes != 0)
+                          Row(
+                            children: [
+                              Row(
+                                children: [
+                                  const Icon(Icons.hotel, size: 24),
+                                  const SizedBox(width: 8),
+                                  Text(
+                                    'Total Sleep:',
+                                    style:
+                                        Theme.of(context).textTheme.titleMedium,
+                                  ),
+                                  const SizedBox(width: 4),
+                                  Text(
+                                    '$hours hr, $minutes min',
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .titleMedium
+                                        ?.copyWith(fontWeight: FontWeight.bold),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              Expanded(
+                child: GridView.builder(
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2,
+                    childAspectRatio: 1.25,
+                  ),
+                  itemCount: ref.watch(todayProvider).activities.length,
+                  itemBuilder: (context, index) {
+                    final activity = ref.watch(todayProvider).activities[index];
 
-              final timeString = _getTimeFormatted(context, activity);
-              Icon icon = _getTimeIcon(context, activity.date.hour);
+                    final timeString = _getTimeFormatted(context, activity);
+                    Icon icon = _getTimeIcon(context, activity.date.hour);
 
-              final isEven = index % 2 == 0;
-              final isFirstRow = index == 0 || index == 1;
+                    final isEven = index % 2 == 0;
+                    final isFirstRow = index == 0 || index == 1;
 
-              if (activity is Meditation) {
-                return Dismissible(
-                  key: UniqueKey(),
-                  direction: DismissDirection.endToStart,
-                  onDismissed: (direction) => ref
-                      .read(todayProvider.notifier)
-                      .deleteActivity(isToday: false, activity: activity),
-                  background: Container(
-                    color: Theme.of(context).colorScheme.primaryContainer,
-                    child: _dismissibleBackgroundWidget(),
-                  ),
-                  child: MeditationCardWidget(
-                    title: 'Meditation',
-                    meditation: activity,
-                    icon: icon,
-                    timeString: timeString,
-                    isEven: isEven,
-                    isFirstRow: isFirstRow,
-                  ),
-                );
-              } else if (activity is Breathwork) {
-                return Dismissible(
-                  key: UniqueKey(),
-                  direction: DismissDirection.endToStart,
-                  onDismissed: (direction) => ref
-                      .read(todayProvider.notifier)
-                      .deleteActivity(isToday: true, activity: activity),
-                  background: Container(
-                    color: Theme.of(context).colorScheme.primaryContainer,
-                    child: _dismissibleBackgroundWidget(),
-                  ),
-                  child: BreathworkCardWidget(
-                    title: 'Breathwork',
-                    breathwork: activity,
-                    icon: icon,
-                    timeString: timeString,
-                    isEven: isEven,
-                    isFirstRow: isFirstRow,
-                  ),
-                );
-              } else {
-                return const Text('n/a');
-              }
-            },
+                    if (activity is Meditation) {
+                      return Dismissible(
+                        key: UniqueKey(),
+                        direction: DismissDirection.endToStart,
+                        onDismissed: (direction) => ref
+                            .read(todayProvider.notifier)
+                            .deleteActivity(isToday: false, activity: activity),
+                        background: Container(
+                          color: Theme.of(context).colorScheme.primaryContainer,
+                          child: _dismissibleBackgroundWidget(),
+                        ),
+                        child: MeditationCardWidget(
+                          title: 'Meditation',
+                          meditation: activity,
+                          icon: icon,
+                          timeString: timeString,
+                          isEven: isEven,
+                          isFirstRow: isFirstRow,
+                        ),
+                      );
+                    } else if (activity is Breathwork) {
+                      return Dismissible(
+                        key: UniqueKey(),
+                        direction: DismissDirection.endToStart,
+                        onDismissed: (direction) => ref
+                            .read(todayProvider.notifier)
+                            .deleteActivity(isToday: true, activity: activity),
+                        background: Container(
+                          color: Theme.of(context).colorScheme.primaryContainer,
+                          child: _dismissibleBackgroundWidget(),
+                        ),
+                        child: BreathworkCardWidget(
+                          title: 'Breathwork',
+                          breathwork: activity,
+                          icon: icon,
+                          timeString: timeString,
+                          isEven: isEven,
+                          isFirstRow: isFirstRow,
+                        ),
+                      );
+                    } else {
+                      return const Text('n/a');
+                    }
+                  },
+                ),
+              ),
+            ],
           );
   }
 

@@ -85,6 +85,10 @@ class Today extends _$Today {
       state = state.copyWith(activities: activities);
     });
   }
+
+  void setSteps(int steps) => state = state.copyWith(steps: steps);
+
+  void setSleep(int sleep) => state = state.copyWith(sleepMinutes: sleep);
 }
 
 // final todayActivitiesStreamProvider =

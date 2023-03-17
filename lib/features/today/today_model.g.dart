@@ -11,6 +11,10 @@ abstract class _$TodayModelCWProxy {
 
   TodayModel fabExpanded(bool fabExpanded);
 
+  TodayModel steps(int steps);
+
+  TodayModel sleepMinutes(int sleepMinutes);
+
   TodayModel activities(List<Activity> activities);
 
   TodayModel historyDate(DateTime historyDate);
@@ -24,6 +28,8 @@ abstract class _$TodayModelCWProxy {
   TodayModel call({
     bool? showingToday,
     bool? fabExpanded,
+    int? steps,
+    int? sleepMinutes,
     List<Activity>? activities,
     DateTime? historyDate,
   });
@@ -41,6 +47,12 @@ class _$TodayModelCWProxyImpl implements _$TodayModelCWProxy {
 
   @override
   TodayModel fabExpanded(bool fabExpanded) => this(fabExpanded: fabExpanded);
+
+  @override
+  TodayModel steps(int steps) => this(steps: steps);
+
+  @override
+  TodayModel sleepMinutes(int sleepMinutes) => this(sleepMinutes: sleepMinutes);
 
   @override
   TodayModel activities(List<Activity> activities) =>
@@ -61,6 +73,8 @@ class _$TodayModelCWProxyImpl implements _$TodayModelCWProxy {
   TodayModel call({
     Object? showingToday = const $CopyWithPlaceholder(),
     Object? fabExpanded = const $CopyWithPlaceholder(),
+    Object? steps = const $CopyWithPlaceholder(),
+    Object? sleepMinutes = const $CopyWithPlaceholder(),
     Object? activities = const $CopyWithPlaceholder(),
     Object? historyDate = const $CopyWithPlaceholder(),
   }) {
@@ -75,6 +89,15 @@ class _$TodayModelCWProxyImpl implements _$TodayModelCWProxy {
               ? _value.fabExpanded
               // ignore: cast_nullable_to_non_nullable
               : fabExpanded as bool,
+      steps: steps == const $CopyWithPlaceholder() || steps == null
+          ? _value.steps
+          // ignore: cast_nullable_to_non_nullable
+          : steps as int,
+      sleepMinutes:
+          sleepMinutes == const $CopyWithPlaceholder() || sleepMinutes == null
+              ? _value.sleepMinutes
+              // ignore: cast_nullable_to_non_nullable
+              : sleepMinutes as int,
       activities:
           activities == const $CopyWithPlaceholder() || activities == null
               ? _value.activities

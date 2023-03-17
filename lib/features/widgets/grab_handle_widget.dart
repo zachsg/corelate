@@ -15,7 +15,7 @@ class GrabHandleWidget extends StatelessWidget {
             borderRadius: const BorderRadius.all(
               Radius.circular(8.0),
             ),
-            color: Theme.of(context).colorScheme.onBackground.withOpacity(0.7),
+            color: Theme.of(context).colorScheme.onBackground.withOpacity(0.5),
           ),
         ),
       ],

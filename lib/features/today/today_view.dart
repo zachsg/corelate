@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:health/health.dart';
 
 import '../../helpers/strings.dart';
+import '../../services/provider.dart';
 import 'widgets/xwidgets.dart';
 import 'today.dart';
 
@@ -26,6 +28,28 @@ class _TodayViewState extends ConsumerState<TodayView>
         ref.read(todayProvider.notifier).loadActivitiesForDate(date);
       }
     }
+
+    ref.read(healthCProvider.future).then((health) async {
+      final dateStart = DateTime.now().copyWith(hour: 0, minute: 0);
+      final dateEnd = DateTime.now();
+      final steps = await health.getTotalStepsInInterval(dateStart, dateEnd);
+      if (steps != null) {
+        ref.read(todayProvider.notifier).setSteps(steps);
+      }
+    });
+
+    ref.read(healthCProvider.future).then((health) async {
+      final now = DateTime.now().copyWith(hour: 0, minute: 0);
+      final dateStart = now.subtract(const Duration(hours: 6));
+      final dateEnd = DateTime.now();
+      final sleepList = await health.getHealthDataFromTypes(
+          dateStart, dateEnd, [HealthDataType.SLEEP_ASLEEP]);
+      if (sleepList.isNotEmpty) {
+        final sleep = sleepList.first;
+        final sleepTime = sleep.dateTo.difference(sleep.dateFrom).inMinutes;
+        ref.read(todayProvider.notifier).setSleep(sleepTime);
+      }
+    });
   }
 
   @override
