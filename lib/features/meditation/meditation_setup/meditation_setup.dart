@@ -2,15 +2,15 @@ import 'package:corelate/models/meditation.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../../models/meditation_type.dart';
-import 'meditation_configure.dart';
+import 'meditation_setup_model.dart';
 
-part 'meditation_configure_c.g.dart';
+part 'meditation_setup.g.dart';
 
 @riverpod
-class MeditationConfigureC extends _$MeditationConfigureC {
+class MeditationSetup extends _$MeditationSetup {
   @override
-  MeditationConfigure build() =>
-      MeditationConfigure(Meditation(date: DateTime.now()));
+  MeditationSetupModel build() =>
+      MeditationSetupModel(Meditation(date: DateTime.now()));
 
   void setType(MeditationType type) {
     final goal = type == MeditationType.openEnded ? null : 600;

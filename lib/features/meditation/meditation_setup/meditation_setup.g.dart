@@ -1,25 +1,25 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'bottom_navigation_c.dart';
+part of 'meditation_setup.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$bottomNavigationCHash() => r'9a8b12697098c0302dbb790988a95d6927cab469';
+String _$meditationSetupHash() => r'1bfd8849c1ec26a5d2261a7d655897025b184e9a';
 
-/// See also [BottomNavigationC].
-@ProviderFor(BottomNavigationC)
-final bottomNavigationCProvider =
-    AutoDisposeNotifierProvider<BottomNavigationC, int>.internal(
-  BottomNavigationC.new,
-  name: r'bottomNavigationCProvider',
+/// See also [MeditationSetup].
+@ProviderFor(MeditationSetup)
+final meditationSetupProvider =
+    AutoDisposeNotifierProvider<MeditationSetup, MeditationSetupModel>.internal(
+  MeditationSetup.new,
+  name: r'meditationSetupProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
       ? null
-      : _$bottomNavigationCHash,
+      : _$meditationSetupHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
-typedef _$BottomNavigationC = AutoDisposeNotifier<int>;
+typedef _$MeditationSetup = AutoDisposeNotifier<MeditationSetupModel>;
 // ignore_for_file: unnecessary_raw_strings, subtype_of_sealed_class, invalid_use_of_internal_member, do_not_use_environment, prefer_const_constructors, public_member_api_docs, avoid_private_typedef_functions

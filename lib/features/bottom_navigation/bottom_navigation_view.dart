@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../helpers/strings.dart';
 import '../today/today_view.dart';
-import 'bottom_navigation_c.dart';
+import 'bottom_navigation.dart';
 
 class BottomNavigationView extends ConsumerWidget {
   const BottomNavigationView({super.key});
@@ -13,13 +13,13 @@ class BottomNavigationView extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
-      body: ref.watch(bottomNavigationCProvider) == 0
+      body: ref.watch(bottomNavigationProvider) == 0
           ? const TodayView()
-          : ref.watch(bottomNavigationCProvider) == 1
+          : ref.watch(bottomNavigationProvider) == 1
               ? const Center(child: Text('$balanceLabel coming soon...'))
               : const Center(child: Text('$insightsLabel coming soon...')),
       bottomNavigationBar: NavigationBar(
-        selectedIndex: ref.watch(bottomNavigationCProvider),
+        selectedIndex: ref.watch(bottomNavigationProvider),
         destinations: const [
           NavigationDestination(
             icon: Icon(Icons.today_outlined),
@@ -38,7 +38,7 @@ class BottomNavigationView extends ConsumerWidget {
           ),
         ],
         onDestinationSelected: (index) =>
-            ref.read(bottomNavigationCProvider.notifier).setTab(index),
+            ref.read(bottomNavigationProvider.notifier).setTab(index),
       ),
     );
   }

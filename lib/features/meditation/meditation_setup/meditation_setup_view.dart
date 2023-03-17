@@ -9,17 +9,17 @@ import '../../../models/meditation.dart';
 import '../../widgets/xwidgets.dart';
 import '../meditation_during/meditation_during_view.dart';
 import '../../../models/meditation_type.dart';
-import 'meditation_configure_c.dart';
+import 'meditation_setup.dart';
 import 'widgets/xwidgets.dart';
 
-class MeditationConfigureView extends ConsumerWidget {
-  const MeditationConfigureView({super.key});
+class MeditationSetupView extends ConsumerWidget {
+  const MeditationSetupView({super.key});
 
-  static const routeName = 'meditation_configure';
+  static const routeName = 'meditation_setup';
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final meditation = ref.watch(meditationConfigureCProvider).meditation;
+    final meditation = ref.watch(meditationSetupProvider).meditation;
 
     return Scaffold(
       appBar: AppBar(
@@ -76,7 +76,7 @@ class MeditationConfigureView extends ConsumerWidget {
             FilledButton(
               onPressed: () {
                 Wakelock.enable();
-                ref.read(meditationConfigureCProvider.notifier).resetDate();
+                ref.read(meditationSetupProvider.notifier).resetDate();
                 context.pushNamed(MeditationDuringView.routeName);
                 ref.read(healthCProvider);
               },

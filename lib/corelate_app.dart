@@ -4,13 +4,12 @@ import 'package:go_router/go_router.dart';
 
 import 'corelate_theme.dart';
 import 'features/bottom_navigation/bottom_navigation_view.dart';
-import 'features/breathwork/breathwork_configure/breathwork_configure_view.dart';
+import 'features/breathwork/breathwork_setup/breathwork_setup_view.dart';
 import 'features/breathwork/four_7_8/four_7_8_view.dart';
 import 'features/breathwork/wim_hof/wim_hof_view.dart';
-import 'features/meditation/meditation_configure/meditation_configure_view.dart';
+import 'features/meditation/meditation_setup/meditation_setup_view.dart';
 import 'features/meditation/meditation_during/meditation_during_view.dart';
 import 'features/today/today_view.dart';
-import 'helpers/constants.dart';
 import 'helpers/strings.dart';
 
 class CorelateApp extends ConsumerWidget {
@@ -46,9 +45,9 @@ class CorelateApp extends ConsumerWidget {
             builder: (context, state) => const TodayView(),
             routes: [
               GoRoute(
-                name: MeditationConfigureView.routeName,
-                path: MeditationConfigureView.routeName,
-                builder: (context, state) => const MeditationConfigureView(),
+                name: MeditationSetupView.routeName,
+                path: MeditationSetupView.routeName,
+                builder: (context, state) => const MeditationSetupView(),
                 routes: [
                   GoRoute(
                     name: MeditationDuringView.routeName,
@@ -58,9 +57,9 @@ class CorelateApp extends ConsumerWidget {
                 ],
               ),
               GoRoute(
-                name: BreathworkConfigureView.routeName,
-                path: BreathworkConfigureView.routeName,
-                builder: (context, state) => const BreathworkConfigureView(),
+                name: BreathworkSetupView.routeName,
+                path: BreathworkSetupView.routeName,
+                builder: (context, state) => const BreathworkSetupView(),
                 routes: [
                   GoRoute(
                     name: Four78View.routeName,

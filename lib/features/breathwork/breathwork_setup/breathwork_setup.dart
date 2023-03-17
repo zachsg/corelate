@@ -9,15 +9,15 @@ import '../../../models/breathwork_type.dart';
 import '../../today/today_c.dart';
 import '../four_7_8/four_7_8_c.dart';
 import '../wim_hof/wim_hof_c.dart';
-import 'breathwork_configure.dart';
+import 'breathwork_setup_model.dart';
 
-part 'breathwork_configure_c.g.dart';
+part 'breathwork_setup.g.dart';
 
 @riverpod
-class BreathworkConfigureC extends _$BreathworkConfigureC {
+class BreathworkSetup extends _$BreathworkSetup {
   @override
-  BreathworkConfigure build() =>
-      BreathworkConfigure(Breathwork(date: DateTime.now()));
+  BreathworkSetupModel build() =>
+      BreathworkSetupModel(Breathwork(date: DateTime.now()));
 
   void setType(BreathworkType type) {
     final is478 = type == BreathworkType.four78;

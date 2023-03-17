@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../breathwork_configure/breathwork_configure_c.dart';
+import '../../breathwork_setup/breathwork_setup.dart';
 import '../wim_hof_c.dart';
 import 'animated_circle_widget.dart';
 
@@ -11,7 +11,7 @@ class BreathCountingWidget extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final wimHof = ref.watch(wimHofCProvider);
-    final breathwork = ref.watch(breathworkConfigureCProvider).breathwork;
+    final breathwork = ref.watch(breathworkSetupProvider).breathwork;
 
     return Stack(
       children: [

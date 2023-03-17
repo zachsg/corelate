@@ -2,11 +2,11 @@ import 'package:copy_with_extension/copy_with_extension.dart';
 
 import '../../../models/meditation.dart';
 
-part 'meditation_configure.g.dart';
+part 'meditation_setup_model.g.dart';
 
 @CopyWith()
-class MeditationConfigure {
+class MeditationSetupModel {
   Meditation meditation;
 
-  MeditationConfigure(this.meditation);
+  MeditationSetupModel(this.meditation);
 }

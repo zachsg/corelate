@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../breathwork_configure/breathwork_configure_c.dart';
+import '../../breathwork_setup/breathwork_setup.dart';
 import '../wim_hof_c.dart';
 
 class HoldingInhaleWidget extends ConsumerStatefulWidget {
@@ -34,8 +34,7 @@ class _HoldingInhaleWidgetState extends ConsumerState<HoldingInhaleWidget> {
         _timer.cancel();
         ref.read(wimHofCProvider.notifier).incrementRound();
 
-        final roundsGoal =
-            ref.watch(breathworkConfigureCProvider).breathwork.rounds;
+        final roundsGoal = ref.watch(breathworkSetupProvider).breathwork.rounds;
 
         if (ref.watch(wimHofCProvider).currentRound > roundsGoal) {
           ref.read(wimHofCProvider.notifier).markDone();

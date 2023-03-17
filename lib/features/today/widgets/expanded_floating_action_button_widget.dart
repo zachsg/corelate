@@ -3,8 +3,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../helpers/strings.dart';
-import '../../breathwork/breathwork_configure/breathwork_configure_view.dart';
-import '../../meditation/meditation_configure/meditation_configure_view.dart';
+import '../../breathwork/breathwork_setup/breathwork_setup_view.dart';
+import '../../meditation/meditation_setup/meditation_setup_view.dart';
 import 'action_button_widget.dart';
 import '../today_c.dart';
 
@@ -27,7 +27,7 @@ class ExpandedFloatingActionButtonWidget extends ConsumerWidget {
             icon: Icons.self_improvement,
             onPressed: () {
               ref.read(todayCProvider.notifier).setFABExpanded(!fabIsExpanded);
-              context.pushNamed(MeditationConfigureView.routeName);
+              context.pushNamed(MeditationSetupView.routeName);
             },
           ),
           ActionButtonWidget(
@@ -35,7 +35,7 @@ class ExpandedFloatingActionButtonWidget extends ConsumerWidget {
             icon: Icons.air,
             onPressed: () {
               ref.read(todayCProvider.notifier).setFABExpanded(!fabIsExpanded);
-              context.pushNamed(BreathworkConfigureView.routeName);
+              context.pushNamed(BreathworkSetupView.routeName);
             },
           ),
           // ActionButtonWidget(

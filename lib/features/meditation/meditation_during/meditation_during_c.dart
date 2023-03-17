@@ -8,7 +8,7 @@ import '../../../services/provider.dart';
 import '../../../models/meditation.dart';
 import '../../../models/meditation_type.dart';
 import '../../today/today_c.dart';
-import '../meditation_configure/meditation_configure_c.dart';
+import '../meditation_setup/meditation_setup.dart';
 import 'meditation_during.dart';
 
 part 'meditation_during_c.g.dart';
@@ -17,7 +17,7 @@ part 'meditation_during_c.g.dart';
 class MeditationDuringC extends _$MeditationDuringC {
   @override
   MeditationDuring build() {
-    final meditation = ref.watch(meditationConfigureCProvider).meditation;
+    final meditation = ref.watch(meditationSetupProvider).meditation;
 
     return MeditationDuring(meditation: meditation);
   }

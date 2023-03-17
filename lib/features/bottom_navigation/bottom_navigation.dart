@@ -1,9 +1,9 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-part 'bottom_navigation_c.g.dart';
+part 'bottom_navigation.g.dart';
 
 @riverpod
-class BottomNavigationC extends _$BottomNavigationC {
+class BottomNavigation extends _$BottomNavigation {
   @override
   int build() => 0;
 

@@ -34,7 +34,7 @@ final databaseCProvider = AutoDisposeFutureProvider<Database>.internal(
 );
 
 typedef DatabaseCRef = AutoDisposeFutureProviderRef<Database>;
-String _$healthCHash() => r'f7e0382b16837862784ccc686d22781def294b41';
+String _$healthCHash() => r'378cff536b2e418c2ff8200bcfee8ecec18fbd79';
 
 /// See also [healthC].
 @ProviderFor(healthC)

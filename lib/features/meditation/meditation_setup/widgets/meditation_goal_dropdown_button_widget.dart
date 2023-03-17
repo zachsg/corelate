@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../meditation_configure_c.dart';
+import '../meditation_setup.dart';
 
 class MeditationGoalDropdownButtonWidget extends ConsumerWidget {
   const MeditationGoalDropdownButtonWidget({super.key});
@@ -10,7 +10,7 @@ class MeditationGoalDropdownButtonWidget extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final goals = [300, 600, 900, 1200, 1800, 2700, 3600];
 
-    final meditation = ref.watch(meditationConfigureCProvider).meditation;
+    final meditation = ref.watch(meditationSetupProvider).meditation;
 
     return DropdownButton(
       style: Theme.of(context)
@@ -62,7 +62,7 @@ class MeditationGoalDropdownButtonWidget extends ConsumerWidget {
         );
       }).toList(),
       onChanged: (goal) =>
-          ref.read(meditationConfigureCProvider.notifier).setGoal(goal ?? 600),
+          ref.read(meditationSetupProvider.notifier).setGoal(goal ?? 600),
     );
   }
 }

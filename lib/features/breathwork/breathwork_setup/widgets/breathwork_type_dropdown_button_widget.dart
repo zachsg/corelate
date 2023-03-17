@@ -1,18 +1,18 @@
-import 'package:corelate/helpers/strings.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../../../models/meditation_type.dart';
-import '../meditation_configure_c.dart';
+import '../../../../helpers/strings.dart';
+import '../../../../models/breathwork_type.dart';
+import '../breathwork_setup.dart';
 
-class MeditationTypeDropdownButtonWidget extends ConsumerWidget {
-  const MeditationTypeDropdownButtonWidget({super.key});
+class BreathworkTypeDropdownButtonWidget extends ConsumerWidget {
+  const BreathworkTypeDropdownButtonWidget({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final types = [MeditationType.openEnded, MeditationType.timed];
+    final types = [BreathworkType.four78, BreathworkType.wimHof];
 
-    final meditation = ref.watch(meditationConfigureCProvider).meditation;
+    final meditation = ref.watch(breathworkSetupProvider).breathwork;
 
     return DropdownButton(
       style: Theme.of(context)
@@ -30,17 +30,17 @@ class MeditationTypeDropdownButtonWidget extends ConsumerWidget {
         ),
       ),
       value: meditation.type,
-      items: types.map<DropdownMenuItem<MeditationType>>((MeditationType type) {
+      items: types.map<DropdownMenuItem<BreathworkType>>((BreathworkType type) {
         final typeLabel =
-            type == MeditationType.openEnded ? openEndedLabel : timedLabel;
-        return DropdownMenuItem<MeditationType>(
+            type == BreathworkType.four78 ? four78Label : wimHofLabel;
+        return DropdownMenuItem<BreathworkType>(
           value: type,
           child: Text(typeLabel),
         );
       }).toList(),
       onChanged: (type) => ref
-          .read(meditationConfigureCProvider.notifier)
-          .setType(type ?? MeditationType.openEnded),
+          .read(breathworkSetupProvider.notifier)
+          .setType(type ?? BreathworkType.four78),
     );
   }
 }

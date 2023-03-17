@@ -6,7 +6,7 @@ import 'package:wakelock/wakelock.dart';
 import '../../../helpers/strings.dart';
 import '../../bottom_navigation/bottom_navigation_view.dart';
 import '../../widgets/rating_bar_widget.dart';
-import '../breathwork_configure/breathwork_configure_c.dart';
+import '../breathwork_setup/breathwork_setup.dart';
 import 'four_7_8_c.dart';
 import 'widgets/animated_rounds_widget.dart';
 
@@ -18,7 +18,7 @@ class Four78View extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final four78 = ref.watch(four78CProvider);
-    final breathworkConfig = ref.watch(breathworkConfigureCProvider);
+    final breathworkSetup = ref.watch(breathworkSetupProvider);
 
     return Scaffold(
       appBar: AppBar(
@@ -68,7 +68,7 @@ class Four78View extends ConsumerWidget {
                           style: Theme.of(context).textTheme.titleLarge,
                         ),
                         Text(
-                          ' of ${breathworkConfig.breathwork.rounds}',
+                          ' of ${breathworkSetup.breathwork.rounds}',
                           style: Theme.of(context).textTheme.titleSmall,
                         ),
                       ],
@@ -116,7 +116,7 @@ class Four78View extends ConsumerWidget {
                 const Text('\nHow it go?'),
                 RatingBarWidget(
                   onRatingChange: (rating) => ref
-                      .read(breathworkConfigureCProvider.notifier)
+                      .read(breathworkSetupProvider.notifier)
                       .setRating(rating),
                 ),
               ],
@@ -128,7 +128,7 @@ class Four78View extends ConsumerWidget {
               onPressed: () {
                 Wakelock.disable();
                 Navigator.of(context).pop();
-                ref.read(breathworkConfigureCProvider.notifier).save();
+                ref.read(breathworkSetupProvider.notifier).save();
                 context.goNamed(BottomNavigationView.routeName);
               },
             ),

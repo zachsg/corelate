@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:vibration/vibration.dart';
 
-import '../../breathwork_configure/breathwork_configure_c.dart';
+import '../../breathwork_setup/breathwork_setup.dart';
 import '../wim_hof_c.dart';
 
 class AnimatedCircleWidget extends ConsumerStatefulWidget {
@@ -38,7 +38,7 @@ class _AnimatedCircleWidgetState extends ConsumerState<AnimatedCircleWidget> {
   @override
   void initState() {
     final breathGoal =
-        ref.read(breathworkConfigureCProvider).breathwork.breathsPerRound;
+        ref.read(breathworkSetupProvider).breathwork.breathsPerRound;
 
     _checkForVibrate();
 

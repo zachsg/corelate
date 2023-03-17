@@ -10,17 +10,17 @@ import '../../../models/breathwork_type.dart';
 import '../../widgets/xwidgets.dart';
 import '../four_7_8/four_7_8_view.dart';
 import '../wim_hof/wim_hof_view.dart';
-import 'breathwork_configure_c.dart';
+import 'breathwork_setup.dart';
 import 'widgets/xwidgets.dart';
 
-class BreathworkConfigureView extends ConsumerWidget {
-  const BreathworkConfigureView({super.key});
+class BreathworkSetupView extends ConsumerWidget {
+  const BreathworkSetupView({super.key});
 
-  static const routeName = 'breathwork_configure';
+  static const routeName = 'breathwork_setup';
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final breathwork = ref.watch(breathworkConfigureCProvider).breathwork;
+    final breathwork = ref.watch(breathworkSetupProvider).breathwork;
 
     return Scaffold(
       appBar: AppBar(
@@ -58,10 +58,10 @@ class BreathworkConfigureView extends ConsumerWidget {
             FilledButton(
               onPressed: () {
                 final is478 =
-                    ref.read(breathworkConfigureCProvider).breathwork.type ==
+                    ref.read(breathworkSetupProvider).breathwork.type ==
                         BreathworkType.four78;
                 Wakelock.enable();
-                ref.read(breathworkConfigureCProvider.notifier).resetDate();
+                ref.read(breathworkSetupProvider.notifier).resetDate();
                 context.pushNamed(
                     is478 ? Four78View.routeName : WimHofView.routeName);
                 ref.read(healthCProvider);

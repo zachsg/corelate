@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../breathwork_configure_c.dart';
+import '../breathwork_setup.dart';
 
-class RoundsDropdownButtonWidget extends ConsumerWidget {
-  const RoundsDropdownButtonWidget({super.key});
+class BreathsPerRoundDropdownButtonWidget extends ConsumerWidget {
+  const BreathsPerRoundDropdownButtonWidget({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final rounds = [2, 3, 4, 5, 6, 7, 8, 9, 10];
+    final breathsPerRounds = [20, 25, 30, 35, 40];
 
-    final breathwork = ref.watch(breathworkConfigureCProvider).breathwork;
+    final breathwork = ref.watch(breathworkSetupProvider).breathwork;
 
     return DropdownButton(
       style: Theme.of(context)
@@ -27,16 +27,16 @@ class RoundsDropdownButtonWidget extends ConsumerWidget {
           color: Theme.of(context).colorScheme.primary,
         ),
       ),
-      value: breathwork.rounds,
-      items: rounds.map<DropdownMenuItem<int>>((int round) {
+      value: breathwork.breathsPerRound,
+      items: breathsPerRounds.map<DropdownMenuItem<int>>((int breathsPerRound) {
         return DropdownMenuItem<int>(
-          value: round,
-          child: Text('$round rounds'),
+          value: breathsPerRound,
+          child: Text('$breathsPerRound breaths'),
         );
       }).toList(),
-      onChanged: (rounds) => ref
-          .read(breathworkConfigureCProvider.notifier)
-          .setRounds(rounds ?? 4),
+      onChanged: (breathsPerRound) => ref
+          .read(breathworkSetupProvider.notifier)
+          .setBreathsPerRound(breathsPerRound ?? 30),
     );
   }
 }

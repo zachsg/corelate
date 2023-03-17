@@ -1,13 +1,12 @@
 import 'package:copy_with_extension/copy_with_extension.dart';
 
-import '../../../models/activity.dart';
 import '../../../models/breathwork.dart';
 
-part 'breathwork_configure.g.dart';
+part 'breathwork_setup_model.g.dart';
 
 @CopyWith()
-class BreathworkConfigure {
+class BreathworkSetupModel {
   Breathwork breathwork;
 
-  BreathworkConfigure(this.breathwork);
+  BreathworkSetupModel(this.breathwork);
 }

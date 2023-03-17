@@ -8,7 +8,7 @@ import '../../../models/breathwork.dart';
 import '../../../models/breathwork_type.dart';
 import '../../bottom_navigation/bottom_navigation_view.dart';
 import '../../widgets/xwidgets.dart';
-import '../breathwork_configure/breathwork_configure_c.dart';
+import '../breathwork_setup/breathwork_setup.dart';
 import 'widgets/xwidgets.dart';
 import 'wim_hof_c.dart';
 
@@ -20,7 +20,7 @@ class WimHofView extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final wimHof = ref.watch(wimHofCProvider);
-    final breathworkConfig = ref.watch(breathworkConfigureCProvider);
+    final breathworkSetup = ref.watch(breathworkSetupProvider);
 
     return Scaffold(
       appBar: AppBar(
@@ -68,7 +68,7 @@ class WimHofView extends ConsumerWidget {
                           style: Theme.of(context).textTheme.titleLarge,
                         ),
                         Text(
-                          ' of ${breathworkConfig.breathwork.rounds}',
+                          ' of ${breathworkSetup.breathwork.rounds}',
                           style: Theme.of(context).textTheme.titleSmall,
                         ),
                       ],
@@ -95,7 +95,7 @@ class WimHofView extends ConsumerWidget {
   Future<void> _showSessionCompleteDialog(
       WidgetRef ref, BuildContext context) async {
     final wimHof = ref.watch(wimHofCProvider);
-    final breathwork = ref.watch(breathworkConfigureCProvider).breathwork;
+    final breathwork = ref.watch(breathworkSetupProvider).breathwork;
 
     var message = '';
 
@@ -130,7 +130,7 @@ class WimHofView extends ConsumerWidget {
                 const Text('\nHow it go?'),
                 RatingBarWidget(
                   onRatingChange: (rating) => ref
-                      .read(breathworkConfigureCProvider.notifier)
+                      .read(breathworkSetupProvider.notifier)
                       .setRating(rating),
                 ),
               ],
@@ -142,7 +142,7 @@ class WimHofView extends ConsumerWidget {
               onPressed: () {
                 Wakelock.disable();
                 Navigator.of(context).pop();
-                ref.read(breathworkConfigureCProvider.notifier).save();
+                ref.read(breathworkSetupProvider.notifier).save();
                 context.goNamed(BottomNavigationView.routeName);
               },
             ),
