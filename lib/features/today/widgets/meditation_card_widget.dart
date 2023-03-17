@@ -141,31 +141,14 @@ class MeditationCardWidget extends ConsumerWidget {
 
     message = 'You meditated for $durationString.';
 
-    return Padding(
-      padding: const EdgeInsets.all(16.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          const GrabHandleWidget(),
-          const SizedBox(height: 16),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                '$title Details',
-                style: Theme.of(context).textTheme.titleLarge,
-              ),
-            ],
-          ),
-          const SizedBox(height: 20),
-          Text(
-            message,
-            style: Theme.of(context).textTheme.bodyLarge,
-          ),
-          const SizedBox(height: 48),
-        ],
-      ),
+    return BottomSheetWidget(
+      title: '$title Details',
+      children: [
+        Text(
+          message,
+          style: Theme.of(context).textTheme.bodyLarge,
+        ),
+      ],
     );
   }
 }

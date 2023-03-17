@@ -368,37 +368,20 @@ class _AllActivitiesListWidgetState
           ' ($breathsPerRound breaths per round).\n\nIndividual breath holds:\n';
     }
 
-    return Padding(
-      padding: const EdgeInsets.all(16.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          const GrabHandleWidget(),
-          const SizedBox(height: 16),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                title,
-                style: Theme.of(context).textTheme.titleLarge,
-              ),
-            ],
+    return BottomSheetWidget(
+      title: title,
+      children: [
+        Text(
+          message,
+          style: Theme.of(context).textTheme.bodyLarge,
+        ),
+        if (breathwork.type == BreathworkType.wimHof)
+          SizedBox(
+            height: 150,
+            width: MediaQuery.of(context).size.width,
+            child: WimHofBarChartWidget(breathwork: breathwork),
           ),
-          const SizedBox(height: 20),
-          Text(
-            message,
-            style: Theme.of(context).textTheme.bodyLarge,
-          ),
-          if (breathwork.type == BreathworkType.wimHof)
-            SizedBox(
-              height: 150,
-              width: MediaQuery.of(context).size.width,
-              child: WimHofBarChartWidget(breathwork: breathwork),
-            ),
-          const SizedBox(height: 48),
-        ],
-      ),
+      ],
     );
   }
 
@@ -424,31 +407,14 @@ class _AllActivitiesListWidgetState
 
     message = 'You meditated for $durationString.';
 
-    return Padding(
-      padding: const EdgeInsets.all(16.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          const GrabHandleWidget(),
-          const SizedBox(height: 16),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                '$title Details',
-                style: Theme.of(context).textTheme.titleLarge,
-              ),
-            ],
-          ),
-          const SizedBox(height: 20),
-          Text(
-            message,
-            style: Theme.of(context).textTheme.bodyLarge,
-          ),
-          const SizedBox(height: 48),
-        ],
-      ),
+    return BottomSheetWidget(
+      title: '$title Details',
+      children: [
+        Text(
+          message,
+          style: Theme.of(context).textTheme.bodyLarge,
+        ),
+      ],
     );
   }
 }
