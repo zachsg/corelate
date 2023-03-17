@@ -54,7 +54,7 @@ class _TodaysActivitiesListWidgetState
                         Row(
                           children: [
                             Text(
-                              'Today',
+                              'Balance',
                               style: Theme.of(context)
                                   .textTheme
                                   .bodySmall
