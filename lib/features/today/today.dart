@@ -1,15 +1,15 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-import '../../models/activity.dart';
-import '../../models/breathwork.dart';
-import '../../models/meditation.dart';
+import '../../models/activity_model.dart';
+import '../../models/breathwork_model.dart';
+import '../../models/meditation_model.dart';
 import '../../services/provider.dart';
-import 'today_model.dart';
+import 'today_view_model.dart';
 
 part 'today.g.dart';
 
 @riverpod
-class DateC extends _$DateC {
+class Date extends _$Date {
   @override
   DateTime build() => DateTime.now().copyWith(hour: 0, minute: 0);
 
@@ -19,7 +19,7 @@ class DateC extends _$DateC {
 @Riverpod(keepAlive: true)
 class Today extends _$Today {
   @override
-  TodayModel build() => TodayModel(
+  TodayViewModel build() => TodayViewModel(
         activities: [],
         historyDate: DateTime.now().subtract(const Duration(days: 1)),
       );
@@ -36,11 +36,12 @@ class Today extends _$Today {
     _resetHistoryDate();
   }
 
-  void deleteActivity({required bool isToday, required Activity activity}) {
-    ref.read(databaseCProvider.future).then((db) async {
-      if (activity is Meditation) {
+  void deleteActivity(
+      {required bool isToday, required ActivityModel activity}) {
+    ref.read(databaseProvider.future).then((db) async {
+      if (activity is MeditationModel) {
         await db.deleteMeditation(activity);
-      } else if (activity is Breathwork) {
+      } else if (activity is BreathworkModel) {
         await db.deleteBreathwork(activity);
       }
     });
@@ -66,21 +67,21 @@ class Today extends _$Today {
   }
 
   Future<void> loadActivitiesForDate(DateTime date) async {
-    ref.read(databaseCProvider.future).then((db) async {
+    ref.read(databaseProvider.future).then((db) async {
       final activities = await db.loadActivitiesForDay(date);
       state = state.copyWith(activities: activities);
     });
   }
 
   Future<void> loadTodaysActivities() async {
-    ref.read(databaseCProvider.future).then((db) async {
+    ref.read(databaseProvider.future).then((db) async {
       final activities = await db.loadTodaysActivities();
       state = state.copyWith(activities: activities);
     });
   }
 
   Future<void> loadAllActivities() async {
-    ref.read(databaseCProvider.future).then((db) async {
+    ref.read(databaseProvider.future).then((db) async {
       final activities = await db.loadAllActivities();
       state = state.copyWith(activities: activities);
     });

@@ -1,37 +1,37 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'breathwork.dart';
+part of 'breathwork_model.dart';
 
 // **************************************************************************
 // CopyWithGenerator
 // **************************************************************************
 
-abstract class _$BreathworkCWProxy {
-  Breathwork date(DateTime date);
+abstract class _$BreathworkModelCWProxy {
+  BreathworkModel date(DateTime date);
 
-  Breathwork stress(int stress);
+  BreathworkModel stress(int stress);
 
-  Breathwork mood(int mood);
+  BreathworkModel mood(int mood);
 
-  Breathwork energy(int energy);
+  BreathworkModel energy(int energy);
 
-  Breathwork type(BreathworkType type);
+  BreathworkModel type(BreathworkType type);
 
-  Breathwork rounds(int rounds);
+  BreathworkModel rounds(int rounds);
 
-  Breathwork breathsPerRound(int breathsPerRound);
+  BreathworkModel breathsPerRound(int breathsPerRound);
 
-  Breathwork holdSecondsPerRound(List<int>? holdSecondsPerRound);
+  BreathworkModel holdSecondsPerRound(List<int>? holdSecondsPerRound);
 
-  Breathwork rating(double? rating);
+  BreathworkModel rating(double? rating);
 
-  /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `Breathwork(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
+  /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `BreathworkModel(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
   /// Usage
   /// ```dart
-  /// Breathwork(...).copyWith(id: 12, name: "My name")
+  /// BreathworkModel(...).copyWith(id: 12, name: "My name")
   /// ````
-  Breathwork call({
+  BreathworkModel call({
     DateTime? date,
     int? stress,
     int? mood,
@@ -44,50 +44,50 @@ abstract class _$BreathworkCWProxy {
   });
 }
 
-/// Proxy class for `copyWith` functionality. This is a callable class and can be used as follows: `instanceOfBreathwork.copyWith(...)`. Additionally contains functions for specific fields e.g. `instanceOfBreathwork.copyWith.fieldName(...)`
-class _$BreathworkCWProxyImpl implements _$BreathworkCWProxy {
-  const _$BreathworkCWProxyImpl(this._value);
+/// Proxy class for `copyWith` functionality. This is a callable class and can be used as follows: `instanceOfBreathworkModel.copyWith(...)`. Additionally contains functions for specific fields e.g. `instanceOfBreathworkModel.copyWith.fieldName(...)`
+class _$BreathworkModelCWProxyImpl implements _$BreathworkModelCWProxy {
+  const _$BreathworkModelCWProxyImpl(this._value);
 
-  final Breathwork _value;
-
-  @override
-  Breathwork date(DateTime date) => this(date: date);
+  final BreathworkModel _value;
 
   @override
-  Breathwork stress(int stress) => this(stress: stress);
+  BreathworkModel date(DateTime date) => this(date: date);
 
   @override
-  Breathwork mood(int mood) => this(mood: mood);
+  BreathworkModel stress(int stress) => this(stress: stress);
 
   @override
-  Breathwork energy(int energy) => this(energy: energy);
+  BreathworkModel mood(int mood) => this(mood: mood);
 
   @override
-  Breathwork type(BreathworkType type) => this(type: type);
+  BreathworkModel energy(int energy) => this(energy: energy);
 
   @override
-  Breathwork rounds(int rounds) => this(rounds: rounds);
+  BreathworkModel type(BreathworkType type) => this(type: type);
 
   @override
-  Breathwork breathsPerRound(int breathsPerRound) =>
+  BreathworkModel rounds(int rounds) => this(rounds: rounds);
+
+  @override
+  BreathworkModel breathsPerRound(int breathsPerRound) =>
       this(breathsPerRound: breathsPerRound);
 
   @override
-  Breathwork holdSecondsPerRound(List<int>? holdSecondsPerRound) =>
+  BreathworkModel holdSecondsPerRound(List<int>? holdSecondsPerRound) =>
       this(holdSecondsPerRound: holdSecondsPerRound);
 
   @override
-  Breathwork rating(double? rating) => this(rating: rating);
+  BreathworkModel rating(double? rating) => this(rating: rating);
 
   @override
 
-  /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `Breathwork(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
+  /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `BreathworkModel(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
   /// Usage
   /// ```dart
-  /// Breathwork(...).copyWith(id: 12, name: "My name")
+  /// BreathworkModel(...).copyWith(id: 12, name: "My name")
   /// ````
-  Breathwork call({
+  BreathworkModel call({
     Object? date = const $CopyWithPlaceholder(),
     Object? stress = const $CopyWithPlaceholder(),
     Object? mood = const $CopyWithPlaceholder(),
@@ -98,7 +98,7 @@ class _$BreathworkCWProxyImpl implements _$BreathworkCWProxy {
     Object? holdSecondsPerRound = const $CopyWithPlaceholder(),
     Object? rating = const $CopyWithPlaceholder(),
   }) {
-    return Breathwork(
+    return BreathworkModel(
       date: date == const $CopyWithPlaceholder() || date == null
           ? _value.date
           // ignore: cast_nullable_to_non_nullable
@@ -140,10 +140,10 @@ class _$BreathworkCWProxyImpl implements _$BreathworkCWProxy {
   }
 }
 
-extension $BreathworkCopyWith on Breathwork {
-  /// Returns a callable class that can be used as follows: `instanceOfBreathwork.copyWith(...)` or like so:`instanceOfBreathwork.copyWith.fieldName(...)`.
+extension $BreathworkModelCopyWith on BreathworkModel {
+  /// Returns a callable class that can be used as follows: `instanceOfBreathworkModel.copyWith(...)` or like so:`instanceOfBreathworkModel.copyWith.fieldName(...)`.
   // ignore: library_private_types_in_public_api
-  _$BreathworkCWProxy get copyWith => _$BreathworkCWProxyImpl(this);
+  _$BreathworkModelCWProxy get copyWith => _$BreathworkModelCWProxyImpl(this);
 }
 
 // **************************************************************************
@@ -153,13 +153,13 @@ extension $BreathworkCopyWith on Breathwork {
 // coverage:ignore-file
 // ignore_for_file: duplicate_ignore, non_constant_identifier_names, constant_identifier_names, invalid_use_of_protected_member, unnecessary_cast, prefer_const_constructors, lines_longer_than_80_chars, require_trailing_commas, inference_failure_on_function_invocation, unnecessary_parenthesis, unnecessary_raw_strings, unnecessary_null_checks, join_return_with_assignment, prefer_final_locals, avoid_js_rounded_ints, avoid_positional_boolean_parameters
 
-extension GetBreathworkCollection on Isar {
-  IsarCollection<Breathwork> get breathworks => this.collection();
+extension GetBreathworkModelCollection on Isar {
+  IsarCollection<BreathworkModel> get breathworkModels => this.collection();
 }
 
-const BreathworkSchema = CollectionSchema(
-  name: r'Breathwork',
-  id: -5543349516693467140,
+const BreathworkModelSchema = CollectionSchema(
+  name: r'BreathworkModel',
+  id: 1735121914970448057,
   properties: {
     r'breathsPerRound': PropertySchema(
       id: 0,
@@ -205,13 +205,13 @@ const BreathworkSchema = CollectionSchema(
       id: 8,
       name: r'type',
       type: IsarType.byte,
-      enumMap: _BreathworktypeEnumValueMap,
+      enumMap: _BreathworkModeltypeEnumValueMap,
     )
   },
-  estimateSize: _breathworkEstimateSize,
-  serialize: _breathworkSerialize,
-  deserialize: _breathworkDeserialize,
-  deserializeProp: _breathworkDeserializeProp,
+  estimateSize: _breathworkModelEstimateSize,
+  serialize: _breathworkModelSerialize,
+  deserialize: _breathworkModelDeserialize,
+  deserializeProp: _breathworkModelDeserializeProp,
   idName: r'id',
   indexes: {
     r'date': IndexSchema(
@@ -230,14 +230,14 @@ const BreathworkSchema = CollectionSchema(
   },
   links: {},
   embeddedSchemas: {},
-  getId: _breathworkGetId,
-  getLinks: _breathworkGetLinks,
-  attach: _breathworkAttach,
+  getId: _breathworkModelGetId,
+  getLinks: _breathworkModelGetLinks,
+  attach: _breathworkModelAttach,
   version: '3.0.5',
 );
 
-int _breathworkEstimateSize(
-  Breathwork object,
+int _breathworkModelEstimateSize(
+  BreathworkModel object,
   List<int> offsets,
   Map<Type, List<int>> allOffsets,
 ) {
@@ -251,8 +251,8 @@ int _breathworkEstimateSize(
   return bytesCount;
 }
 
-void _breathworkSerialize(
-  Breathwork object,
+void _breathworkModelSerialize(
+  BreathworkModel object,
   IsarWriter writer,
   List<int> offsets,
   Map<Type, List<int>> allOffsets,
@@ -268,13 +268,13 @@ void _breathworkSerialize(
   writer.writeByte(offsets[8], object.type.index);
 }
 
-Breathwork _breathworkDeserialize(
+BreathworkModel _breathworkModelDeserialize(
   Id id,
   IsarReader reader,
   List<int> offsets,
   Map<Type, List<int>> allOffsets,
 ) {
-  final object = Breathwork(
+  final object = BreathworkModel(
     breathsPerRound: reader.readLongOrNull(offsets[0]) ?? 0,
     date: reader.readDateTime(offsets[1]),
     energy: reader.readLongOrNull(offsets[2]) ?? 0,
@@ -283,14 +283,14 @@ Breathwork _breathworkDeserialize(
     rating: reader.readDoubleOrNull(offsets[5]),
     rounds: reader.readLongOrNull(offsets[6]) ?? 4,
     stress: reader.readLongOrNull(offsets[7]) ?? 0,
-    type: _BreathworktypeValueEnumMap[reader.readByteOrNull(offsets[8])] ??
+    type: _BreathworkModeltypeValueEnumMap[reader.readByteOrNull(offsets[8])] ??
         BreathworkType.four78,
   );
   object.id = id;
   return object;
 }
 
-P _breathworkDeserializeProp<P>(
+P _breathworkModelDeserializeProp<P>(
   IsarReader reader,
   int propertyId,
   int offset,
@@ -314,43 +314,44 @@ P _breathworkDeserializeProp<P>(
     case 7:
       return (reader.readLongOrNull(offset) ?? 0) as P;
     case 8:
-      return (_BreathworktypeValueEnumMap[reader.readByteOrNull(offset)] ??
+      return (_BreathworkModeltypeValueEnumMap[reader.readByteOrNull(offset)] ??
           BreathworkType.four78) as P;
     default:
       throw IsarError('Unknown property with id $propertyId');
   }
 }
 
-const _BreathworktypeEnumValueMap = {
+const _BreathworkModeltypeEnumValueMap = {
   'four78': 0,
   'wimHof': 1,
 };
-const _BreathworktypeValueEnumMap = {
+const _BreathworkModeltypeValueEnumMap = {
   0: BreathworkType.four78,
   1: BreathworkType.wimHof,
 };
 
-Id _breathworkGetId(Breathwork object) {
+Id _breathworkModelGetId(BreathworkModel object) {
   return object.id;
 }
 
-List<IsarLinkBase<dynamic>> _breathworkGetLinks(Breathwork object) {
+List<IsarLinkBase<dynamic>> _breathworkModelGetLinks(BreathworkModel object) {
   return [];
 }
 
-void _breathworkAttach(IsarCollection<dynamic> col, Id id, Breathwork object) {
+void _breathworkModelAttach(
+    IsarCollection<dynamic> col, Id id, BreathworkModel object) {
   object.id = id;
 }
 
-extension BreathworkQueryWhereSort
-    on QueryBuilder<Breathwork, Breathwork, QWhere> {
-  QueryBuilder<Breathwork, Breathwork, QAfterWhere> anyId() {
+extension BreathworkModelQueryWhereSort
+    on QueryBuilder<BreathworkModel, BreathworkModel, QWhere> {
+  QueryBuilder<BreathworkModel, BreathworkModel, QAfterWhere> anyId() {
     return QueryBuilder.apply(this, (query) {
       return query.addWhereClause(const IdWhereClause.any());
     });
   }
 
-  QueryBuilder<Breathwork, Breathwork, QAfterWhere> anyDate() {
+  QueryBuilder<BreathworkModel, BreathworkModel, QAfterWhere> anyDate() {
     return QueryBuilder.apply(this, (query) {
       return query.addWhereClause(
         const IndexWhereClause.any(indexName: r'date'),
@@ -359,9 +360,10 @@ extension BreathworkQueryWhereSort
   }
 }
 
-extension BreathworkQueryWhere
-    on QueryBuilder<Breathwork, Breathwork, QWhereClause> {
-  QueryBuilder<Breathwork, Breathwork, QAfterWhereClause> idEqualTo(Id id) {
+extension BreathworkModelQueryWhere
+    on QueryBuilder<BreathworkModel, BreathworkModel, QWhereClause> {
+  QueryBuilder<BreathworkModel, BreathworkModel, QAfterWhereClause> idEqualTo(
+      Id id) {
     return QueryBuilder.apply(this, (query) {
       return query.addWhereClause(IdWhereClause.between(
         lower: id,
@@ -370,7 +372,8 @@ extension BreathworkQueryWhere
     });
   }
 
-  QueryBuilder<Breathwork, Breathwork, QAfterWhereClause> idNotEqualTo(Id id) {
+  QueryBuilder<BreathworkModel, BreathworkModel, QAfterWhereClause>
+      idNotEqualTo(Id id) {
     return QueryBuilder.apply(this, (query) {
       if (query.whereSort == Sort.asc) {
         return query
@@ -392,8 +395,8 @@ extension BreathworkQueryWhere
     });
   }
 
-  QueryBuilder<Breathwork, Breathwork, QAfterWhereClause> idGreaterThan(Id id,
-      {bool include = false}) {
+  QueryBuilder<BreathworkModel, BreathworkModel, QAfterWhereClause>
+      idGreaterThan(Id id, {bool include = false}) {
     return QueryBuilder.apply(this, (query) {
       return query.addWhereClause(
         IdWhereClause.greaterThan(lower: id, includeLower: include),
@@ -401,7 +404,8 @@ extension BreathworkQueryWhere
     });
   }
 
-  QueryBuilder<Breathwork, Breathwork, QAfterWhereClause> idLessThan(Id id,
+  QueryBuilder<BreathworkModel, BreathworkModel, QAfterWhereClause> idLessThan(
+      Id id,
       {bool include = false}) {
     return QueryBuilder.apply(this, (query) {
       return query.addWhereClause(
@@ -410,7 +414,7 @@ extension BreathworkQueryWhere
     });
   }
 
-  QueryBuilder<Breathwork, Breathwork, QAfterWhereClause> idBetween(
+  QueryBuilder<BreathworkModel, BreathworkModel, QAfterWhereClause> idBetween(
     Id lowerId,
     Id upperId, {
     bool includeLower = true,
@@ -426,7 +430,7 @@ extension BreathworkQueryWhere
     });
   }
 
-  QueryBuilder<Breathwork, Breathwork, QAfterWhereClause> dateEqualTo(
+  QueryBuilder<BreathworkModel, BreathworkModel, QAfterWhereClause> dateEqualTo(
       DateTime date) {
     return QueryBuilder.apply(this, (query) {
       return query.addWhereClause(IndexWhereClause.equalTo(
@@ -436,8 +440,8 @@ extension BreathworkQueryWhere
     });
   }
 
-  QueryBuilder<Breathwork, Breathwork, QAfterWhereClause> dateNotEqualTo(
-      DateTime date) {
+  QueryBuilder<BreathworkModel, BreathworkModel, QAfterWhereClause>
+      dateNotEqualTo(DateTime date) {
     return QueryBuilder.apply(this, (query) {
       if (query.whereSort == Sort.asc) {
         return query
@@ -471,7 +475,8 @@ extension BreathworkQueryWhere
     });
   }
 
-  QueryBuilder<Breathwork, Breathwork, QAfterWhereClause> dateGreaterThan(
+  QueryBuilder<BreathworkModel, BreathworkModel, QAfterWhereClause>
+      dateGreaterThan(
     DateTime date, {
     bool include = false,
   }) {
@@ -485,7 +490,8 @@ extension BreathworkQueryWhere
     });
   }
 
-  QueryBuilder<Breathwork, Breathwork, QAfterWhereClause> dateLessThan(
+  QueryBuilder<BreathworkModel, BreathworkModel, QAfterWhereClause>
+      dateLessThan(
     DateTime date, {
     bool include = false,
   }) {
@@ -499,7 +505,7 @@ extension BreathworkQueryWhere
     });
   }
 
-  QueryBuilder<Breathwork, Breathwork, QAfterWhereClause> dateBetween(
+  QueryBuilder<BreathworkModel, BreathworkModel, QAfterWhereClause> dateBetween(
     DateTime lowerDate,
     DateTime upperDate, {
     bool includeLower = true,
@@ -517,9 +523,9 @@ extension BreathworkQueryWhere
   }
 }
 
-extension BreathworkQueryFilter
-    on QueryBuilder<Breathwork, Breathwork, QFilterCondition> {
-  QueryBuilder<Breathwork, Breathwork, QAfterFilterCondition>
+extension BreathworkModelQueryFilter
+    on QueryBuilder<BreathworkModel, BreathworkModel, QFilterCondition> {
+  QueryBuilder<BreathworkModel, BreathworkModel, QAfterFilterCondition>
       breathsPerRoundEqualTo(int value) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
@@ -529,7 +535,7 @@ extension BreathworkQueryFilter
     });
   }
 
-  QueryBuilder<Breathwork, Breathwork, QAfterFilterCondition>
+  QueryBuilder<BreathworkModel, BreathworkModel, QAfterFilterCondition>
       breathsPerRoundGreaterThan(
     int value, {
     bool include = false,
@@ -543,7 +549,7 @@ extension BreathworkQueryFilter
     });
   }
 
-  QueryBuilder<Breathwork, Breathwork, QAfterFilterCondition>
+  QueryBuilder<BreathworkModel, BreathworkModel, QAfterFilterCondition>
       breathsPerRoundLessThan(
     int value, {
     bool include = false,
@@ -557,7 +563,7 @@ extension BreathworkQueryFilter
     });
   }
 
-  QueryBuilder<Breathwork, Breathwork, QAfterFilterCondition>
+  QueryBuilder<BreathworkModel, BreathworkModel, QAfterFilterCondition>
       breathsPerRoundBetween(
     int lower,
     int upper, {
@@ -575,8 +581,8 @@ extension BreathworkQueryFilter
     });
   }
 
-  QueryBuilder<Breathwork, Breathwork, QAfterFilterCondition> dateEqualTo(
-      DateTime value) {
+  QueryBuilder<BreathworkModel, BreathworkModel, QAfterFilterCondition>
+      dateEqualTo(DateTime value) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
         property: r'date',
@@ -585,7 +591,8 @@ extension BreathworkQueryFilter
     });
   }
 
-  QueryBuilder<Breathwork, Breathwork, QAfterFilterCondition> dateGreaterThan(
+  QueryBuilder<BreathworkModel, BreathworkModel, QAfterFilterCondition>
+      dateGreaterThan(
     DateTime value, {
     bool include = false,
   }) {
@@ -598,7 +605,8 @@ extension BreathworkQueryFilter
     });
   }
 
-  QueryBuilder<Breathwork, Breathwork, QAfterFilterCondition> dateLessThan(
+  QueryBuilder<BreathworkModel, BreathworkModel, QAfterFilterCondition>
+      dateLessThan(
     DateTime value, {
     bool include = false,
   }) {
@@ -611,7 +619,8 @@ extension BreathworkQueryFilter
     });
   }
 
-  QueryBuilder<Breathwork, Breathwork, QAfterFilterCondition> dateBetween(
+  QueryBuilder<BreathworkModel, BreathworkModel, QAfterFilterCondition>
+      dateBetween(
     DateTime lower,
     DateTime upper, {
     bool includeLower = true,
@@ -628,8 +637,8 @@ extension BreathworkQueryFilter
     });
   }
 
-  QueryBuilder<Breathwork, Breathwork, QAfterFilterCondition> energyEqualTo(
-      int value) {
+  QueryBuilder<BreathworkModel, BreathworkModel, QAfterFilterCondition>
+      energyEqualTo(int value) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
         property: r'energy',
@@ -638,7 +647,8 @@ extension BreathworkQueryFilter
     });
   }
 
-  QueryBuilder<Breathwork, Breathwork, QAfterFilterCondition> energyGreaterThan(
+  QueryBuilder<BreathworkModel, BreathworkModel, QAfterFilterCondition>
+      energyGreaterThan(
     int value, {
     bool include = false,
   }) {
@@ -651,7 +661,8 @@ extension BreathworkQueryFilter
     });
   }
 
-  QueryBuilder<Breathwork, Breathwork, QAfterFilterCondition> energyLessThan(
+  QueryBuilder<BreathworkModel, BreathworkModel, QAfterFilterCondition>
+      energyLessThan(
     int value, {
     bool include = false,
   }) {
@@ -664,7 +675,8 @@ extension BreathworkQueryFilter
     });
   }
 
-  QueryBuilder<Breathwork, Breathwork, QAfterFilterCondition> energyBetween(
+  QueryBuilder<BreathworkModel, BreathworkModel, QAfterFilterCondition>
+      energyBetween(
     int lower,
     int upper, {
     bool includeLower = true,
@@ -681,7 +693,7 @@ extension BreathworkQueryFilter
     });
   }
 
-  QueryBuilder<Breathwork, Breathwork, QAfterFilterCondition>
+  QueryBuilder<BreathworkModel, BreathworkModel, QAfterFilterCondition>
       holdSecondsPerRoundIsNull() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(const FilterCondition.isNull(
@@ -690,7 +702,7 @@ extension BreathworkQueryFilter
     });
   }
 
-  QueryBuilder<Breathwork, Breathwork, QAfterFilterCondition>
+  QueryBuilder<BreathworkModel, BreathworkModel, QAfterFilterCondition>
       holdSecondsPerRoundIsNotNull() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(const FilterCondition.isNotNull(
@@ -699,7 +711,7 @@ extension BreathworkQueryFilter
     });
   }
 
-  QueryBuilder<Breathwork, Breathwork, QAfterFilterCondition>
+  QueryBuilder<BreathworkModel, BreathworkModel, QAfterFilterCondition>
       holdSecondsPerRoundElementEqualTo(int value) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
@@ -709,7 +721,7 @@ extension BreathworkQueryFilter
     });
   }
 
-  QueryBuilder<Breathwork, Breathwork, QAfterFilterCondition>
+  QueryBuilder<BreathworkModel, BreathworkModel, QAfterFilterCondition>
       holdSecondsPerRoundElementGreaterThan(
     int value, {
     bool include = false,
@@ -723,7 +735,7 @@ extension BreathworkQueryFilter
     });
   }
 
-  QueryBuilder<Breathwork, Breathwork, QAfterFilterCondition>
+  QueryBuilder<BreathworkModel, BreathworkModel, QAfterFilterCondition>
       holdSecondsPerRoundElementLessThan(
     int value, {
     bool include = false,
@@ -737,7 +749,7 @@ extension BreathworkQueryFilter
     });
   }
 
-  QueryBuilder<Breathwork, Breathwork, QAfterFilterCondition>
+  QueryBuilder<BreathworkModel, BreathworkModel, QAfterFilterCondition>
       holdSecondsPerRoundElementBetween(
     int lower,
     int upper, {
@@ -755,7 +767,7 @@ extension BreathworkQueryFilter
     });
   }
 
-  QueryBuilder<Breathwork, Breathwork, QAfterFilterCondition>
+  QueryBuilder<BreathworkModel, BreathworkModel, QAfterFilterCondition>
       holdSecondsPerRoundLengthEqualTo(int length) {
     return QueryBuilder.apply(this, (query) {
       return query.listLength(
@@ -768,7 +780,7 @@ extension BreathworkQueryFilter
     });
   }
 
-  QueryBuilder<Breathwork, Breathwork, QAfterFilterCondition>
+  QueryBuilder<BreathworkModel, BreathworkModel, QAfterFilterCondition>
       holdSecondsPerRoundIsEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.listLength(
@@ -781,7 +793,7 @@ extension BreathworkQueryFilter
     });
   }
 
-  QueryBuilder<Breathwork, Breathwork, QAfterFilterCondition>
+  QueryBuilder<BreathworkModel, BreathworkModel, QAfterFilterCondition>
       holdSecondsPerRoundIsNotEmpty() {
     return QueryBuilder.apply(this, (query) {
       return query.listLength(
@@ -794,7 +806,7 @@ extension BreathworkQueryFilter
     });
   }
 
-  QueryBuilder<Breathwork, Breathwork, QAfterFilterCondition>
+  QueryBuilder<BreathworkModel, BreathworkModel, QAfterFilterCondition>
       holdSecondsPerRoundLengthLessThan(
     int length, {
     bool include = false,
@@ -810,7 +822,7 @@ extension BreathworkQueryFilter
     });
   }
 
-  QueryBuilder<Breathwork, Breathwork, QAfterFilterCondition>
+  QueryBuilder<BreathworkModel, BreathworkModel, QAfterFilterCondition>
       holdSecondsPerRoundLengthGreaterThan(
     int length, {
     bool include = false,
@@ -826,7 +838,7 @@ extension BreathworkQueryFilter
     });
   }
 
-  QueryBuilder<Breathwork, Breathwork, QAfterFilterCondition>
+  QueryBuilder<BreathworkModel, BreathworkModel, QAfterFilterCondition>
       holdSecondsPerRoundLengthBetween(
     int lower,
     int upper, {
@@ -844,8 +856,8 @@ extension BreathworkQueryFilter
     });
   }
 
-  QueryBuilder<Breathwork, Breathwork, QAfterFilterCondition> idEqualTo(
-      Id value) {
+  QueryBuilder<BreathworkModel, BreathworkModel, QAfterFilterCondition>
+      idEqualTo(Id value) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
         property: r'id',
@@ -854,7 +866,8 @@ extension BreathworkQueryFilter
     });
   }
 
-  QueryBuilder<Breathwork, Breathwork, QAfterFilterCondition> idGreaterThan(
+  QueryBuilder<BreathworkModel, BreathworkModel, QAfterFilterCondition>
+      idGreaterThan(
     Id value, {
     bool include = false,
   }) {
@@ -867,7 +880,8 @@ extension BreathworkQueryFilter
     });
   }
 
-  QueryBuilder<Breathwork, Breathwork, QAfterFilterCondition> idLessThan(
+  QueryBuilder<BreathworkModel, BreathworkModel, QAfterFilterCondition>
+      idLessThan(
     Id value, {
     bool include = false,
   }) {
@@ -880,7 +894,8 @@ extension BreathworkQueryFilter
     });
   }
 
-  QueryBuilder<Breathwork, Breathwork, QAfterFilterCondition> idBetween(
+  QueryBuilder<BreathworkModel, BreathworkModel, QAfterFilterCondition>
+      idBetween(
     Id lower,
     Id upper, {
     bool includeLower = true,
@@ -897,8 +912,8 @@ extension BreathworkQueryFilter
     });
   }
 
-  QueryBuilder<Breathwork, Breathwork, QAfterFilterCondition> moodEqualTo(
-      int value) {
+  QueryBuilder<BreathworkModel, BreathworkModel, QAfterFilterCondition>
+      moodEqualTo(int value) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
         property: r'mood',
@@ -907,7 +922,8 @@ extension BreathworkQueryFilter
     });
   }
 
-  QueryBuilder<Breathwork, Breathwork, QAfterFilterCondition> moodGreaterThan(
+  QueryBuilder<BreathworkModel, BreathworkModel, QAfterFilterCondition>
+      moodGreaterThan(
     int value, {
     bool include = false,
   }) {
@@ -920,7 +936,8 @@ extension BreathworkQueryFilter
     });
   }
 
-  QueryBuilder<Breathwork, Breathwork, QAfterFilterCondition> moodLessThan(
+  QueryBuilder<BreathworkModel, BreathworkModel, QAfterFilterCondition>
+      moodLessThan(
     int value, {
     bool include = false,
   }) {
@@ -933,7 +950,8 @@ extension BreathworkQueryFilter
     });
   }
 
-  QueryBuilder<Breathwork, Breathwork, QAfterFilterCondition> moodBetween(
+  QueryBuilder<BreathworkModel, BreathworkModel, QAfterFilterCondition>
+      moodBetween(
     int lower,
     int upper, {
     bool includeLower = true,
@@ -950,7 +968,8 @@ extension BreathworkQueryFilter
     });
   }
 
-  QueryBuilder<Breathwork, Breathwork, QAfterFilterCondition> ratingIsNull() {
+  QueryBuilder<BreathworkModel, BreathworkModel, QAfterFilterCondition>
+      ratingIsNull() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(const FilterCondition.isNull(
         property: r'rating',
@@ -958,7 +977,7 @@ extension BreathworkQueryFilter
     });
   }
 
-  QueryBuilder<Breathwork, Breathwork, QAfterFilterCondition>
+  QueryBuilder<BreathworkModel, BreathworkModel, QAfterFilterCondition>
       ratingIsNotNull() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(const FilterCondition.isNotNull(
@@ -967,7 +986,8 @@ extension BreathworkQueryFilter
     });
   }
 
-  QueryBuilder<Breathwork, Breathwork, QAfterFilterCondition> ratingEqualTo(
+  QueryBuilder<BreathworkModel, BreathworkModel, QAfterFilterCondition>
+      ratingEqualTo(
     double? value, {
     double epsilon = Query.epsilon,
   }) {
@@ -980,7 +1000,8 @@ extension BreathworkQueryFilter
     });
   }
 
-  QueryBuilder<Breathwork, Breathwork, QAfterFilterCondition> ratingGreaterThan(
+  QueryBuilder<BreathworkModel, BreathworkModel, QAfterFilterCondition>
+      ratingGreaterThan(
     double? value, {
     bool include = false,
     double epsilon = Query.epsilon,
@@ -995,7 +1016,8 @@ extension BreathworkQueryFilter
     });
   }
 
-  QueryBuilder<Breathwork, Breathwork, QAfterFilterCondition> ratingLessThan(
+  QueryBuilder<BreathworkModel, BreathworkModel, QAfterFilterCondition>
+      ratingLessThan(
     double? value, {
     bool include = false,
     double epsilon = Query.epsilon,
@@ -1010,7 +1032,8 @@ extension BreathworkQueryFilter
     });
   }
 
-  QueryBuilder<Breathwork, Breathwork, QAfterFilterCondition> ratingBetween(
+  QueryBuilder<BreathworkModel, BreathworkModel, QAfterFilterCondition>
+      ratingBetween(
     double? lower,
     double? upper, {
     bool includeLower = true,
@@ -1029,8 +1052,8 @@ extension BreathworkQueryFilter
     });
   }
 
-  QueryBuilder<Breathwork, Breathwork, QAfterFilterCondition> roundsEqualTo(
-      int value) {
+  QueryBuilder<BreathworkModel, BreathworkModel, QAfterFilterCondition>
+      roundsEqualTo(int value) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
         property: r'rounds',
@@ -1039,7 +1062,8 @@ extension BreathworkQueryFilter
     });
   }
 
-  QueryBuilder<Breathwork, Breathwork, QAfterFilterCondition> roundsGreaterThan(
+  QueryBuilder<BreathworkModel, BreathworkModel, QAfterFilterCondition>
+      roundsGreaterThan(
     int value, {
     bool include = false,
   }) {
@@ -1052,7 +1076,8 @@ extension BreathworkQueryFilter
     });
   }
 
-  QueryBuilder<Breathwork, Breathwork, QAfterFilterCondition> roundsLessThan(
+  QueryBuilder<BreathworkModel, BreathworkModel, QAfterFilterCondition>
+      roundsLessThan(
     int value, {
     bool include = false,
   }) {
@@ -1065,7 +1090,8 @@ extension BreathworkQueryFilter
     });
   }
 
-  QueryBuilder<Breathwork, Breathwork, QAfterFilterCondition> roundsBetween(
+  QueryBuilder<BreathworkModel, BreathworkModel, QAfterFilterCondition>
+      roundsBetween(
     int lower,
     int upper, {
     bool includeLower = true,
@@ -1082,8 +1108,8 @@ extension BreathworkQueryFilter
     });
   }
 
-  QueryBuilder<Breathwork, Breathwork, QAfterFilterCondition> stressEqualTo(
-      int value) {
+  QueryBuilder<BreathworkModel, BreathworkModel, QAfterFilterCondition>
+      stressEqualTo(int value) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
         property: r'stress',
@@ -1092,7 +1118,8 @@ extension BreathworkQueryFilter
     });
   }
 
-  QueryBuilder<Breathwork, Breathwork, QAfterFilterCondition> stressGreaterThan(
+  QueryBuilder<BreathworkModel, BreathworkModel, QAfterFilterCondition>
+      stressGreaterThan(
     int value, {
     bool include = false,
   }) {
@@ -1105,7 +1132,8 @@ extension BreathworkQueryFilter
     });
   }
 
-  QueryBuilder<Breathwork, Breathwork, QAfterFilterCondition> stressLessThan(
+  QueryBuilder<BreathworkModel, BreathworkModel, QAfterFilterCondition>
+      stressLessThan(
     int value, {
     bool include = false,
   }) {
@@ -1118,7 +1146,8 @@ extension BreathworkQueryFilter
     });
   }
 
-  QueryBuilder<Breathwork, Breathwork, QAfterFilterCondition> stressBetween(
+  QueryBuilder<BreathworkModel, BreathworkModel, QAfterFilterCondition>
+      stressBetween(
     int lower,
     int upper, {
     bool includeLower = true,
@@ -1135,8 +1164,8 @@ extension BreathworkQueryFilter
     });
   }
 
-  QueryBuilder<Breathwork, Breathwork, QAfterFilterCondition> typeEqualTo(
-      BreathworkType value) {
+  QueryBuilder<BreathworkModel, BreathworkModel, QAfterFilterCondition>
+      typeEqualTo(BreathworkType value) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
         property: r'type',
@@ -1145,7 +1174,8 @@ extension BreathworkQueryFilter
     });
   }
 
-  QueryBuilder<Breathwork, Breathwork, QAfterFilterCondition> typeGreaterThan(
+  QueryBuilder<BreathworkModel, BreathworkModel, QAfterFilterCondition>
+      typeGreaterThan(
     BreathworkType value, {
     bool include = false,
   }) {
@@ -1158,7 +1188,8 @@ extension BreathworkQueryFilter
     });
   }
 
-  QueryBuilder<Breathwork, Breathwork, QAfterFilterCondition> typeLessThan(
+  QueryBuilder<BreathworkModel, BreathworkModel, QAfterFilterCondition>
+      typeLessThan(
     BreathworkType value, {
     bool include = false,
   }) {
@@ -1171,7 +1202,8 @@ extension BreathworkQueryFilter
     });
   }
 
-  QueryBuilder<Breathwork, Breathwork, QAfterFilterCondition> typeBetween(
+  QueryBuilder<BreathworkModel, BreathworkModel, QAfterFilterCondition>
+      typeBetween(
     BreathworkType lower,
     BreathworkType upper, {
     bool includeLower = true,
@@ -1189,340 +1221,359 @@ extension BreathworkQueryFilter
   }
 }
 
-extension BreathworkQueryObject
-    on QueryBuilder<Breathwork, Breathwork, QFilterCondition> {}
+extension BreathworkModelQueryObject
+    on QueryBuilder<BreathworkModel, BreathworkModel, QFilterCondition> {}
 
-extension BreathworkQueryLinks
-    on QueryBuilder<Breathwork, Breathwork, QFilterCondition> {}
+extension BreathworkModelQueryLinks
+    on QueryBuilder<BreathworkModel, BreathworkModel, QFilterCondition> {}
 
-extension BreathworkQuerySortBy
-    on QueryBuilder<Breathwork, Breathwork, QSortBy> {
-  QueryBuilder<Breathwork, Breathwork, QAfterSortBy> sortByBreathsPerRound() {
+extension BreathworkModelQuerySortBy
+    on QueryBuilder<BreathworkModel, BreathworkModel, QSortBy> {
+  QueryBuilder<BreathworkModel, BreathworkModel, QAfterSortBy>
+      sortByBreathsPerRound() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'breathsPerRound', Sort.asc);
     });
   }
 
-  QueryBuilder<Breathwork, Breathwork, QAfterSortBy>
+  QueryBuilder<BreathworkModel, BreathworkModel, QAfterSortBy>
       sortByBreathsPerRoundDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'breathsPerRound', Sort.desc);
     });
   }
 
-  QueryBuilder<Breathwork, Breathwork, QAfterSortBy> sortByDate() {
+  QueryBuilder<BreathworkModel, BreathworkModel, QAfterSortBy> sortByDate() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'date', Sort.asc);
     });
   }
 
-  QueryBuilder<Breathwork, Breathwork, QAfterSortBy> sortByDateDesc() {
+  QueryBuilder<BreathworkModel, BreathworkModel, QAfterSortBy>
+      sortByDateDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'date', Sort.desc);
     });
   }
 
-  QueryBuilder<Breathwork, Breathwork, QAfterSortBy> sortByEnergy() {
+  QueryBuilder<BreathworkModel, BreathworkModel, QAfterSortBy> sortByEnergy() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'energy', Sort.asc);
     });
   }
 
-  QueryBuilder<Breathwork, Breathwork, QAfterSortBy> sortByEnergyDesc() {
+  QueryBuilder<BreathworkModel, BreathworkModel, QAfterSortBy>
+      sortByEnergyDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'energy', Sort.desc);
     });
   }
 
-  QueryBuilder<Breathwork, Breathwork, QAfterSortBy> sortByMood() {
+  QueryBuilder<BreathworkModel, BreathworkModel, QAfterSortBy> sortByMood() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'mood', Sort.asc);
     });
   }
 
-  QueryBuilder<Breathwork, Breathwork, QAfterSortBy> sortByMoodDesc() {
+  QueryBuilder<BreathworkModel, BreathworkModel, QAfterSortBy>
+      sortByMoodDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'mood', Sort.desc);
     });
   }
 
-  QueryBuilder<Breathwork, Breathwork, QAfterSortBy> sortByRating() {
+  QueryBuilder<BreathworkModel, BreathworkModel, QAfterSortBy> sortByRating() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'rating', Sort.asc);
     });
   }
 
-  QueryBuilder<Breathwork, Breathwork, QAfterSortBy> sortByRatingDesc() {
+  QueryBuilder<BreathworkModel, BreathworkModel, QAfterSortBy>
+      sortByRatingDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'rating', Sort.desc);
     });
   }
 
-  QueryBuilder<Breathwork, Breathwork, QAfterSortBy> sortByRounds() {
+  QueryBuilder<BreathworkModel, BreathworkModel, QAfterSortBy> sortByRounds() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'rounds', Sort.asc);
     });
   }
 
-  QueryBuilder<Breathwork, Breathwork, QAfterSortBy> sortByRoundsDesc() {
+  QueryBuilder<BreathworkModel, BreathworkModel, QAfterSortBy>
+      sortByRoundsDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'rounds', Sort.desc);
     });
   }
 
-  QueryBuilder<Breathwork, Breathwork, QAfterSortBy> sortByStress() {
+  QueryBuilder<BreathworkModel, BreathworkModel, QAfterSortBy> sortByStress() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'stress', Sort.asc);
     });
   }
 
-  QueryBuilder<Breathwork, Breathwork, QAfterSortBy> sortByStressDesc() {
+  QueryBuilder<BreathworkModel, BreathworkModel, QAfterSortBy>
+      sortByStressDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'stress', Sort.desc);
     });
   }
 
-  QueryBuilder<Breathwork, Breathwork, QAfterSortBy> sortByType() {
+  QueryBuilder<BreathworkModel, BreathworkModel, QAfterSortBy> sortByType() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'type', Sort.asc);
     });
   }
 
-  QueryBuilder<Breathwork, Breathwork, QAfterSortBy> sortByTypeDesc() {
+  QueryBuilder<BreathworkModel, BreathworkModel, QAfterSortBy>
+      sortByTypeDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'type', Sort.desc);
     });
   }
 }
 
-extension BreathworkQuerySortThenBy
-    on QueryBuilder<Breathwork, Breathwork, QSortThenBy> {
-  QueryBuilder<Breathwork, Breathwork, QAfterSortBy> thenByBreathsPerRound() {
+extension BreathworkModelQuerySortThenBy
+    on QueryBuilder<BreathworkModel, BreathworkModel, QSortThenBy> {
+  QueryBuilder<BreathworkModel, BreathworkModel, QAfterSortBy>
+      thenByBreathsPerRound() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'breathsPerRound', Sort.asc);
     });
   }
 
-  QueryBuilder<Breathwork, Breathwork, QAfterSortBy>
+  QueryBuilder<BreathworkModel, BreathworkModel, QAfterSortBy>
       thenByBreathsPerRoundDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'breathsPerRound', Sort.desc);
     });
   }
 
-  QueryBuilder<Breathwork, Breathwork, QAfterSortBy> thenByDate() {
+  QueryBuilder<BreathworkModel, BreathworkModel, QAfterSortBy> thenByDate() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'date', Sort.asc);
     });
   }
 
-  QueryBuilder<Breathwork, Breathwork, QAfterSortBy> thenByDateDesc() {
+  QueryBuilder<BreathworkModel, BreathworkModel, QAfterSortBy>
+      thenByDateDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'date', Sort.desc);
     });
   }
 
-  QueryBuilder<Breathwork, Breathwork, QAfterSortBy> thenByEnergy() {
+  QueryBuilder<BreathworkModel, BreathworkModel, QAfterSortBy> thenByEnergy() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'energy', Sort.asc);
     });
   }
 
-  QueryBuilder<Breathwork, Breathwork, QAfterSortBy> thenByEnergyDesc() {
+  QueryBuilder<BreathworkModel, BreathworkModel, QAfterSortBy>
+      thenByEnergyDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'energy', Sort.desc);
     });
   }
 
-  QueryBuilder<Breathwork, Breathwork, QAfterSortBy> thenById() {
+  QueryBuilder<BreathworkModel, BreathworkModel, QAfterSortBy> thenById() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'id', Sort.asc);
     });
   }
 
-  QueryBuilder<Breathwork, Breathwork, QAfterSortBy> thenByIdDesc() {
+  QueryBuilder<BreathworkModel, BreathworkModel, QAfterSortBy> thenByIdDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'id', Sort.desc);
     });
   }
 
-  QueryBuilder<Breathwork, Breathwork, QAfterSortBy> thenByMood() {
+  QueryBuilder<BreathworkModel, BreathworkModel, QAfterSortBy> thenByMood() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'mood', Sort.asc);
     });
   }
 
-  QueryBuilder<Breathwork, Breathwork, QAfterSortBy> thenByMoodDesc() {
+  QueryBuilder<BreathworkModel, BreathworkModel, QAfterSortBy>
+      thenByMoodDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'mood', Sort.desc);
     });
   }
 
-  QueryBuilder<Breathwork, Breathwork, QAfterSortBy> thenByRating() {
+  QueryBuilder<BreathworkModel, BreathworkModel, QAfterSortBy> thenByRating() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'rating', Sort.asc);
     });
   }
 
-  QueryBuilder<Breathwork, Breathwork, QAfterSortBy> thenByRatingDesc() {
+  QueryBuilder<BreathworkModel, BreathworkModel, QAfterSortBy>
+      thenByRatingDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'rating', Sort.desc);
     });
   }
 
-  QueryBuilder<Breathwork, Breathwork, QAfterSortBy> thenByRounds() {
+  QueryBuilder<BreathworkModel, BreathworkModel, QAfterSortBy> thenByRounds() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'rounds', Sort.asc);
     });
   }
 
-  QueryBuilder<Breathwork, Breathwork, QAfterSortBy> thenByRoundsDesc() {
+  QueryBuilder<BreathworkModel, BreathworkModel, QAfterSortBy>
+      thenByRoundsDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'rounds', Sort.desc);
     });
   }
 
-  QueryBuilder<Breathwork, Breathwork, QAfterSortBy> thenByStress() {
+  QueryBuilder<BreathworkModel, BreathworkModel, QAfterSortBy> thenByStress() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'stress', Sort.asc);
     });
   }
 
-  QueryBuilder<Breathwork, Breathwork, QAfterSortBy> thenByStressDesc() {
+  QueryBuilder<BreathworkModel, BreathworkModel, QAfterSortBy>
+      thenByStressDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'stress', Sort.desc);
     });
   }
 
-  QueryBuilder<Breathwork, Breathwork, QAfterSortBy> thenByType() {
+  QueryBuilder<BreathworkModel, BreathworkModel, QAfterSortBy> thenByType() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'type', Sort.asc);
     });
   }
 
-  QueryBuilder<Breathwork, Breathwork, QAfterSortBy> thenByTypeDesc() {
+  QueryBuilder<BreathworkModel, BreathworkModel, QAfterSortBy>
+      thenByTypeDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'type', Sort.desc);
     });
   }
 }
 
-extension BreathworkQueryWhereDistinct
-    on QueryBuilder<Breathwork, Breathwork, QDistinct> {
-  QueryBuilder<Breathwork, Breathwork, QDistinct> distinctByBreathsPerRound() {
+extension BreathworkModelQueryWhereDistinct
+    on QueryBuilder<BreathworkModel, BreathworkModel, QDistinct> {
+  QueryBuilder<BreathworkModel, BreathworkModel, QDistinct>
+      distinctByBreathsPerRound() {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'breathsPerRound');
     });
   }
 
-  QueryBuilder<Breathwork, Breathwork, QDistinct> distinctByDate() {
+  QueryBuilder<BreathworkModel, BreathworkModel, QDistinct> distinctByDate() {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'date');
     });
   }
 
-  QueryBuilder<Breathwork, Breathwork, QDistinct> distinctByEnergy() {
+  QueryBuilder<BreathworkModel, BreathworkModel, QDistinct> distinctByEnergy() {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'energy');
     });
   }
 
-  QueryBuilder<Breathwork, Breathwork, QDistinct>
+  QueryBuilder<BreathworkModel, BreathworkModel, QDistinct>
       distinctByHoldSecondsPerRound() {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'holdSecondsPerRound');
     });
   }
 
-  QueryBuilder<Breathwork, Breathwork, QDistinct> distinctByMood() {
+  QueryBuilder<BreathworkModel, BreathworkModel, QDistinct> distinctByMood() {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'mood');
     });
   }
 
-  QueryBuilder<Breathwork, Breathwork, QDistinct> distinctByRating() {
+  QueryBuilder<BreathworkModel, BreathworkModel, QDistinct> distinctByRating() {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'rating');
     });
   }
 
-  QueryBuilder<Breathwork, Breathwork, QDistinct> distinctByRounds() {
+  QueryBuilder<BreathworkModel, BreathworkModel, QDistinct> distinctByRounds() {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'rounds');
     });
   }
 
-  QueryBuilder<Breathwork, Breathwork, QDistinct> distinctByStress() {
+  QueryBuilder<BreathworkModel, BreathworkModel, QDistinct> distinctByStress() {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'stress');
     });
   }
 
-  QueryBuilder<Breathwork, Breathwork, QDistinct> distinctByType() {
+  QueryBuilder<BreathworkModel, BreathworkModel, QDistinct> distinctByType() {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'type');
     });
   }
 }
 
-extension BreathworkQueryProperty
-    on QueryBuilder<Breathwork, Breathwork, QQueryProperty> {
-  QueryBuilder<Breathwork, int, QQueryOperations> idProperty() {
+extension BreathworkModelQueryProperty
+    on QueryBuilder<BreathworkModel, BreathworkModel, QQueryProperty> {
+  QueryBuilder<BreathworkModel, int, QQueryOperations> idProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'id');
     });
   }
 
-  QueryBuilder<Breathwork, int, QQueryOperations> breathsPerRoundProperty() {
+  QueryBuilder<BreathworkModel, int, QQueryOperations>
+      breathsPerRoundProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'breathsPerRound');
     });
   }
 
-  QueryBuilder<Breathwork, DateTime, QQueryOperations> dateProperty() {
+  QueryBuilder<BreathworkModel, DateTime, QQueryOperations> dateProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'date');
     });
   }
 
-  QueryBuilder<Breathwork, int, QQueryOperations> energyProperty() {
+  QueryBuilder<BreathworkModel, int, QQueryOperations> energyProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'energy');
     });
   }
 
-  QueryBuilder<Breathwork, List<int>?, QQueryOperations>
+  QueryBuilder<BreathworkModel, List<int>?, QQueryOperations>
       holdSecondsPerRoundProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'holdSecondsPerRound');
     });
   }
 
-  QueryBuilder<Breathwork, int, QQueryOperations> moodProperty() {
+  QueryBuilder<BreathworkModel, int, QQueryOperations> moodProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'mood');
     });
   }
 
-  QueryBuilder<Breathwork, double?, QQueryOperations> ratingProperty() {
+  QueryBuilder<BreathworkModel, double?, QQueryOperations> ratingProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'rating');
     });
   }
 
-  QueryBuilder<Breathwork, int, QQueryOperations> roundsProperty() {
+  QueryBuilder<BreathworkModel, int, QQueryOperations> roundsProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'rounds');
     });
   }
 
-  QueryBuilder<Breathwork, int, QQueryOperations> stressProperty() {
+  QueryBuilder<BreathworkModel, int, QQueryOperations> stressProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'stress');
     });
   }
 
-  QueryBuilder<Breathwork, BreathworkType, QQueryOperations> typeProperty() {
+  QueryBuilder<BreathworkModel, BreathworkType, QQueryOperations>
+      typeProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'type');
     });

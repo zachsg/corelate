@@ -4,19 +4,19 @@ import 'package:corelate/features/breathwork/four_7_8/four_7_8.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../../services/provider.dart';
-import '../../../models/breathwork.dart';
+import '../../../models/breathwork_model.dart';
 import '../../../models/breathwork_type.dart';
 import '../../today/today.dart';
 import '../wim_hof/wim_hof.dart';
-import 'breathwork_setup_model.dart';
+import 'breathwork_setup_view_model.dart';
 
 part 'breathwork_setup.g.dart';
 
 @riverpod
 class BreathworkSetup extends _$BreathworkSetup {
   @override
-  BreathworkSetupModel build() =>
-      BreathworkSetupModel(Breathwork(date: DateTime.now()));
+  BreathworkSetupViewModel build() =>
+      BreathworkSetupViewModel(BreathworkModel(date: DateTime.now()));
 
   void setType(BreathworkType type) {
     final is478 = type == BreathworkType.four78;
@@ -54,7 +54,7 @@ class BreathworkSetup extends _$BreathworkSetup {
   }
 
   void save() {
-    Breathwork breathwork;
+    BreathworkModel breathwork;
 
     if (state.breathwork.type == BreathworkType.four78) {
       // TODO: Save 4-7-8 session
@@ -83,7 +83,7 @@ class BreathworkSetup extends _$BreathworkSetup {
       );
     }
     state = state.copyWith(breathwork: breathwork);
-    ref.read(databaseCProvider.future).then((db) async {
+    ref.read(databaseProvider.future).then((db) async {
       await db.saveBreathwork(breathwork);
 
       ref.read(todayProvider.notifier).loadTodaysActivities();
@@ -109,7 +109,7 @@ class BreathworkSetup extends _$BreathworkSetup {
         elapsed = countsElapsed.toInt() + holdsElapsed + inhalesElapsed;
       }
 
-      ref.read(appleMindfulCProvider.future).then((health) async {
+      ref.read(appleMindfulProvider.future).then((health) async {
         await health.writeMindfulMinutes(
           state.breathwork.date,
           state.breathwork.date.add(Duration(seconds: elapsed)),

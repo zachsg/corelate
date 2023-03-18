@@ -5,7 +5,7 @@ import 'package:wakelock/wakelock.dart';
 
 import '../../../services/provider.dart';
 import '../../../helpers/strings.dart';
-import '../../../models/meditation.dart';
+import '../../../models/meditation_model.dart';
 import '../../widgets/xwidgets.dart';
 import '../meditation_during/meditation_during_view.dart';
 import '../../../models/meditation_type.dart';
@@ -78,7 +78,7 @@ class MeditationSetupView extends ConsumerWidget {
                 Wakelock.enable();
                 ref.read(meditationSetupProvider.notifier).resetDate();
                 context.pushNamed(MeditationDuringView.routeName);
-                ref.read(healthCProvider);
+                ref.read(healthProvider);
               },
               child: const Padding(
                 padding: EdgeInsets.symmetric(
@@ -95,7 +95,7 @@ class MeditationSetupView extends ConsumerWidget {
     );
   }
 
-  Widget _infoCardWidget(Meditation meditation) {
+  Widget _infoCardWidget(MeditationModel meditation) {
     var message = '';
     if (meditation.type == MeditationType.timed) {
       message = 'Meditate for ${(meditation.goal ?? 300) ~/ 60} minutes.'

@@ -1,13 +1,14 @@
+
 import 'package:isar/isar.dart';
 
-class Activity {
+class ActivityModel {
   @Index()
   DateTime date;
   int stress;
   int mood;
   int energy;
 
-  Activity({
+  ActivityModel({
     required this.date,
     this.stress = 0,
     this.mood = 0,

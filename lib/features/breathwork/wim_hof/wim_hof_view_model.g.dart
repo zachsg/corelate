@@ -1,35 +1,35 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'wim_hof_model.dart';
+part of 'wim_hof_view_model.dart';
 
 // **************************************************************************
 // CopyWithGenerator
 // **************************************************************************
 
-abstract class _$WimHofModelCWProxy {
-  WimHofModel currentRound(int currentRound);
+abstract class _$WimHofViewModelCWProxy {
+  WimHofViewModel currentRound(int currentRound);
 
-  WimHofModel currentBreath(int currentBreath);
+  WimHofViewModel currentBreath(int currentBreath);
 
-  WimHofModel isInhaling(bool isInhaling);
+  WimHofViewModel isInhaling(bool isInhaling);
 
-  WimHofModel isHoldingExhale(bool isHoldingExhale);
+  WimHofViewModel isHoldingExhale(bool isHoldingExhale);
 
-  WimHofModel isHoldingInhale(bool isHoldingInhale);
+  WimHofViewModel isHoldingInhale(bool isHoldingInhale);
 
-  WimHofModel isDone(bool isDone);
+  WimHofViewModel isDone(bool isDone);
 
-  WimHofModel holdSecondsCurrentRound(int holdSecondsCurrentRound);
+  WimHofViewModel holdSecondsCurrentRound(int holdSecondsCurrentRound);
 
-  WimHofModel holdSeconds(List<int> holdSeconds);
+  WimHofViewModel holdSeconds(List<int> holdSeconds);
 
-  /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `WimHofModel(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
+  /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `WimHofViewModel(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
   /// Usage
   /// ```dart
-  /// WimHofModel(...).copyWith(id: 12, name: "My name")
+  /// WimHofViewModel(...).copyWith(id: 12, name: "My name")
   /// ````
-  WimHofModel call({
+  WimHofViewModel call({
     int? currentRound,
     int? currentBreath,
     bool? isInhaling,
@@ -41,51 +41,51 @@ abstract class _$WimHofModelCWProxy {
   });
 }
 
-/// Proxy class for `copyWith` functionality. This is a callable class and can be used as follows: `instanceOfWimHofModel.copyWith(...)`. Additionally contains functions for specific fields e.g. `instanceOfWimHofModel.copyWith.fieldName(...)`
-class _$WimHofModelCWProxyImpl implements _$WimHofModelCWProxy {
-  const _$WimHofModelCWProxyImpl(this._value);
+/// Proxy class for `copyWith` functionality. This is a callable class and can be used as follows: `instanceOfWimHofViewModel.copyWith(...)`. Additionally contains functions for specific fields e.g. `instanceOfWimHofViewModel.copyWith.fieldName(...)`
+class _$WimHofViewModelCWProxyImpl implements _$WimHofViewModelCWProxy {
+  const _$WimHofViewModelCWProxyImpl(this._value);
 
-  final WimHofModel _value;
+  final WimHofViewModel _value;
 
   @override
-  WimHofModel currentRound(int currentRound) =>
+  WimHofViewModel currentRound(int currentRound) =>
       this(currentRound: currentRound);
 
   @override
-  WimHofModel currentBreath(int currentBreath) =>
+  WimHofViewModel currentBreath(int currentBreath) =>
       this(currentBreath: currentBreath);
 
   @override
-  WimHofModel isInhaling(bool isInhaling) => this(isInhaling: isInhaling);
+  WimHofViewModel isInhaling(bool isInhaling) => this(isInhaling: isInhaling);
 
   @override
-  WimHofModel isHoldingExhale(bool isHoldingExhale) =>
+  WimHofViewModel isHoldingExhale(bool isHoldingExhale) =>
       this(isHoldingExhale: isHoldingExhale);
 
   @override
-  WimHofModel isHoldingInhale(bool isHoldingInhale) =>
+  WimHofViewModel isHoldingInhale(bool isHoldingInhale) =>
       this(isHoldingInhale: isHoldingInhale);
 
   @override
-  WimHofModel isDone(bool isDone) => this(isDone: isDone);
+  WimHofViewModel isDone(bool isDone) => this(isDone: isDone);
 
   @override
-  WimHofModel holdSecondsCurrentRound(int holdSecondsCurrentRound) =>
+  WimHofViewModel holdSecondsCurrentRound(int holdSecondsCurrentRound) =>
       this(holdSecondsCurrentRound: holdSecondsCurrentRound);
 
   @override
-  WimHofModel holdSeconds(List<int> holdSeconds) =>
+  WimHofViewModel holdSeconds(List<int> holdSeconds) =>
       this(holdSeconds: holdSeconds);
 
   @override
 
-  /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `WimHofModel(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
+  /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `WimHofViewModel(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
   /// Usage
   /// ```dart
-  /// WimHofModel(...).copyWith(id: 12, name: "My name")
+  /// WimHofViewModel(...).copyWith(id: 12, name: "My name")
   /// ````
-  WimHofModel call({
+  WimHofViewModel call({
     Object? currentRound = const $CopyWithPlaceholder(),
     Object? currentBreath = const $CopyWithPlaceholder(),
     Object? isInhaling = const $CopyWithPlaceholder(),
@@ -95,7 +95,7 @@ class _$WimHofModelCWProxyImpl implements _$WimHofModelCWProxy {
     Object? holdSecondsCurrentRound = const $CopyWithPlaceholder(),
     Object? holdSeconds = const $CopyWithPlaceholder(),
   }) {
-    return WimHofModel(
+    return WimHofViewModel(
       currentRound:
           currentRound == const $CopyWithPlaceholder() || currentRound == null
               ? _value.currentRound
@@ -140,8 +140,8 @@ class _$WimHofModelCWProxyImpl implements _$WimHofModelCWProxy {
   }
 }
 
-extension $WimHofModelCopyWith on WimHofModel {
-  /// Returns a callable class that can be used as follows: `instanceOfWimHofModel.copyWith(...)` or like so:`instanceOfWimHofModel.copyWith.fieldName(...)`.
+extension $WimHofViewModelCopyWith on WimHofViewModel {
+  /// Returns a callable class that can be used as follows: `instanceOfWimHofViewModel.copyWith(...)` or like so:`instanceOfWimHofViewModel.copyWith.fieldName(...)`.
   // ignore: library_private_types_in_public_api
-  _$WimHofModelCWProxy get copyWith => _$WimHofModelCWProxyImpl(this);
+  _$WimHofViewModelCWProxy get copyWith => _$WimHofViewModelCWProxyImpl(this);
 }

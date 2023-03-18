@@ -3,25 +3,25 @@ import 'package:isar/isar.dart';
 import 'package:mindful_minutes/mindful_minutes.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-import '../models/breathwork.dart';
-import '../models/meditation.dart';
+import '../models/breathwork_model.dart';
+import '../models/meditation_model.dart';
 import 'database.dart';
 
 part 'provider.g.dart';
 
 @Riverpod(keepAlive: true)
-Future<Isar> isarC(IsarCRef ref) async {
-  return await Isar.open([MeditationSchema, BreathworkSchema]);
+Future<Isar> isar(IsarRef ref) async {
+  return await Isar.open([MeditationModelSchema, BreathworkModelSchema]);
 }
 
 @riverpod
-Future<Database> databaseC(DatabaseCRef ref) async {
-  final isar = await ref.watch(isarCProvider.future);
+Future<Database> database(DatabaseRef ref) async {
+  final isar = await ref.watch(isarProvider.future);
   return Database(isar);
 }
 
 @Riverpod(keepAlive: true)
-Future<HealthFactory> healthC(HealthCRef ref) async {
+Future<HealthFactory> health(HealthRef ref) async {
   final health = HealthFactory();
 
   final types = [
@@ -46,7 +46,7 @@ Future<HealthFactory> healthC(HealthCRef ref) async {
 }
 
 @Riverpod(keepAlive: true)
-Future<MindfulMinutesPlugin> appleMindfulC(AppleMindfulCRef ref) async {
+Future<MindfulMinutesPlugin> appleMindful(AppleMindfulRef ref) async {
   final plugin = MindfulMinutesPlugin();
 
   final bool hasPermission = await plugin.checkPermission();

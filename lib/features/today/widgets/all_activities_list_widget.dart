@@ -4,10 +4,10 @@ import 'package:intl/intl.dart';
 
 import '../../../helpers/extensions.dart';
 import '../../../helpers/strings.dart';
-import '../../../models/activity.dart';
-import '../../../models/breathwork.dart';
+import '../../../models/activity_model.dart';
+import '../../../models/breathwork_model.dart';
 import '../../../models/breathwork_type.dart';
-import '../../../models/meditation.dart';
+import '../../../models/meditation_model.dart';
 import '../../../models/meditation_type.dart';
 import '../../widgets/xwidgets.dart';
 import '../today.dart';
@@ -119,9 +119,9 @@ class _AllActivitiesListWidgetState
                     final activity = ref.watch(todayProvider).activities[index];
 
                     IconData? ratingIcon;
-                    if (activity is Meditation) {
+                    if (activity is MeditationModel) {
                       ratingIcon = activity.rating?.iconForRating();
-                    } else if (activity is Breathwork) {
+                    } else if (activity is BreathworkModel) {
                       ratingIcon = activity.rating?.iconForRating();
                     }
 
@@ -173,13 +173,13 @@ class _AllActivitiesListWidgetState
                         ),
                         child: GestureDetector(
                           onTap: () {
-                            if (activity is Meditation) {
+                            if (activity is MeditationModel) {
                               showModalBottomSheet<void>(
                                 context: context,
                                 builder: (BuildContext context) =>
                                     _meditationSheet(ref, context, activity),
                               );
-                            } else if (activity is Breathwork) {
+                            } else if (activity is BreathworkModel) {
                               showModalBottomSheet<void>(
                                 context: context,
                                 builder: (BuildContext context) =>
@@ -223,11 +223,11 @@ class _AllActivitiesListWidgetState
     );
   }
 
-  Widget _headerWidget(BuildContext context, Activity activity) {
+  Widget _headerWidget(BuildContext context, ActivityModel activity) {
     IconData icon;
     String title;
 
-    if (activity is Breathwork) {
+    if (activity is BreathworkModel) {
       icon = Icons.air;
       title = 'Breathwork';
     } else {
@@ -255,7 +255,7 @@ class _AllActivitiesListWidgetState
     );
   }
 
-  Widget _timeWidget(BuildContext context, Activity activity) {
+  Widget _timeWidget(BuildContext context, ActivityModel activity) {
     final style = Theme.of(context)
         .textTheme
         .bodySmall
@@ -294,7 +294,7 @@ class _AllActivitiesListWidgetState
     );
   }
 
-  Widget _titleWidget(BuildContext context, Activity activity) {
+  Widget _titleWidget(BuildContext context, ActivityModel activity) {
     final styleMain = Theme.of(context).textTheme.titleMedium?.copyWith(
           color: Theme.of(context).colorScheme.onBackground,
           fontWeight: FontWeight.bold,
@@ -310,7 +310,7 @@ class _AllActivitiesListWidgetState
     IconData icon;
 
     // Format activity based on the type of activity
-    if (activity is Meditation) {
+    if (activity is MeditationModel) {
       final meditation = activity;
       icon = Icons.timer_outlined;
       type = meditation.type == MeditationType.timed
@@ -326,7 +326,7 @@ class _AllActivitiesListWidgetState
       } else {
         durationString = '${minutes}m ${seconds}s';
       }
-    } else if (activity is Breathwork) {
+    } else if (activity is BreathworkModel) {
       final breathwork = activity;
       icon = Icons.restart_alt;
       type = breathwork.type == BreathworkType.four78 ? '4-7-8' : 'Wim Hof';
@@ -353,7 +353,7 @@ class _AllActivitiesListWidgetState
   }
 
   Widget _breathworkSheet(
-      WidgetRef ref, BuildContext context, Breathwork breathwork) {
+      WidgetRef ref, BuildContext context, BreathworkModel breathwork) {
     var title = 'Breathwork';
     var message = '';
 
@@ -388,7 +388,7 @@ class _AllActivitiesListWidgetState
   }
 
   Widget _meditationSheet(
-      WidgetRef ref, BuildContext context, Meditation meditation) {
+      WidgetRef ref, BuildContext context, MeditationModel meditation) {
     var title = '';
     var message = '';
 

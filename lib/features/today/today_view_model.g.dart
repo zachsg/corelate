@@ -1,76 +1,78 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'today_model.dart';
+part of 'today_view_model.dart';
 
 // **************************************************************************
 // CopyWithGenerator
 // **************************************************************************
 
-abstract class _$TodayModelCWProxy {
-  TodayModel showingToday(bool showingToday);
+abstract class _$TodayViewModelCWProxy {
+  TodayViewModel showingToday(bool showingToday);
 
-  TodayModel fabExpanded(bool fabExpanded);
+  TodayViewModel fabExpanded(bool fabExpanded);
 
-  TodayModel steps(int steps);
+  TodayViewModel steps(int steps);
 
-  TodayModel sleepMinutes(int sleepMinutes);
+  TodayViewModel sleepMinutes(int sleepMinutes);
 
-  TodayModel activities(List<Activity> activities);
+  TodayViewModel activities(List<ActivityModel> activities);
 
-  TodayModel historyDate(DateTime historyDate);
+  TodayViewModel historyDate(DateTime historyDate);
 
-  /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `TodayModel(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
+  /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `TodayViewModel(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
   /// Usage
   /// ```dart
-  /// TodayModel(...).copyWith(id: 12, name: "My name")
+  /// TodayViewModel(...).copyWith(id: 12, name: "My name")
   /// ````
-  TodayModel call({
+  TodayViewModel call({
     bool? showingToday,
     bool? fabExpanded,
     int? steps,
     int? sleepMinutes,
-    List<Activity>? activities,
+    List<ActivityModel>? activities,
     DateTime? historyDate,
   });
 }
 
-/// Proxy class for `copyWith` functionality. This is a callable class and can be used as follows: `instanceOfTodayModel.copyWith(...)`. Additionally contains functions for specific fields e.g. `instanceOfTodayModel.copyWith.fieldName(...)`
-class _$TodayModelCWProxyImpl implements _$TodayModelCWProxy {
-  const _$TodayModelCWProxyImpl(this._value);
+/// Proxy class for `copyWith` functionality. This is a callable class and can be used as follows: `instanceOfTodayViewModel.copyWith(...)`. Additionally contains functions for specific fields e.g. `instanceOfTodayViewModel.copyWith.fieldName(...)`
+class _$TodayViewModelCWProxyImpl implements _$TodayViewModelCWProxy {
+  const _$TodayViewModelCWProxyImpl(this._value);
 
-  final TodayModel _value;
+  final TodayViewModel _value;
 
   @override
-  TodayModel showingToday(bool showingToday) =>
+  TodayViewModel showingToday(bool showingToday) =>
       this(showingToday: showingToday);
 
   @override
-  TodayModel fabExpanded(bool fabExpanded) => this(fabExpanded: fabExpanded);
+  TodayViewModel fabExpanded(bool fabExpanded) =>
+      this(fabExpanded: fabExpanded);
 
   @override
-  TodayModel steps(int steps) => this(steps: steps);
+  TodayViewModel steps(int steps) => this(steps: steps);
 
   @override
-  TodayModel sleepMinutes(int sleepMinutes) => this(sleepMinutes: sleepMinutes);
+  TodayViewModel sleepMinutes(int sleepMinutes) =>
+      this(sleepMinutes: sleepMinutes);
 
   @override
-  TodayModel activities(List<Activity> activities) =>
+  TodayViewModel activities(List<ActivityModel> activities) =>
       this(activities: activities);
 
   @override
-  TodayModel historyDate(DateTime historyDate) =>
+  TodayViewModel historyDate(DateTime historyDate) =>
       this(historyDate: historyDate);
 
   @override
 
-  /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `TodayModel(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
+  /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `TodayViewModel(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
   /// Usage
   /// ```dart
-  /// TodayModel(...).copyWith(id: 12, name: "My name")
+  /// TodayViewModel(...).copyWith(id: 12, name: "My name")
   /// ````
-  TodayModel call({
+  TodayViewModel call({
     Object? showingToday = const $CopyWithPlaceholder(),
     Object? fabExpanded = const $CopyWithPlaceholder(),
     Object? steps = const $CopyWithPlaceholder(),
@@ -78,7 +80,7 @@ class _$TodayModelCWProxyImpl implements _$TodayModelCWProxy {
     Object? activities = const $CopyWithPlaceholder(),
     Object? historyDate = const $CopyWithPlaceholder(),
   }) {
-    return TodayModel(
+    return TodayViewModel(
       showingToday:
           showingToday == const $CopyWithPlaceholder() || showingToday == null
               ? _value.showingToday
@@ -102,7 +104,7 @@ class _$TodayModelCWProxyImpl implements _$TodayModelCWProxy {
           activities == const $CopyWithPlaceholder() || activities == null
               ? _value.activities
               // ignore: cast_nullable_to_non_nullable
-              : activities as List<Activity>,
+              : activities as List<ActivityModel>,
       historyDate:
           historyDate == const $CopyWithPlaceholder() || historyDate == null
               ? _value.historyDate
@@ -112,8 +114,8 @@ class _$TodayModelCWProxyImpl implements _$TodayModelCWProxy {
   }
 }
 
-extension $TodayModelCopyWith on TodayModel {
-  /// Returns a callable class that can be used as follows: `instanceOfTodayModel.copyWith(...)` or like so:`instanceOfTodayModel.copyWith.fieldName(...)`.
+extension $TodayViewModelCopyWith on TodayViewModel {
+  /// Returns a callable class that can be used as follows: `instanceOfTodayViewModel.copyWith(...)` or like so:`instanceOfTodayViewModel.copyWith.fieldName(...)`.
   // ignore: library_private_types_in_public_api
-  _$TodayModelCWProxy get copyWith => _$TodayModelCWProxyImpl(this);
+  _$TodayViewModelCWProxy get copyWith => _$TodayViewModelCWProxyImpl(this);
 }

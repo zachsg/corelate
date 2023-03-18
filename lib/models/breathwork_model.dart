@@ -1,14 +1,15 @@
+
 import 'package:copy_with_extension/copy_with_extension.dart';
 import 'package:isar/isar.dart';
 
-import 'activity.dart';
+import 'activity_model.dart';
 import 'breathwork_type.dart';
 
-part 'breathwork.g.dart';
+part 'breathwork_model.g.dart';
 
 @collection
 @CopyWith()
-class Breathwork extends Activity {
+class BreathworkModel extends ActivityModel {
   Id id = Isar.autoIncrement;
   @enumerated
   BreathworkType type;
@@ -17,7 +18,7 @@ class Breathwork extends Activity {
   List<int>? holdSecondsPerRound;
   double? rating;
 
-  Breathwork({
+  BreathworkModel({
     required super.date,
     super.stress,
     super.mood,

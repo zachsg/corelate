@@ -1,14 +1,14 @@
 import 'package:copy_with_extension/copy_with_extension.dart';
 import 'package:isar/isar.dart';
 
-import 'activity.dart';
+import 'activity_model.dart';
 import 'meditation_type.dart';
 
-part 'meditation.g.dart';
+part 'meditation_model.g.dart';
 
 @collection
 @CopyWith()
-class Meditation extends Activity {
+class MeditationModel extends ActivityModel {
   Id id = Isar.autoIncrement;
   @enumerated
   MeditationType type;
@@ -16,7 +16,7 @@ class Meditation extends Activity {
   double? rating;
   int elapsed;
 
-  Meditation({
+  MeditationModel({
     required super.date,
     super.stress,
     super.mood,

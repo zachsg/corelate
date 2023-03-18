@@ -19,7 +19,7 @@ class TodayView extends ConsumerStatefulWidget {
 class _TodayViewState extends ConsumerState<TodayView>
     with WidgetsBindingObserver {
   void _checkForHealthUpdates() {
-    ref.read(healthCProvider.future).then((health) async {
+    ref.read(healthProvider.future).then((health) async {
       final dateStart = DateTime.now().copyWith(hour: 0, minute: 0);
       final dateEnd = DateTime.now();
       final steps = await health.getTotalStepsInInterval(dateStart, dateEnd);
@@ -28,7 +28,7 @@ class _TodayViewState extends ConsumerState<TodayView>
       }
     });
 
-    ref.read(healthCProvider.future).then((health) async {
+    ref.read(healthProvider.future).then((health) async {
       final now = DateTime.now().copyWith(hour: 0, minute: 0);
       final dateStart = now.subtract(const Duration(hours: 6));
       final dateEnd = DateTime.now();

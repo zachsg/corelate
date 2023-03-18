@@ -1,35 +1,35 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'meditation.dart';
+part of 'meditation_model.dart';
 
 // **************************************************************************
 // CopyWithGenerator
 // **************************************************************************
 
-abstract class _$MeditationCWProxy {
-  Meditation date(DateTime date);
+abstract class _$MeditationModelCWProxy {
+  MeditationModel date(DateTime date);
 
-  Meditation stress(int stress);
+  MeditationModel stress(int stress);
 
-  Meditation mood(int mood);
+  MeditationModel mood(int mood);
 
-  Meditation energy(int energy);
+  MeditationModel energy(int energy);
 
-  Meditation type(MeditationType type);
+  MeditationModel type(MeditationType type);
 
-  Meditation goal(int? goal);
+  MeditationModel goal(int? goal);
 
-  Meditation rating(double? rating);
+  MeditationModel rating(double? rating);
 
-  Meditation elapsed(int elapsed);
+  MeditationModel elapsed(int elapsed);
 
-  /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `Meditation(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
+  /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `MeditationModel(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
   /// Usage
   /// ```dart
-  /// Meditation(...).copyWith(id: 12, name: "My name")
+  /// MeditationModel(...).copyWith(id: 12, name: "My name")
   /// ````
-  Meditation call({
+  MeditationModel call({
     DateTime? date,
     int? stress,
     int? mood,
@@ -41,45 +41,45 @@ abstract class _$MeditationCWProxy {
   });
 }
 
-/// Proxy class for `copyWith` functionality. This is a callable class and can be used as follows: `instanceOfMeditation.copyWith(...)`. Additionally contains functions for specific fields e.g. `instanceOfMeditation.copyWith.fieldName(...)`
-class _$MeditationCWProxyImpl implements _$MeditationCWProxy {
-  const _$MeditationCWProxyImpl(this._value);
+/// Proxy class for `copyWith` functionality. This is a callable class and can be used as follows: `instanceOfMeditationModel.copyWith(...)`. Additionally contains functions for specific fields e.g. `instanceOfMeditationModel.copyWith.fieldName(...)`
+class _$MeditationModelCWProxyImpl implements _$MeditationModelCWProxy {
+  const _$MeditationModelCWProxyImpl(this._value);
 
-  final Meditation _value;
-
-  @override
-  Meditation date(DateTime date) => this(date: date);
+  final MeditationModel _value;
 
   @override
-  Meditation stress(int stress) => this(stress: stress);
+  MeditationModel date(DateTime date) => this(date: date);
 
   @override
-  Meditation mood(int mood) => this(mood: mood);
+  MeditationModel stress(int stress) => this(stress: stress);
 
   @override
-  Meditation energy(int energy) => this(energy: energy);
+  MeditationModel mood(int mood) => this(mood: mood);
 
   @override
-  Meditation type(MeditationType type) => this(type: type);
+  MeditationModel energy(int energy) => this(energy: energy);
 
   @override
-  Meditation goal(int? goal) => this(goal: goal);
+  MeditationModel type(MeditationType type) => this(type: type);
 
   @override
-  Meditation rating(double? rating) => this(rating: rating);
+  MeditationModel goal(int? goal) => this(goal: goal);
 
   @override
-  Meditation elapsed(int elapsed) => this(elapsed: elapsed);
+  MeditationModel rating(double? rating) => this(rating: rating);
+
+  @override
+  MeditationModel elapsed(int elapsed) => this(elapsed: elapsed);
 
   @override
 
-  /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `Meditation(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
+  /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `MeditationModel(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
   /// Usage
   /// ```dart
-  /// Meditation(...).copyWith(id: 12, name: "My name")
+  /// MeditationModel(...).copyWith(id: 12, name: "My name")
   /// ````
-  Meditation call({
+  MeditationModel call({
     Object? date = const $CopyWithPlaceholder(),
     Object? stress = const $CopyWithPlaceholder(),
     Object? mood = const $CopyWithPlaceholder(),
@@ -89,7 +89,7 @@ class _$MeditationCWProxyImpl implements _$MeditationCWProxy {
     Object? rating = const $CopyWithPlaceholder(),
     Object? elapsed = const $CopyWithPlaceholder(),
   }) {
-    return Meditation(
+    return MeditationModel(
       date: date == const $CopyWithPlaceholder() || date == null
           ? _value.date
           // ignore: cast_nullable_to_non_nullable
@@ -126,10 +126,10 @@ class _$MeditationCWProxyImpl implements _$MeditationCWProxy {
   }
 }
 
-extension $MeditationCopyWith on Meditation {
-  /// Returns a callable class that can be used as follows: `instanceOfMeditation.copyWith(...)` or like so:`instanceOfMeditation.copyWith.fieldName(...)`.
+extension $MeditationModelCopyWith on MeditationModel {
+  /// Returns a callable class that can be used as follows: `instanceOfMeditationModel.copyWith(...)` or like so:`instanceOfMeditationModel.copyWith.fieldName(...)`.
   // ignore: library_private_types_in_public_api
-  _$MeditationCWProxy get copyWith => _$MeditationCWProxyImpl(this);
+  _$MeditationModelCWProxy get copyWith => _$MeditationModelCWProxyImpl(this);
 }
 
 // **************************************************************************
@@ -139,13 +139,13 @@ extension $MeditationCopyWith on Meditation {
 // coverage:ignore-file
 // ignore_for_file: duplicate_ignore, non_constant_identifier_names, constant_identifier_names, invalid_use_of_protected_member, unnecessary_cast, prefer_const_constructors, lines_longer_than_80_chars, require_trailing_commas, inference_failure_on_function_invocation, unnecessary_parenthesis, unnecessary_raw_strings, unnecessary_null_checks, join_return_with_assignment, prefer_final_locals, avoid_js_rounded_ints, avoid_positional_boolean_parameters
 
-extension GetMeditationCollection on Isar {
-  IsarCollection<Meditation> get meditations => this.collection();
+extension GetMeditationModelCollection on Isar {
+  IsarCollection<MeditationModel> get meditationModels => this.collection();
 }
 
-const MeditationSchema = CollectionSchema(
-  name: r'Meditation',
-  id: -4241823163203330657,
+const MeditationModelSchema = CollectionSchema(
+  name: r'MeditationModel',
+  id: -8804796857989463151,
   properties: {
     r'date': PropertySchema(
       id: 0,
@@ -186,13 +186,13 @@ const MeditationSchema = CollectionSchema(
       id: 7,
       name: r'type',
       type: IsarType.byte,
-      enumMap: _MeditationtypeEnumValueMap,
+      enumMap: _MeditationModeltypeEnumValueMap,
     )
   },
-  estimateSize: _meditationEstimateSize,
-  serialize: _meditationSerialize,
-  deserialize: _meditationDeserialize,
-  deserializeProp: _meditationDeserializeProp,
+  estimateSize: _meditationModelEstimateSize,
+  serialize: _meditationModelSerialize,
+  deserialize: _meditationModelDeserialize,
+  deserializeProp: _meditationModelDeserializeProp,
   idName: r'id',
   indexes: {
     r'date': IndexSchema(
@@ -211,14 +211,14 @@ const MeditationSchema = CollectionSchema(
   },
   links: {},
   embeddedSchemas: {},
-  getId: _meditationGetId,
-  getLinks: _meditationGetLinks,
-  attach: _meditationAttach,
+  getId: _meditationModelGetId,
+  getLinks: _meditationModelGetLinks,
+  attach: _meditationModelAttach,
   version: '3.0.5',
 );
 
-int _meditationEstimateSize(
-  Meditation object,
+int _meditationModelEstimateSize(
+  MeditationModel object,
   List<int> offsets,
   Map<Type, List<int>> allOffsets,
 ) {
@@ -226,8 +226,8 @@ int _meditationEstimateSize(
   return bytesCount;
 }
 
-void _meditationSerialize(
-  Meditation object,
+void _meditationModelSerialize(
+  MeditationModel object,
   IsarWriter writer,
   List<int> offsets,
   Map<Type, List<int>> allOffsets,
@@ -242,13 +242,13 @@ void _meditationSerialize(
   writer.writeByte(offsets[7], object.type.index);
 }
 
-Meditation _meditationDeserialize(
+MeditationModel _meditationModelDeserialize(
   Id id,
   IsarReader reader,
   List<int> offsets,
   Map<Type, List<int>> allOffsets,
 ) {
-  final object = Meditation(
+  final object = MeditationModel(
     date: reader.readDateTime(offsets[0]),
     elapsed: reader.readLongOrNull(offsets[1]) ?? 0,
     energy: reader.readLongOrNull(offsets[2]) ?? 0,
@@ -256,14 +256,14 @@ Meditation _meditationDeserialize(
     mood: reader.readLongOrNull(offsets[4]) ?? 0,
     rating: reader.readDoubleOrNull(offsets[5]),
     stress: reader.readLongOrNull(offsets[6]) ?? 0,
-    type: _MeditationtypeValueEnumMap[reader.readByteOrNull(offsets[7])] ??
+    type: _MeditationModeltypeValueEnumMap[reader.readByteOrNull(offsets[7])] ??
         MeditationType.timed,
   );
   object.id = id;
   return object;
 }
 
-P _meditationDeserializeProp<P>(
+P _meditationModelDeserializeProp<P>(
   IsarReader reader,
   int propertyId,
   int offset,
@@ -285,43 +285,44 @@ P _meditationDeserializeProp<P>(
     case 6:
       return (reader.readLongOrNull(offset) ?? 0) as P;
     case 7:
-      return (_MeditationtypeValueEnumMap[reader.readByteOrNull(offset)] ??
+      return (_MeditationModeltypeValueEnumMap[reader.readByteOrNull(offset)] ??
           MeditationType.timed) as P;
     default:
       throw IsarError('Unknown property with id $propertyId');
   }
 }
 
-const _MeditationtypeEnumValueMap = {
+const _MeditationModeltypeEnumValueMap = {
   'openEnded': 0,
   'timed': 1,
 };
-const _MeditationtypeValueEnumMap = {
+const _MeditationModeltypeValueEnumMap = {
   0: MeditationType.openEnded,
   1: MeditationType.timed,
 };
 
-Id _meditationGetId(Meditation object) {
+Id _meditationModelGetId(MeditationModel object) {
   return object.id;
 }
 
-List<IsarLinkBase<dynamic>> _meditationGetLinks(Meditation object) {
+List<IsarLinkBase<dynamic>> _meditationModelGetLinks(MeditationModel object) {
   return [];
 }
 
-void _meditationAttach(IsarCollection<dynamic> col, Id id, Meditation object) {
+void _meditationModelAttach(
+    IsarCollection<dynamic> col, Id id, MeditationModel object) {
   object.id = id;
 }
 
-extension MeditationQueryWhereSort
-    on QueryBuilder<Meditation, Meditation, QWhere> {
-  QueryBuilder<Meditation, Meditation, QAfterWhere> anyId() {
+extension MeditationModelQueryWhereSort
+    on QueryBuilder<MeditationModel, MeditationModel, QWhere> {
+  QueryBuilder<MeditationModel, MeditationModel, QAfterWhere> anyId() {
     return QueryBuilder.apply(this, (query) {
       return query.addWhereClause(const IdWhereClause.any());
     });
   }
 
-  QueryBuilder<Meditation, Meditation, QAfterWhere> anyDate() {
+  QueryBuilder<MeditationModel, MeditationModel, QAfterWhere> anyDate() {
     return QueryBuilder.apply(this, (query) {
       return query.addWhereClause(
         const IndexWhereClause.any(indexName: r'date'),
@@ -330,9 +331,10 @@ extension MeditationQueryWhereSort
   }
 }
 
-extension MeditationQueryWhere
-    on QueryBuilder<Meditation, Meditation, QWhereClause> {
-  QueryBuilder<Meditation, Meditation, QAfterWhereClause> idEqualTo(Id id) {
+extension MeditationModelQueryWhere
+    on QueryBuilder<MeditationModel, MeditationModel, QWhereClause> {
+  QueryBuilder<MeditationModel, MeditationModel, QAfterWhereClause> idEqualTo(
+      Id id) {
     return QueryBuilder.apply(this, (query) {
       return query.addWhereClause(IdWhereClause.between(
         lower: id,
@@ -341,7 +343,8 @@ extension MeditationQueryWhere
     });
   }
 
-  QueryBuilder<Meditation, Meditation, QAfterWhereClause> idNotEqualTo(Id id) {
+  QueryBuilder<MeditationModel, MeditationModel, QAfterWhereClause>
+      idNotEqualTo(Id id) {
     return QueryBuilder.apply(this, (query) {
       if (query.whereSort == Sort.asc) {
         return query
@@ -363,8 +366,8 @@ extension MeditationQueryWhere
     });
   }
 
-  QueryBuilder<Meditation, Meditation, QAfterWhereClause> idGreaterThan(Id id,
-      {bool include = false}) {
+  QueryBuilder<MeditationModel, MeditationModel, QAfterWhereClause>
+      idGreaterThan(Id id, {bool include = false}) {
     return QueryBuilder.apply(this, (query) {
       return query.addWhereClause(
         IdWhereClause.greaterThan(lower: id, includeLower: include),
@@ -372,7 +375,8 @@ extension MeditationQueryWhere
     });
   }
 
-  QueryBuilder<Meditation, Meditation, QAfterWhereClause> idLessThan(Id id,
+  QueryBuilder<MeditationModel, MeditationModel, QAfterWhereClause> idLessThan(
+      Id id,
       {bool include = false}) {
     return QueryBuilder.apply(this, (query) {
       return query.addWhereClause(
@@ -381,7 +385,7 @@ extension MeditationQueryWhere
     });
   }
 
-  QueryBuilder<Meditation, Meditation, QAfterWhereClause> idBetween(
+  QueryBuilder<MeditationModel, MeditationModel, QAfterWhereClause> idBetween(
     Id lowerId,
     Id upperId, {
     bool includeLower = true,
@@ -397,7 +401,7 @@ extension MeditationQueryWhere
     });
   }
 
-  QueryBuilder<Meditation, Meditation, QAfterWhereClause> dateEqualTo(
+  QueryBuilder<MeditationModel, MeditationModel, QAfterWhereClause> dateEqualTo(
       DateTime date) {
     return QueryBuilder.apply(this, (query) {
       return query.addWhereClause(IndexWhereClause.equalTo(
@@ -407,8 +411,8 @@ extension MeditationQueryWhere
     });
   }
 
-  QueryBuilder<Meditation, Meditation, QAfterWhereClause> dateNotEqualTo(
-      DateTime date) {
+  QueryBuilder<MeditationModel, MeditationModel, QAfterWhereClause>
+      dateNotEqualTo(DateTime date) {
     return QueryBuilder.apply(this, (query) {
       if (query.whereSort == Sort.asc) {
         return query
@@ -442,7 +446,8 @@ extension MeditationQueryWhere
     });
   }
 
-  QueryBuilder<Meditation, Meditation, QAfterWhereClause> dateGreaterThan(
+  QueryBuilder<MeditationModel, MeditationModel, QAfterWhereClause>
+      dateGreaterThan(
     DateTime date, {
     bool include = false,
   }) {
@@ -456,7 +461,8 @@ extension MeditationQueryWhere
     });
   }
 
-  QueryBuilder<Meditation, Meditation, QAfterWhereClause> dateLessThan(
+  QueryBuilder<MeditationModel, MeditationModel, QAfterWhereClause>
+      dateLessThan(
     DateTime date, {
     bool include = false,
   }) {
@@ -470,7 +476,7 @@ extension MeditationQueryWhere
     });
   }
 
-  QueryBuilder<Meditation, Meditation, QAfterWhereClause> dateBetween(
+  QueryBuilder<MeditationModel, MeditationModel, QAfterWhereClause> dateBetween(
     DateTime lowerDate,
     DateTime upperDate, {
     bool includeLower = true,
@@ -488,10 +494,10 @@ extension MeditationQueryWhere
   }
 }
 
-extension MeditationQueryFilter
-    on QueryBuilder<Meditation, Meditation, QFilterCondition> {
-  QueryBuilder<Meditation, Meditation, QAfterFilterCondition> dateEqualTo(
-      DateTime value) {
+extension MeditationModelQueryFilter
+    on QueryBuilder<MeditationModel, MeditationModel, QFilterCondition> {
+  QueryBuilder<MeditationModel, MeditationModel, QAfterFilterCondition>
+      dateEqualTo(DateTime value) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
         property: r'date',
@@ -500,7 +506,8 @@ extension MeditationQueryFilter
     });
   }
 
-  QueryBuilder<Meditation, Meditation, QAfterFilterCondition> dateGreaterThan(
+  QueryBuilder<MeditationModel, MeditationModel, QAfterFilterCondition>
+      dateGreaterThan(
     DateTime value, {
     bool include = false,
   }) {
@@ -513,7 +520,8 @@ extension MeditationQueryFilter
     });
   }
 
-  QueryBuilder<Meditation, Meditation, QAfterFilterCondition> dateLessThan(
+  QueryBuilder<MeditationModel, MeditationModel, QAfterFilterCondition>
+      dateLessThan(
     DateTime value, {
     bool include = false,
   }) {
@@ -526,7 +534,8 @@ extension MeditationQueryFilter
     });
   }
 
-  QueryBuilder<Meditation, Meditation, QAfterFilterCondition> dateBetween(
+  QueryBuilder<MeditationModel, MeditationModel, QAfterFilterCondition>
+      dateBetween(
     DateTime lower,
     DateTime upper, {
     bool includeLower = true,
@@ -543,8 +552,8 @@ extension MeditationQueryFilter
     });
   }
 
-  QueryBuilder<Meditation, Meditation, QAfterFilterCondition> elapsedEqualTo(
-      int value) {
+  QueryBuilder<MeditationModel, MeditationModel, QAfterFilterCondition>
+      elapsedEqualTo(int value) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
         property: r'elapsed',
@@ -553,7 +562,7 @@ extension MeditationQueryFilter
     });
   }
 
-  QueryBuilder<Meditation, Meditation, QAfterFilterCondition>
+  QueryBuilder<MeditationModel, MeditationModel, QAfterFilterCondition>
       elapsedGreaterThan(
     int value, {
     bool include = false,
@@ -567,7 +576,8 @@ extension MeditationQueryFilter
     });
   }
 
-  QueryBuilder<Meditation, Meditation, QAfterFilterCondition> elapsedLessThan(
+  QueryBuilder<MeditationModel, MeditationModel, QAfterFilterCondition>
+      elapsedLessThan(
     int value, {
     bool include = false,
   }) {
@@ -580,7 +590,8 @@ extension MeditationQueryFilter
     });
   }
 
-  QueryBuilder<Meditation, Meditation, QAfterFilterCondition> elapsedBetween(
+  QueryBuilder<MeditationModel, MeditationModel, QAfterFilterCondition>
+      elapsedBetween(
     int lower,
     int upper, {
     bool includeLower = true,
@@ -597,8 +608,8 @@ extension MeditationQueryFilter
     });
   }
 
-  QueryBuilder<Meditation, Meditation, QAfterFilterCondition> energyEqualTo(
-      int value) {
+  QueryBuilder<MeditationModel, MeditationModel, QAfterFilterCondition>
+      energyEqualTo(int value) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
         property: r'energy',
@@ -607,7 +618,8 @@ extension MeditationQueryFilter
     });
   }
 
-  QueryBuilder<Meditation, Meditation, QAfterFilterCondition> energyGreaterThan(
+  QueryBuilder<MeditationModel, MeditationModel, QAfterFilterCondition>
+      energyGreaterThan(
     int value, {
     bool include = false,
   }) {
@@ -620,7 +632,8 @@ extension MeditationQueryFilter
     });
   }
 
-  QueryBuilder<Meditation, Meditation, QAfterFilterCondition> energyLessThan(
+  QueryBuilder<MeditationModel, MeditationModel, QAfterFilterCondition>
+      energyLessThan(
     int value, {
     bool include = false,
   }) {
@@ -633,7 +646,8 @@ extension MeditationQueryFilter
     });
   }
 
-  QueryBuilder<Meditation, Meditation, QAfterFilterCondition> energyBetween(
+  QueryBuilder<MeditationModel, MeditationModel, QAfterFilterCondition>
+      energyBetween(
     int lower,
     int upper, {
     bool includeLower = true,
@@ -650,7 +664,8 @@ extension MeditationQueryFilter
     });
   }
 
-  QueryBuilder<Meditation, Meditation, QAfterFilterCondition> goalIsNull() {
+  QueryBuilder<MeditationModel, MeditationModel, QAfterFilterCondition>
+      goalIsNull() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(const FilterCondition.isNull(
         property: r'goal',
@@ -658,7 +673,8 @@ extension MeditationQueryFilter
     });
   }
 
-  QueryBuilder<Meditation, Meditation, QAfterFilterCondition> goalIsNotNull() {
+  QueryBuilder<MeditationModel, MeditationModel, QAfterFilterCondition>
+      goalIsNotNull() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(const FilterCondition.isNotNull(
         property: r'goal',
@@ -666,8 +682,8 @@ extension MeditationQueryFilter
     });
   }
 
-  QueryBuilder<Meditation, Meditation, QAfterFilterCondition> goalEqualTo(
-      int? value) {
+  QueryBuilder<MeditationModel, MeditationModel, QAfterFilterCondition>
+      goalEqualTo(int? value) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
         property: r'goal',
@@ -676,7 +692,8 @@ extension MeditationQueryFilter
     });
   }
 
-  QueryBuilder<Meditation, Meditation, QAfterFilterCondition> goalGreaterThan(
+  QueryBuilder<MeditationModel, MeditationModel, QAfterFilterCondition>
+      goalGreaterThan(
     int? value, {
     bool include = false,
   }) {
@@ -689,7 +706,8 @@ extension MeditationQueryFilter
     });
   }
 
-  QueryBuilder<Meditation, Meditation, QAfterFilterCondition> goalLessThan(
+  QueryBuilder<MeditationModel, MeditationModel, QAfterFilterCondition>
+      goalLessThan(
     int? value, {
     bool include = false,
   }) {
@@ -702,7 +720,8 @@ extension MeditationQueryFilter
     });
   }
 
-  QueryBuilder<Meditation, Meditation, QAfterFilterCondition> goalBetween(
+  QueryBuilder<MeditationModel, MeditationModel, QAfterFilterCondition>
+      goalBetween(
     int? lower,
     int? upper, {
     bool includeLower = true,
@@ -719,8 +738,8 @@ extension MeditationQueryFilter
     });
   }
 
-  QueryBuilder<Meditation, Meditation, QAfterFilterCondition> idEqualTo(
-      Id value) {
+  QueryBuilder<MeditationModel, MeditationModel, QAfterFilterCondition>
+      idEqualTo(Id value) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
         property: r'id',
@@ -729,7 +748,8 @@ extension MeditationQueryFilter
     });
   }
 
-  QueryBuilder<Meditation, Meditation, QAfterFilterCondition> idGreaterThan(
+  QueryBuilder<MeditationModel, MeditationModel, QAfterFilterCondition>
+      idGreaterThan(
     Id value, {
     bool include = false,
   }) {
@@ -742,7 +762,8 @@ extension MeditationQueryFilter
     });
   }
 
-  QueryBuilder<Meditation, Meditation, QAfterFilterCondition> idLessThan(
+  QueryBuilder<MeditationModel, MeditationModel, QAfterFilterCondition>
+      idLessThan(
     Id value, {
     bool include = false,
   }) {
@@ -755,7 +776,8 @@ extension MeditationQueryFilter
     });
   }
 
-  QueryBuilder<Meditation, Meditation, QAfterFilterCondition> idBetween(
+  QueryBuilder<MeditationModel, MeditationModel, QAfterFilterCondition>
+      idBetween(
     Id lower,
     Id upper, {
     bool includeLower = true,
@@ -772,8 +794,8 @@ extension MeditationQueryFilter
     });
   }
 
-  QueryBuilder<Meditation, Meditation, QAfterFilterCondition> moodEqualTo(
-      int value) {
+  QueryBuilder<MeditationModel, MeditationModel, QAfterFilterCondition>
+      moodEqualTo(int value) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
         property: r'mood',
@@ -782,7 +804,8 @@ extension MeditationQueryFilter
     });
   }
 
-  QueryBuilder<Meditation, Meditation, QAfterFilterCondition> moodGreaterThan(
+  QueryBuilder<MeditationModel, MeditationModel, QAfterFilterCondition>
+      moodGreaterThan(
     int value, {
     bool include = false,
   }) {
@@ -795,7 +818,8 @@ extension MeditationQueryFilter
     });
   }
 
-  QueryBuilder<Meditation, Meditation, QAfterFilterCondition> moodLessThan(
+  QueryBuilder<MeditationModel, MeditationModel, QAfterFilterCondition>
+      moodLessThan(
     int value, {
     bool include = false,
   }) {
@@ -808,7 +832,8 @@ extension MeditationQueryFilter
     });
   }
 
-  QueryBuilder<Meditation, Meditation, QAfterFilterCondition> moodBetween(
+  QueryBuilder<MeditationModel, MeditationModel, QAfterFilterCondition>
+      moodBetween(
     int lower,
     int upper, {
     bool includeLower = true,
@@ -825,7 +850,8 @@ extension MeditationQueryFilter
     });
   }
 
-  QueryBuilder<Meditation, Meditation, QAfterFilterCondition> ratingIsNull() {
+  QueryBuilder<MeditationModel, MeditationModel, QAfterFilterCondition>
+      ratingIsNull() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(const FilterCondition.isNull(
         property: r'rating',
@@ -833,7 +859,7 @@ extension MeditationQueryFilter
     });
   }
 
-  QueryBuilder<Meditation, Meditation, QAfterFilterCondition>
+  QueryBuilder<MeditationModel, MeditationModel, QAfterFilterCondition>
       ratingIsNotNull() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(const FilterCondition.isNotNull(
@@ -842,7 +868,8 @@ extension MeditationQueryFilter
     });
   }
 
-  QueryBuilder<Meditation, Meditation, QAfterFilterCondition> ratingEqualTo(
+  QueryBuilder<MeditationModel, MeditationModel, QAfterFilterCondition>
+      ratingEqualTo(
     double? value, {
     double epsilon = Query.epsilon,
   }) {
@@ -855,7 +882,8 @@ extension MeditationQueryFilter
     });
   }
 
-  QueryBuilder<Meditation, Meditation, QAfterFilterCondition> ratingGreaterThan(
+  QueryBuilder<MeditationModel, MeditationModel, QAfterFilterCondition>
+      ratingGreaterThan(
     double? value, {
     bool include = false,
     double epsilon = Query.epsilon,
@@ -870,7 +898,8 @@ extension MeditationQueryFilter
     });
   }
 
-  QueryBuilder<Meditation, Meditation, QAfterFilterCondition> ratingLessThan(
+  QueryBuilder<MeditationModel, MeditationModel, QAfterFilterCondition>
+      ratingLessThan(
     double? value, {
     bool include = false,
     double epsilon = Query.epsilon,
@@ -885,7 +914,8 @@ extension MeditationQueryFilter
     });
   }
 
-  QueryBuilder<Meditation, Meditation, QAfterFilterCondition> ratingBetween(
+  QueryBuilder<MeditationModel, MeditationModel, QAfterFilterCondition>
+      ratingBetween(
     double? lower,
     double? upper, {
     bool includeLower = true,
@@ -904,8 +934,8 @@ extension MeditationQueryFilter
     });
   }
 
-  QueryBuilder<Meditation, Meditation, QAfterFilterCondition> stressEqualTo(
-      int value) {
+  QueryBuilder<MeditationModel, MeditationModel, QAfterFilterCondition>
+      stressEqualTo(int value) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
         property: r'stress',
@@ -914,7 +944,8 @@ extension MeditationQueryFilter
     });
   }
 
-  QueryBuilder<Meditation, Meditation, QAfterFilterCondition> stressGreaterThan(
+  QueryBuilder<MeditationModel, MeditationModel, QAfterFilterCondition>
+      stressGreaterThan(
     int value, {
     bool include = false,
   }) {
@@ -927,7 +958,8 @@ extension MeditationQueryFilter
     });
   }
 
-  QueryBuilder<Meditation, Meditation, QAfterFilterCondition> stressLessThan(
+  QueryBuilder<MeditationModel, MeditationModel, QAfterFilterCondition>
+      stressLessThan(
     int value, {
     bool include = false,
   }) {
@@ -940,7 +972,8 @@ extension MeditationQueryFilter
     });
   }
 
-  QueryBuilder<Meditation, Meditation, QAfterFilterCondition> stressBetween(
+  QueryBuilder<MeditationModel, MeditationModel, QAfterFilterCondition>
+      stressBetween(
     int lower,
     int upper, {
     bool includeLower = true,
@@ -957,8 +990,8 @@ extension MeditationQueryFilter
     });
   }
 
-  QueryBuilder<Meditation, Meditation, QAfterFilterCondition> typeEqualTo(
-      MeditationType value) {
+  QueryBuilder<MeditationModel, MeditationModel, QAfterFilterCondition>
+      typeEqualTo(MeditationType value) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
         property: r'type',
@@ -967,7 +1000,8 @@ extension MeditationQueryFilter
     });
   }
 
-  QueryBuilder<Meditation, Meditation, QAfterFilterCondition> typeGreaterThan(
+  QueryBuilder<MeditationModel, MeditationModel, QAfterFilterCondition>
+      typeGreaterThan(
     MeditationType value, {
     bool include = false,
   }) {
@@ -980,7 +1014,8 @@ extension MeditationQueryFilter
     });
   }
 
-  QueryBuilder<Meditation, Meditation, QAfterFilterCondition> typeLessThan(
+  QueryBuilder<MeditationModel, MeditationModel, QAfterFilterCondition>
+      typeLessThan(
     MeditationType value, {
     bool include = false,
   }) {
@@ -993,7 +1028,8 @@ extension MeditationQueryFilter
     });
   }
 
-  QueryBuilder<Meditation, Meditation, QAfterFilterCondition> typeBetween(
+  QueryBuilder<MeditationModel, MeditationModel, QAfterFilterCondition>
+      typeBetween(
     MeditationType lower,
     MeditationType upper, {
     bool includeLower = true,
@@ -1011,324 +1047,342 @@ extension MeditationQueryFilter
   }
 }
 
-extension MeditationQueryObject
-    on QueryBuilder<Meditation, Meditation, QFilterCondition> {}
+extension MeditationModelQueryObject
+    on QueryBuilder<MeditationModel, MeditationModel, QFilterCondition> {}
 
-extension MeditationQueryLinks
-    on QueryBuilder<Meditation, Meditation, QFilterCondition> {}
+extension MeditationModelQueryLinks
+    on QueryBuilder<MeditationModel, MeditationModel, QFilterCondition> {}
 
-extension MeditationQuerySortBy
-    on QueryBuilder<Meditation, Meditation, QSortBy> {
-  QueryBuilder<Meditation, Meditation, QAfterSortBy> sortByDate() {
+extension MeditationModelQuerySortBy
+    on QueryBuilder<MeditationModel, MeditationModel, QSortBy> {
+  QueryBuilder<MeditationModel, MeditationModel, QAfterSortBy> sortByDate() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'date', Sort.asc);
     });
   }
 
-  QueryBuilder<Meditation, Meditation, QAfterSortBy> sortByDateDesc() {
+  QueryBuilder<MeditationModel, MeditationModel, QAfterSortBy>
+      sortByDateDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'date', Sort.desc);
     });
   }
 
-  QueryBuilder<Meditation, Meditation, QAfterSortBy> sortByElapsed() {
+  QueryBuilder<MeditationModel, MeditationModel, QAfterSortBy> sortByElapsed() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'elapsed', Sort.asc);
     });
   }
 
-  QueryBuilder<Meditation, Meditation, QAfterSortBy> sortByElapsedDesc() {
+  QueryBuilder<MeditationModel, MeditationModel, QAfterSortBy>
+      sortByElapsedDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'elapsed', Sort.desc);
     });
   }
 
-  QueryBuilder<Meditation, Meditation, QAfterSortBy> sortByEnergy() {
+  QueryBuilder<MeditationModel, MeditationModel, QAfterSortBy> sortByEnergy() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'energy', Sort.asc);
     });
   }
 
-  QueryBuilder<Meditation, Meditation, QAfterSortBy> sortByEnergyDesc() {
+  QueryBuilder<MeditationModel, MeditationModel, QAfterSortBy>
+      sortByEnergyDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'energy', Sort.desc);
     });
   }
 
-  QueryBuilder<Meditation, Meditation, QAfterSortBy> sortByGoal() {
+  QueryBuilder<MeditationModel, MeditationModel, QAfterSortBy> sortByGoal() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'goal', Sort.asc);
     });
   }
 
-  QueryBuilder<Meditation, Meditation, QAfterSortBy> sortByGoalDesc() {
+  QueryBuilder<MeditationModel, MeditationModel, QAfterSortBy>
+      sortByGoalDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'goal', Sort.desc);
     });
   }
 
-  QueryBuilder<Meditation, Meditation, QAfterSortBy> sortByMood() {
+  QueryBuilder<MeditationModel, MeditationModel, QAfterSortBy> sortByMood() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'mood', Sort.asc);
     });
   }
 
-  QueryBuilder<Meditation, Meditation, QAfterSortBy> sortByMoodDesc() {
+  QueryBuilder<MeditationModel, MeditationModel, QAfterSortBy>
+      sortByMoodDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'mood', Sort.desc);
     });
   }
 
-  QueryBuilder<Meditation, Meditation, QAfterSortBy> sortByRating() {
+  QueryBuilder<MeditationModel, MeditationModel, QAfterSortBy> sortByRating() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'rating', Sort.asc);
     });
   }
 
-  QueryBuilder<Meditation, Meditation, QAfterSortBy> sortByRatingDesc() {
+  QueryBuilder<MeditationModel, MeditationModel, QAfterSortBy>
+      sortByRatingDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'rating', Sort.desc);
     });
   }
 
-  QueryBuilder<Meditation, Meditation, QAfterSortBy> sortByStress() {
+  QueryBuilder<MeditationModel, MeditationModel, QAfterSortBy> sortByStress() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'stress', Sort.asc);
     });
   }
 
-  QueryBuilder<Meditation, Meditation, QAfterSortBy> sortByStressDesc() {
+  QueryBuilder<MeditationModel, MeditationModel, QAfterSortBy>
+      sortByStressDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'stress', Sort.desc);
     });
   }
 
-  QueryBuilder<Meditation, Meditation, QAfterSortBy> sortByType() {
+  QueryBuilder<MeditationModel, MeditationModel, QAfterSortBy> sortByType() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'type', Sort.asc);
     });
   }
 
-  QueryBuilder<Meditation, Meditation, QAfterSortBy> sortByTypeDesc() {
+  QueryBuilder<MeditationModel, MeditationModel, QAfterSortBy>
+      sortByTypeDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'type', Sort.desc);
     });
   }
 }
 
-extension MeditationQuerySortThenBy
-    on QueryBuilder<Meditation, Meditation, QSortThenBy> {
-  QueryBuilder<Meditation, Meditation, QAfterSortBy> thenByDate() {
+extension MeditationModelQuerySortThenBy
+    on QueryBuilder<MeditationModel, MeditationModel, QSortThenBy> {
+  QueryBuilder<MeditationModel, MeditationModel, QAfterSortBy> thenByDate() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'date', Sort.asc);
     });
   }
 
-  QueryBuilder<Meditation, Meditation, QAfterSortBy> thenByDateDesc() {
+  QueryBuilder<MeditationModel, MeditationModel, QAfterSortBy>
+      thenByDateDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'date', Sort.desc);
     });
   }
 
-  QueryBuilder<Meditation, Meditation, QAfterSortBy> thenByElapsed() {
+  QueryBuilder<MeditationModel, MeditationModel, QAfterSortBy> thenByElapsed() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'elapsed', Sort.asc);
     });
   }
 
-  QueryBuilder<Meditation, Meditation, QAfterSortBy> thenByElapsedDesc() {
+  QueryBuilder<MeditationModel, MeditationModel, QAfterSortBy>
+      thenByElapsedDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'elapsed', Sort.desc);
     });
   }
 
-  QueryBuilder<Meditation, Meditation, QAfterSortBy> thenByEnergy() {
+  QueryBuilder<MeditationModel, MeditationModel, QAfterSortBy> thenByEnergy() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'energy', Sort.asc);
     });
   }
 
-  QueryBuilder<Meditation, Meditation, QAfterSortBy> thenByEnergyDesc() {
+  QueryBuilder<MeditationModel, MeditationModel, QAfterSortBy>
+      thenByEnergyDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'energy', Sort.desc);
     });
   }
 
-  QueryBuilder<Meditation, Meditation, QAfterSortBy> thenByGoal() {
+  QueryBuilder<MeditationModel, MeditationModel, QAfterSortBy> thenByGoal() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'goal', Sort.asc);
     });
   }
 
-  QueryBuilder<Meditation, Meditation, QAfterSortBy> thenByGoalDesc() {
+  QueryBuilder<MeditationModel, MeditationModel, QAfterSortBy>
+      thenByGoalDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'goal', Sort.desc);
     });
   }
 
-  QueryBuilder<Meditation, Meditation, QAfterSortBy> thenById() {
+  QueryBuilder<MeditationModel, MeditationModel, QAfterSortBy> thenById() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'id', Sort.asc);
     });
   }
 
-  QueryBuilder<Meditation, Meditation, QAfterSortBy> thenByIdDesc() {
+  QueryBuilder<MeditationModel, MeditationModel, QAfterSortBy> thenByIdDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'id', Sort.desc);
     });
   }
 
-  QueryBuilder<Meditation, Meditation, QAfterSortBy> thenByMood() {
+  QueryBuilder<MeditationModel, MeditationModel, QAfterSortBy> thenByMood() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'mood', Sort.asc);
     });
   }
 
-  QueryBuilder<Meditation, Meditation, QAfterSortBy> thenByMoodDesc() {
+  QueryBuilder<MeditationModel, MeditationModel, QAfterSortBy>
+      thenByMoodDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'mood', Sort.desc);
     });
   }
 
-  QueryBuilder<Meditation, Meditation, QAfterSortBy> thenByRating() {
+  QueryBuilder<MeditationModel, MeditationModel, QAfterSortBy> thenByRating() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'rating', Sort.asc);
     });
   }
 
-  QueryBuilder<Meditation, Meditation, QAfterSortBy> thenByRatingDesc() {
+  QueryBuilder<MeditationModel, MeditationModel, QAfterSortBy>
+      thenByRatingDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'rating', Sort.desc);
     });
   }
 
-  QueryBuilder<Meditation, Meditation, QAfterSortBy> thenByStress() {
+  QueryBuilder<MeditationModel, MeditationModel, QAfterSortBy> thenByStress() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'stress', Sort.asc);
     });
   }
 
-  QueryBuilder<Meditation, Meditation, QAfterSortBy> thenByStressDesc() {
+  QueryBuilder<MeditationModel, MeditationModel, QAfterSortBy>
+      thenByStressDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'stress', Sort.desc);
     });
   }
 
-  QueryBuilder<Meditation, Meditation, QAfterSortBy> thenByType() {
+  QueryBuilder<MeditationModel, MeditationModel, QAfterSortBy> thenByType() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'type', Sort.asc);
     });
   }
 
-  QueryBuilder<Meditation, Meditation, QAfterSortBy> thenByTypeDesc() {
+  QueryBuilder<MeditationModel, MeditationModel, QAfterSortBy>
+      thenByTypeDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'type', Sort.desc);
     });
   }
 }
 
-extension MeditationQueryWhereDistinct
-    on QueryBuilder<Meditation, Meditation, QDistinct> {
-  QueryBuilder<Meditation, Meditation, QDistinct> distinctByDate() {
+extension MeditationModelQueryWhereDistinct
+    on QueryBuilder<MeditationModel, MeditationModel, QDistinct> {
+  QueryBuilder<MeditationModel, MeditationModel, QDistinct> distinctByDate() {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'date');
     });
   }
 
-  QueryBuilder<Meditation, Meditation, QDistinct> distinctByElapsed() {
+  QueryBuilder<MeditationModel, MeditationModel, QDistinct>
+      distinctByElapsed() {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'elapsed');
     });
   }
 
-  QueryBuilder<Meditation, Meditation, QDistinct> distinctByEnergy() {
+  QueryBuilder<MeditationModel, MeditationModel, QDistinct> distinctByEnergy() {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'energy');
     });
   }
 
-  QueryBuilder<Meditation, Meditation, QDistinct> distinctByGoal() {
+  QueryBuilder<MeditationModel, MeditationModel, QDistinct> distinctByGoal() {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'goal');
     });
   }
 
-  QueryBuilder<Meditation, Meditation, QDistinct> distinctByMood() {
+  QueryBuilder<MeditationModel, MeditationModel, QDistinct> distinctByMood() {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'mood');
     });
   }
 
-  QueryBuilder<Meditation, Meditation, QDistinct> distinctByRating() {
+  QueryBuilder<MeditationModel, MeditationModel, QDistinct> distinctByRating() {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'rating');
     });
   }
 
-  QueryBuilder<Meditation, Meditation, QDistinct> distinctByStress() {
+  QueryBuilder<MeditationModel, MeditationModel, QDistinct> distinctByStress() {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'stress');
     });
   }
 
-  QueryBuilder<Meditation, Meditation, QDistinct> distinctByType() {
+  QueryBuilder<MeditationModel, MeditationModel, QDistinct> distinctByType() {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'type');
     });
   }
 }
 
-extension MeditationQueryProperty
-    on QueryBuilder<Meditation, Meditation, QQueryProperty> {
-  QueryBuilder<Meditation, int, QQueryOperations> idProperty() {
+extension MeditationModelQueryProperty
+    on QueryBuilder<MeditationModel, MeditationModel, QQueryProperty> {
+  QueryBuilder<MeditationModel, int, QQueryOperations> idProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'id');
     });
   }
 
-  QueryBuilder<Meditation, DateTime, QQueryOperations> dateProperty() {
+  QueryBuilder<MeditationModel, DateTime, QQueryOperations> dateProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'date');
     });
   }
 
-  QueryBuilder<Meditation, int, QQueryOperations> elapsedProperty() {
+  QueryBuilder<MeditationModel, int, QQueryOperations> elapsedProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'elapsed');
     });
   }
 
-  QueryBuilder<Meditation, int, QQueryOperations> energyProperty() {
+  QueryBuilder<MeditationModel, int, QQueryOperations> energyProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'energy');
     });
   }
 
-  QueryBuilder<Meditation, int?, QQueryOperations> goalProperty() {
+  QueryBuilder<MeditationModel, int?, QQueryOperations> goalProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'goal');
     });
   }
 
-  QueryBuilder<Meditation, int, QQueryOperations> moodProperty() {
+  QueryBuilder<MeditationModel, int, QQueryOperations> moodProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'mood');
     });
   }
 
-  QueryBuilder<Meditation, double?, QQueryOperations> ratingProperty() {
+  QueryBuilder<MeditationModel, double?, QQueryOperations> ratingProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'rating');
     });
   }
 
-  QueryBuilder<Meditation, int, QQueryOperations> stressProperty() {
+  QueryBuilder<MeditationModel, int, QQueryOperations> stressProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'stress');
     });
   }
 
-  QueryBuilder<Meditation, MeditationType, QQueryOperations> typeProperty() {
+  QueryBuilder<MeditationModel, MeditationType, QQueryOperations>
+      typeProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'type');
     });

@@ -3,69 +3,23 @@
 part of 'meditation_during.dart';
 
 // **************************************************************************
-// CopyWithGenerator
+// RiverpodGenerator
 // **************************************************************************
 
-abstract class _$MeditationDuringCWProxy {
-  MeditationDuring meditation(Meditation meditation);
+String _$meditationDuringHash() => r'675ac66f4ae260d0fd7ee3a99ecbc691d3d94c8f';
 
-  MeditationDuring sessionStopped(bool sessionStopped);
+/// See also [MeditationDuring].
+@ProviderFor(MeditationDuring)
+final meditationDuringProvider = AutoDisposeNotifierProvider<MeditationDuring,
+    MeditationDuringViewModel>.internal(
+  MeditationDuring.new,
+  name: r'meditationDuringProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$meditationDuringHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
 
-  /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `MeditationDuring(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
-  ///
-  /// Usage
-  /// ```dart
-  /// MeditationDuring(...).copyWith(id: 12, name: "My name")
-  /// ````
-  MeditationDuring call({
-    Meditation? meditation,
-    bool? sessionStopped,
-  });
-}
-
-/// Proxy class for `copyWith` functionality. This is a callable class and can be used as follows: `instanceOfMeditationDuring.copyWith(...)`. Additionally contains functions for specific fields e.g. `instanceOfMeditationDuring.copyWith.fieldName(...)`
-class _$MeditationDuringCWProxyImpl implements _$MeditationDuringCWProxy {
-  const _$MeditationDuringCWProxyImpl(this._value);
-
-  final MeditationDuring _value;
-
-  @override
-  MeditationDuring meditation(Meditation meditation) =>
-      this(meditation: meditation);
-
-  @override
-  MeditationDuring sessionStopped(bool sessionStopped) =>
-      this(sessionStopped: sessionStopped);
-
-  @override
-
-  /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `MeditationDuring(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
-  ///
-  /// Usage
-  /// ```dart
-  /// MeditationDuring(...).copyWith(id: 12, name: "My name")
-  /// ````
-  MeditationDuring call({
-    Object? meditation = const $CopyWithPlaceholder(),
-    Object? sessionStopped = const $CopyWithPlaceholder(),
-  }) {
-    return MeditationDuring(
-      meditation:
-          meditation == const $CopyWithPlaceholder() || meditation == null
-              ? _value.meditation
-              // ignore: cast_nullable_to_non_nullable
-              : meditation as Meditation,
-      sessionStopped: sessionStopped == const $CopyWithPlaceholder() ||
-              sessionStopped == null
-          ? _value.sessionStopped
-          // ignore: cast_nullable_to_non_nullable
-          : sessionStopped as bool,
-    );
-  }
-}
-
-extension $MeditationDuringCopyWith on MeditationDuring {
-  /// Returns a callable class that can be used as follows: `instanceOfMeditationDuring.copyWith(...)` or like so:`instanceOfMeditationDuring.copyWith.fieldName(...)`.
-  // ignore: library_private_types_in_public_api
-  _$MeditationDuringCWProxy get copyWith => _$MeditationDuringCWProxyImpl(this);
-}
+typedef _$MeditationDuring = AutoDisposeNotifier<MeditationDuringViewModel>;
+// ignore_for_file: unnecessary_raw_strings, subtype_of_sealed_class, invalid_use_of_internal_member, do_not_use_environment, prefer_const_constructors, public_member_api_docs, avoid_private_typedef_functions

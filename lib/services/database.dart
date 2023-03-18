@@ -1,8 +1,8 @@
 import 'package:isar/isar.dart';
 
-import '../models/activity.dart';
-import '../models/breathwork.dart';
-import '../models/meditation.dart';
+import '../models/activity_model.dart';
+import '../models/breathwork_model.dart';
+import '../models/meditation_model.dart';
 
 class Database {
   const Database(this.isar);
@@ -10,42 +10,42 @@ class Database {
   final Isar isar;
 
   /// Breathwork
-  Future<void> saveBreathwork(Breathwork breathwork) async {
+  Future<void> saveBreathwork(BreathworkModel breathwork) async {
     await isar.writeTxn(() async {
-      await isar.breathworks.put(breathwork);
+      await isar.breathworkModels.put(breathwork);
     });
   }
 
-  Future<void> deleteBreathwork(Breathwork breathwork) async {
+  Future<void> deleteBreathwork(BreathworkModel breathwork) async {
     await isar.writeTxn(() async {
-      await isar.breathworks.delete(breathwork.id);
+      await isar.breathworkModels.delete(breathwork.id);
     });
   }
 
   /// Meditation
-  Future<void> saveMeditation(Meditation meditation) async {
+  Future<void> saveMeditation(MeditationModel meditation) async {
     await isar.writeTxn(() async {
-      await isar.meditations.put(meditation);
+      await isar.meditationModels.put(meditation);
     });
   }
 
-  Future<void> deleteMeditation(Meditation meditation) async {
+  Future<void> deleteMeditation(MeditationModel meditation) async {
     await isar.writeTxn(() async {
-      await isar.meditations.delete(meditation.id);
+      await isar.meditationModels.delete(meditation.id);
     });
   }
 
   /// Activities
-  Future<List<Activity>> loadTodaysActivities() async {
-    List<Activity> activities = [];
+  Future<List<ActivityModel>> loadTodaysActivities() async {
+    List<ActivityModel> activities = [];
 
     final date = DateTime.now().copyWith(hour: 0, minute: 0);
 
     final meditations =
-        await isar.meditations.where().dateGreaterThan(date).findAll();
+        await isar.meditationModels.where().dateGreaterThan(date).findAll();
 
     final breathworks =
-        await isar.breathworks.where().dateGreaterThan(date).findAll();
+        await isar.breathworkModels.where().dateGreaterThan(date).findAll();
 
     activities = [...meditations, ...breathworks]
       ..sort((a1, a2) => a2.date.compareTo(a1.date));
@@ -53,16 +53,16 @@ class Database {
     return activities;
   }
 
-  Future<List<Activity>> loadAllActivities() async {
-    List<Activity> activities = [];
+  Future<List<ActivityModel>> loadAllActivities() async {
+    List<ActivityModel> activities = [];
 
     final date = DateTime.now().copyWith(hour: 0, minute: 0);
 
     final meditations =
-        await isar.meditations.where().dateLessThan(date).findAll();
+        await isar.meditationModels.where().dateLessThan(date).findAll();
 
     final breathworks =
-        await isar.breathworks.where().dateLessThan(date).findAll();
+        await isar.breathworkModels.where().dateLessThan(date).findAll();
 
     activities = [...meditations, ...breathworks]
       ..sort((a1, a2) => a2.date.compareTo(a1.date));
@@ -70,18 +70,18 @@ class Database {
     return activities;
   }
 
-  Future<List<Activity>> loadActivitiesForDay(DateTime date) async {
-    List<Activity> activities = [];
+  Future<List<ActivityModel>> loadActivitiesForDay(DateTime date) async {
+    List<ActivityModel> activities = [];
 
     final dateStart = date.copyWith(hour: 0, minute: 0);
     final dateEnd = dateStart.add(const Duration(hours: 23, minutes: 59));
 
-    final meditations = await isar.meditations
+    final meditations = await isar.meditationModels
         .where()
         .dateBetween(dateStart, dateEnd)
         .findAll();
 
-    final breathworks = await isar.breathworks
+    final breathworks = await isar.breathworkModels
         .where()
         .dateBetween(dateStart, dateEnd)
         .findAll();

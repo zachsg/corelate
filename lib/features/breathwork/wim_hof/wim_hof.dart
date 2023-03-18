@@ -1,20 +1,20 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-import 'wim_hof_model.dart';
+import 'wim_hof_view_model.dart';
 
 part 'wim_hof.g.dart';
 
 @riverpod
 class WimHof extends _$WimHof {
   @override
-  WimHofModel build() => WimHofModel(holdSeconds: []);
+  WimHofViewModel build() => WimHofViewModel(holdSeconds: []);
 
   void incrementBreath() =>
       state = state.copyWith(currentBreath: state.currentBreath + 1);
 
   void resetBreath() => state = state.copyWith(currentBreath: 0);
 
-  void reset() => state = WimHofModel(holdSeconds: []);
+  void reset() => state = WimHofViewModel(holdSeconds: []);
 
   void toggleIsInhaling() =>
       state = state.copyWith(isInhaling: !state.isInhaling);

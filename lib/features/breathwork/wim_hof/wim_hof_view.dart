@@ -4,7 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:wakelock/wakelock.dart';
 
 import '../../../helpers/strings.dart';
-import '../../../models/breathwork.dart';
+import '../../../models/breathwork_model.dart';
 import '../../../models/breathwork_type.dart';
 import '../../bottom_navigation/bottom_navigation_view.dart';
 import '../../widgets/xwidgets.dart';
@@ -121,7 +121,7 @@ class WimHofView extends ConsumerWidget {
                     height: 150,
                     width: MediaQuery.of(context).size.width,
                     child: WimHofBarChartWidget(
-                      breathwork: Breathwork(
+                      breathwork: BreathworkModel(
                         date: breathwork.date,
                         holdSecondsPerRound: wimHof.holdSeconds,
                       ),

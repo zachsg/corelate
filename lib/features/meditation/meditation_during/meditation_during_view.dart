@@ -8,7 +8,7 @@ import '../../../helpers/strings.dart';
 import '../../../models/meditation_type.dart';
 import '../../bottom_navigation/bottom_navigation_view.dart';
 import '../../widgets/xwidgets.dart';
-import 'meditation_during_c.dart';
+import 'meditation_during.dart';
 import 'widgets/xwidgets.dart';
 
 class MeditationDuringView extends ConsumerWidget {
@@ -18,7 +18,7 @@ class MeditationDuringView extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final meditation = ref.watch(meditationDuringCProvider).meditation;
+    final meditation = ref.watch(meditationDuringProvider).meditation;
 
     return Scaffold(
       appBar: AppBar(
@@ -33,7 +33,7 @@ class MeditationDuringView extends ConsumerWidget {
               : CountDownWidget(
                   finished: () {
                     ref
-                        .read(meditationDuringCProvider.notifier)
+                        .read(meditationDuringProvider.notifier)
                         .sessionStopped(true);
                     _showSessionCompleteDialog(ref, context);
                   },
@@ -47,7 +47,7 @@ class MeditationDuringView extends ConsumerWidget {
                     onPressed: () {
                       Wakelock.disable();
                       ref
-                          .read(meditationDuringCProvider.notifier)
+                          .read(meditationDuringProvider.notifier)
                           .sessionStopped(true);
                       _showSessionCompleteDialog(ref, context);
                     },
@@ -71,7 +71,7 @@ class MeditationDuringView extends ConsumerWidget {
                     onPressed: () {
                       Wakelock.disable();
                       ref
-                          .read(meditationDuringCProvider.notifier)
+                          .read(meditationDuringProvider.notifier)
                           .sessionStopped(true);
                       context.pop();
                     },
@@ -92,7 +92,7 @@ class MeditationDuringView extends ConsumerWidget {
 
   Future<void> _showSessionCompleteDialog(
       WidgetRef ref, BuildContext context) async {
-    final meditation = ref.watch(meditationDuringCProvider).meditation;
+    final meditation = ref.watch(meditationDuringProvider).meditation;
     final elapsed = meditation.elapsed;
 
     final minutes = elapsed / 60 > 0 ? elapsed ~/ 60 : 0;
@@ -137,7 +137,7 @@ class MeditationDuringView extends ConsumerWidget {
                 const Text('\n\nHow it go?'),
                 RatingBarWidget(
                   onRatingChange: (rating) => ref
-                      .read(meditationDuringCProvider.notifier)
+                      .read(meditationDuringProvider.notifier)
                       .setRating(rating),
                 ),
               ],
@@ -149,7 +149,7 @@ class MeditationDuringView extends ConsumerWidget {
               onPressed: () {
                 Wakelock.disable();
                 Navigator.of(context).pop();
-                ref.read(meditationDuringCProvider.notifier).save();
+                ref.read(meditationDuringProvider.notifier).save();
                 context.goNamed(BottomNavigationView.routeName);
               },
             ),

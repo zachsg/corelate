@@ -5,7 +5,7 @@ import 'package:wakelock/wakelock.dart';
 
 import '../../../services/provider.dart';
 import '../../../helpers/strings.dart';
-import '../../../models/breathwork.dart';
+import '../../../models/breathwork_model.dart';
 import '../../../models/breathwork_type.dart';
 import '../../widgets/xwidgets.dart';
 import '../four_7_8/four_7_8_view.dart';
@@ -64,7 +64,7 @@ class BreathworkSetupView extends ConsumerWidget {
                 ref.read(breathworkSetupProvider.notifier).resetDate();
                 context.pushNamed(
                     is478 ? Four78View.routeName : WimHofView.routeName);
-                ref.read(healthCProvider);
+                ref.read(healthProvider);
               },
               child: const Padding(
                 padding: EdgeInsets.symmetric(
@@ -81,7 +81,7 @@ class BreathworkSetupView extends ConsumerWidget {
     );
   }
 
-  Widget _infoCardWidget(Breathwork breathwork) {
+  Widget _infoCardWidget(BreathworkModel breathwork) {
     var message = '';
     if (breathwork.type == BreathworkType.four78) {
       message = '4-7-8 breathing is amazing for reducing anxiety and producing'

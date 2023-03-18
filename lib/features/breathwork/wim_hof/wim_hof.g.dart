@@ -6,12 +6,12 @@ part of 'wim_hof.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$wimHofHash() => r'7ef3038566d8fb50855f3b550d1ff68142b4a225';
+String _$wimHofHash() => r'e5dfedaab31e71203b47bb7eb33809add09eff9b';
 
 /// See also [WimHof].
 @ProviderFor(WimHof)
 final wimHofProvider =
-    AutoDisposeNotifierProvider<WimHof, WimHofModel>.internal(
+    AutoDisposeNotifierProvider<WimHof, WimHofViewModel>.internal(
   WimHof.new,
   name: r'wimHofProvider',
   debugGetCreateSourceHash:
@@ -20,5 +20,5 @@ final wimHofProvider =
   allTransitiveDependencies: null,
 );
 
-typedef _$WimHof = AutoDisposeNotifier<WimHofModel>;
+typedef _$WimHof = AutoDisposeNotifier<WimHofViewModel>;
 // ignore_for_file: unnecessary_raw_strings, subtype_of_sealed_class, invalid_use_of_internal_member, do_not_use_environment, prefer_const_constructors, public_member_api_docs, avoid_private_typedef_functions

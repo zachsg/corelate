@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../../models/breathwork.dart';
+import '../../../models/breathwork_model.dart';
 import '../../../models/breathwork_type.dart';
 import '../../widgets/xwidgets.dart';
 import '../../../helpers/extensions.dart';
@@ -19,7 +19,7 @@ class BreathworkCardWidget extends ConsumerWidget {
   });
 
   final String title;
-  final Breathwork breathwork;
+  final BreathworkModel breathwork;
   final String timeString;
   final Icon icon;
   final bool isEven;
@@ -105,7 +105,7 @@ class BreathworkCardWidget extends ConsumerWidget {
   }
 
   Widget _breathworkSheet(
-      WidgetRef ref, BuildContext context, Breathwork breathwork) {
+      WidgetRef ref, BuildContext context, BreathworkModel breathwork) {
     var title = 'Breathwork';
     var message = '';
 

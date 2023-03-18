@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../../services/local_notification_service.dart';
-import '../meditation_during_c.dart';
+import '../meditation_during.dart';
 import 'circle.dart';
 
 class CountDownWidget extends ConsumerStatefulWidget {
@@ -25,7 +25,7 @@ class _CountDownWidgetState extends ConsumerState<CountDownWidget> {
   void initState() {
     _stopwatch = Stopwatch()..start();
 
-    final goal = ref.read(meditationDuringCProvider).meditation.goal ?? 0;
+    final goal = ref.read(meditationDuringProvider).meditation.goal ?? 0;
     var elapsed = 0;
 
     LocalNotificationService().addNotification(
@@ -36,7 +36,7 @@ class _CountDownWidgetState extends ConsumerState<CountDownWidget> {
     );
 
     _timer = Timer.periodic(const Duration(seconds: 1), (_) {
-      if (ref.watch(meditationDuringCProvider).sessionStopped) {
+      if (ref.watch(meditationDuringProvider).sessionStopped) {
         _stopwatch
           ..stop()
           ..reset();
@@ -44,7 +44,7 @@ class _CountDownWidgetState extends ConsumerState<CountDownWidget> {
         elapsed = _stopwatch.elapsed.inSeconds;
       }
 
-      ref.read(meditationDuringCProvider.notifier).setElapsed(elapsed);
+      ref.read(meditationDuringProvider.notifier).setElapsed(elapsed);
 
       if (goal <= elapsed) {
         widget.finished();
@@ -63,7 +63,7 @@ class _CountDownWidgetState extends ConsumerState<CountDownWidget> {
 
   @override
   Widget build(BuildContext context) {
-    final meditation = ref.watch(meditationDuringCProvider).meditation;
+    final meditation = ref.watch(meditationDuringProvider).meditation;
     final duration = (meditation.goal ?? 0) * 1000;
     final elapsed = meditation.elapsed;
     final goal = meditation.goal ?? 600;
@@ -79,7 +79,7 @@ class _CountDownWidgetState extends ConsumerState<CountDownWidget> {
     final seconds = minutes == 0 ? goneBy : goneBy - minutes * 60;
     final secondsText = seconds < 10 ? '0$seconds' : '$seconds';
 
-    final isStopped = ref.watch(meditationDuringCProvider).sessionStopped;
+    final isStopped = ref.watch(meditationDuringProvider).sessionStopped;
 
     return Stack(
       children: [

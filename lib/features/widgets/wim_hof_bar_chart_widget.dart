@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:fl_chart/fl_chart.dart';
 
-import '../../models/breathwork.dart';
+import '../../models/breathwork_model.dart';
 
 class WimHofBarChartWidget extends ConsumerWidget {
   const WimHofBarChartWidget({super.key, required this.breathwork});
 
-  final Breathwork breathwork;
+  final BreathworkModel breathwork;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -124,7 +124,7 @@ class WimHofBarChartWidget extends ConsumerWidget {
     );
   }
 
-  FlTitlesData titlesData(BuildContext context, Breathwork breathwork) {
+  FlTitlesData titlesData(BuildContext context, BreathworkModel breathwork) {
     return FlTitlesData(
       show: true,
       bottomTitles: AxisTitles(
@@ -159,7 +159,7 @@ class WimHofBarChartWidget extends ConsumerWidget {
       );
 
   List<BarChartGroupData> barGroups(
-      BuildContext context, Breathwork breathwork) {
+      BuildContext context, BreathworkModel breathwork) {
     List<BarChartGroupData> groups = [];
 
     int index = 0;

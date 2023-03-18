@@ -1,9 +1,9 @@
 import 'package:copy_with_extension/copy_with_extension.dart';
 
-part 'wim_hof_model.g.dart';
+part 'wim_hof_view_model.g.dart';
 
 @CopyWith()
-class WimHofModel {
+class WimHofViewModel {
   final int currentBreath;
   final int currentRound;
   final bool isInhaling;
@@ -13,7 +13,7 @@ class WimHofModel {
   final int holdSecondsCurrentRound;
   final List<int> holdSeconds;
 
-  WimHofModel({
+  WimHofViewModel({
     this.currentRound = 1,
     this.currentBreath = 0,
     this.isInhaling = false,

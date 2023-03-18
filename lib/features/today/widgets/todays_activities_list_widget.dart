@@ -3,9 +3,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
 
 import '../../../helpers/strings.dart';
-import '../../../models/activity.dart';
-import '../../../models/breathwork.dart';
-import '../../../models/meditation.dart';
+import '../../../models/activity_model.dart';
+import '../../../models/breathwork_model.dart';
+import '../../../models/meditation_model.dart';
 import '../today.dart';
 import 'xwidgets.dart';
 
@@ -67,7 +67,7 @@ class _TodaysActivitiesListWidgetState
                     final isEven = index % 2 == 0;
                     final isFirstRow = index == 0 || index == 1;
 
-                    if (activity is Meditation) {
+                    if (activity is MeditationModel) {
                       return Dismissible(
                         key: UniqueKey(),
                         direction: DismissDirection.endToStart,
@@ -87,7 +87,7 @@ class _TodaysActivitiesListWidgetState
                           isFirstRow: isFirstRow,
                         ),
                       );
-                    } else if (activity is Breathwork) {
+                    } else if (activity is BreathworkModel) {
                       return Dismissible(
                         key: UniqueKey(),
                         direction: DismissDirection.endToStart,
@@ -221,7 +221,7 @@ class _TodaysActivitiesListWidgetState
     );
   }
 
-  String _getTimeFormatted(BuildContext context, Activity activity) {
+  String _getTimeFormatted(BuildContext context, ActivityModel activity) {
     final minute = activity.date.minute;
     final minuteString = minute < 10 ? '0$minute' : minute;
     final is24HoursFormat = MediaQuery.of(context).alwaysUse24HourFormat;

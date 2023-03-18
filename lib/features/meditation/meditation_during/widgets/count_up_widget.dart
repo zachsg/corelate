@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../meditation_during_c.dart';
+import '../meditation_during.dart';
 
 class CountUpWidget extends ConsumerStatefulWidget {
   const CountUpWidget({super.key});
@@ -23,7 +23,7 @@ class _CountUpWidgetState extends ConsumerState<CountUpWidget> {
     var elapsed = 0;
 
     _timer = Timer.periodic(const Duration(seconds: 1), (_) {
-      if (ref.watch(meditationDuringCProvider).sessionStopped) {
+      if (ref.watch(meditationDuringProvider).sessionStopped) {
         _stopwatch
           ..stop()
           ..reset();
@@ -31,7 +31,7 @@ class _CountUpWidgetState extends ConsumerState<CountUpWidget> {
         elapsed = _stopwatch.elapsed.inSeconds;
       }
 
-      ref.read(meditationDuringCProvider.notifier).setElapsed(elapsed);
+      ref.read(meditationDuringProvider.notifier).setElapsed(elapsed);
     });
 
     super.initState();
@@ -46,14 +46,14 @@ class _CountUpWidgetState extends ConsumerState<CountUpWidget> {
 
   @override
   Widget build(BuildContext context) {
-    final meditation = ref.watch(meditationDuringCProvider).meditation;
+    final meditation = ref.watch(meditationDuringProvider).meditation;
     final elapsed = meditation.elapsed;
 
     final minutes = elapsed / 60 > 0 ? elapsed ~/ 60 : 0;
     final seconds = minutes == 0 ? elapsed : elapsed - minutes * 60;
     final secondsText = seconds < 10 ? '0$seconds' : '$seconds';
 
-    final isStopped = ref.watch(meditationDuringCProvider).sessionStopped;
+    final isStopped = ref.watch(meditationDuringProvider).sessionStopped;
 
     return isStopped
         ? const SizedBox()

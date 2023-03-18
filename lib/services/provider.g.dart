@@ -6,61 +6,60 @@ part of 'provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$isarCHash() => r'63ce1bd05910511ab6018fb62cd161082bf2b9df';
+String _$isarHash() => r'ad98e4e8dd4d0c8ceee3c4b186fca3360b7f9327';
 
-/// See also [isarC].
-@ProviderFor(isarC)
-final isarCProvider = FutureProvider<Isar>.internal(
-  isarC,
-  name: r'isarCProvider',
+/// See also [isar].
+@ProviderFor(isar)
+final isarProvider = FutureProvider<Isar>.internal(
+  isar,
+  name: r'isarProvider',
   debugGetCreateSourceHash:
-      const bool.fromEnvironment('dart.vm.product') ? null : _$isarCHash,
+      const bool.fromEnvironment('dart.vm.product') ? null : _$isarHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
-typedef IsarCRef = FutureProviderRef<Isar>;
-String _$databaseCHash() => r'74f71e50f17cfe2309fe92689acb97a989b71abb';
+typedef IsarRef = FutureProviderRef<Isar>;
+String _$databaseHash() => r'266f15b17997d9d5e5c7954ce9dbf1154b8f612d';
 
-/// See also [databaseC].
-@ProviderFor(databaseC)
-final databaseCProvider = AutoDisposeFutureProvider<Database>.internal(
-  databaseC,
-  name: r'databaseCProvider',
+/// See also [database].
+@ProviderFor(database)
+final databaseProvider = AutoDisposeFutureProvider<Database>.internal(
+  database,
+  name: r'databaseProvider',
   debugGetCreateSourceHash:
-      const bool.fromEnvironment('dart.vm.product') ? null : _$databaseCHash,
+      const bool.fromEnvironment('dart.vm.product') ? null : _$databaseHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
-typedef DatabaseCRef = AutoDisposeFutureProviderRef<Database>;
-String _$healthCHash() => r'378cff536b2e418c2ff8200bcfee8ecec18fbd79';
+typedef DatabaseRef = AutoDisposeFutureProviderRef<Database>;
+String _$healthHash() => r'231de09844f79302518bfc6a3d3ba8ce0ab6b626';
 
-/// See also [healthC].
-@ProviderFor(healthC)
-final healthCProvider = FutureProvider<HealthFactory>.internal(
-  healthC,
-  name: r'healthCProvider',
+/// See also [health].
+@ProviderFor(health)
+final healthProvider = FutureProvider<HealthFactory>.internal(
+  health,
+  name: r'healthProvider',
   debugGetCreateSourceHash:
-      const bool.fromEnvironment('dart.vm.product') ? null : _$healthCHash,
+      const bool.fromEnvironment('dart.vm.product') ? null : _$healthHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
-typedef HealthCRef = FutureProviderRef<HealthFactory>;
-String _$appleMindfulCHash() => r'ee9b03bdf7a0d3b949bb5024209ce6c6de3f3d0b';
+typedef HealthRef = FutureProviderRef<HealthFactory>;
+String _$appleMindfulHash() => r'd8fa72c1a4987b7f395396310a9e23509bf48761';
 
-/// See also [appleMindfulC].
-@ProviderFor(appleMindfulC)
-final appleMindfulCProvider = FutureProvider<MindfulMinutesPlugin>.internal(
-  appleMindfulC,
-  name: r'appleMindfulCProvider',
-  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-      ? null
-      : _$appleMindfulCHash,
+/// See also [appleMindful].
+@ProviderFor(appleMindful)
+final appleMindfulProvider = FutureProvider<MindfulMinutesPlugin>.internal(
+  appleMindful,
+  name: r'appleMindfulProvider',
+  debugGetCreateSourceHash:
+      const bool.fromEnvironment('dart.vm.product') ? null : _$appleMindfulHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
-typedef AppleMindfulCRef = FutureProviderRef<MindfulMinutesPlugin>;
+typedef AppleMindfulRef = FutureProviderRef<MindfulMinutesPlugin>;
 // ignore_for_file: unnecessary_raw_strings, subtype_of_sealed_class, invalid_use_of_internal_member, do_not_use_environment, prefer_const_constructors, public_member_api_docs, avoid_private_typedef_functions

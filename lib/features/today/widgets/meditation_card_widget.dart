@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../helpers/extensions.dart';
-import '../../../models/meditation.dart';
+import '../../../models/meditation_model.dart';
 import '../../../models/meditation_type.dart';
 import '../../widgets/xwidgets.dart';
 import 'activity_card_widget.dart';
@@ -19,7 +19,7 @@ class MeditationCardWidget extends ConsumerWidget {
   });
 
   final String title;
-  final Meditation meditation;
+  final MeditationModel meditation;
   final String timeString;
   final Icon icon;
   final bool isEven;
@@ -120,7 +120,7 @@ class MeditationCardWidget extends ConsumerWidget {
   }
 
   Widget _meditationSheet(
-      WidgetRef ref, BuildContext context, Meditation meditation) {
+      WidgetRef ref, BuildContext context, MeditationModel meditation) {
     var title = '';
     var message = '';
 
