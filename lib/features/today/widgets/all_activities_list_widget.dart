@@ -105,9 +105,11 @@ class _AllActivitiesListWidgetState
           ),
         ),
         ref.watch(todayProvider).activities.isEmpty
-            ? const EmptyStateWidget(
-                icon: Icons.psychology_alt,
-                message: emptyStateHistory,
+            ? const Expanded(
+                child: EmptyStateWidget(
+                  icon: Icons.psychology_alt,
+                  message: emptyStateHistory,
+                ),
               )
             : Expanded(
                 child: ListView.builder(
