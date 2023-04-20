@@ -1,6 +1,7 @@
 import 'package:health/health.dart';
 import 'package:isar/isar.dart';
 import 'package:mindful_minutes/mindful_minutes.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../models/breathwork_model.dart';
@@ -11,7 +12,11 @@ part 'provider.g.dart';
 
 @Riverpod(keepAlive: true)
 Future<Isar> isar(IsarRef ref) async {
-  return await Isar.open([MeditationModelSchema, BreathworkModelSchema]);
+  final dir = await getApplicationDocumentsDirectory();
+  return await Isar.open(
+    [MeditationModelSchema, BreathworkModelSchema],
+    directory: dir.path,
+  );
 }
 
 @riverpod
