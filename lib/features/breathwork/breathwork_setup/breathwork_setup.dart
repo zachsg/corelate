@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:corelate/features/breathwork/four_7_8/four_7_8.dart';
+import 'package:health/health.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../../services/provider.dart';
@@ -109,24 +110,22 @@ class BreathworkSetup extends _$BreathworkSetup {
         elapsed = countsElapsed.toInt() + holdsElapsed + inhalesElapsed;
       }
 
-      ref.read(appleMindfulProvider.future).then((health) async {
-        await health.writeMindfulMinutes(
+      // ref.read(appleMindfulProvider.future).then((health) async {
+      //   await health.writeMindfulMinutes(
+      //     state.breathwork.date,
+      //     state.breathwork.date.add(Duration(seconds: elapsed)),
+      //   );
+      // });
+
+      // TODO: Currently health plugin crashes trying to save mindfulness (using mindful_minutes plugin instead)
+      ref.read(healthProvider.future).then((health) async {
+        final success = await health.writeHealthData(
+          elapsed.toDouble(),
+          HealthDataType.MINDFULNESS,
           state.breathwork.date,
           state.breathwork.date.add(Duration(seconds: elapsed)),
         );
       });
-
-      // TODO: Currently health plugin crashes trying to save mindfulness (using mindful_minutes plugin instead)
-      // ref.read(healthCProvider.future).then((health) async {
-      //   final success = await health.writeHealthData(
-      //     meditation.elapsed.toDouble(),
-      //     HealthDataType.MINDFULNESS,
-      //     // meditation.date,
-      //     // meditation.date.add(
-      //     //   Duration(seconds: meditation.elapsed),
-      //     // ),
-      //   );
-      // });
     }
   }
 }

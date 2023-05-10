@@ -233,7 +233,7 @@ const BreathworkModelSchema = CollectionSchema(
   getId: _breathworkModelGetId,
   getLinks: _breathworkModelGetLinks,
   attach: _breathworkModelAttach,
-  version: '3.1.0',
+  version: '3.1.0+1',
 );
 
 int _breathworkModelEstimateSize(

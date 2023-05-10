@@ -55,7 +55,7 @@ class Four78View extends ConsumerWidget {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Row(),
+                const Row(),
                 Column(
                   children: [
                     Row(

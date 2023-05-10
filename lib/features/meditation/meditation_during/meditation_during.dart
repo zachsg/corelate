@@ -1,6 +1,5 @@
 import 'dart:io';
 
-import 'package:health/health.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../../services/local_notification_service.dart';
@@ -62,7 +61,7 @@ class MeditationDuring extends _$MeditationDuring {
       });
 
       // TODO: Currently health plugin crashes trying to save mindfulness (using mindful_minutes plugin instead)
-      // ref.read(healthCProvider.future).then((health) async {
+      // ref.read(healthProvider.future).then((health) async {
       //   final success = await health.writeHealthData(
       //     state.meditation.elapsed.toDouble(),
       //     HealthDataType.MINDFULNESS,

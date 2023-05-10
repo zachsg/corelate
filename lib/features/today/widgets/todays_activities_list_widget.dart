@@ -52,11 +52,7 @@ class _TodaysActivitiesListWidgetState
             children: [
               _balanceCard(context, sleepMinutes, hours, minutes),
               Expanded(
-                child: GridView.builder(
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
-                    childAspectRatio: 1.25,
-                  ),
+                child: ListView.builder(
                   itemCount: ref.watch(todayProvider).activities.length,
                   itemBuilder: (context, index) {
                     final activity = ref.watch(todayProvider).activities[index];
@@ -69,24 +65,29 @@ class _TodaysActivitiesListWidgetState
 
                     if (activity is MeditationModel) {
                       return Dismissible(
-                        key: UniqueKey(),
-                        direction: DismissDirection.endToStart,
-                        onDismissed: (direction) => ref
-                            .read(todayProvider.notifier)
-                            .deleteActivity(isToday: false, activity: activity),
-                        background: Container(
-                          color: Theme.of(context).colorScheme.primaryContainer,
-                          child: _dismissibleBackgroundWidget(),
-                        ),
-                        child: MeditationCardWidget(
-                          title: 'Meditation',
-                          meditation: activity,
-                          icon: icon,
-                          timeString: timeString,
-                          isEven: isEven,
-                          isFirstRow: isFirstRow,
-                        ),
-                      );
+                          key: UniqueKey(),
+                          direction: DismissDirection.endToStart,
+                          onDismissed: (direction) => ref
+                              .read(todayProvider.notifier)
+                              .deleteActivity(
+                                  isToday: false, activity: activity),
+                          background: Container(
+                            color:
+                                Theme.of(context).colorScheme.primaryContainer,
+                            child: _dismissibleBackgroundWidget(),
+                          ),
+                          child: const ListTile(
+                            title: Text('meditation'),
+                          )
+                          // MeditationCardWidget(
+                          //   title: 'Meditation',
+                          //   meditation: activity,
+                          //   icon: icon,
+                          //   timeString: timeString,
+                          //   isEven: isEven,
+                          //   isFirstRow: isFirstRow,
+                          // ),
+                          );
                     } else if (activity is BreathworkModel) {
                       return Dismissible(
                         key: UniqueKey(),
