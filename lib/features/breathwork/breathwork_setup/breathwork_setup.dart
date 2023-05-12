@@ -60,27 +60,15 @@ class BreathworkSetup extends _$BreathworkSetup {
     if (state.breathwork.type == BreathworkType.four78) {
       // TODO: Save 4-7-8 session
       final four78 = ref.watch(four78Provider);
-      final energy = (four78.currentRound / 2).round();
-      final stress = 0 - energy;
-      final mood = state.breathwork.mood;
       breathwork = state.breathwork.copyWith(
         rounds: four78.currentRound,
-        stress: stress,
-        mood: mood,
-        energy: energy,
       );
     } else {
       final wimHof = ref.watch(wimHofProvider);
       final rounds = wimHof.holdSeconds.length;
-      final energy = (rounds / 2).round();
-      final stress = 0 - energy;
-      final mood = state.breathwork.mood;
       breathwork = state.breathwork.copyWith(
         holdSecondsPerRound: wimHof.holdSeconds,
         rounds: rounds,
-        stress: stress,
-        mood: mood,
-        energy: energy,
       );
     }
     state = state.copyWith(breathwork: breathwork);

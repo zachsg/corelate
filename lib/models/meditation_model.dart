@@ -18,9 +18,6 @@ class MeditationModel extends ActivityModel {
 
   MeditationModel({
     required super.date,
-    super.stress,
-    super.mood,
-    super.energy,
     this.type = MeditationType.timed,
     this.goal = 300,
     this.rating,

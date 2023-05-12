@@ -9,12 +9,6 @@ part of 'breathwork_model.dart';
 abstract class _$BreathworkModelCWProxy {
   BreathworkModel date(DateTime date);
 
-  BreathworkModel stress(int stress);
-
-  BreathworkModel mood(int mood);
-
-  BreathworkModel energy(int energy);
-
   BreathworkModel type(BreathworkType type);
 
   BreathworkModel rounds(int rounds);
@@ -33,9 +27,6 @@ abstract class _$BreathworkModelCWProxy {
   /// ````
   BreathworkModel call({
     DateTime? date,
-    int? stress,
-    int? mood,
-    int? energy,
     BreathworkType? type,
     int? rounds,
     int? breathsPerRound,
@@ -52,15 +43,6 @@ class _$BreathworkModelCWProxyImpl implements _$BreathworkModelCWProxy {
 
   @override
   BreathworkModel date(DateTime date) => this(date: date);
-
-  @override
-  BreathworkModel stress(int stress) => this(stress: stress);
-
-  @override
-  BreathworkModel mood(int mood) => this(mood: mood);
-
-  @override
-  BreathworkModel energy(int energy) => this(energy: energy);
 
   @override
   BreathworkModel type(BreathworkType type) => this(type: type);
@@ -89,9 +71,6 @@ class _$BreathworkModelCWProxyImpl implements _$BreathworkModelCWProxy {
   /// ````
   BreathworkModel call({
     Object? date = const $CopyWithPlaceholder(),
-    Object? stress = const $CopyWithPlaceholder(),
-    Object? mood = const $CopyWithPlaceholder(),
-    Object? energy = const $CopyWithPlaceholder(),
     Object? type = const $CopyWithPlaceholder(),
     Object? rounds = const $CopyWithPlaceholder(),
     Object? breathsPerRound = const $CopyWithPlaceholder(),
@@ -103,18 +82,6 @@ class _$BreathworkModelCWProxyImpl implements _$BreathworkModelCWProxy {
           ? _value.date
           // ignore: cast_nullable_to_non_nullable
           : date as DateTime,
-      stress: stress == const $CopyWithPlaceholder() || stress == null
-          ? _value.stress
-          // ignore: cast_nullable_to_non_nullable
-          : stress as int,
-      mood: mood == const $CopyWithPlaceholder() || mood == null
-          ? _value.mood
-          // ignore: cast_nullable_to_non_nullable
-          : mood as int,
-      energy: energy == const $CopyWithPlaceholder() || energy == null
-          ? _value.energy
-          // ignore: cast_nullable_to_non_nullable
-          : energy as int,
       type: type == const $CopyWithPlaceholder() || type == null
           ? _value.type
           // ignore: cast_nullable_to_non_nullable
@@ -171,38 +138,23 @@ const BreathworkModelSchema = CollectionSchema(
       name: r'date',
       type: IsarType.dateTime,
     ),
-    r'energy': PropertySchema(
-      id: 2,
-      name: r'energy',
-      type: IsarType.long,
-    ),
     r'holdSecondsPerRound': PropertySchema(
-      id: 3,
+      id: 2,
       name: r'holdSecondsPerRound',
       type: IsarType.longList,
     ),
-    r'mood': PropertySchema(
-      id: 4,
-      name: r'mood',
-      type: IsarType.long,
-    ),
     r'rating': PropertySchema(
-      id: 5,
+      id: 3,
       name: r'rating',
       type: IsarType.double,
     ),
     r'rounds': PropertySchema(
-      id: 6,
+      id: 4,
       name: r'rounds',
       type: IsarType.long,
     ),
-    r'stress': PropertySchema(
-      id: 7,
-      name: r'stress',
-      type: IsarType.long,
-    ),
     r'type': PropertySchema(
-      id: 8,
+      id: 5,
       name: r'type',
       type: IsarType.byte,
       enumMap: _BreathworkModeltypeEnumValueMap,
@@ -259,13 +211,10 @@ void _breathworkModelSerialize(
 ) {
   writer.writeLong(offsets[0], object.breathsPerRound);
   writer.writeDateTime(offsets[1], object.date);
-  writer.writeLong(offsets[2], object.energy);
-  writer.writeLongList(offsets[3], object.holdSecondsPerRound);
-  writer.writeLong(offsets[4], object.mood);
-  writer.writeDouble(offsets[5], object.rating);
-  writer.writeLong(offsets[6], object.rounds);
-  writer.writeLong(offsets[7], object.stress);
-  writer.writeByte(offsets[8], object.type.index);
+  writer.writeLongList(offsets[2], object.holdSecondsPerRound);
+  writer.writeDouble(offsets[3], object.rating);
+  writer.writeLong(offsets[4], object.rounds);
+  writer.writeByte(offsets[5], object.type.index);
 }
 
 BreathworkModel _breathworkModelDeserialize(
@@ -277,13 +226,10 @@ BreathworkModel _breathworkModelDeserialize(
   final object = BreathworkModel(
     breathsPerRound: reader.readLongOrNull(offsets[0]) ?? 0,
     date: reader.readDateTime(offsets[1]),
-    energy: reader.readLongOrNull(offsets[2]) ?? 0,
-    holdSecondsPerRound: reader.readLongList(offsets[3]),
-    mood: reader.readLongOrNull(offsets[4]) ?? 0,
-    rating: reader.readDoubleOrNull(offsets[5]),
-    rounds: reader.readLongOrNull(offsets[6]) ?? 4,
-    stress: reader.readLongOrNull(offsets[7]) ?? 0,
-    type: _BreathworkModeltypeValueEnumMap[reader.readByteOrNull(offsets[8])] ??
+    holdSecondsPerRound: reader.readLongList(offsets[2]),
+    rating: reader.readDoubleOrNull(offsets[3]),
+    rounds: reader.readLongOrNull(offsets[4]) ?? 4,
+    type: _BreathworkModeltypeValueEnumMap[reader.readByteOrNull(offsets[5])] ??
         BreathworkType.four78,
   );
   object.id = id;
@@ -302,18 +248,12 @@ P _breathworkModelDeserializeProp<P>(
     case 1:
       return (reader.readDateTime(offset)) as P;
     case 2:
-      return (reader.readLongOrNull(offset) ?? 0) as P;
-    case 3:
       return (reader.readLongList(offset)) as P;
-    case 4:
-      return (reader.readLongOrNull(offset) ?? 0) as P;
-    case 5:
+    case 3:
       return (reader.readDoubleOrNull(offset)) as P;
-    case 6:
+    case 4:
       return (reader.readLongOrNull(offset) ?? 4) as P;
-    case 7:
-      return (reader.readLongOrNull(offset) ?? 0) as P;
-    case 8:
+    case 5:
       return (_BreathworkModeltypeValueEnumMap[reader.readByteOrNull(offset)] ??
           BreathworkType.four78) as P;
     default:
@@ -638,62 +578,6 @@ extension BreathworkModelQueryFilter
   }
 
   QueryBuilder<BreathworkModel, BreathworkModel, QAfterFilterCondition>
-      energyEqualTo(int value) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.equalTo(
-        property: r'energy',
-        value: value,
-      ));
-    });
-  }
-
-  QueryBuilder<BreathworkModel, BreathworkModel, QAfterFilterCondition>
-      energyGreaterThan(
-    int value, {
-    bool include = false,
-  }) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.greaterThan(
-        include: include,
-        property: r'energy',
-        value: value,
-      ));
-    });
-  }
-
-  QueryBuilder<BreathworkModel, BreathworkModel, QAfterFilterCondition>
-      energyLessThan(
-    int value, {
-    bool include = false,
-  }) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.lessThan(
-        include: include,
-        property: r'energy',
-        value: value,
-      ));
-    });
-  }
-
-  QueryBuilder<BreathworkModel, BreathworkModel, QAfterFilterCondition>
-      energyBetween(
-    int lower,
-    int upper, {
-    bool includeLower = true,
-    bool includeUpper = true,
-  }) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.between(
-        property: r'energy',
-        lower: lower,
-        includeLower: includeLower,
-        upper: upper,
-        includeUpper: includeUpper,
-      ));
-    });
-  }
-
-  QueryBuilder<BreathworkModel, BreathworkModel, QAfterFilterCondition>
       holdSecondsPerRoundIsNull() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(const FilterCondition.isNull(
@@ -913,62 +797,6 @@ extension BreathworkModelQueryFilter
   }
 
   QueryBuilder<BreathworkModel, BreathworkModel, QAfterFilterCondition>
-      moodEqualTo(int value) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.equalTo(
-        property: r'mood',
-        value: value,
-      ));
-    });
-  }
-
-  QueryBuilder<BreathworkModel, BreathworkModel, QAfterFilterCondition>
-      moodGreaterThan(
-    int value, {
-    bool include = false,
-  }) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.greaterThan(
-        include: include,
-        property: r'mood',
-        value: value,
-      ));
-    });
-  }
-
-  QueryBuilder<BreathworkModel, BreathworkModel, QAfterFilterCondition>
-      moodLessThan(
-    int value, {
-    bool include = false,
-  }) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.lessThan(
-        include: include,
-        property: r'mood',
-        value: value,
-      ));
-    });
-  }
-
-  QueryBuilder<BreathworkModel, BreathworkModel, QAfterFilterCondition>
-      moodBetween(
-    int lower,
-    int upper, {
-    bool includeLower = true,
-    bool includeUpper = true,
-  }) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.between(
-        property: r'mood',
-        lower: lower,
-        includeLower: includeLower,
-        upper: upper,
-        includeUpper: includeUpper,
-      ));
-    });
-  }
-
-  QueryBuilder<BreathworkModel, BreathworkModel, QAfterFilterCondition>
       ratingIsNull() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(const FilterCondition.isNull(
@@ -1109,62 +937,6 @@ extension BreathworkModelQueryFilter
   }
 
   QueryBuilder<BreathworkModel, BreathworkModel, QAfterFilterCondition>
-      stressEqualTo(int value) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.equalTo(
-        property: r'stress',
-        value: value,
-      ));
-    });
-  }
-
-  QueryBuilder<BreathworkModel, BreathworkModel, QAfterFilterCondition>
-      stressGreaterThan(
-    int value, {
-    bool include = false,
-  }) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.greaterThan(
-        include: include,
-        property: r'stress',
-        value: value,
-      ));
-    });
-  }
-
-  QueryBuilder<BreathworkModel, BreathworkModel, QAfterFilterCondition>
-      stressLessThan(
-    int value, {
-    bool include = false,
-  }) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.lessThan(
-        include: include,
-        property: r'stress',
-        value: value,
-      ));
-    });
-  }
-
-  QueryBuilder<BreathworkModel, BreathworkModel, QAfterFilterCondition>
-      stressBetween(
-    int lower,
-    int upper, {
-    bool includeLower = true,
-    bool includeUpper = true,
-  }) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.between(
-        property: r'stress',
-        lower: lower,
-        includeLower: includeLower,
-        upper: upper,
-        includeUpper: includeUpper,
-      ));
-    });
-  }
-
-  QueryBuilder<BreathworkModel, BreathworkModel, QAfterFilterCondition>
       typeEqualTo(BreathworkType value) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
@@ -1256,32 +1028,6 @@ extension BreathworkModelQuerySortBy
     });
   }
 
-  QueryBuilder<BreathworkModel, BreathworkModel, QAfterSortBy> sortByEnergy() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addSortBy(r'energy', Sort.asc);
-    });
-  }
-
-  QueryBuilder<BreathworkModel, BreathworkModel, QAfterSortBy>
-      sortByEnergyDesc() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addSortBy(r'energy', Sort.desc);
-    });
-  }
-
-  QueryBuilder<BreathworkModel, BreathworkModel, QAfterSortBy> sortByMood() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addSortBy(r'mood', Sort.asc);
-    });
-  }
-
-  QueryBuilder<BreathworkModel, BreathworkModel, QAfterSortBy>
-      sortByMoodDesc() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addSortBy(r'mood', Sort.desc);
-    });
-  }
-
   QueryBuilder<BreathworkModel, BreathworkModel, QAfterSortBy> sortByRating() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'rating', Sort.asc);
@@ -1305,19 +1051,6 @@ extension BreathworkModelQuerySortBy
       sortByRoundsDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'rounds', Sort.desc);
-    });
-  }
-
-  QueryBuilder<BreathworkModel, BreathworkModel, QAfterSortBy> sortByStress() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addSortBy(r'stress', Sort.asc);
-    });
-  }
-
-  QueryBuilder<BreathworkModel, BreathworkModel, QAfterSortBy>
-      sortByStressDesc() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addSortBy(r'stress', Sort.desc);
     });
   }
 
@@ -1364,19 +1097,6 @@ extension BreathworkModelQuerySortThenBy
     });
   }
 
-  QueryBuilder<BreathworkModel, BreathworkModel, QAfterSortBy> thenByEnergy() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addSortBy(r'energy', Sort.asc);
-    });
-  }
-
-  QueryBuilder<BreathworkModel, BreathworkModel, QAfterSortBy>
-      thenByEnergyDesc() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addSortBy(r'energy', Sort.desc);
-    });
-  }
-
   QueryBuilder<BreathworkModel, BreathworkModel, QAfterSortBy> thenById() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'id', Sort.asc);
@@ -1386,19 +1106,6 @@ extension BreathworkModelQuerySortThenBy
   QueryBuilder<BreathworkModel, BreathworkModel, QAfterSortBy> thenByIdDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'id', Sort.desc);
-    });
-  }
-
-  QueryBuilder<BreathworkModel, BreathworkModel, QAfterSortBy> thenByMood() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addSortBy(r'mood', Sort.asc);
-    });
-  }
-
-  QueryBuilder<BreathworkModel, BreathworkModel, QAfterSortBy>
-      thenByMoodDesc() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addSortBy(r'mood', Sort.desc);
     });
   }
 
@@ -1425,19 +1132,6 @@ extension BreathworkModelQuerySortThenBy
       thenByRoundsDesc() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'rounds', Sort.desc);
-    });
-  }
-
-  QueryBuilder<BreathworkModel, BreathworkModel, QAfterSortBy> thenByStress() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addSortBy(r'stress', Sort.asc);
-    });
-  }
-
-  QueryBuilder<BreathworkModel, BreathworkModel, QAfterSortBy>
-      thenByStressDesc() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addSortBy(r'stress', Sort.desc);
     });
   }
 
@@ -1470,22 +1164,10 @@ extension BreathworkModelQueryWhereDistinct
     });
   }
 
-  QueryBuilder<BreathworkModel, BreathworkModel, QDistinct> distinctByEnergy() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addDistinctBy(r'energy');
-    });
-  }
-
   QueryBuilder<BreathworkModel, BreathworkModel, QDistinct>
       distinctByHoldSecondsPerRound() {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'holdSecondsPerRound');
-    });
-  }
-
-  QueryBuilder<BreathworkModel, BreathworkModel, QDistinct> distinctByMood() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addDistinctBy(r'mood');
     });
   }
 
@@ -1498,12 +1180,6 @@ extension BreathworkModelQueryWhereDistinct
   QueryBuilder<BreathworkModel, BreathworkModel, QDistinct> distinctByRounds() {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'rounds');
-    });
-  }
-
-  QueryBuilder<BreathworkModel, BreathworkModel, QDistinct> distinctByStress() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addDistinctBy(r'stress');
     });
   }
 
@@ -1535,22 +1211,10 @@ extension BreathworkModelQueryProperty
     });
   }
 
-  QueryBuilder<BreathworkModel, int, QQueryOperations> energyProperty() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addPropertyName(r'energy');
-    });
-  }
-
   QueryBuilder<BreathworkModel, List<int>?, QQueryOperations>
       holdSecondsPerRoundProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'holdSecondsPerRound');
-    });
-  }
-
-  QueryBuilder<BreathworkModel, int, QQueryOperations> moodProperty() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addPropertyName(r'mood');
     });
   }
 
@@ -1563,12 +1227,6 @@ extension BreathworkModelQueryProperty
   QueryBuilder<BreathworkModel, int, QQueryOperations> roundsProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'rounds');
-    });
-  }
-
-  QueryBuilder<BreathworkModel, int, QQueryOperations> stressProperty() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addPropertyName(r'stress');
     });
   }
 

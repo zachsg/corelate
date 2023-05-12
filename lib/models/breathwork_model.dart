@@ -1,4 +1,3 @@
-
 import 'package:copy_with_extension/copy_with_extension.dart';
 import 'package:isar/isar.dart';
 
@@ -20,9 +19,6 @@ class BreathworkModel extends ActivityModel {
 
   BreathworkModel({
     required super.date,
-    super.stress,
-    super.mood,
-    super.energy,
     this.type = BreathworkType.four78,
     this.rounds = 4,
     this.breathsPerRound = 0,

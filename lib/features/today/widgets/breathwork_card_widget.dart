@@ -50,11 +50,14 @@ class BreathworkCardWidget extends ConsumerWidget {
                     height: 36,
                     color: Theme.of(context).colorScheme.onBackground,
                   ),
-                  Column(
-                    children: [
-                      icon,
-                      Text(timeString),
-                    ],
+                  SizedBox(
+                    width: 80,
+                    child: Column(
+                      children: [
+                        icon,
+                        Text(timeString),
+                      ],
+                    ),
                   ),
                   Container(
                     width: 2,

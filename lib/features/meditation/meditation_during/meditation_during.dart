@@ -38,15 +38,7 @@ class MeditationDuring extends _$MeditationDuring {
 
   void save() {
     ref.read(databaseProvider.future).then((db) async {
-      final energy = (state.meditation.elapsed / 60 / 3).round();
-      final stress = 0 - energy;
-      final mood = state.meditation.rating?.toInt() ?? 3;
-      final meditation = state.meditation.copyWith(
-        energy: energy,
-        stress: stress,
-        mood: mood,
-      );
-      await db.saveMeditation(meditation);
+      await db.saveMeditation(state.meditation);
 
       ref.read(todayProvider.notifier).loadTodaysActivities();
     });
