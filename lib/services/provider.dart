@@ -31,18 +31,12 @@ Future<HealthFactory> health(HealthRef ref) async {
 
   final types = [
     HealthDataType.MINDFULNESS,
-    HealthDataType.STEPS,
-    HealthDataType.SLEEP_IN_BED,
-    HealthDataType.HEART_RATE,
   ];
 
   bool requested = await health.requestAuthorization(types);
   if (requested) {
     var permissions = [
       HealthDataAccess.READ_WRITE,
-      HealthDataAccess.READ,
-      HealthDataAccess.READ,
-      HealthDataAccess.READ,
     ];
     await health.requestAuthorization(types, permissions: permissions);
   }

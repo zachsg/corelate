@@ -15,9 +15,7 @@ class BottomNavigationView extends ConsumerWidget {
     return Scaffold(
       body: ref.watch(bottomNavigationProvider) == 0
           ? const TodayView()
-          : ref.watch(bottomNavigationProvider) == 1
-              ? const Center(child: Text('$balanceLabel coming soon...'))
-              : const Center(child: Text('$insightsLabel coming soon...')),
+          : const Center(child: Text('$insightsLabel coming soon...')),
       bottomNavigationBar: NavigationBar(
         selectedIndex: ref.watch(bottomNavigationProvider),
         destinations: const [
@@ -25,11 +23,6 @@ class BottomNavigationView extends ConsumerWidget {
             icon: Icon(Icons.today_outlined),
             selectedIcon: Icon(Icons.today),
             label: todayLabel,
-          ),
-          NavigationDestination(
-            icon: Icon(Icons.spa_outlined),
-            selectedIcon: Icon(Icons.spa),
-            label: balanceLabel,
           ),
           NavigationDestination(
             icon: Icon(Icons.lightbulb_outlined),

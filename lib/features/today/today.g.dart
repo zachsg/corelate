@@ -20,7 +20,7 @@ final dateProvider = AutoDisposeNotifierProvider<Date, DateTime>.internal(
 );
 
 typedef _$Date = AutoDisposeNotifier<DateTime>;
-String _$todayHash() => r'ea0a0bec0fafce167a75439b6a6445591d3eb17d';
+String _$todayHash() => r'5803b58b85853d6c1bfec83e8fc85bddef58e915';
 
 /// See also [Today].
 @ProviderFor(Today)

@@ -11,10 +11,6 @@ abstract class _$TodayViewModelCWProxy {
 
   TodayViewModel fabExpanded(bool fabExpanded);
 
-  TodayViewModel steps(int steps);
-
-  TodayViewModel sleepMinutes(int sleepMinutes);
-
   TodayViewModel activities(List<ActivityModel> activities);
 
   TodayViewModel historyDate(DateTime historyDate);
@@ -28,8 +24,6 @@ abstract class _$TodayViewModelCWProxy {
   TodayViewModel call({
     bool? showingToday,
     bool? fabExpanded,
-    int? steps,
-    int? sleepMinutes,
     List<ActivityModel>? activities,
     DateTime? historyDate,
   });
@@ -50,13 +44,6 @@ class _$TodayViewModelCWProxyImpl implements _$TodayViewModelCWProxy {
       this(fabExpanded: fabExpanded);
 
   @override
-  TodayViewModel steps(int steps) => this(steps: steps);
-
-  @override
-  TodayViewModel sleepMinutes(int sleepMinutes) =>
-      this(sleepMinutes: sleepMinutes);
-
-  @override
   TodayViewModel activities(List<ActivityModel> activities) =>
       this(activities: activities);
 
@@ -75,8 +62,6 @@ class _$TodayViewModelCWProxyImpl implements _$TodayViewModelCWProxy {
   TodayViewModel call({
     Object? showingToday = const $CopyWithPlaceholder(),
     Object? fabExpanded = const $CopyWithPlaceholder(),
-    Object? steps = const $CopyWithPlaceholder(),
-    Object? sleepMinutes = const $CopyWithPlaceholder(),
     Object? activities = const $CopyWithPlaceholder(),
     Object? historyDate = const $CopyWithPlaceholder(),
   }) {
@@ -91,15 +76,6 @@ class _$TodayViewModelCWProxyImpl implements _$TodayViewModelCWProxy {
               ? _value.fabExpanded
               // ignore: cast_nullable_to_non_nullable
               : fabExpanded as bool,
-      steps: steps == const $CopyWithPlaceholder() || steps == null
-          ? _value.steps
-          // ignore: cast_nullable_to_non_nullable
-          : steps as int,
-      sleepMinutes:
-          sleepMinutes == const $CopyWithPlaceholder() || sleepMinutes == null
-              ? _value.sleepMinutes
-              // ignore: cast_nullable_to_non_nullable
-              : sleepMinutes as int,
       activities:
           activities == const $CopyWithPlaceholder() || activities == null
               ? _value.activities

@@ -34,7 +34,7 @@ final databaseProvider = AutoDisposeFutureProvider<Database>.internal(
 );
 
 typedef DatabaseRef = AutoDisposeFutureProviderRef<Database>;
-String _$healthHash() => r'231de09844f79302518bfc6a3d3ba8ce0ab6b626';
+String _$healthHash() => r'b721df22fc89ef0c923e6b9872578964821bcd12';
 
 /// See also [health].
 @ProviderFor(health)

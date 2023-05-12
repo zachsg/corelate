@@ -28,15 +28,10 @@ class _TodaysActivitiesListWidgetState
 
   @override
   Widget build(BuildContext context) {
-    final sleepMinutes = ref.watch(todayProvider).sleepMinutes;
-    final hours = sleepMinutes ~/ 60;
-    final minutes = sleepMinutes - hours * 60;
-
     return ref.watch(todayProvider).activities.isEmpty
-        ? Stack(
+        ? const Stack(
             children: [
-              _balanceCard(context, sleepMinutes, hours, minutes),
-              const Positioned(
+              Positioned(
                 top: 0,
                 left: 0,
                 right: 0,
@@ -50,7 +45,6 @@ class _TodaysActivitiesListWidgetState
           )
         : Column(
             children: [
-              _balanceCard(context, sleepMinutes, hours, minutes),
               Expanded(
                 child: ListView.builder(
                   itemCount: ref.watch(todayProvider).activities.length,
@@ -116,84 +110,6 @@ class _TodaysActivitiesListWidgetState
               ),
             ],
           );
-  }
-
-  Padding _balanceCard(
-      BuildContext context, int sleepMinutes, int hours, int minutes) {
-    var formatter = NumberFormat.decimalPattern();
-
-    return Padding(
-      padding: const EdgeInsets.only(
-        left: 8.0,
-        right: 8.0,
-        bottom: 2.0,
-      ),
-      child: Card(
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Row(
-                children: [
-                  Text(
-                    'Balance',
-                    style: Theme.of(context).textTheme.bodySmall,
-                  ),
-                ],
-              ),
-              const SizedBox(height: 10),
-              Row(
-                children: [
-                  Row(
-                    children: [
-                      const Icon(Icons.directions_walk, size: 24),
-                      const SizedBox(width: 8),
-                      Text(
-                        'Step Count:',
-                        style: Theme.of(context).textTheme.titleMedium,
-                      ),
-                      const SizedBox(width: 4),
-                      Text(
-                        formatter.format(ref.watch(todayProvider).steps),
-                        style: Theme.of(context)
-                            .textTheme
-                            .titleMedium
-                            ?.copyWith(fontWeight: FontWeight.bold),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-              const SizedBox(height: 4),
-              if (sleepMinutes != 0)
-                Row(
-                  children: [
-                    Row(
-                      children: [
-                        const Icon(Icons.hotel, size: 24),
-                        const SizedBox(width: 8),
-                        Text(
-                          'Total Sleep:',
-                          style: Theme.of(context).textTheme.titleMedium,
-                        ),
-                        const SizedBox(width: 4),
-                        Text(
-                          '$hours hr, $minutes min',
-                          style: Theme.of(context)
-                              .textTheme
-                              .titleMedium
-                              ?.copyWith(fontWeight: FontWeight.bold),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-            ],
-          ),
-        ),
-      ),
-    );
   }
 
   Widget _dismissibleBackgroundWidget() {
