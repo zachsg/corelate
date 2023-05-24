@@ -6,7 +6,7 @@ part of 'breathwork_setup.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$breathworkSetupHash() => r'69740a88733b3473995db3b9570743dc8e9d195a';
+String _$breathworkSetupHash() => r'5aaf3567467fd0b62466bd96e488654e261e588c';
 
 /// See also [BreathworkSetup].
 @ProviderFor(BreathworkSetup)

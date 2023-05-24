@@ -1,6 +1,5 @@
 import 'package:health/health.dart';
 import 'package:isar/isar.dart';
-import 'package:mindful_minutes/mindful_minutes.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
@@ -38,21 +37,9 @@ Future<HealthFactory> health(HealthRef ref) async {
     var permissions = [
       HealthDataAccess.READ_WRITE,
     ];
+
     await health.requestAuthorization(types, permissions: permissions);
   }
 
   return health;
-}
-
-@Riverpod(keepAlive: true)
-Future<MindfulMinutesPlugin> appleMindful(AppleMindfulRef ref) async {
-  final plugin = MindfulMinutesPlugin();
-
-  final bool hasPermission = await plugin.checkPermission();
-
-  if (!hasPermission) {
-    await plugin.requestPermission();
-  }
-
-  return plugin;
 }

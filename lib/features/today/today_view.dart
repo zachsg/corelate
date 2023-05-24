@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:health/health.dart';
 
 import '../../helpers/strings.dart';
-import '../../services/provider.dart';
 import 'widgets/xwidgets.dart';
 import 'today.dart';
 

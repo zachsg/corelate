@@ -48,18 +48,4 @@ final healthProvider = FutureProvider<HealthFactory>.internal(
 );
 
 typedef HealthRef = FutureProviderRef<HealthFactory>;
-String _$appleMindfulHash() => r'd8fa72c1a4987b7f395396310a9e23509bf48761';
-
-/// See also [appleMindful].
-@ProviderFor(appleMindful)
-final appleMindfulProvider = FutureProvider<MindfulMinutesPlugin>.internal(
-  appleMindful,
-  name: r'appleMindfulProvider',
-  debugGetCreateSourceHash:
-      const bool.fromEnvironment('dart.vm.product') ? null : _$appleMindfulHash,
-  dependencies: null,
-  allTransitiveDependencies: null,
-);
-
-typedef AppleMindfulRef = FutureProviderRef<MindfulMinutesPlugin>;
 // ignore_for_file: unnecessary_raw_strings, subtype_of_sealed_class, invalid_use_of_internal_member, do_not_use_environment, prefer_const_constructors, public_member_api_docs, avoid_private_typedef_functions
